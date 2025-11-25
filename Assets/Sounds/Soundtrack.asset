@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0c2565cf2182d149838c74486899c3a, type: 3}
+  m_Name: Soundtrack
+  m_EditorClassIdentifier: 
+  _mixer: {fileID: 24100000, guid: 8206eb1b19f38d340b8223a15e2dcc1c, type: 2}
+  _sounds:
+  - name: Menu
+    clip: {fileID: 8300000, guid: 07fa0ed7820543a4cab563faf6082cdf, type: 3}
+    mixerGroup: BGM
+  - name: Feira
+    clip: {fileID: 8300000, guid: e5d23b7386ef1714b89792108eb3ed4e, type: 3}
+    mixerGroup: BGM
+  - name: Fishing
+    clip: {fileID: 8300000, guid: 69effe5b83d3bca409eaa3cd6869c60c, type: 3}
+    mixerGroup: BGM
+  - name: FishingFast
+    clip: {fileID: 8300000, guid: 33839689afea3ba45a436c9cfe994cc0, type: 3}
+    mixerGroup: BGM
+  - name: Click
+    clip: {fileID: 8300000, guid: 930f938c146cff646a66034d4c88accd, type: 3}
+    mixerGroup: SFX
+  - name: CatchFish
+    clip: {fileID: 8300000, guid: d6bece81fe80c8549a3a160de4ba28cb, type: 3}
+    mixerGroup: SFX
+  - name: Win
+    clip: {fileID: 8300000, guid: 893d399eaa280fb41bf92393d79afec0, type: 3}
+    mixerGroup: SFX
+  - name: FishingVictory
+    clip: {fileID: 8300000, guid: 68519a8b70c62d742a7b01e449081a66, type: 3}
+    mixerGroup: SFX
+  - name: NpcBaloon
+    clip: {fileID: 8300000, guid: 78f08cddc05e7a043995b16d996c8c17, type: 3}
+    mixerGroup: SFX
+  - name: Footsteps
+    clip: {fileID: 8300000, guid: 8de0bb940cecad340a43fddfa68dbdf2, type: 3}
+    mixerGroup: SFX
+  - name: Launch
+    clip: {fileID: 8300000, guid: 2016c3e3549fd1c449ad82762049f2cf, type: 3}
+    mixerGroup: SFX
+  - name: WaterSplash
+    clip: {fileID: 8300000, guid: 155a8969c0e40d84d8cd6e060d08e897, type: 3}
+    mixerGroup: SFX
+  - name: FishReelingLoop
+    clip: {fileID: 8300000, guid: f6696d9c902fc9840a4d32f7ceb52464, type: 3}
+    mixerGroup: SFX

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 32
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686d5f277de443e45984171bfb5f6426, type: 3}
+  m_Name: "Matrinx\xE3SO"
+  m_EditorClassIdentifier: 
+  fishName: "Matrinx\xE3"
+  fishSprite: {fileID: 21300000, guid: 3b428438603ce35449e3235a47e91486, type: 3}
+  darkFishSprite: {fileID: 681646211, guid: 95fc7ab903afb28428772a84b1d46547, type: 3}
+  descricao: "Famosa na pesca esportiva, a Matrinx\xE3 costuma ser mais agressiva
+    durante a pescaria, dando altos saltos na \xE1gua e dando trabalho na linha."
+  valor: 25
+  fishingGoalScore: 6
+  fishingPattern:
+  - speed: 3
+    secondsDelay: 1
+  - speed: 4
+    secondsDelay: 0.5
+  - speed: 3
+    secondsDelay: 1

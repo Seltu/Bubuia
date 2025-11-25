@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 32
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686d5f277de443e45984171bfb5f6426, type: 3}
+  m_Name: PirarucuSO
+  m_EditorClassIdentifier: 
+  fishName: Pirarucu
+  fishSprite: {fileID: 21300000, guid: 5b361475db88fa14ab43e333896cc3a2, type: 3}
+  darkFishSprite: {fileID: -1850052380, guid: 880b31b5b7618834299f6e56a278438e, type: 3}
+  descricao: "O peixe mais maceta que voc\xEA vai ver. Um dos maiores peixes de \xE1gua
+    doce do planeta, conseguindo medir at\xE9 3m e quase 200 quilos!"
+  valor: 60
+  fishingGoalScore: 9
+  fishingPattern:
+  - speed: 1
+    secondsDelay: 1
+  - speed: 2
+    secondsDelay: 0.33
+  - speed: 3
+    secondsDelay: 1
+  - speed: 3
+    secondsDelay: 0.5
+  - speed: 2
+    secondsDelay: 1
+  - speed: 3
+    secondsDelay: 2
+  - speed: 1.5
+    secondsDelay: 0.05
+  - speed: 1.5
+    secondsDelay: 0.05
+  - speed: 1.5
+    secondsDelay: 2
