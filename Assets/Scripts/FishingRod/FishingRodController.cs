@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class FishingRodController : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private Transform hookObject;
     [SerializeField] private Transform defaultHookPos;
     [SerializeField] private LayerMask waterLayer;
+    [SerializeField] private InputActionReference pointerPositionAction;
+    [SerializeField] private InputActionReference moveAction;
 
     [Header("Settings")]
     [SerializeField] private float arcHeight = 1.5f;
@@ -77,11 +81,49 @@ public class FishingRodController : MonoBehaviour
     // ------------------------------------------------------------
     // INPUTS
     // ------------------------------------------------------------
-    public void OnFishingTap(InputAction.CallbackContext ctx)
+
+    public void OnFishingAction(InputAction.CallbackContext ctx)
     {
-        if (ctx.phase != InputActionPhase.Started)
+        if (_stopped)
             return;
-        if (_stopped || _isRecalling)
+
+        if (ctx.started)
+        {
+            return;
+        }
+
+        if (ctx.performed)
+        {
+            if (ctx.interaction is TapInteraction)
+            {
+                // ----> TAP confirmado <----
+                OnTap();
+                return;
+            }
+            else if (ctx.interaction is HoldInteraction)
+            {
+                if (moveAction.action.ReadValue<Vector2>().magnitude > 0.001f)
+                    return;
+                // ----> HOLD confirmado <----
+                _recallHeld = true;
+                return;
+            }
+
+            return;
+        }
+
+        if (ctx.canceled)
+        {
+            // HOLD terminou
+            _recallHeld = false;
+        }
+    }
+
+    private void OnTap()
+    {
+        Vector2 pos = pointerPositionAction.action.ReadValue<Vector2>();
+
+        if (_isRecalling)
             return;
 
         if (_hookInWater && !_hookingFish)
@@ -91,26 +133,7 @@ public class FishingRodController : MonoBehaviour
         }
 
         if (!_hookInWater && _canCast)
-        {
-            Vector2 pos;
-            if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
-                pos = Touchscreen.current.primaryTouch.position.ReadValue();
-            else
-                pos = Mouse.current.position.ReadValue();
-
             TryCastToPosition(pos);
-        }
-    }
-
-    public void OnRecallHold(InputAction.CallbackContext ctx)
-    {
-        if (_stopped || !_hookInWater || _hookingFish)
-            return;
-
-        if (ctx.phase == InputActionPhase.Started || ctx.phase == InputActionPhase.Performed)
-            _recallHeld = true;
-        else if (ctx.phase == InputActionPhase.Canceled)
-            _recallHeld = false;
     }
 
     // ------------------------------------------------------------
@@ -212,6 +235,12 @@ public class FishingRodController : MonoBehaviour
     // ------------------------------------------------------------
     private void GradualRecallStep()
     {
+        if (moveAction.action.ReadValue<Vector2>().magnitude > 0.001f)
+        {
+            _recallHeld = false;
+            return;
+        }
+
         Vector3 rodXZ = new(defaultHookPos.position.x, 0, defaultHookPos.position.z);
         Vector3 hookXZ = new(hookObject.position.x, 0, hookObject.position.z);
 
@@ -336,6 +365,17 @@ public class FishingRodController : MonoBehaviour
 
         StartCoroutine(InstantRecall());
     }
+
+    private int GetCurrentFingerId()
+    {
+        foreach (var touch in UnityEngine.InputSystem.EnhancedTouch.Touch.activeTouches)
+        {
+            if (touch.began)
+                return touch.finger.index;
+        }
+        return -1;
+    }
+
 
     internal bool GetCanCast() => _canCast;
     internal bool IsHookInWater() => _hookInWater;

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
@@ -5,21 +6,41 @@ using UnityEngine.InputSystem.Users;
 public class VirtualGamepadBinder : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
-    private Gamepad _virtualGamepad;
+    private static bool boundGamepad;
 
-    void Start()
+    private void Start()
     {
-        if (playerInput == null)
+        if (boundGamepad) return;
+        if (!playerInput)
             playerInput = GetComponent<PlayerInput>();
 
-        // Garante que existe um gamepad virtual
-        _virtualGamepad = Gamepad.current ?? InputSystem.AddDevice<Gamepad>();
+        InputSystem.onAfterUpdate += Setup;
+    }
 
-        // Agora o user já é válido -> pode parear sem erro
-        if (playerInput.user.valid)
+    private void Setup()
+    {
+        InputSystem.onAfterUpdate -= Setup;
+
+        UnityEngine.InputSystem.EnhancedTouch.EnhancedTouchSupport.Enable();
+
+        var onScreenGamepad = InputSystem.devices
+            .FirstOrDefault(d => d is Gamepad && d.description.interfaceName == "OnScreen");
+
+        if (onScreenGamepad == null)
+            return;
+
+        if (!playerInput.user.pairedDevices.Contains(onScreenGamepad))
         {
-            playerInput.user.UnpairDevices();
-            InputUser.PerformPairingWithDevice(_virtualGamepad, playerInput.user);
+            InputUser.PerformPairingWithDevice(onScreenGamepad, playerInput.user);
         }
+
+        playerInput.SwitchCurrentControlScheme(
+            "DefaultScheme",
+            playerInput.user.pairedDevices.ToArray()
+        );
+
+        boundGamepad = true;
+
+        Debug.Log("Paired virtual gamepad: " + onScreenGamepad);
     }
 }

@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 128819787}
   - component: {fileID: 128819786}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: AlmanacButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 258978326}
   - component: {fileID: 258978325}
   - component: {fileID: 258978324}
+  - component: {fileID: 258978328}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -708,6 +709,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &258978328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258978323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c6e73efa5a9024e8e796a56c8b9883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &292201471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1610,7 +1623,7 @@ GameObject:
   - component: {fileID: 767368145}
   - component: {fileID: 767368144}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ProfileButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2568,7 +2581,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1289427465
 RectTransform:
@@ -3594,7 +3607,7 @@ GameObject:
   - component: {fileID: 1841903149}
   - component: {fileID: 1841903148}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: InventoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3885,7 +3898,7 @@ GameObject:
   - component: {fileID: 1904499290}
   - component: {fileID: 1904499289}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3954,7 +3967,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1904499290}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258978328}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FishingScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1904499290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4572,7 +4597,7 @@ SceneRoots:
   - {fileID: 1720332198}
   - {fileID: 1891791590}
   - {fileID: 400301987}
+  - {fileID: 1289427465}
   - {fileID: 258978327}
   - {fileID: 1448198817}
   - {fileID: 1220398341}
-  - {fileID: 1289427465}

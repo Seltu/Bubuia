@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 
 public class FishingMinigame : MonoBehaviour
@@ -64,7 +65,7 @@ public class FishingMinigame : MonoBehaviour
     public void FishingButtonInput(InputAction.CallbackContext context)
     {
         if (!_playing) return;
-        if (context.phase != InputActionPhase.Started) return;
+        if (context.phase != InputActionPhase.Started || context.interaction is not TapInteraction) return;
         if (_spawnedRings.Count > 0)
         {
             var ring = _spawnedRings.First();
