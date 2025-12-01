@@ -427,7 +427,7 @@ Transform:
   m_GameObject: {fileID: 404327544}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -300}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -567,7 +567,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 13.4052305, z: -18.776043}
+  m_LocalPosition: {x: 0, y: 13.405239, z: -318.77606}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -758,7 +758,7 @@ Transform:
   m_GameObject: {fileID: 730497448}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3420201, y: 0, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 14.784111, z: -17.619022}
+  m_LocalPosition: {x: 0, y: 14.78412, z: -317.61905}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -875,7 +875,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf75bbe88de8a7e4db86bccf7258ec20, type: 2}
+  - {fileID: 2100000, guid: 7bd743185ff69e749aae6c809533ef11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1022,7 +1022,7 @@ Transform:
   m_GameObject: {fileID: 1361230098}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: -10, z: -500}
+  m_LocalPosition: {x: -500, y: -50, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1042,11 +1042,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainWidth: 1000
   terrainDepth: 1000
-  terrainHeight: 10
+  terrainHeight: 60
+  tiltStrength: 0.85
   heightmapResolution: 129
-  noiseScale: 50
-  offsetX: 7758.72
-  offsetZ: 4928.2812
+  noiseScaleShallow: 5
+  noiseScaleSteep: 25
+  offsetX: 7279.4023
+  offsetZ: 7547.381
   terrainMaterial: {fileID: 2100000, guid: 914fafa2ac057324c8b2645dd0bf5a44, type: 2}
   terrainLayers: []
 --- !u!114 &1479081315 stripped
@@ -1245,7 +1247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8390750955584603645, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 8390750955584603645, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
       propertyPath: m_LocalRotation.w

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteAlways]
 public class SimplePerlinTerrain : MonoBehaviour
@@ -7,13 +7,15 @@ public class SimplePerlinTerrain : MonoBehaviour
     public int terrainWidth = 256;
     public int terrainDepth = 256;
     public float terrainHeight = 50f;
+    public float tiltStrength = 0.5f;
 
     [Header("Resolution")]
     [Tooltip("Allowed: 33, 65, 129, 257, 513")]
     public int heightmapResolution = 129;
 
     [Header("Perlin Noise")]
-    public float noiseScale = 20f;
+    public float noiseScaleShallow = 5f;  // pouco incline, pouco detalhe
+    public float noiseScaleSteep = 25f; // muito incline, muito detalhe
     public float offsetX = 0f;
     public float offsetZ = 0f;
 
@@ -77,12 +79,28 @@ public class SimplePerlinTerrain : MonoBehaviour
 
         for (int z = 0; z < res; z++)
         {
+            float t = (float)z / (res - 1);
+
+            // quanto maior t = maior detalhe
+            float localScale = Mathf.Lerp(noiseScaleShallow, noiseScaleSteep, t);
+
             for (int x = 0; x < res; x++)
             {
-                float xCoord = (float)x / res * noiseScale + offsetX;
-                float zCoord = (float)z / res * noiseScale + offsetZ;
+                float xCoord = (float)x / res * localScale + offsetX;
+                float zCoord = (float)z / res * localScale + offsetZ;
 
-                heights[z, x] = Mathf.PerlinNoise(xCoord, zCoord);
+                // Perlin 0–1
+                float h = Mathf.PerlinNoise(xCoord, zCoord);
+
+                // mínimo inicial baseado no tiltStrength
+                float minBase = tiltStrength;
+                float baseHeight = minBase + (1f - minBase) * h;
+
+                // inclinação empurra tudo para baixo até 0
+                float tilt = t * tiltStrength;
+                float finalHeight = Mathf.Clamp01(baseHeight - tilt);
+
+                heights[z, x] = finalHeight;
             }
         }
 
