@@ -1316,7 +1316,6 @@ GameObject:
   - component: {fileID: 3660206097213107749}
   - component: {fileID: 8451723304614036892}
   - component: {fileID: 8531723963174002}
-  - component: {fileID: 7992539452376842674}
   m_Layer: 6
   m_Name: Boat
   m_TagString: Untagged
@@ -1357,7 +1356,6 @@ MonoBehaviour:
   shipSprite: {fileID: 6467013431752429903}
   playerSprite: {fileID: 377132169795799263}
   shipRigidbody: {fileID: 8531723963174002}
-  shipCollider: {fileID: 7992539452376842674}
   moveSpeed: 5
   acceleration: 6
   turnSpeed: 50
@@ -1580,27 +1578,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!65 &7992539452376842674
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9122168391216930911}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2, y: 2.5, z: 8}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7206123075975407775
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField] private Transform shipSprite;
     [SerializeField] private Transform playerSprite;
     [SerializeField] private Rigidbody shipRigidbody;
-    [SerializeField] private Collider shipCollider;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
