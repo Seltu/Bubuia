@@ -12,7 +12,7 @@ public class BaseStore : MonoBehaviour
     [SerializeField] protected GameObject _storePanel;
     [SerializeField] protected TMP_Text _playerMoney;
     [SerializeField] private string storeId; // Mesmo ID do NPC
-    private bool _shopIsShowing = false;
+    protected bool _shopIsShowing = false;
 
 
     protected virtual void Start()

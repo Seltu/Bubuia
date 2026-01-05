@@ -47,16 +47,27 @@ MonoBehaviour:
   fishPrefabs:
   - prefab: {fileID: 3156809398143112572, guid: 2495b7849ddbc054b9562400f66a78c0, type: 3}
     spawnChance: 20
+    minZ: -300
+    maxZ: -100
   - prefab: {fileID: 6069435720569877537, guid: 495823b564a9e2443942fe79ce3b647d, type: 3}
     spawnChance: 5
+    minZ: -250
+    maxZ: 250
   - prefab: {fileID: 3571261716807952951, guid: b740b39f49839d04a95c17982743b534, type: 3}
     spawnChance: 3
+    minZ: -200
+    maxZ: 300
   - prefab: {fileID: 5710319249016486140, guid: c5393f8ba0a9ea44696b64c1feb25d87, type: 3}
     spawnChance: 2
+    minZ: 50
+    maxZ: 350
   - prefab: {fileID: 6586752616873442160, guid: 0636737afacda31439b5c050b4eeccaa, type: 3}
     spawnChance: 1
-  spawnInterval: 0.1
+    minZ: 150
+    maxZ: 400
+  spawnInterval: 0.05
   maxBoids: 60
-  minDistanceFromCamera: 30
-  spawnArea: {x: 500, y: 500}
+  minDistanceFromCamera: 70
+  maxDistanceFromCamera: 140
+  spawnArea: {x: 1000, y: 1000}
   boids: []

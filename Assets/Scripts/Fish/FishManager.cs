@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -6,8 +6,11 @@ public class FishSpawn
 {
     public Fish prefab;
     public int spawnChance;
-}
 
+    [Header("Spawn Depth Interval")]
+    public float minZ;
+    public float maxZ;
+}
 public class FishManager : MonoBehaviour
 {
     [Header("Fish Types")]
@@ -16,26 +19,29 @@ public class FishManager : MonoBehaviour
     [Header("Spawn Settings")]
     public float spawnInterval = 3f;
     public int maxBoids = 30;
+
     public float minDistanceFromCamera = 10f;
+    public float maxDistanceFromCamera = 40f;
 
     [Header("Spawn Area (Centered on Manager, XZ)")]
-    public Vector2 spawnArea = new Vector2(10f, 5f); // X range, Z range
+    public Vector2 spawnArea = new Vector2(10f, 5f);
 
-    [HideInInspector] 
+    [HideInInspector]
     public List<Fish> boids = new();
 
     private Camera mainCamera;
     private float timer;
 
-    void Start()
+    private void Start()
     {
         mainCamera = Camera.main;
         timer = spawnInterval;
     }
 
-    void Update()
+    private void Update()
     {
-        if (boids.Count >= maxBoids) return;
+        if (boids.Count >= maxBoids)
+            return;
 
         timer -= Time.deltaTime;
 
@@ -46,36 +52,55 @@ public class FishManager : MonoBehaviour
         }
     }
 
-    void TrySpawnFish()
+    private void TrySpawnFish()
     {
-        if (fishPrefabs == null || fishPrefabs.Count == 0) return;
+        if (fishPrefabs == null || fishPrefabs.Count == 0)
+            return;
 
-        for (int i = 0; i < 10; i++)
+        const int maxAttempts = 30;
+
+        Vector3 camXZ = new(
+            mainCamera.transform.position.x,
+            0f,
+            mainCamera.transform.position.z
+        );
+
+        for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
             Vector3 spawnPos = GetRandomPointInSpawnArea();
 
-            // Dist�ncia no plano XZ
-            Vector3 camPosXZ = new(mainCamera.transform.position.x, 0, mainCamera.transform.position.z);
-            Vector3 spawnXZ = new(spawnPos.x, 0, spawnPos.z);
+            Vector3 spawnXZ = new(spawnPos.x, 0f, spawnPos.z);
+            float distance = Vector3.Distance(camXZ, spawnXZ);
 
-            float camDistance = Vector3.Distance(spawnXZ, camPosXZ);
+            // Camera distance rule
+            if (distance < minDistanceFromCamera || distance > maxDistanceFromCamera)
+                continue;
 
-            if (camDistance >= minDistanceFromCamera)
+            // Decide which fish spawns (global weights preserved)
+            FishSpawn chosenFish = GetWeightedRandomFishSpawn();
+
+            // Local Z relative to manager
+            float localZ = spawnPos.z - transform.position.z;
+
+            // Validate fish against Z constraint
+            if (localZ < chosenFish.minZ || localZ > chosenFish.maxZ)
             {
-                Fish prefab = GetWeightedRandomFish();
-
-                Quaternion rot = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
-
-                Fish fish = Instantiate(prefab, spawnPos, rot);
-                fish.manager = this;
-                boids.Add(fish);
-
-                break;
+                // Fish not allowed here → abort this attempt
+                return;
             }
+
+            // --- VALID SPAWN ---
+            Quaternion rot = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+            Fish fish = Instantiate(chosenFish.prefab, spawnXZ, rot);
+
+            fish.manager = this;
+            boids.Add(fish);
+
+            return;
         }
     }
 
-    Vector3 GetRandomPointInSpawnArea()
+    private Vector3 GetRandomPointInSpawnArea()
     {
         float x = Random.Range(-spawnArea.x, spawnArea.x);
         float z = Random.Range(-spawnArea.y, spawnArea.y);
@@ -87,9 +112,10 @@ public class FishManager : MonoBehaviour
         );
     }
 
-    Fish GetWeightedRandomFish()
+    private FishSpawn GetWeightedRandomFishSpawn()
     {
         int totalWeight = 0;
+
         foreach (var fs in fishPrefabs)
             totalWeight += fs.spawnChance;
 
@@ -100,9 +126,9 @@ public class FishManager : MonoBehaviour
         {
             cumulative += fs.spawnChance;
             if (roll < cumulative)
-                return fs.prefab;
+                return fs;
         }
 
-        return fishPrefabs[0].prefab; 
+        return fishPrefabs[0];
     }
 }
