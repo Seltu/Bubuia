@@ -106,6 +106,12 @@ public class PlayerShipController : MonoBehaviour
     // INPUT
     public void MoveShipInput(InputAction.CallbackContext context)
     {
+        if (InputLock.movementLocked)
+        {
+            moveInput = Vector3.zero;
+            return;
+        }
+
         if (!_stopped)
         {
             Vector2 input = context.ReadValue<Vector2>();
