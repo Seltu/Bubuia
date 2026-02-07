@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteAlways]
 [RequireComponent(typeof(Terrain))]
 public class TerrainGenerator : MonoBehaviour
 {
@@ -170,22 +169,6 @@ public class TerrainGenerator : MonoBehaviour
             col.center = new Vector3(0, 0, 0);
             wall.layer = LayerMask.NameToLayer("Barrier");
         }
-    }
-
-    private bool IsCorner(bool[,] grid, int z, int x)
-    {
-        bool up = grid[z + 1, x];
-        bool down = grid[z - 1, x];
-        bool left = grid[z, x - 1];
-        bool right = grid[z, x + 1];
-
-        // L-shapes possíveis
-        if (up && right) return true;
-        if (up && left) return true;
-        if (down && right) return true;
-        if (down && left) return true;
-
-        return false;
     }
 
     private void Decorate()

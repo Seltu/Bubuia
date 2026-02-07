@@ -19,7 +19,7 @@ public class TreasureSpot : MonoBehaviour
         {
             //Quanto menor estiver o progresso mais rápido vai parecer que você tá ganhando/perdendo progresso
             float t = Mathf.Clamp01(_pullProgress / _pullToCollect);
-            float k = 0.6f;
+            float k = 0.99f;
             float eased = Mathf.Pow(t, k);
             _fillVisual.localScale = _baseVisual.localScale * eased;
             _pullProgress -= Time.deltaTime * _pullDecay;
@@ -62,7 +62,7 @@ public class TreasureSpot : MonoBehaviour
 
     private IEnumerator WaitToStartPulling()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.1f);
         if (_startedPulling) yield break;
         _startedPulling = true;
         _pullProgress = _pullAtStart;
