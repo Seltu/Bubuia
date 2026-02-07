@@ -51,7 +51,7 @@ public class TutorialController : MonoBehaviour
 
         _initialPos = _boatTransform.position;
         ResetTutorialSteps();
-        InputLock.movementLocked = false;
+        InputLock.movementLocked = true;
         InputLock.clickLocked = true;
 
         Invoke("TutCanStart", 2f);
