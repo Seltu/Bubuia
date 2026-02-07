@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class TutorialController : MonoBehaviour
@@ -8,18 +10,22 @@ public class TutorialController : MonoBehaviour
     [Header("References")]
     [SerializeField] private QuestSO _tutorialQuest;
     [SerializeField] private TutorialStatus _tutorialStatus;
-    [SerializeField] private Animator _uiAnim;
     [SerializeField] private Transform _boatTransform;
     [SerializeField] private FishingRodController _rodController;
     [SerializeField] private LayerMask _fishLayer;
+    [SerializeField] private GameObject _fishSpawner;
 
     [Header("Sardine Id")]
     [SerializeField] private string _sardineId;
 
     [Header("UI")]
     [SerializeField] private TMP_Text _instructionsTxt;
+    [SerializeField] private Animator _anim;
+    [SerializeField] private Image _clickImg;
+    [SerializeField] private Sprite _mouseIcon;
+    [SerializeField] private Sprite _handIcon;
  
-    private int _index = 0;
+    private int _index = 0;   
 
     #region detecting movement
 
@@ -31,44 +37,60 @@ public class TutorialController : MonoBehaviour
     #region detecting cast & recall
     private bool _hasCast;
     private bool _bobbleInWater;
+    private bool _startTutu = false;
     #endregion
 
 
     private void Start()
     {
         EventManager.AddListener("FishCaught", OnCaughtFish);
+        EventManager.AddListener("Tut", FishingAnimClue);
+        EventManager.AddListener("Caught3Fish", StopFishingAnimClue);
 
         EventManager.TriggerEvent("SetFreezeOnCue", true);
 
         _initialPos = _boatTransform.position;
         ResetTutorialSteps();
+        InputLock.movementLocked = false;
+        InputLock.clickLocked = true;
+
+        Invoke("TutCanStart", 2f);
     }
 
     private void OnDestroy()
     {
         EventManager.RemoveListener("FishCaught", OnCaughtFish);
+        EventManager.RemoveListener("Tut", FishingAnimClue);
+        EventManager.RemoveListener("Caught3Fish", StopFishingAnimClue);
     }
 
     private void Update()
     {
+        if (!_startTutu) return;
+
         switch(_index)
         {
             case 0:
                 InputLock.movementLocked = false;
                 InputLock.clickLocked = true;
+
+                _anim.SetBool("MoveTut", true);
                 DetectMovement();
                 break;
             case 1:
                 InputLock.movementLocked = true;
                 InputLock.clickLocked = false;
+                _anim.SetBool("HeelTut", true);
                 DetectCastAndRecall();
                 break;
             case 2:
                 InputLock.movementLocked = true;
                 InputLock.clickLocked = false;
+                _anim.SetBool("HeelTut", true);
                 DetectCastAndRecall();
                 break;
             case 3:
+                if (!_fishSpawner.activeInHierarchy) _fishSpawner.SetActive(true);
                 InputLock.movementLocked = false;
                 InputLock.clickLocked = false;
                 DetectAiming();
@@ -84,6 +106,12 @@ public class TutorialController : MonoBehaviour
         }
     }
 
+    private void TutCanStart()
+    {
+        _startTutu = true;
+    }
+
+
     private void DetectMovement()
     {
         if (_index == 0 && !_tutorialQuest.objectives[0].isCompleted)
@@ -94,6 +122,7 @@ public class TutorialController : MonoBehaviour
             if (distanceMoved > _moveAmmount)
             {
                 Debug.Log("Movement Step Complete!");
+                _anim.SetBool("MoveTut", false);
                 _tutorialQuest.objectives[0].currentAmount += 1;
                 _index++;
             }
@@ -133,6 +162,7 @@ public class TutorialController : MonoBehaviour
                 _tutorialQuest.objectives[2].currentAmount += 1;
                 _hasCast = false;
                 _index++;
+                _anim.SetBool("HeelTut", false);
             }
         }
     }
@@ -201,49 +231,23 @@ public class TutorialController : MonoBehaviour
         _instructionsTxt.SetText("Tutorial Completed!");
         _tutorialStatus.tutorialCompleted = true;
         PlayerPrefs.SetInt("TutorialCompleted", 1);
+        Invoke("ReturnToMenu", 2f);
     }
 
-    #region Animations
-
-    private void StartMovementTutorial()
+    private void FishingAnimClue()
     {
-        _instructionsTxt.text = "Use o Joystick para mover o barco";
-        _uiAnim.SetTrigger("MoveTut");
+        _anim.SetTrigger("AimTut");
+        _anim.SetBool("AimTutBool", true);
     }
 
-    private void StartLineTutorial()
+    private void StopFishingAnimClue()
     {
-        _instructionsTxt.text = "Clique na tela para lançar o anzol";
-        _uiAnim.SetTrigger("LineTut");
+        _anim.ResetTrigger("AimTut");
+        _anim.SetBool("AimTutBool", false);
     }
 
-    private void StartHeelTutorial()
+    private void ReturnToMenu()
     {
-        //_instructionsTxt.text = "Clique na tela para puxar o anzol de volta";
-        _uiAnim.SetTrigger("HeelTut");
+        SceneManager.LoadScene("CityScene");
     }
-    private void StartAimTutorial()
-    {
-        _instructionsTxt.text = "Clique perto de um peixe para fisgá-lo";
-        _uiAnim.SetTrigger("AimTut");
-    }
-
-    private void StartFishingTutorial()
-    {
-        _instructionsTxt.text = "Clique na tela quando o círculo branco estiver dentro do círculo!";
-        _uiAnim.SetTrigger("FishingTut");
-    }
-
-    private void EndCurrentTutorial()
-    {
-        _uiAnim.SetTrigger("EndCurrentTut");
-        _uiAnim.SetTrigger("EndTut");
-    }
-
-    public void ChangeInstructionText(string text)
-    {
-        _instructionsTxt.text = text;
-    }
-
-    #endregion
 }

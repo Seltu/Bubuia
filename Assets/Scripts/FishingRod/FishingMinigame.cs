@@ -85,6 +85,7 @@ public class FishingMinigame : MonoBehaviour
             var ring = _spawnedRings.Peek(); // use Peek instead of First()
             if (IsRingInCueWindow(ring))
             {
+                EventManager.TriggerEvent("Tut");
                 FreezeForCue();
             }
         }
@@ -336,7 +337,7 @@ public class FishingMinigame : MonoBehaviour
     private void UnfreezeFromCue()
     {
         if (!_waitingCueTap) return;
-
+        EventManager.TriggerEvent("Caught3Fish");
         _waitingCueTap = false;
         Time.timeScale = _prevTimeScale <= 0 ? 1f : _prevTimeScale;
 
@@ -348,8 +349,10 @@ public class FishingMinigame : MonoBehaviour
     {
         _cueCount -= 1;
 
-        if(_cueCount <= 0)
+        if (_cueCount <= 0)
+        {
             _freezeOnCue = false;
+        }
     }
     #endregion
 }
