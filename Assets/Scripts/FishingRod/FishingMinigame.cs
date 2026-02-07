@@ -18,7 +18,6 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] private GameObject _coldIcon;
 
     [Header("References")]
-
     [SerializeField] private FloatVariable _currentCatchRadius;
     [SerializeField] private Transform _indicatorRing;
     [SerializeField] private FishingRing _ringPrefab;
@@ -35,10 +34,25 @@ public class FishingMinigame : MonoBehaviour
     private int _currentScore;
     private bool _wavesHazzardActive;
     private bool _breezeHazzardActive;
+
+    //[Header("Tutorial / Cue Freeze")]
+    private bool _freezeOnCue;   // toggle for tutorial
+    private bool _waitingCueTap = false;
+    private float _prevTimeScale = 1f;
+    private float _cueInsideMargin = 0.4f;
+    private int _cueCount = 3; // ammount of fishes to catch until cue is deactivated, player must catch the ramaingn fish alone
+
+    private void Awake()
+    {
+        EventManager.AddListener<bool>("SetFreezeOnCue", v => _freezeOnCue = v);
+    }
+
     private void Start()
     {
         EventManager.AddListener<Fish>("StartFishingMinigame", StartMinigame);
         EventManager.AddListener("RingMiss", OnRingMiss);
+
+        if(_freezeOnCue) EventManager.AddListener("FishCaught", OnCaughtFish);
 
         if (_playerInventory.playerBaits[0].baitNum <= 5)
             _playerInventory.playerBaits[0].baitNum = 5;
@@ -54,18 +68,40 @@ public class FishingMinigame : MonoBehaviour
     {
         EventManager.RemoveListener<Fish>("StartFishingMinigame", StartMinigame);
         EventManager.RemoveListener("RingMiss", OnRingMiss);
+        EventManager.RemoveListener<bool>("SetFreezeOnCue", v => _freezeOnCue = v);
+        EventManager.RemoveListener("FishCaught", OnCaughtFish);
     }
 
     private void Update()
     {
         if (!_playing)  return;
         _indicatorRing.position = _currentFish.transform.position+Vector3.back*0.1f;
+
+        if (!_freezeOnCue) return;
+        if (_waitingCueTap) return;
+
+        if (_spawnedRings.Count > 0)
+        {
+            var ring = _spawnedRings.Peek(); // use Peek instead of First()
+            if (IsRingInCueWindow(ring))
+            {
+                EventManager.TriggerEvent("Tut");
+                FreezeForCue();
+            }
+        }
     }
 
     public void FishingButtonInput(InputAction.CallbackContext context)
     {
         if (!_playing) return;
         if (context.phase != InputActionPhase.Started || context.interaction is not TapInteraction) return;
+
+
+        // If we froze time for the cue, resume ONLY when player taps
+        if (_waitingCueTap)
+            UnfreezeFromCue();
+        //
+
         if (_spawnedRings.Count > 0)
         {
             var ring = _spawnedRings.First();
@@ -157,7 +193,8 @@ public class FishingMinigame : MonoBehaviour
         EventManager.TriggerEvent("EndFishingMinigame", won);
         if (won)
         {
-            EventManager.TriggerEvent("SetTutorialConcluded");
+            UnfreezeFromCue();
+            EventManager.TriggerEvent("FishCaught");
             AlmanacFishes almanacFish = null;
             foreach (var fish in _almanacSO.almanacFishes)
             {
@@ -273,4 +310,49 @@ public class FishingMinigame : MonoBehaviour
         _breezeHazzardActive = false;
         _coldIcon.SetActive(false);
     }
+
+    #region Tutorial
+    private bool IsRingInCueWindow(FishingRing ring)
+    {
+        if (ring == null) return false;
+
+        float ringRadius = ring.transform.lossyScale.x * 5f;
+        float threshold = _currentCatchRadius.Value - _cueInsideMargin;
+
+        return ringRadius < threshold;
+    }
+
+    private void FreezeForCue()
+    {
+        if (_waitingCueTap) return;
+
+        _waitingCueTap = true;
+        _prevTimeScale = Time.timeScale;
+        Time.timeScale = 0f;
+
+        // optional: show UI prompt here
+        // EventManager.TriggerEvent("ShowTapCue", true);
+    }
+
+    private void UnfreezeFromCue()
+    {
+        if (!_waitingCueTap) return;
+        EventManager.TriggerEvent("Caught3Fish");
+        _waitingCueTap = false;
+        Time.timeScale = _prevTimeScale <= 0 ? 1f : _prevTimeScale;
+
+        // optional: hide UI prompt
+        // EventManager.TriggerEvent("ShowTapCue", false);
+    }
+
+    private void OnCaughtFish()
+    {
+        _cueCount -= 1;
+
+        if (_cueCount <= 0)
+        {
+            _freezeOnCue = false;
+        }
+    }
+    #endregion
 }

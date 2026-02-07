@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.EventSystems;
 
 public class FishingRodController : MonoBehaviour
 {
@@ -88,7 +89,7 @@ public class FishingRodController : MonoBehaviour
 
     public void OnFishingAction(InputAction.CallbackContext ctx)
     {
-        if (_stopped)
+        if (_stopped || InputLock.clickLocked)
             return;
 
         if (ctx.started)
@@ -125,6 +126,8 @@ public class FishingRodController : MonoBehaviour
 
     private void OnTap()
     {
+        if (EventSystem.current.IsPointerOverGameObject()) return;
+
         Vector2 pos = pointerPositionAction.action.ReadValue<Vector2>();
 
         if (_isRecalling)

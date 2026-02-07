@@ -6,5 +6,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TutorialStatusSO", menuName = "ScriptableObjects/TutorialStatusSO")]
 public class TutorialStatus : ScriptableObject
 {
-    public bool _tutorialIsConcluded;
+    public bool tutorialCompleted;
 }
