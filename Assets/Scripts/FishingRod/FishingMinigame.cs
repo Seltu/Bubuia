@@ -173,6 +173,7 @@ public class FishingMinigame : MonoBehaviour
         _baitSlots[_currentBait].SetCount(_playerInventory.playerBaits[_currentBait].baitNum - 1);
         EventManager.TriggerEvent("OnAddToPlayerBaits", _playerInventory.playerBaits[_currentBait].baitType, -1);
         EventManager.TriggerEvent("ToggleCameraShake", fish.GetSpeed());
+        EventManager.TriggerEvent("TurnOffMovement");
         _currentScore = 0;
         _currentWave = 0;
         _currentFish = fish;
@@ -191,6 +192,7 @@ public class FishingMinigame : MonoBehaviour
         _indicatorRing.gameObject.SetActive(false);
         _playing = false;
         EventManager.TriggerEvent("EndFishingMinigame", won);
+        EventManager.TriggerEvent("TurnOnMovement");
         if (won)
         {
             UnfreezeFromCue();

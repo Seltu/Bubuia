@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +16,13 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField] private float turnSpeed = 200f;
     [SerializeField] private float drag = 2f;
 
+    [Header("Boost Settings")]
+    [SerializeField] private float boostMoveSpeed = 9f;     // velocidade máxima com boost
+    [SerializeField] private float boostMax = 1f;           // capacidade (1 = 100%)
+    [SerializeField] private float boostDrainPerSecond = 0.35f;
+    [SerializeField] private float boostRegainPerSecond = 0.25f;
+    [SerializeField] private float boostRegainDelay = 0.75f; // tempo sem consumir para começar a regenerar
+
     [Header("Effects")]
     [SerializeField] private float splashStrength = 0.2f;
     [SerializeField] private float splashInterval = 0.1f;
@@ -27,23 +32,34 @@ public class PlayerShipController : MonoBehaviour
     private Vector3 currentVelocity;
     private bool _stopped;
 
+    // Boost runtime
+    private float _boost;
+    private bool _boostHeld;
+    private bool _boostLockedUntilFull;  // trava quando zera
+    private float _timeSinceBoostUse;    // contador pra delay de regen
+
+    private void Awake()
+    {
+        if (shipRigidbody == null) shipRigidbody = GetComponent<Rigidbody>();
+        _boost = boostMax;
+    }
+
     private void Start()
     {
         EventManager.AddListener("TurnOffControls", PauseMovement);
-        EventManager.AddListener<Fish>("StartFishingMinigame", PauseMovement);
-        EventManager.AddListener<bool>("EndFishingMinigame", UnpauseMovement);
+        EventManager.AddListener("TurnOffMovement", PauseMovement);
+        EventManager.AddListener("TurnOnMovement", UnpauseMovement);
     }
 
     private void OnDestroy()
     {
         EventManager.RemoveListener("TurnOffControls", PauseMovement);
-        EventManager.RemoveListener<Fish>("StartFishingMinigame", PauseMovement);
-        EventManager.RemoveListener<bool>("EndFishingMinigame", UnpauseMovement);
+        EventManager.RemoveListener("TurnOffMovement", PauseMovement);
+        EventManager.RemoveListener("TurnOnMovement", UnpauseMovement);
     }
 
     private void PauseMovement() => _stopped = true;
-    private void PauseMovement(Fish f) => _stopped = true;
-    private void UnpauseMovement(bool v) => _stopped = false;
+    private void UnpauseMovement() => _stopped = false;
 
     private void Update()
     {
@@ -56,9 +72,13 @@ public class PlayerShipController : MonoBehaviour
 
         // --- Convert input (X,Y) from InputSystem to (X,0,Z)
         Vector3 desiredInput = new Vector3(moveInput.x, 0, moveInput.z).normalized;
+        bool isMoving = desiredInput.sqrMagnitude > 0.001f;
+
+        // --- Boost state update (drain / regen / lock)
+        bool boostActive = UpdateBoost(isMoving);
 
         // --- Smooth rotation only if moving
-        if (desiredInput.sqrMagnitude > 0.001f)
+        if (isMoving)
         {
             Quaternion targetRot = Quaternion.LookRotation(desiredInput, Vector3.up);
             shipSprite.rotation = Quaternion.RotateTowards(
@@ -68,8 +88,11 @@ public class PlayerShipController : MonoBehaviour
             );
         }
 
+        // --- Choose max speed depending on boost
+        float maxSpeed = boostActive ? boostMoveSpeed : moveSpeed;
+
         // --- Apply acceleration toward target velocity
-        Vector3 targetVelocity = desiredInput * moveSpeed;
+        Vector3 targetVelocity = desiredInput * maxSpeed;
 
         currentVelocity = Vector3.MoveTowards(
             currentVelocity,
@@ -81,7 +104,7 @@ public class PlayerShipController : MonoBehaviour
         shipRigidbody.linearVelocity = currentVelocity;
 
         // --- Auto-drag when not pressing movement
-        if (desiredInput.sqrMagnitude < 0.01f)
+        if (!isMoving)
         {
             currentVelocity = Vector3.MoveTowards(
                 currentVelocity,
@@ -100,6 +123,51 @@ public class PlayerShipController : MonoBehaviour
                 EventManager.TriggerEvent("Splash", transform.position, splashStrength);
             }
         }
+    }
+
+    private bool UpdateBoost(bool isMoving)
+    {
+        float dt = Time.deltaTime;
+
+        // Só considera boost se: segurando, movendo, não travado e tem carga
+        bool canBoost =
+            _boostHeld &&
+            isMoving &&
+            !_boostLockedUntilFull &&
+            _boost > 0.001f;
+
+        if (canBoost)
+        {
+            // Consumo
+            _boost = Mathf.Max(0f, _boost - boostDrainPerSecond * dt);
+            _timeSinceBoostUse = 0f;
+
+            if (_boost <= 0.001f)
+            {
+                _boost = 0f;
+                _boostLockedUntilFull = true;
+                return false;
+            }
+
+            return true; // boost ativo
+        }
+
+
+        // Regenera depois de um tempo sem consumir
+        _timeSinceBoostUse += dt;
+        if (_timeSinceBoostUse >= boostRegainDelay)
+        {
+            _boost = Mathf.MoveTowards(_boost, boostMax, boostRegainPerSecond * dt);
+
+            // Se estava travado por ter zerado, só destrava quando encher 100%
+            if (_boostLockedUntilFull && _boost >= boostMax - 0.0001f)
+            {
+                _boost = boostMax;
+                _boostLockedUntilFull = false;
+            }
+        }
+
+        return false;
     }
 
     // INPUT
@@ -121,4 +189,22 @@ public class PlayerShipController : MonoBehaviour
             moveInput = Vector3.zero;
         }
     }
+
+    public void BoostInput(InputAction.CallbackContext context)
+    {
+        if (InputLock.movementLocked || _stopped)
+        {
+            _boostHeld = false;
+            return;
+        }
+
+        // "Segurar para boost"
+        if (context.performed)
+            _boostHeld = true;
+        else if (context.canceled)
+            _boostHeld = false;
+    }
+
+    public float GetBoost01() => boostMax <= 0f ? 0f : Mathf.Clamp01(_boost / boostMax);
+    public bool IsBoostLocked() => _boostLockedUntilFull;
 }

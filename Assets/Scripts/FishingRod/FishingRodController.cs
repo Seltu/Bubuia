@@ -402,6 +402,7 @@ public class FishingRodController : MonoBehaviour
         {
             return;
         }
+        EventManager.TriggerEvent("TurnOffMovement");
         _hookingTreasure = true;
         _hookedTreasure = treasureSpot;
         _castTarget = treasureSpot.transform.position + Vector3.down/5f;
@@ -413,10 +414,11 @@ public class FishingRodController : MonoBehaviour
         _hookedTreasure.OnPull();
         if (_hookedTreasure.IsFullyPulled())
         {
-            _hookedTreasure.OnCaught();
+            EventManager.TriggerEvent("TurnOnMovement");
             _hookingTreasure = false;
-            _hookedTreasure = null;
             hookObject.tag = "Hook";
+            _hookedTreasure.OnCaught();
+            _hookedTreasure = null;
             StartCoroutine(InstantRecall());
         }
     }

@@ -53,6 +53,7 @@ public class TreasureSpot : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (IsFullyPulled()) return;
         if (other.CompareTag("Hook"))
         {
             StartCoroutine(WaitToStartPulling());
@@ -63,7 +64,7 @@ public class TreasureSpot : MonoBehaviour
     private IEnumerator WaitToStartPulling()
     {
         yield return new WaitForSeconds(0.1f);
-        if (_startedPulling) yield break;
+        if (_startedPulling||IsFullyPulled()) yield break;
         _startedPulling = true;
         _pullProgress = _pullAtStart;
     }
