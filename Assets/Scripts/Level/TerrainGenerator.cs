@@ -9,6 +9,7 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private int terrainDepth = 256;
     [SerializeField] private float terrainHeight = 50f;
     [SerializeField] private float tiltStrength = 0.5f;
+    [SerializeField] private float maxHeight = 1.0f;
 
     [Header("Decorations")]
     [SerializeField] private float waterHeight;
@@ -30,6 +31,23 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private TerrainLayer[] terrainLayers;
     [SerializeField] private TerrainHeightLayer[] terrainHeights;
     // Listas separadas pois a unity não suporta classes que usam TerrainLayer como campo, por algum motivo
+
+    [Header("Islands")]
+    [SerializeField] private float islandNoiseScale = 2.2f;
+    [SerializeField, Range(1, 8)] private int islandOctaves = 4;
+    [SerializeField] private float islandLacunarity = 2.0f;
+    [SerializeField] private float islandPersistence = 0.5f;
+
+    [SerializeField, Range(0f, 1f)] private float landThreshold = 0.58f;
+    [SerializeField, Range(0.001f, 0.2f)] private float shoreBlend = 0.05f;
+
+    // quanto a ilha “levanta” (em altura normalizada 0..1)
+    [SerializeField] private float islandAddStrength = 0.55f;
+
+    // opcional: oceano nas bordas
+    [SerializeField, Range(0f, 1f)] private float edgeFalloffStrength = 0.5f;
+
+
 
     private Terrain _terrain;
 
@@ -104,7 +122,29 @@ public class TerrainGenerator : MonoBehaviour
 
                 // inclinação empurra tudo para baixo até 0
                 float tilt = t * tiltStrength;
+
                 float finalHeight = Mathf.Clamp01(baseHeight - tilt);
+
+
+                //Adição de ilhas
+                float tx = (float)x / (res - 1);
+                float tz = (float)z / (res - 1);
+
+                // noise field FBM 0..1
+                float n = Fbm(tx * islandNoiseScale + offsetX,
+                                tz * islandNoiseScale + offsetZ,
+                                islandOctaves, islandLacunarity, islandPersistence);
+
+                // falloff de borda (Impede de spawnar ilhas nas bordas do mapa)
+                float falloff = EdgeFalloff(tx, tz);
+                n = Mathf.Lerp(n, 0f, falloff * edgeFalloffStrength);
+
+                // máscara de terra suave (0 água -> 1 terra)
+                float mask = Mathf.SmoothStep(0f, 1f,
+                    Mathf.InverseLerp(landThreshold - shoreBlend, landThreshold + shoreBlend, n));
+
+                // levanta as ilhas SEM mexer no tilt
+                finalHeight = Mathf.Clamp(finalHeight + mask * islandAddStrength, 0f, maxHeight);
 
                 heights[z, x] = finalHeight;
             }
@@ -112,6 +152,38 @@ public class TerrainGenerator : MonoBehaviour
 
         data.SetHeights(0, 0, heights);
     }
+
+    // FBM: soma de oitavas de Perlin e normaliza pra 0..1
+    private float Fbm(float x, float z, int octaves, float lacunarity, float persistence)
+    {
+        float amp = 1f;
+        float freq = 1f;
+        float sum = 0f;
+        float max = 0f;
+
+        for (int i = 0; i < octaves; i++)
+        {
+            float n = Mathf.PerlinNoise(x * freq, z * freq); // 0..1
+            sum += n * amp;
+            max += amp;
+
+            amp *= persistence;
+            freq *= lacunarity;
+        }
+
+        return (max > 0f) ? (sum / max) : 0f; // 0..1
+    }
+
+    // Falloff radial/“quadrado arredondado”: 0 no centro, 1 nas bordas
+    private float EdgeFalloff(float tx, float tz)
+    {
+        float dx = Mathf.Abs(tx * 2f - 1f);
+        float dz = Mathf.Abs(tz * 2f - 1f);
+        float d = Mathf.Max(dx, dz); // borda em forma de “quadrado”
+                                     // curva pra deixar centro amplo e borda cair rápido
+        return Mathf.SmoothStep(0f, 1f, Mathf.Pow(d, 3.0f));
+    }
+
 
     private void GenerateWaterBoundary()
     {
@@ -165,7 +237,7 @@ public class TerrainGenerator : MonoBehaviour
 
             CapsuleCollider col = wall.AddComponent<CapsuleCollider>();
             col.height = 20f;
-            col.radius = 8f;
+            col.radius = 7f;
             col.center = new Vector3(0, 0, 0);
             wall.layer = LayerMask.NameToLayer("Barrier");
         }

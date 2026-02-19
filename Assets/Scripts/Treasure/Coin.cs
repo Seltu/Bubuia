@@ -11,6 +11,7 @@ public class Coin : MonoBehaviour
 
     private void OnEnable()
     {
+        _coinAnimator.Play("CoinAppear");
         _collected = false;
     }
 
@@ -34,6 +35,12 @@ public class Coin : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
+    }
+
+    public void Vanish()
+    {
+        _coinAnimator.Play("CoinVanish");
+        StartCoroutine(DisappearAfterSeconds(1f));
     }
 }
  

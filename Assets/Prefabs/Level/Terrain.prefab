@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3093043789426926002}
   - component: {fileID: 3032702112925376678}
   - component: {fileID: 6856397988686258614}
+  - component: {fileID: 4485053545533952858}
   m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
@@ -87,18 +88,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainWidth: 1000
   terrainDepth: 1000
-  terrainHeight: 60
-  tiltStrength: 0.85
+  terrainHeight: 40
+  tiltStrength: 0.95
+  maxHeight: 0.91
   waterHeight: -0.1
-  sandHeight: 1
+  sandHeight: 1.1
   decorationLayers:
   - type: 0
     density: 1
     prefabs:
-    - {fileID: 7071209832232680767, guid: d934d0c00f7a71c4cb0134a828ddcd67, type: 3}
+    - {fileID: 2052321074212647034, guid: 957b3a653d66d524988992c5e55e6644, type: 3}
+    - {fileID: 8592226307709511499, guid: 312a9728d99eff94d84bab9607bc6a82, type: 3}
+    - {fileID: 9133275429312903578, guid: 5c6cf84c5e957a346a9d8b13d41d66a3, type: 3}
+    - {fileID: 4961818431862716827, guid: e547549595d8682409eaa47b0fa84d15, type: 3}
+    - {fileID: 3196697228389185408, guid: 4c0db9bc8f372824c8c8f842f83aee43, type: 3}
+    - {fileID: 3580391147942510127, guid: 45cf7dbbbe8959547a4ff3b83e0f9789, type: 3}
+    - {fileID: 1804213459403206191, guid: 6b79b04a6790d834e81ba1260a72af16, type: 3}
     minDistance: 5
   - type: 0
-    density: 0.2
+    density: 0.22
     prefabs:
     - {fileID: 3551932256778998162, guid: ea498ddd9a655b04b81e3a0e997f28b2, type: 3}
     minDistance: 5
@@ -116,10 +124,10 @@ MonoBehaviour:
     - {fileID: 8970507431157946436, guid: ce380106124d4e1468564df81297f581, type: 3}
     minDistance: 5
   heightmapResolution: 129
-  noiseScaleShallow: 5
+  noiseScaleShallow: 10
   noiseScaleSteep: 25
-  offsetX: 1900.9858
-  offsetZ: 4.6379695
+  offsetX: 7751.332
+  offsetZ: 904.0763
   terrainLayers:
   - {fileID: 8574412962073106934, guid: d95dde5604465b5478a64d5acb8c0beb, type: 2}
   - {fileID: 8574412962073106934, guid: eba38c20d0b99de43ac2e85e3b1b91ee, type: 2}
@@ -128,3 +136,31 @@ MonoBehaviour:
     maxHeight: 10
   - minHeight: -50
     maxHeight: 1
+  islandNoiseScale: 25
+  islandOctaves: 4
+  islandLacunarity: 1
+  islandPersistence: 0.4
+  landThreshold: 0.7
+  shoreBlend: 0.2
+  islandAddStrength: 0.6
+  edgeFalloffStrength: 0.5
+--- !u!154 &4485053545533952858
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6634997787499674599}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_TerrainData: {fileID: 15600000, guid: eb2c381e0c9ea604eb656ad56f4bde77, type: 2}
+  m_EnableTreeColliders: 0

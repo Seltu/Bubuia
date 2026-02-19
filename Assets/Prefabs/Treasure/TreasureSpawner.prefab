@@ -47,8 +47,8 @@ MonoBehaviour:
   player: {fileID: 0}
   treasureSpotPrefab: {fileID: 1244763170782141166, guid: 042048ec3bdf6914ca1084fcc04ca08e, type: 3}
   coinPrefab: {fileID: 672426039836812758, guid: 60070fecb6db8ed4fbd38443202cb5ee, type: 3}
-  minDistanceFromPlayer: 100
-  maxDistanceFromPlayer: 150
+  minDistanceFromPlayer: 140
+  maxDistanceFromPlayer: 170
   maxPosition: {x: 300, y: 300}
   minPosition: {x: -300, y: -300}
   maxPlacementAttempts: 60

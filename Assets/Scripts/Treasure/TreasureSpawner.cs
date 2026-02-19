@@ -29,7 +29,7 @@ public class TreasureSpawner : MonoBehaviour
 
     private GameObject _currentTreasure;
     private Camera _mainCamera;
-    private readonly List<GameObject> _spawnedCoins = new();
+    private readonly List<Coin> _spawnedCoins = new();
     private void Awake()
     {
         if (_mainCamera == null) _mainCamera = Camera.main;
@@ -141,7 +141,7 @@ public class TreasureSpawner : MonoBehaviour
             pos.y = start.y; // base
 
             Coin coin = (Coin) PoolManager.Instance.ReuseComponent(coinPrefab, pos, Quaternion.identity);
-            _spawnedCoins.Add(coin.gameObject);
+            _spawnedCoins.Add(coin);
         }
     }
 
@@ -157,7 +157,7 @@ public class TreasureSpawner : MonoBehaviour
             }
 
             if (destroyCoinsWhenTreasureIsGone)
-                _spawnedCoins[i].gameObject.SetActive(false);
+                _spawnedCoins[i].Vanish();
         }
         _spawnedCoins.Clear();
     }

@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Targets:
   - target: {fileID: 295097186}
     weight: 1
-    radius: 13
+    radius: 20
   - target: {fileID: 7368786909824083973}
     weight: 1
     radius: 8
@@ -359,7 +359,7 @@ Transform:
   m_GameObject: {fileID: 404327544}
   serializedVersion: 2
   m_LocalRotation: {x: -0.42261827, y: -0, z: -0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: -0.000009536743, z: 31.999987}
+  m_LocalPosition: {x: 0, y: -0.00001335144, z: 38.99999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -499,7 +499,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 22.777891, z: -327.6375}
+  m_LocalPosition: {x: 0, y: 28.140196, z: -332.13705}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -690,7 +690,7 @@ Transform:
   m_GameObject: {fileID: 730497448}
   serializedVersion: 2
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 0, y: 24.513418, z: -325.56918}
+  m_LocalPosition: {x: 0, y: 29.875732, z: -330.0687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 730497449}
   targetGroup: {fileID: 404327545}
-  zoomedInRadius: 13
+  zoomedInRadius: 20
   zoomedOutRadius: 40
 --- !u!114 &730497454
 MonoBehaviour:
@@ -1367,7 +1367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3093043789426926002, guid: 2d84ac18432d6854db2d31bebc967c52, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -50
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 3093043789426926002, guid: 2d84ac18432d6854db2d31bebc967c52, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1404,6 +1404,14 @@ PrefabInstance:
     - target: {fileID: 6634997787499674599, guid: 2d84ac18432d6854db2d31bebc967c52, type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856397988686258614, guid: 2d84ac18432d6854db2d31bebc967c52, type: 3}
+      propertyPath: offsetX
+      value: 572.7577
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856397988686258614, guid: 2d84ac18432d6854db2d31bebc967c52, type: 3}
+      propertyPath: offsetZ
+      value: 6879.414
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1475,6 +1483,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1003842772018040003, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003842772018040003, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003842772018040003, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540677183607316812, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540677183607316812, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
       propertyPath: m_Camera
       value: 
