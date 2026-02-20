@@ -12,19 +12,19 @@ public class Fish : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float neighborRadius = 2.5f;
     [SerializeField] private float separationDistance = 1.7f;
+    [SerializeField] private float offscreenTime = 10f;
 
     [Header("Behavior Weights")]
     [SerializeField] private float alignmentWeight = 1f;
     [SerializeField] private float cohesionWeight = 0.5f;
     [SerializeField] private float separationWeight = 3f;
 
-    [Header("Surface Limit")]
-    [SerializeField] private float surfaceAvoidanceWeight = 1f;
-
-    [Header("Obstacle Avoidance")]
-    [SerializeField] private LayerMask obstacleMask;
-    [SerializeField] private float obstacleAvoidanceRadius = 1.5f;
-    [SerializeField] private float obstacleAvoidanceWeight = 5f;
+    [Header("World Bounds")]
+    [SerializeField] private float minX = -500f;
+    [SerializeField] private float maxX = 500f;
+    [SerializeField] private float minZ = -500f;
+    [SerializeField] private float maxZ = 500f;
+    [SerializeField] private float boundsForce = 2.5f;
 
     [Header("Noise")]
     [SerializeField] private float jitterStrength = 0.3f;
@@ -63,6 +63,8 @@ public class Fish : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationX |
                          RigidbodyConstraints.FreezeRotationZ |
                          RigidbodyConstraints.FreezePositionY;
+
+        _offscreenTimer = offscreenTime;
     }
 
     private void OnDestroy()
@@ -106,6 +108,19 @@ public class Fish : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, currentY + rotationChange, 0f);
 
             return;
+        }
+
+        if (IsVisibleToCamera())
+        {
+            _offscreenTimer = offscreenTime;
+        }
+        else
+        {
+            _offscreenTimer -= Time.deltaTime;
+            if(_offscreenTimer < 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
         Vector3 alignment = Vector3.zero;
@@ -172,9 +187,13 @@ public class Fish : MonoBehaviour
         }
 
         Vector3 moveDir =
-            alignment * alignmentWeight +
-            cohesion * cohesionWeight +
-            separation * separationWeight;
+        alignment * alignmentWeight +
+        cohesion * cohesionWeight +
+        separation * separationWeight;
+
+        // Bounds steering
+        Vector3 boundsAvoidance = CalculateBoundsAvoidance();
+        moveDir += boundsAvoidance;
 
         if (_isScared)
         {
@@ -192,20 +211,6 @@ public class Fish : MonoBehaviour
                 Vector3 posXZ = new Vector3(transform.position.x, 0, transform.position.z);
                 moveDir = (hookPosXZ - posXZ).normalized * scareSpeedMultiplier;
             }
-        }
-
-        Collider[] obstacles = Physics.OverlapSphere(transform.position, obstacleAvoidanceRadius, obstacleMask);
-        if (obstacles.Length > 0)
-        {
-            Collider obstacle = obstacles[0];
-
-            Vector3 closest = obstacle.ClosestPoint(transform.position);
-            closest.y = 0;
-
-            Vector3 awayFromObstacle = ((Vector3)transform.position - closest).normalized;
-            moveDir += awayFromObstacle * obstacleAvoidanceWeight;
-
-            transform.position += awayFromObstacle * Time.deltaTime;
         }
 
         Vector3 jitter = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * jitterStrength;
@@ -280,6 +285,39 @@ public class Fish : MonoBehaviour
             }
         }
     }
+
+    private Vector3 CalculateBoundsAvoidance()
+    {
+        Vector3 steer = Vector3.zero;
+        Vector3 pos = transform.position;
+
+        // X axis
+        if (pos.x < minX)
+        {
+            float t = Mathf.InverseLerp(minX, minX, pos.x);
+            steer += Vector3.right * (1f - t);
+        }
+        else if (pos.x > maxX)
+        {
+            float t = Mathf.InverseLerp(maxX, maxX, pos.x);
+            steer += Vector3.left * (1f - t);
+        }
+
+        // Z axis
+        if (pos.z < minZ)
+        {
+            float t = Mathf.InverseLerp(minZ, minZ, pos.z);
+            steer += Vector3.forward * (1f - t);
+        }
+        else if (pos.z > maxZ)
+        {
+            float t = Mathf.InverseLerp(maxZ, maxZ, pos.z);
+            steer += Vector3.back * (1f - t);
+        }
+
+        return steer.normalized * boundsForce;
+    }
+
 
     private bool IsVisibleToCamera()
     {

@@ -28,12 +28,15 @@ public class FishingRodController : MonoBehaviour
     private bool _stopped = false;
     private bool _recallHeld = false;
     private float _hookingDistance;
-    private float _currentMaxDistance;   // <<---------- NEW LINE LIMIT
+    private float _currentMaxDistance;
     private Vector3 _castTarget;
-
     private Camera mainCamera;
     private Fish hookedFish;
+    private TreasureSpot _hookedTreasure;
+    private bool _hookingTreasure;
 
+
+    #region Unity Methods
     private void Start()
     {
         mainCamera = Camera.main;
@@ -41,8 +44,10 @@ public class FishingRodController : MonoBehaviour
 
         EventManager.AddListener("TurnOffControls", PauseControl);
         EventManager.AddListener<Fish>("FishBiteHook", HookFish);
+        EventManager.AddListener<TreasureSpot>("HookedTreasure", HookTreasure);
         EventManager.AddListener<bool>("EndFishingMinigame", EndHooking);
         EventManager.AddListener<int, int>("ScoreUpdate", HookingScoreUpdate);
+        EventManager.AddListener("TreasureFail", TreasureFail);
 
         EventManager.TriggerEvent("CallTutorial", "Tutorial_FishRodHold");
     }
@@ -51,11 +56,11 @@ public class FishingRodController : MonoBehaviour
     {
         EventManager.RemoveListener("TurnOffControls", PauseControl);
         EventManager.RemoveListener<Fish>("FishBiteHook", HookFish);
+        EventManager.RemoveListener<TreasureSpot>("HookedTreasure", HookTreasure);
         EventManager.RemoveListener<bool>("EndFishingMinigame", EndHooking);
         EventManager.RemoveListener<int, int>("ScoreUpdate", HookingScoreUpdate);
+        EventManager.RemoveListener("TreasureFail", TreasureFail);
     }
-
-    private void PauseControl() => _stopped = true;
 
     private void Update()
     {
@@ -78,10 +83,9 @@ public class FishingRodController : MonoBehaviour
 
         ClampHookToMaxDistance();
     }
+    #endregion
 
-    // ------------------------------------------------------------
-    // INPUTS
-    // ------------------------------------------------------------
+    #region Inputs
 
     public void OnFishingAction(InputAction.CallbackContext ctx)
     {
@@ -129,6 +133,19 @@ public class FishingRodController : MonoBehaviour
         if (_isRecalling)
             return;
 
+        if (_hookInWater && _hookingTreasure)
+        {
+            // Check pra impedir o jogador de pegar o tesouro se exceder o limite de distância
+            Vector3 rodXZ = new(defaultHookPos.position.x, 0, defaultHookPos.position.z);
+            Vector3 hookXZ = new(hookObject.position.x, 0, hookObject.position.z);
+
+            float dist = Vector3.Distance(rodXZ, hookXZ);
+
+            if (dist <= _currentMaxDistance + 5f) // +5 de tolerância
+            CatchTreasure();
+            return;
+        }
+
         if (_hookInWater && !_hookingFish)
         {
             StartCoroutine(InstantRecall());
@@ -139,9 +156,7 @@ public class FishingRodController : MonoBehaviour
             TryCastToPosition(pos);
     }
 
-    // ------------------------------------------------------------
     // CAST — XZ only
-    // ------------------------------------------------------------
     private void TryCastToPosition(Vector2 screenPos)
     {
         Ray ray = mainCamera.ScreenPointToRay(screenPos);
@@ -166,6 +181,11 @@ public class FishingRodController : MonoBehaviour
         }
     }
 
+    private void PauseControl() => _stopped = true;
+
+    #endregion
+
+    #region Behavior
     private void CastLine()
     {
         _canCast = false;
@@ -207,12 +227,10 @@ public class FishingRodController : MonoBehaviour
         _hookInWater = true;
     }
 
-    // ------------------------------------------------------------
     // Clamp distance to line length
-    // ------------------------------------------------------------
     private void ClampHookToMaxDistance()
     {
-        if (!_hookInWater || _hookingFish || _isRecalling)
+        if (!_hookInWater || _hookingFish || _hookingTreasure || _isRecalling)
             return;
 
         Vector3 rodXZ = new(defaultHookPos.position.x, 0, defaultHookPos.position.z);
@@ -233,9 +251,7 @@ public class FishingRodController : MonoBehaviour
         }
     }
 
-    // ------------------------------------------------------------
     // Gradual recall tightens the line
-    // ------------------------------------------------------------
     private void GradualRecallStep()
     {
         if (moveAction.action.ReadValue<Vector2>().magnitude > 0.001f)
@@ -258,9 +274,7 @@ public class FishingRodController : MonoBehaviour
         );
     }
 
-    // ------------------------------------------------------------
     // INSTANT RECALL
-    // ------------------------------------------------------------
     private IEnumerator InstantRecall()
     {
         _isRecalling = true;
@@ -285,9 +299,9 @@ public class FishingRodController : MonoBehaviour
         _isRecalling = false;
     }
 
-    // ------------------------------------------------------------
-    // MINIGAME
-    // ------------------------------------------------------------
+    #endregion
+
+    #region Minigame
     private void HookingFishMovement()
     {
         Vector3 dir = (hookObject.position - defaultHookPos.position);
@@ -379,6 +393,46 @@ public class FishingRodController : MonoBehaviour
         return -1;
     }
 
+    #endregion
+
+    #region Treasure
+    private void HookTreasure(TreasureSpot treasureSpot)
+    {
+        if (_hookingFish || _hookingTreasure || _isRecalling)
+        {
+            return;
+        }
+        EventManager.TriggerEvent("TurnOffMovement");
+        _hookingTreasure = true;
+        _hookedTreasure = treasureSpot;
+        _castTarget = treasureSpot.transform.position + Vector3.down/5f;
+        hookObject.tag = "Untagged";
+    }
+
+    private void CatchTreasure()
+    {
+        _hookedTreasure.OnPull();
+        if (_hookedTreasure.IsFullyPulled())
+        {
+            EventManager.TriggerEvent("TurnOnMovement");
+            _hookingTreasure = false;
+            hookObject.tag = "Hook";
+            _hookedTreasure.OnCaught();
+            _hookedTreasure = null;
+            StartCoroutine(InstantRecall());
+        }
+    }
+
+    private void TreasureFail()
+    {
+        _hookingTreasure = false;
+        _hookedTreasure = null;
+        hookObject.tag = "Hook";
+        StartCoroutine(InstantRecall());
+    }
+
+
+    #endregion
 
     internal bool GetCanCast() => _canCast;
     internal bool IsHookInWater() => _hookInWater;

@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float _playerSpeed;
 
-    private bool _canMove = true;
     private float moveX;
 
     private void Start()
