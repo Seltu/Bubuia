@@ -70,18 +70,17 @@ public class PlayerShipController : MonoBehaviour
 
         bool IsFree(Vector3 p)
         {
-            var hits = Physics.OverlapSphere(p, 2, 10);
+            var hits = Physics.OverlapSphere(p, 5, 10);
             return hits == null || hits.Length == 0;
         }
 
         // já está livre
         if (IsFree(origin))
             return;
-
         const int RING_SAMPLES = 24; // pontos por anel
 
         // busca em anéis (do mais próximo pro mais longe)
-        for (float r = 2; r <= 50; r += 2)
+        for (float r = 2; r <= 100; r += 2)
         {
             for (int i = 0; i < RING_SAMPLES; i++)
             {
