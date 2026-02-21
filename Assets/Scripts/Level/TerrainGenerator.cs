@@ -24,8 +24,6 @@ public class TerrainGenerator : MonoBehaviour
     [Header("Perlin Noise")]
     [SerializeField] private float noiseScaleShallow = 5f;  // pouco incline, pouco detalhe
     [SerializeField] private float noiseScaleSteep = 25f; // muito incline, muito detalhe
-    [SerializeField] private float offsetX = 0f;
-    [SerializeField] private float offsetZ = 0f;
 
     [Header("Terrain Layers")]
     [SerializeField] private TerrainLayer[] terrainLayers;
@@ -46,8 +44,10 @@ public class TerrainGenerator : MonoBehaviour
 
     // opcional: oceano nas bordas
     [SerializeField, Range(0f, 1f)] private float edgeFalloffStrength = 0.5f;
-
-
+    
+    //Perlin Offsets
+    private float offsetX = 0f;
+    private float offsetZ = 0f;
 
     private Terrain _terrain;
 

@@ -104,6 +104,13 @@ public class TreasureSpawner : MonoBehaviour
             if (candidate.x > maxPosition.x || candidate.x < minPosition.x || candidate.z > maxPosition.y || candidate.z < minPosition.y)
                 continue;
 
+            var hit = Physics.Raycast(player.position, (candidate-player.position).normalized, dist, 10);
+            Debug.DrawLine(player.position, candidate, Color.red, 20, true);
+            if (hit)
+            {
+                continue;
+            }
+
             result = candidate;
             return true;
         }
@@ -156,7 +163,7 @@ public class TreasureSpawner : MonoBehaviour
                 continue;
             }
 
-            if (destroyCoinsWhenTreasureIsGone)
+            if (destroyCoinsWhenTreasureIsGone && _spawnedCoins[i].isActiveAndEnabled)
                 _spawnedCoins[i].Vanish();
         }
         _spawnedCoins.Clear();

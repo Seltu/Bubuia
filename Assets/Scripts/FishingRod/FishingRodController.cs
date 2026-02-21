@@ -163,6 +163,7 @@ public class FishingRodController : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 200f, waterLayer))
         {
+            if (!hit.transform.CompareTag("Water")) return;
             _castTarget = hit.point;
 
             Vector3 startXZ = new(defaultHookPos.position.x, 0, defaultHookPos.position.z);
