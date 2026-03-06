@@ -35,21 +35,21 @@ public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerEx
     private void OnEnable()
     {
         buttonImage.sprite = normalSprite;
-        buttonText.DOColor(normalTextColor, duration);
-        transform.DOScale(originalScale, duration).SetEase(Ease.OutBack);
+        buttonText.DOColor(normalTextColor, duration).SetUpdate(true);
+        transform.DOScale(originalScale, duration).SetEase(Ease.OutBack).SetUpdate(true); ;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         buttonImage.sprite = hoverSprite;
-        buttonText.DOColor(hoverTextColor, duration);
-        transform.DOScale(originalScale * scaleUpSize, duration).SetEase(Ease.OutBack);
+        buttonText.DOColor(hoverTextColor, duration).SetUpdate(true); ;
+        transform.DOScale(originalScale * scaleUpSize, duration).SetEase(Ease.OutBack).SetUpdate(true); ;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         buttonImage.sprite = normalSprite;
-        buttonText.DOColor(normalTextColor, duration);
-        transform.DOScale(originalScale, duration).SetEase(Ease.OutBack);
+        buttonText.DOColor(normalTextColor, duration).SetUpdate(true); ;
+        transform.DOScale(originalScale, duration).SetEase(Ease.OutBack).SetUpdate(true); ;
     }
 }
