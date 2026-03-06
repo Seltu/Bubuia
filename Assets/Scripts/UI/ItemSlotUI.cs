@@ -10,21 +10,13 @@ public class ItemSlotUI : MonoBehaviour
     [SerializeField] private Button itemButton;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemCountText;
-    private FishTypeSO fishInfo;
-    private BaitTypeSO baitInfo;
+    private DescriptionDataSO itemData;
 
-    public void SetSlot(PlayerFishes fish)
+    public void SetSlot(InventoryItem item)
     {
-        fishInfo = fish.fishType;
-        itemIcon.sprite = fishInfo.fishSprite;
-        itemCountText.text = "x" + fish.fishNum.ToString();
-    }
-
-    public void SetSlot(PlayerBait bait)
-    {
-        baitInfo = bait.baitType;
-        itemIcon.sprite = baitInfo.baitSprite;
-        itemCountText.text = "x" + bait.baitNum.ToString();
+        itemData = item.itemData;
+        itemIcon.sprite = item.itemData.icon;
+        itemCountText.text = (item.amount > 1) ? "x" + item.amount.ToString() : itemCountText.text = "";
     }
 
     public Button GetButton()

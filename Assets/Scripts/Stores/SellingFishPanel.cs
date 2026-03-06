@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,17 +38,18 @@ public class SellingFishPanel : BaseStore
 
     protected virtual void CheckButtonInteraction()
     {
+        var playerFishes = _playerInventory.items.Where(x => x.itemData is FishTypeSO).ToList();
         for (int i = 0; i < _fishesButtons.Length; i++)
         {
             Button button = _fishesButtons[i].GetComponent<Button>();
-            for (int j = 0; j < _playerInventory.playerFishes.Length; j++)
+            for (int j = 0; j < playerFishes.Count; j++)
             {
-                if (_fishesButtons[i].GetFishType() == _playerInventory.playerFishes[j].fishType)
+                if (_fishesButtons[i].GetFishType() == playerFishes[j].itemData)
                 {
-                    if (_playerInventory.playerFishes[j].fishNum > 0)
+                    if (playerFishes[j].amount > 0)
                     {
                         button.interactable = true;
-                        _fishesButtons[i].RevealFishInShop(_playerInventory.playerFishes[j].fishNum);
+                        _fishesButtons[i].RevealFishInShop(playerFishes[j].amount);
                     }
                     else
                     {
@@ -79,8 +81,8 @@ public class SellingFishPanel : BaseStore
 
     public void SetCurrentFish(FishTypeSO fish)
     {
-        _fishIconImg.sprite = fish.fishSprite;
-        _fishName.text = fish.fishName;
+        _fishIconImg.sprite = fish.icon;
+        _fishName.text = fish.entryName;
         _quantIndex = 0;
         _quant.text = _quantIndex.ToString();
         _value.text = "R$ " + fish.valor;
@@ -95,7 +97,7 @@ public class SellingFishPanel : BaseStore
     public void SellButton()
     {
         EventManager.TriggerEvent("OnAddToPlayerMoney", _currentFish.valor * int.Parse(_quant.text));
-        EventManager.TriggerEvent("OnAddToPlayerFishes", _currentFish, - int.Parse(_quant.text));
+        EventManager.TriggerEvent("OnAddItem", _currentFish, - int.Parse(_quant.text));
         _playerMoney.text = "R$ " + _playerInventory.playerMoney.ToString();
         SetCurrentFish(_currentFish);
         HideSellButton();
@@ -118,12 +120,12 @@ public class SellingFishPanel : BaseStore
         if (_currentFish == null) return;
 
         int playerFishCount = 0;
-        foreach (var fish in _playerInventory.playerFishes)
+        foreach (var fish in _playerInventory.items.Where(x => x.itemData is FishTypeSO).ToList())
         {
-            Debug.Log("fish " + fish.fishType.fishName);
-            if (fish.fishType == _currentFish)
+            Debug.Log("fish " + fish.itemData.entryName);
+            if ((FishTypeSO)fish.itemData == _currentFish)
             {
-                playerFishCount = fish.fishNum;
+                playerFishCount = fish.amount;
                 break;
             }
         }

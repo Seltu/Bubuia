@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Bait Type", menuName = "ScriptableObjects/BaitType")]
-public class BaitTypeSO : ScriptableObject
+public class BaitTypeSO : DescriptionDataSO
 {
-    public string baitName;
-    public Sprite baitSprite;
-    public string descricao;
     public int valor;
     public float baitPower;
 

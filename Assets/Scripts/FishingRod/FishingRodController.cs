@@ -332,7 +332,6 @@ public class FishingRodController : MonoBehaviour
 
         if (hookedFish != null)
         {
-            EventManager.TriggerEvent("OnAddToPlayerFishes", hookedFish.GetFishTypeSO(), 1);
             Destroy(hookedFish.gameObject);
             hookedFish = null;
         }

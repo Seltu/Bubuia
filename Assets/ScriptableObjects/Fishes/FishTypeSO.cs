@@ -4,12 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Fish Type", menuName = "ScriptableObjects/FishType")]
-public class FishTypeSO : ScriptableObject
+public class FishTypeSO : DescriptionDataSO
 {
-    public string fishName;
-    public Sprite fishSprite;
     public Sprite darkFishSprite;
-    public string descricao;
     public int valor;
     public int fishingGoalScore;
     public List<FishingPatternWave> fishingPattern;
