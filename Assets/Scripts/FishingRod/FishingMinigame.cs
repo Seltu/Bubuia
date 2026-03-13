@@ -23,12 +23,10 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] private FishingRing _ringPrefab;
     [SerializeField] private PlayerInventorySO _playerInventory;
     [SerializeField] private AlmanacSO _almanacSO;
-    [SerializeField] private FloatVariable _currentBaitPowerSO;
     [SerializeField] private List<BaitSlotUI> _baitSlots;
     [SerializeField] private GameObject _returnPanel;
     private Queue<FishingRing> _spawnedRings = new Queue<FishingRing>();
     private bool _playing;
-    private int _currentBait = 0;
     private Fish _currentFish;
     private int _currentWave;
     private int _currentScore;
@@ -43,6 +41,9 @@ public class FishingMinigame : MonoBehaviour
     private int _cueCount = 3; // ammount of fishes to catch until cue is deactivated, player must catch the ramaingn fish alone
 
     private List<InventoryItem> PlayerBaits => _playerInventory.items.Where(x => x.itemData is BaitTypeSO).ToList();
+    private BaitTypeSO CurrentBait => (BaitTypeSO)_playerInventory.GetEquippedItem(EquipSlot.Bait).itemData;
+    private FishingRodSO CurrentFishingRod => (FishingRodSO)_playerInventory.GetEquippedItem(EquipSlot.FishingRod).itemData;
+
     private void Awake()
     {
         EventManager.AddListener<bool>("SetFreezeOnCue", v => _freezeOnCue = v);
@@ -50,6 +51,7 @@ public class FishingMinigame : MonoBehaviour
 
     private void Start()
     {
+        EventManager.AddListener<InventoryItem>("UseItem", OnUseItem);
         EventManager.AddListener<Fish>("StartFishingMinigame", StartMinigame);
         EventManager.AddListener("RingMiss", OnRingMiss);
 
@@ -58,11 +60,35 @@ public class FishingMinigame : MonoBehaviour
         if (PlayerBaits[0].amount <= 5)
             PlayerBaits[0].amount = 5;
 
+        if (_playerInventory.GetEquippedItem(EquipSlot.Bait).amount <= 0)
+        {
+            foreach (InventoryItem bait in PlayerBaits)
+            {
+                if (bait.amount > 0)
+                {
+                    SwitchBait(bait);
+                    return;
+                }
+            }
+        }
+        else
+            UpdateBaitSlots();
+    }
+
+    private void OnUseItem(InventoryItem item)
+    {
+        UpdateBaitSlots();
+    }
+
+    private void UpdateBaitSlots()
+    {
         for (int i = 0; i < _baitSlots.Count; i++)
         {
             BaitSlotUI slot = _baitSlots[i];
             slot.SetCount(PlayerBaits[i].amount);
+            slot.SetSelected(false);
         }
+        _baitSlots[PlayerBaits.FindIndex(x => x == _playerInventory.GetEquippedItem(EquipSlot.Bait))].SetSelected(true);
     }
 
     private void OnDestroy()
@@ -136,17 +162,12 @@ public class FishingMinigame : MonoBehaviour
         LosePoint();
     }
 
-    public void SwitchBait(int bait)
+    public void SwitchBait(InventoryItem newBait)
     {
         if (_playing) return;
-        if (PlayerBaits[bait].amount <= 0) return;
-        _currentBait = bait;
-        foreach (var slot in _baitSlots)
-        {
-            slot.SetSelected(false);
-        }
-        _baitSlots[bait].SetSelected(true);
-        _currentBaitPowerSO.Value = ((BaitTypeSO)PlayerBaits[_currentBait].itemData).baitPower;
+        if (newBait.amount <= 0) return;
+        _playerInventory.EquipItem(newBait);
+        UpdateBaitSlots();
     }
 
     private void OnRingMiss()
@@ -171,8 +192,8 @@ public class FishingMinigame : MonoBehaviour
     {
         if(_playing) return;
 
-        EventManager.TriggerEvent("OnAddItem", PlayerBaits[_currentBait].itemData, -1);
-        _baitSlots[_currentBait].SetCount(PlayerBaits[_currentBait].amount);
+        EventManager.TriggerEvent("OnAddItem", CurrentBait, -1);
+        UpdateBaitSlots();
         EventManager.TriggerEvent("ToggleCameraShake", fish.GetSpeed());
         EventManager.TriggerEvent("TurnOffMovement");
         _currentScore = 0;
@@ -220,14 +241,13 @@ public class FishingMinigame : MonoBehaviour
             }
         }
         EventManager.TriggerEvent("ToggleCameraShake", 0f);
-        if (PlayerBaits[_currentBait].amount <= 0)
+        if (_playerInventory.GetEquippedItem(EquipSlot.Bait).amount <= 0)
         {
-            for (int i = 0; i < PlayerBaits.Count; i++)
+            foreach (InventoryItem bait in PlayerBaits)
             {
-                InventoryItem bait = PlayerBaits[i];
                 if (bait.amount > 0)
                 {
-                    SwitchBait(i);
+                    SwitchBait(bait);
                     return;
                 }
             }
@@ -273,7 +293,7 @@ public class FishingMinigame : MonoBehaviour
             var ring = Instantiate(_ringPrefab, Vector2.zero, Quaternion.Euler(90f, 0f, 0f));
             ring.transform.localScale = Vector3.one * 2f;
             _spawnedRings.Enqueue(ring);
-            ring.SetRing(_currentFish.transform, _currentFish.GetFishTypeSO().fishingPattern[_currentWave].speed / ((BaitTypeSO)PlayerBaits[_currentBait].itemData).baitPower);
+            ring.SetRing(_currentFish.transform, _currentFish.GetFishTypeSO().fishingPattern[_currentWave].speed / CurrentBait.baitPower);
             if (_hasDoubleRings)
             {
                 if (UnityEngine.Random.value <= 0.1f)
@@ -287,10 +307,10 @@ public class FishingMinigame : MonoBehaviour
             }
             if(!_wavesHazzardActive)
                 yield return new WaitForSeconds(_currentFish.GetFishTypeSO().fishingPattern[_currentWave].secondsDelay *
-                ((BaitTypeSO)PlayerBaits[_currentBait].itemData).baitPower);
+                CurrentBait.baitPower);
             else
                 yield return new WaitForSeconds((_currentFish.GetFishTypeSO().fishingPattern[_currentWave].secondsDelay *
-                ((BaitTypeSO)PlayerBaits[_currentBait].itemData).baitPower)/2f);
+                CurrentBait.baitPower)/2f);
             _currentWave++;
             if (_currentWave >= _currentFish.GetFishTypeSO().fishingPattern.Count)
                 _currentWave = 0;

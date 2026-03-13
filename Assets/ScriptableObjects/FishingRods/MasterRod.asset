@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bcb6e6065754ca47ad191e1e404d21b, type: 3}
+  m_Name: MasterRod
+  m_EditorClassIdentifier: 
+  entryName: Vara Mestre
+  icon: {fileID: -1733665185, guid: 85012c098b549e44282c00f0a22dd459, type: 3}
+  description: "\u201CO mais novo exemplar da Hookmaster 4000, sua base \xE9 feita
+    de carvalho da correnteza revestido com \xE2mbar, linha de fibra de carbono e
+    anzol de prata abissal temperada, forjada sobre a luz da lua para unir eleg\xE2ncia
+    e precis\xE3o em qualquer captura.\u201D"
+  equipped: 1
+  rodSprite: {fileID: -1733665185, guid: 85012c098b549e44282c00f0a22dd459, type: 3}
+  bobberSprite: {fileID: -1017608326, guid: 85012c098b549e44282c00f0a22dd459, type: 3}
+  indicatorRingSprite: {fileID: 21300000, guid: a40eb51b180f7354bb2c07f8f059b3b3, type: 3}
+  catchRadius: 10

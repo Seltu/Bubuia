@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -12,6 +13,15 @@ public class PlayerInventoryUI : MonoBehaviour
     [SerializeField] private Image itemDisplayImage;
     [SerializeField] private TextMeshProUGUI itemDisplayName;
     [SerializeField] private TextMeshProUGUI itemDisplayDescription;
+    [SerializeField] private Button itemUseButton;
+    [SerializeField] private TextMeshProUGUI itemUseButtonText;
+
+    private InventoryItem _selectedItem;
+
+    private void Start()
+    {
+        itemUseButton.onClick.AddListener(UseButtonClick);
+    }
 
     private void OnEnable()
     {
@@ -32,7 +42,7 @@ public class PlayerInventoryUI : MonoBehaviour
             itemSlot.SetSlot(inventoryItem);
 
             InventoryItem capturedItem = inventoryItem;
-            itemSlot.GetButton().onClick.AddListener(() => DisplayItem(capturedItem));
+            itemSlot.GetButton().onClick.AddListener(() => SelectItem(capturedItem));
         }
     }
 
@@ -44,8 +54,10 @@ public class PlayerInventoryUI : MonoBehaviour
         return 999; // outros tipos vão para o final
     }
 
-    private void DisplayItem(InventoryItem inventoryItem)
+    private void SelectItem(InventoryItem inventoryItem)
     {
+        _selectedItem = inventoryItem;
+
         itemDisplayImage.sprite = inventoryItem.itemData.icon;
         itemDisplayName.text = inventoryItem.itemData.entryName;
 
@@ -55,5 +67,22 @@ public class PlayerInventoryUI : MonoBehaviour
         }
         else
             itemDisplayDescription.text = inventoryItem.itemData.description;
+
+        if (inventoryItem.itemData is EquipableItemSO)
+        {
+            itemUseButton.gameObject.SetActive(true);
+            itemUseButtonText.text = "Equip";
+        }
+        else
+            itemUseButton.gameObject.SetActive(false);
+    }
+
+    private void UseButtonClick()
+    {
+        if (_selectedItem.itemData is EquipableItemSO)
+        {
+            inventorySO.EquipItem(_selectedItem);
+        }
+        EventManager.TriggerEvent("UseItem", _selectedItem);
     }
 }

@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2826487337272735566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -664,6 +664,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onMenu: {fileID: 11400000, guid: 0747f15a1d04ebc4cb9c1ef22e691ce6, type: 2}
   _menuAnimator: {fileID: 0}
+  _onPause:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7611891924642188959}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4932899422129974730}
+        m_TargetAssemblyTypeName: AudioCaller, Assembly-CSharp
+        m_MethodName: StopAllLoopingSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _pauseAction: {fileID: -4991248150626878051, guid: 9ba3dc970cd39eb44ba614ea4abca2be, type: 3}
 --- !u!114 &3198675422276311910
 MonoBehaviour:
   m_ObjectHideFlags: 0
