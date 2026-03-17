@@ -687,7 +687,6 @@ MonoBehaviour:
   _ringPrefab: {fileID: 5936574198573993706, guid: 3bc75218260900145b6a04c23cac8127, type: 3}
   _playerInventory: {fileID: 11400000, guid: 0f75947f08319ff46a4b122d9e3da0d3, type: 2}
   _almanacSO: {fileID: 11400000, guid: 9e6bad991a3f59641a598f6e2d977cac, type: 2}
-  _currentBaitPowerSO: {fileID: 11400000, guid: 2cee407b91aa4d34fa943c1d2b3e8463, type: 2}
   _baitSlots:
   - {fileID: 419362350288380819}
   - {fileID: 9081079681171477892}
@@ -1498,7 +1497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6988840870176068982
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1633,7 +1632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8820267144721299152
 RectTransform:
   m_ObjectHideFlags: 0

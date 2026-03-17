@@ -102,7 +102,8 @@ public class FishingMinigame : MonoBehaviour
     private void Update()
     {
         if (!_playing)  return;
-        _indicatorRing.position = _currentFish.transform.position+Vector3.back*0.1f;
+        _indicatorRing.position = _currentFish.transform.position;
+        _indicatorRing.position = new Vector3(_indicatorRing.position.x, 0, _indicatorRing.position.z);
 
         if (!_freezeOnCue) return;
         if (_waitingCueTap) return;
@@ -132,7 +133,7 @@ public class FishingMinigame : MonoBehaviour
         if (_spawnedRings.Count > 0)
         {
             var ring = _spawnedRings.First();
-            if (ring.transform.lossyScale.x * 5f < _currentCatchRadius.Value)
+            if (ring.transform.lossyScale.x * 4f < _currentCatchRadius.Value)
             {
                 if(_breezeHazzardActive)
                 {
@@ -195,12 +196,12 @@ public class FishingMinigame : MonoBehaviour
         EventManager.TriggerEvent("OnAddItem", CurrentBait, -1);
         UpdateBaitSlots();
         EventManager.TriggerEvent("ToggleCameraShake", fish.GetSpeed());
+        EventManager.TriggerEvent("FocusOnHook", true);
         EventManager.TriggerEvent("TurnOffMovement");
         _currentScore = 0;
         _currentWave = 0;
         _currentFish = fish;
         _playing = true;
-        _indicatorRing.localScale = Vector3.one * _currentCatchRadius.Value / 5f;
         _indicatorRing.gameObject.SetActive(true);
         StartCoroutine(GameLoop());
     }
@@ -214,6 +215,7 @@ public class FishingMinigame : MonoBehaviour
         _indicatorRing.gameObject.SetActive(false);
         _playing = false;
         EventManager.TriggerEvent("EndFishingMinigame", won);
+        EventManager.TriggerEvent("FocusOnHook", false);
         EventManager.TriggerEvent("TurnOnMovement");
         if (won)
         {

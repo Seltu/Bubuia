@@ -9,6 +9,7 @@ public class GameplayMenuUI : MonoBehaviour
     [SerializeField] private BoolVariable _onMenu;
     [SerializeField] private Animator _menuAnimator;
     [SerializeField] private UnityEvent _onPause;
+    [SerializeField] private UnityEvent _onUnpause;
     [SerializeField] private InputActionReference _pauseAction;
 
     private void Start()
@@ -24,12 +25,19 @@ public class GameplayMenuUI : MonoBehaviour
 
     public void Pause(InputAction.CallbackContext ctx)
     {
+        if(ctx.started) return;
+        if (!(Time.timeScale != 0))
+        {
+            Unpause();
+            return;
+        }
         _onPause.Invoke();
         Time.timeScale = 0f;
     }
 
     public void Unpause()
     {
+        _onUnpause.Invoke();
         Time.timeScale = 1f;
     }
 }

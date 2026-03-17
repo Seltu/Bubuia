@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,10 @@ public class PlayerInventory : MonoBehaviour
 
     private const string MONEY_KEY = "INV_MONEY";
     private const string ITEM_KEY_PREFIX = "INV_ITEM_";
+    private const string EQUIPMENT_KEY_PREFIX = "INV_EQUIPPED_";
 
     private string ItemKey(InventoryItem item) => ITEM_KEY_PREFIX + item.itemData.entryName;
+    private string EquipmentKey(EquipSlot slot) => EQUIPMENT_KEY_PREFIX + slot.ToString();
 
     private void Awake()
     {
@@ -70,6 +73,11 @@ public class PlayerInventory : MonoBehaviour
     private void SaveItem(InventoryItem item)
     {
         PlayerPrefs.SetInt(ItemKey(item), item.amount);
+        if(item.itemData is EquipableItemSO equipment)
+            if(_inventory.GetEquippedItem(equipment.GetSlot()) == item)
+            {
+                PlayerPrefs.SetString(EquipmentKey(equipment.GetSlot()), item.itemData.entryName);
+            }
         PlayerPrefs.Save();
     }
 
@@ -82,6 +90,22 @@ public class PlayerInventory : MonoBehaviour
             var entry = _inventory.items[i];
             entry.amount = PlayerPrefs.GetInt(ItemKey(entry), entry.amount);
             _inventory.items[i] = entry;
+        }
+
+        foreach (EquipSlot slot in Enum.GetValues(typeof(EquipSlot)))
+        {
+            if (slot == EquipSlot.None)
+                continue;
+
+            var itemEntry = PlayerPrefs.GetString(EquipmentKey(slot), "");
+            if (itemEntry != "")
+            {
+                _inventory.EquipItem(_inventory.items.Find(o => o.itemData.entryName == itemEntry));
+            }
+            else
+            {
+                _inventory.EquipItem(_inventory.items.Find(o => o.itemData is EquipableItemSO equip && equip.GetSlot() == slot));
+            }
         }
     }
 }

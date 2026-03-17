@@ -6,6 +6,7 @@ public class BoostBarUI : MonoBehaviour
     [SerializeField] private PlayerShipController _shipController;
     [SerializeField] private Image _boostBarImage;
     [SerializeField] private float _fadeSpeed;
+    [SerializeField] private Gradient _colorGradient;
 
     private Color hue;
     private float alpha;
@@ -13,7 +14,7 @@ public class BoostBarUI : MonoBehaviour
     private void Update()
     {
         _boostBarImage.fillAmount = _shipController.GetBoost01();
-        hue = Color.Lerp(Color.red, Color.green, _boostBarImage.fillAmount);
+        hue = _colorGradient.Evaluate(_boostBarImage.fillAmount);
         if (_boostBarImage.fillAmount > 0.9f)
             alpha = Mathf.Lerp(alpha, 0, Time.deltaTime * _fadeSpeed);
         else alpha = Mathf.Lerp(alpha, 1, Time.deltaTime * _fadeSpeed);

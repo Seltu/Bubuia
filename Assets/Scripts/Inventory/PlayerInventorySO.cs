@@ -11,6 +11,7 @@ public class PlayerInventorySO : ScriptableObject
     public List<InventoryItem> items;
     [SerializeField] private FloatVariable _currentBaitPowerSO;
     [SerializeField] private FloatVariable _currentCatchRadiusSO;
+    private Dictionary<EquipSlot, InventoryItem> _equippedItems = new();
 
     private void OnEnable()
     {
@@ -19,29 +20,23 @@ public class PlayerInventorySO : ScriptableObject
 
     public void EquipItem(InventoryItem item)
     {
-        if (item.itemData is not EquipableItemSO targetItem)
-            return;
-
-        var targetSlot = targetItem.GetSlot();
-
-        foreach (var inventoryItem in items)
+        if (item.itemData is EquipableItemSO targetItem)
         {
-            if (inventoryItem.itemData is EquipableItemSO equipable &&
-                equipable.GetSlot() == targetSlot)
-            {
-                equipable.equipped = inventoryItem == item;
-            }
-        }
 
-        if (targetItem is BaitTypeSO bait)
-            _currentBaitPowerSO.Value = bait.baitPower;
-        else if (targetItem is FishingRodSO fishingRod)
-            _currentCatchRadiusSO.Value = fishingRod.catchRadius;
+            var targetSlot = targetItem.GetSlot();
+
+            _equippedItems[targetSlot] = item;
+
+            if (targetItem is BaitTypeSO bait)
+                _currentBaitPowerSO.Value = bait.baitPower;
+            else if (targetItem is FishingRodSO fishingRod)
+                _currentCatchRadiusSO.Value = fishingRod.catchRadius;
+        }
     }
 
     public InventoryItem GetEquippedItem(EquipSlot slot)
     {
-        return items.Find(x => x.itemData is EquipableItemSO sO && sO.GetSlot() == slot && sO.equipped);
+        return _equippedItems[slot];
     }
 }
 
