@@ -96,8 +96,8 @@ public class SellingFishPanel : BaseStore
     #region Shoping Buttons
     public void SellButton()
     {
-        EventManager.TriggerEvent("OnAddToPlayerMoney", _currentFish.valor * int.Parse(_quant.text));
-        EventManager.TriggerEvent("OnAddItem", _currentFish, - int.Parse(_quant.text));
+        _playerInventory.AddMoney(_currentFish.valor * int.Parse(_quant.text));
+       _playerInventory.AddItem(_currentFish, - int.Parse(_quant.text));
         _playerMoney.text = "R$ " + _playerInventory.playerMoney.ToString();
         SetCurrentFish(_currentFish);
         HideSellButton();

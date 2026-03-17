@@ -193,7 +193,7 @@ public class FishingMinigame : MonoBehaviour
     {
         if(_playing) return;
 
-        EventManager.TriggerEvent("OnAddItem", CurrentBait, -1);
+        _playerInventory.AddItem(CurrentBait, -1);
         UpdateBaitSlots();
         EventManager.TriggerEvent("ToggleCameraShake", fish.GetSpeed());
         EventManager.TriggerEvent("FocusOnHook", true);
@@ -221,7 +221,7 @@ public class FishingMinigame : MonoBehaviour
         {
             UnfreezeFromCue();
             EventManager.TriggerEvent("FishCaught");
-            EventManager.TriggerEvent("OnAddItem", _currentFish.GetFishTypeSO(), 1);
+            _playerInventory.AddItem(_currentFish.GetFishTypeSO(), 1);
             AlmanacFishes almanacFish = null;
             foreach (var fish in _almanacSO.almanacFishes)
             {

@@ -65,7 +65,7 @@ public class FishingSupliesStore : BaseStore
     {
         if(_playerInventory.playerMoney >= _currentBait.valor)
         {
-            EventManager.TriggerEvent("OnAddToPlayerMoney", _currentBait.valor * -1);
+            _playerInventory.AddMoney(_currentBait.valor * -1);
             _playerMoney.text = "R$ " + _playerInventory.playerMoney.ToString();
             HideBuyButton();
         }
