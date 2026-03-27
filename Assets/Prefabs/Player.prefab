@@ -213,9 +213,7 @@ GameObject:
   - component: {fileID: 7006085308266537024}
   - component: {fileID: 2439143492088451438}
   - component: {fileID: 8380554169538998219}
-  - component: {fileID: 7026665919736001703}
   - component: {fileID: 2736924433812487974}
-  - component: {fileID: 1731087712085155970}
   - component: {fileID: 8176800187040623820}
   - component: {fileID: 6559004955710755895}
   - component: {fileID: 2713550091197861402}
@@ -320,25 +318,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7026665919736001703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8728302581440454752}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ba0ed9c5810e31478e7236210616f4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerRb: {fileID: 0}
-  _sprites:
-  - {fileID: 2439143492088451438}
-  - {fileID: 7298561887466317874}
-  - {fileID: 2022813158308388229}
-  _animator: {fileID: 8380554169538998219}
-  _playerSpeed: 12
 --- !u!114 &2736924433812487974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,19 +343,6 @@ MonoBehaviour:
   - Assets/Art/Player/Roupa/RoupaIddle_0.png
   - Assets/Art/Player/Roupa/RoupaPulling_0.png
   - Assets/Art/Player/Roupa/RoupaWalking_0.png
---- !u!114 &1731087712085155970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8728302581440454752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0bb8f3e8d6888a4aa8b0155d49d6628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventory: {fileID: 11400000, guid: 0f75947f08319ff46a4b122d9e3da0d3, type: 2}
 --- !u!114 &8176800187040623820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +383,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7026665919736001703}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: MovePlayerInput
         m_Mode: 0
@@ -515,6 +481,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a0ae1ed0-8a00-47a4-a400-fb7ac3833e6d
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6210b23-7b20-4221-897f-45b77b8d9844
+    m_ActionName: 'PlayerInput/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInput

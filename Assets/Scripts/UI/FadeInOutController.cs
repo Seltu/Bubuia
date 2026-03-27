@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FadeInOutController : MonoBehaviour
 {
+    [SerializeField] BoolVariable canPause;
     [SerializeField] private Animator _anim;
 
     void Start()
@@ -20,11 +21,18 @@ public class FadeInOutController : MonoBehaviour
 
     private void PlayFadeIn()
     {
+        canPause.value = false;
         _anim.SetTrigger("FadeIn");
     }
 
     private void PlayFadeOut()
     {
+        canPause.value = false;
         _anim.SetTrigger("FadeOut");
+    }
+
+    public void OnFadeOutFinish()
+    {
+        canPause.value = true;
     }
 }

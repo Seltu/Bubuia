@@ -26,7 +26,6 @@ public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     private void Awake()
     {
-        if (buttonImage == null) buttonImage = GetComponent<Image>();
         if (buttonText == null) buttonText = GetComponentInChildren<TextMeshProUGUI>();
 
         originalScale = transform.localScale;
@@ -34,21 +33,24 @@ public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     private void OnEnable()
     {
-        buttonImage.sprite = normalSprite;
+        if (buttonImage != null)
+            buttonImage.sprite = normalSprite;
         buttonText.DOColor(normalTextColor, duration).SetUpdate(true);
         transform.DOScale(originalScale, duration).SetEase(Ease.OutBack).SetUpdate(true); ;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        buttonImage.sprite = hoverSprite;
+        if (buttonImage != null)
+            buttonImage.sprite = hoverSprite;
         buttonText.DOColor(hoverTextColor, duration).SetUpdate(true); ;
         transform.DOScale(originalScale * scaleUpSize, duration).SetEase(Ease.OutBack).SetUpdate(true); ;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        buttonImage.sprite = normalSprite;
+        if(buttonImage != null)
+            buttonImage.sprite = normalSprite;
         buttonText.DOColor(normalTextColor, duration).SetUpdate(true); ;
         transform.DOScale(originalScale, duration).SetEase(Ease.OutBack).SetUpdate(true); ;
     }

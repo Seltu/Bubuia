@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _playerRb;
+    [SerializeField] private Rigidbody _playerRb;
     [SerializeField] private SpriteRenderer[] _sprites;
     [SerializeField] private Animator _animator;
 
     [SerializeField] private float _playerSpeed;
 
-    private float moveX;
+    private Vector2 moveInput;
 
     private void Start()
     {
@@ -32,13 +32,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (moveX != 0)
+        if (moveInput.magnitude != 0 && !InputLock.movementLocked)
         {
-            Vector2 velocity = new Vector2(moveX * _playerSpeed, _playerRb.linearVelocity.y);
+            Vector3 velocity = new Vector3(moveInput.x * _playerSpeed, _playerRb.linearVelocity.y, moveInput.y * _playerSpeed);
             _playerRb.linearVelocity = velocity;
 
             foreach (var sprite in _sprites)
-                sprite.flipX = moveX < 0;
+                sprite.flipX = moveInput.x < 0;
 
             _animator.SetBool("isWalking", true);
         }
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayerInput(InputAction.CallbackContext context)
     {
-        moveX = context.ReadValue<Vector2>().x;
+        moveInput = context.ReadValue<Vector2>();
     }
 
     private void BlockPlayerMovement(string _storeId)

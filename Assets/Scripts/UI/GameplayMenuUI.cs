@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class GameplayMenuUI : MonoBehaviour
 {
     [SerializeField] private BoolVariable _onMenu;
+    [SerializeField] private BoolVariable _canPause;
     [SerializeField] private Animator _menuAnimator;
     [SerializeField] private UnityEvent _onPause;
     [SerializeField] private UnityEvent _onUnpause;
@@ -25,6 +26,7 @@ public class GameplayMenuUI : MonoBehaviour
 
     public void Pause(InputAction.CallbackContext ctx)
     {
+        if (!_canPause.value) return;
         if(ctx.started) return;
         if (!(Time.timeScale != 0))
         {
