@@ -26,6 +26,15 @@ public class PlayerInventorySO : ScriptableObject
         hideFlags = HideFlags.DontUnloadUnusedAsset;
     }
 
+    private void OnValidate()
+    {
+        foreach(var item in items)
+        {
+            PlayerPrefs.SetInt(ItemKey(item), item.amount);
+        }
+        PlayerPrefs.Save();
+    }
+
     public void LoadInventory()
     {
         playerMoney = PlayerPrefs.GetInt(MONEY_KEY, playerMoney);
@@ -49,7 +58,16 @@ public class PlayerInventorySO : ScriptableObject
             }
             else
             {
-                EquipItem(items.Find(o => o.amount > 0 && o.itemData is EquipableItemSO equip && equip.GetSlot() == slot));
+                try
+                {
+
+                    EquipItem(items.Find(o => o.itemData is EquipableItemSO equip && equip.GetSlot() == slot));
+                }
+                catch (NullReferenceException e)
+                {
+                    Debug.LogError("Não encontrado item padrão para a categoria de item: " + slot.ToString() +
+                        "! Adicionar pelo menos um equipamento dessa categoria ao inventário do jogador");
+                }
             }
         }
     }
@@ -75,12 +93,6 @@ public class PlayerInventorySO : ScriptableObject
                 return;
             }
         }
-
-        InventoryItem newItem = new InventoryItem(item, amount);
-
-        items.Add(newItem);
-
-        SaveItem(newItem);
     }
 
     public int GetAmount(InventoryItem item)
@@ -109,7 +121,6 @@ public class PlayerInventorySO : ScriptableObject
     {
         if (item.itemData is EquipableItemSO targetItem)
         {
-
             var targetSlot = targetItem.GetSlot();
 
             _equippedItems[targetSlot] = item;

@@ -16,12 +16,8 @@ public class GameplayMenuUI : MonoBehaviour
     private void Start()
     {
         _onMenu.value = false;
+        _canPause.value = true;
         _pauseAction.action.performed += Pause;
-    }
-
-    private void Update()
-    {
-        if (_onMenu.value) return;
     }
 
     public void Pause(InputAction.CallbackContext ctx)

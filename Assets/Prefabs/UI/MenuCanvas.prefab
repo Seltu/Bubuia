@@ -1454,6 +1454,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 4353324800172491679}
+    - target: {fileID: 4020682448112226748, guid: 14571f3431b9f9c4e842982dcf5d6f8a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: CityScene
+      objectReference: {fileID: 0}
     - target: {fileID: 4443709512207048654, guid: 14571f3431b9f9c4e842982dcf5d6f8a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
