@@ -18,7 +18,6 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] private GameObject _coldIcon;
 
     [Header("References")]
-    [SerializeField] private FloatVariable _currentCatchRadius;
     [SerializeField] private Transform _indicatorRing;
     [SerializeField] private FishingRing _ringPrefab;
     [SerializeField] private PlayerInventorySO _playerInventory;
@@ -133,7 +132,7 @@ public class FishingMinigame : MonoBehaviour
         if (_spawnedRings.Count > 0)
         {
             var ring = _spawnedRings.First();
-            if (ring.transform.lossyScale.x * 4f < _currentCatchRadius.Value)
+            if (ring.transform.lossyScale.x * 4f < CurrentFishingRod.catchRadius)
             {
                 if(_breezeHazzardActive)
                 {
@@ -343,7 +342,7 @@ public class FishingMinigame : MonoBehaviour
         if (ring == null) return false;
 
         float ringRadius = ring.transform.lossyScale.x * 5f;
-        float threshold = _currentCatchRadius.Value - _cueInsideMargin;
+        float threshold = CurrentFishingRod.catchRadius - _cueInsideMargin;
 
         return ringRadius < threshold;
     }

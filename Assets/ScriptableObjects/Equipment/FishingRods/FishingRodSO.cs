@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Bait Type", menuName = "ScriptableObjects/Items/Fishing Rod")]
+[CreateAssetMenu(fileName = "Fishing Rod", menuName = "ScriptableObjects/Items/Fishing Rod")]
 public class FishingRodSO : EquipableItemSO
 {
     public Sprite rodSprite;

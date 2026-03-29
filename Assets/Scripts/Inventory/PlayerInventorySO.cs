@@ -11,7 +11,6 @@ public class PlayerInventorySO : ScriptableObject
     public int playerMoney;
     public List<InventoryItem> items;
     [SerializeField] private FloatVariable _currentBaitPowerSO;
-    [SerializeField] private FloatVariable _currentCatchRadiusSO;
     private Dictionary<EquipSlot, InventoryItem> _equippedItems = new();
 
     private const string MONEY_KEY = "INV_MONEY";
@@ -66,7 +65,7 @@ public class PlayerInventorySO : ScriptableObject
                 catch (NullReferenceException e)
                 {
                     Debug.LogError("Não encontrado item padrão para a categoria de item: " + slot.ToString() +
-                        "! Adicionar pelo menos um equipamento dessa categoria ao inventário do jogador");
+                        "! Adicionar pelo menos um equipamento dessa categoria ao inventário do jogador\n" + e);
                 }
             }
         }
@@ -127,8 +126,6 @@ public class PlayerInventorySO : ScriptableObject
 
             if (targetItem is BaitTypeSO bait)
                 _currentBaitPowerSO.Value = bait.baitPower;
-            else if (targetItem is FishingRodSO fishingRod)
-                _currentCatchRadiusSO.Value = fishingRod.catchRadius;
 
             SaveItem(item);
         }

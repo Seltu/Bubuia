@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,11 @@ public class PlayerInventoryUI : MonoBehaviour
 
     private void OnEnable()
     {
+        UpdateInventory();
+    }
+
+    private void UpdateInventory()
+    {
         foreach (Transform child in itemSlotsParent)
         {
             Destroy(child.gameObject);
@@ -32,14 +38,18 @@ public class PlayerInventoryUI : MonoBehaviour
 
         List<InventoryItem> orderedItemList = inventorySO.items // Ordena os itens do inventário
             .Where(x => x.amount > 0) // Exclui aqueles com quantidade menor que 1
-            .OrderBy(x => GetOrderPriority(x.itemData)) // Agrupa por tipo
+            .OrderBy(x => (x.itemData is EquipableItemSO equip && inventorySO.GetEquippedItem(equip.GetSlot()) == x) ? 0 : 1) // Exibe os itens equipados primeiro
+            .ThenBy(x => GetOrderPriority(x.itemData)) // Agrupa por tipo
             .ThenBy(x => x.itemData.entryName) // Ordena por nome
             .ToList();
 
         foreach (InventoryItem inventoryItem in orderedItemList)
         {
             var itemSlot = Instantiate(itemSlotPrefab, itemSlotsParent);
-            itemSlot.SetSlot(inventoryItem);
+            if (inventoryItem.itemData is EquipableItemSO equipment)
+                itemSlot.SetSlot(inventoryItem, inventorySO.GetEquippedItem(equipment.GetSlot()) == inventoryItem);
+            else
+                itemSlot.SetSlot(inventoryItem, false);
 
             InventoryItem capturedItem = inventoryItem;
             itemSlot.GetButton().onClick.AddListener(() => SelectItem(capturedItem));
@@ -48,8 +58,12 @@ public class PlayerInventoryUI : MonoBehaviour
 
     private int GetOrderPriority(DescriptionDataSO item)
     {
-        if (item is FishTypeSO) return 0;
-        if (item is BaitTypeSO) return 1;
+        if (item is BaitTypeSO) return 0;
+        if (item is FishingRodSO) return 1;
+        if (item is MoulinetSO) return 2;
+        if (item is FishingLineSO) return 3;
+        if (item is HookSO) return 4;
+        if (item is FishTypeSO) return 5;
 
         return 999; // outros tipos vão para o final
     }
@@ -84,5 +98,6 @@ public class PlayerInventoryUI : MonoBehaviour
             inventorySO.EquipItem(_selectedItem);
         }
         EventManager.TriggerEvent("UseItem", _selectedItem);
+        UpdateInventory();
     }
 }

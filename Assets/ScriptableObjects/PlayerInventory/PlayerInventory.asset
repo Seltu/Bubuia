@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6e264a700ee634db2cb6b84ca13f5d, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  playerMoney: 790
+  playerMoney: 832
   items:
   - itemData: {fileID: 11400000, guid: d31ec644081a5314e89abc39a2a2c117, type: 2}
     amount: 5
@@ -21,11 +21,11 @@ MonoBehaviour:
   - itemData: {fileID: 11400000, guid: 87e7ad95f84b5854db10ba1aaef4e50d, type: 2}
     amount: 0
   - itemData: {fileID: 11400000, guid: d3b9f685d2863c04fa660c80ee4617e9, type: 2}
-    amount: 98
+    amount: 100
   - itemData: {fileID: 11400000, guid: 2d26e591e08bf204eb449a4880aab0da, type: 2}
     amount: 3
   - itemData: {fileID: 11400000, guid: c403b094fbaac3441896394ea0068d09, type: 2}
-    amount: 32
+    amount: 33
   - itemData: {fileID: 11400000, guid: d16af583520f2734cbc3a8b607e66999, type: 2}
     amount: 3
   - itemData: {fileID: 11400000, guid: 113508246254d2846a1c091be1403b62, type: 2}
@@ -34,5 +34,10 @@ MonoBehaviour:
     amount: 1
   - itemData: {fileID: 11400000, guid: 3f08fe4b283787644a23798e3cbc15a5, type: 2}
     amount: 1
+  - itemData: {fileID: 11400000, guid: a22dd9e532461364fb5abcd6aa83fba3, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: eb839ea7eaa872449974bd91fe7712f3, type: 2}
+    amount: 1
+  - itemData: {fileID: 11400000, guid: 20ef9f37339e02045a64283b6ce12eee, type: 2}
+    amount: 1
   _currentBaitPowerSO: {fileID: 11400000, guid: 2cee407b91aa4d34fa943c1d2b3e8463, type: 2}
-  _currentCatchRadiusSO: {fileID: 11400000, guid: bfbec526e480a0642867a51c453ce2ce, type: 2}
