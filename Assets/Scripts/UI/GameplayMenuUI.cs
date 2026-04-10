@@ -1,57 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class GameplayMenuUI : MonoBehaviour
 {
-    [SerializeField] private GameObject _pauseMenu;
-    [SerializeField] private GameObject _inventoryScreen;
-    [SerializeField] private GameObject _almanacScreen;
     [SerializeField] private BoolVariable _onMenu;
+    [SerializeField] private BoolVariable _canPause;
+    [SerializeField] private Animator _menuAnimator;
+    [SerializeField] private UnityEvent _onPause;
+    [SerializeField] private UnityEvent _onUnpause;
+    [SerializeField] private InputActionReference _pauseAction;
 
     private void Start()
     {
         _onMenu.value = false;
+        _canPause.value = true;
+        _pauseAction.action.performed += Pause;
     }
 
-    private void Update()
+    public void Pause(InputAction.CallbackContext ctx)
     {
-        if (_onMenu.value) return;/*
-        if (_pauseMenu.activeInHierarchy || _inventoryScreen.activeInHierarchy || _almanacScreen.activeInHierarchy)
+        if (!_canPause.value) return;
+        if(ctx.started) return;
+        if (!(Time.timeScale != 0))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Time.timeScale = 1f;
-                _pauseMenu.SetActive(false);
-                _inventoryScreen.SetActive(false);
-                _almanacScreen.SetActive(false);
-            }
+            Unpause();
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Time.timeScale = 0f;
-            _pauseMenu.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.I))
-        {
-            Time.timeScale = 0f;
-            _inventoryScreen.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            Time.timeScale = 0f;
-            _almanacScreen.SetActive(true);
-        }*/
-    }
-
-    public void Pause()
-    {
+        _onPause.Invoke();
         Time.timeScale = 0f;
     }
 
     public void Unpause()
     {
+        _onUnpause.Invoke();
         Time.timeScale = 1f;
     }
 }

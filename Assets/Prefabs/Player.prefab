@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 110632692, guid: d8c1e9b14f0f6f5488a7e0c115d810be, type: 3}
-  m_Color: {r: 1, g: 0.0018058727, b: 0, a: 1}
+  m_Color: {r: 0.2901961, g: 0.21176471, b: 0.1764706, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -213,9 +213,7 @@ GameObject:
   - component: {fileID: 7006085308266537024}
   - component: {fileID: 2439143492088451438}
   - component: {fileID: 8380554169538998219}
-  - component: {fileID: 7026665919736001703}
   - component: {fileID: 2736924433812487974}
-  - component: {fileID: 1731087712085155970}
   - component: {fileID: 8176800187040623820}
   - component: {fileID: 6559004955710755895}
   - component: {fileID: 2713550091197861402}
@@ -320,25 +318,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7026665919736001703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8728302581440454752}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ba0ed9c5810e31478e7236210616f4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerRb: {fileID: 0}
-  _sprites:
-  - {fileID: 2439143492088451438}
-  - {fileID: 7298561887466317874}
-  - {fileID: 2022813158308388229}
-  _animator: {fileID: 8380554169538998219}
-  _playerSpeed: 12
 --- !u!114 &2736924433812487974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,19 +343,6 @@ MonoBehaviour:
   - Assets/Art/Player/Roupa/RoupaIddle_0.png
   - Assets/Art/Player/Roupa/RoupaPulling_0.png
   - Assets/Art/Player/Roupa/RoupaWalking_0.png
---- !u!114 &1731087712085155970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8728302581440454752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0bb8f3e8d6888a4aa8b0155d49d6628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inventory: {fileID: 11400000, guid: 0f75947f08319ff46a4b122d9e3da0d3, type: 2}
 --- !u!114 &8176800187040623820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +383,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7026665919736001703}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: MovePlayerInput
         m_Mode: 0
@@ -448,10 +414,6 @@ MonoBehaviour:
     m_ActionId: e4df621f-fa13-42bb-a09a-df6e193e770b
     m_ActionName: 'PlayerInput/Interaction[/Keyboard/e]'
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 565a9ac7-d242-4a39-809d-47f32e632f27
-    m_ActionName: 'PlayerInput/Fishing[/Mouse/leftButton,/Keyboard/space]'
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2713550091197861402}
         m_TargetAssemblyTypeName: InputController, Assembly-CSharp
@@ -467,6 +429,62 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b6397583-1c70-49e0-9582-4abe13cc2275
     m_ActionName: 'PlayerInput/CloseMenu[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7d55cdd7-182b-4ee0-b1ae-240e01fefaf4
+    m_ActionName: 'PlayerInput/Fishing[/Mouse/press,/Touchscreen/press]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 93050e93-9b44-4808-ae36-6eb0485da4e2
+    m_ActionName: 'PlayerInput/PointerPosition[/Mouse/position,/Touchscreen/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0e93d64f-46b2-48fd-a4c8-9e2518726367
+    m_ActionName: 'PlayerInput/Boost[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a3d9a511-a57b-4fcf-b2cd-45e25e981c4f
+    m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 49d8c446-737c-413d-8475-9e3ab92e51b5
+    m_ActionName: 'UI/Submit[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b892d267-f6c7-4856-9bea-0de63ba5f601
+    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: db7114d7-8c44-498f-bf5b-e9b57e814137
+    m_ActionName: 'UI/Point[/Mouse/position,/Touchscreen/touch0/position,/Touchscreen/touch1/position,/Touchscreen/touch2/position,/Touchscreen/touch3/position,/Touchscreen/touch4/position,/Touchscreen/touch5/position,/Touchscreen/touch6/position,/Touchscreen/touch7/position,/Touchscreen/touch8/position,/Touchscreen/touch9/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b4a33b1-3b8d-4dec-bd55-5c6934bd4023
+    m_ActionName: 'UI/Click[/Mouse/leftButton,/Touchscreen/touch0/press,/Touchscreen/touch1/press,/Touchscreen/touch2/press,/Touchscreen/touch3/press,/Touchscreen/touch4/press,/Touchscreen/touch5/press,/Touchscreen/touch6/press,/Touchscreen/touch7/press,/Touchscreen/touch8/press,/Touchscreen/touch9/press]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c77be8b2-0df6-46c7-89f7-33ad40ee203c
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c1549938-4d33-4521-a140-10a398b85fd6
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 93f7ea3b-a15d-4ab2-8c43-1dfe488d1bba
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 331b6473-f392-47a5-a967-438bd65140ca
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a0ae1ed0-8a00-47a4-a400-fb7ac3833e6d
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c6210b23-7b20-4221-897f-45b77b8d9844
+    m_ActionName: 'PlayerInput/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInput

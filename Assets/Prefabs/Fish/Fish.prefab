@@ -65,25 +65,25 @@ MonoBehaviour:
   fishTypeSO: {fileID: 11400000, guid: d3b9f685d2863c04fa660c80ee4617e9, type: 2}
   speed: 3
   rotationSpeed: 10
-  neighborRadius: 2
-  separationDistance: 1.7
+  neighborRadius: 10
+  separationDistance: 5
   offscreenTime: 10
   alignmentWeight: 1
   cohesionWeight: 0.5
-  separationWeight: 3
+  separationWeight: 1
   minX: -330
   maxX: 330
   minZ: -350
   maxZ: 320
   boundsForce: 2.5
-  jitterStrength: 2
+  jitterStrength: 0.001
   scareThreshold: 0.2
   scareDecayRate: 0.1
-  scareDuration: 1
+  scareDuration: 1.5
   scareSpeedMultiplier: 5
   baitedThreshold: 1
   baitedDecayRate: 0.5
-  currentBaitPowerSO: {fileID: 11400000, guid: 2cee407b91aa4d34fa943c1d2b3e8463, type: 2}
+  playerInventorySO: {fileID: 11400000, guid: 0f75947f08319ff46a4b122d9e3da0d3, type: 2}
   manager: {fileID: 0}
 --- !u!54 &5097942737449320714
 Rigidbody:

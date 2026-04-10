@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686d5f277de443e45984171bfb5f6426, type: 3}
   m_Name: TambaquiSO
   m_EditorClassIdentifier: 
-  fishName: Tambaqui
-  fishSprite: {fileID: 21300000, guid: 6f80ecd7c5f15654dbbe3ae0e62dd970, type: 3}
+  entryName: Tambaqui
+  icon: {fileID: 21300000, guid: 6f80ecd7c5f15654dbbe3ae0e62dd970, type: 3}
+  description: O peixe mais famoso do Norte inteiro. Deliciosamente delicioso de
+    qualquer forma que seja feito - caldeirada, assado, frito... que fome!
   darkFishSprite: {fileID: 663109272, guid: 872ebaf527f21854caa4cc2d8a6953e0, type: 3}
-  descricao: O peixe mais famoso do Norte inteiro. Deliciosamente delicioso de qualquer
-    forma que seja feito - caldeirada, assado, frito... que fome!
   valor: 40
   fishingGoalScore: 6
+  sizeCategory: 1
   fishingPattern:
   - speed: 1
     secondsDelay: 1

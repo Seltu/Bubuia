@@ -49,6 +49,8 @@ public class PlayerShipController : MonoBehaviour
         EventManager.AddListener("TurnOffControls", PauseMovement);
         EventManager.AddListener("TurnOffMovement", PauseMovement);
         EventManager.AddListener("TurnOnMovement", UnpauseMovement);
+
+        ResolveSpawnOverlap();
     }
 
     private void OnDestroy()
@@ -60,6 +62,40 @@ public class PlayerShipController : MonoBehaviour
 
     private void PauseMovement() => _stopped = true;
     private void UnpauseMovement() => _stopped = false;
+
+    private void ResolveSpawnOverlap() // Detecta terreno ao redor do jogador e o reposiciona na água
+    {
+        Vector3 origin = transform.position;
+        float y = origin.y;
+
+        bool IsFree(Vector3 p)
+        {
+            var hits = Physics.OverlapSphere(p, 5, 10);
+            return hits == null || hits.Length == 0;
+        }
+
+        // já está livre
+        if (IsFree(origin))
+            return;
+        const int RING_SAMPLES = 24; // pontos por anel
+
+        // busca em anéis (do mais próximo pro mais longe)
+        for (float r = 2; r <= 100; r += 2)
+        {
+            for (int i = 0; i < RING_SAMPLES; i++)
+            {
+                float t = (i / (float)RING_SAMPLES) * Mathf.PI * 2f;
+                Vector3 p = origin + new Vector3(Mathf.Cos(t), 0f, Mathf.Sin(t)) * r;
+                p.y = y;
+                if (IsFree(p))
+                {
+                    transform.position = p;
+                    if (shipRigidbody != null) shipRigidbody.position = p;
+                    return;
+                }
+            }
+        }
+    }
 
     private void Update()
     {
@@ -120,7 +156,8 @@ public class PlayerShipController : MonoBehaviour
             if (_splashTimer < 0)
             {
                 _splashTimer = splashInterval;
-                EventManager.TriggerEvent("Splash", transform.position, splashStrength);
+                var calculatedSplashStrength = boostActive ? splashStrength * 2 : splashStrength;
+                EventManager.TriggerEvent("Splash", transform.position, calculatedSplashStrength);
             }
         }
     }

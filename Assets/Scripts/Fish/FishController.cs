@@ -40,7 +40,7 @@ public class Fish : MonoBehaviour
     [SerializeField] private float baitedDecayRate = 0.1f;
 
     [Header("ScriptableObjects")]
-    [SerializeField] private FloatVariable currentBaitPowerSO;
+    [SerializeField] private PlayerInventorySO playerInventorySO;
 
     private Transform _detectedHook;
     private float _scareLevel = 0f;
@@ -51,13 +51,14 @@ public class Fish : MonoBehaviour
     private bool _isBaited = false;
     private bool _isHooked = false;
     private float _offscreenTimer = 0f;
+    private Vector3 _detectedBarrier;
 
     [HideInInspector] public FishManager manager;
     private Rigidbody rb;
 
     private void Start()
     {
-        EventManager.AddListener<Vector2, float>("Splash", HearSplash);
+        EventManager.AddListener<Vector3, float>("Splash", HearSplash);
         rb = GetComponent<Rigidbody>();
 
         rb.constraints = RigidbodyConstraints.FreezeRotationX |
@@ -69,13 +70,13 @@ public class Fish : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.RemoveListener<Vector2, float>("Splash", HearSplash);
+        EventManager.RemoveListener<Vector3, float>("Splash", HearSplash);
     }
 
-    private void HearSplash(Vector2 splashPosition, float splashSize)
+    private void HearSplash(Vector3 splashPosition, float splashSize)
     {
-        Vector3 splashPos3D = new Vector3(splashPosition.x, 0f, splashPosition.y);
-        float distance = Vector3.Distance(transform.position, splashPos3D);
+        Vector3 splashPos2D = new(splashPosition.x, 0f, splashPosition.z);
+        float distance = Vector3.Distance(transform.position, splashPos2D);
 
         if (distance > 10f) return;
 
@@ -83,7 +84,8 @@ public class Fish : MonoBehaviour
         _scareLevel += scareAmount;
 
         if (!_isScared)
-            _scareDirection = Random.value > 0.5f ? transform.forward : -transform.forward;
+            _scareDirection = Random.insideUnitCircle;
+        _scareDirection = new Vector3(_scareDirection.x, 0, _scareDirection.y);
 
         if (_scareLevel >= scareThreshold)
         {
@@ -213,17 +215,26 @@ public class Fish : MonoBehaviour
             }
         }
 
+        // Random Jitter
         Vector3 jitter = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * jitterStrength;
         moveDir += jitter;
 
-        Vector3 currentDir = new Vector3(transform.forward.x, 0, transform.forward.z);
-        Vector3 smoothedDir = _isScared ?
-            Vector3.Lerp(currentDir, moveDir, scareSpeedMultiplier) :
-            Vector3.Lerp(currentDir, moveDir, 0.1f);
-
-        if (smoothedDir != Vector3.zero)
+        //Barrier Avoidance
+        if (Vector3.Distance(transform.position, _detectedBarrier) > 10f)
         {
-            Quaternion targetRot = Quaternion.LookRotation(smoothedDir, Vector3.up);
+            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 10f, 10))
+            {
+                _detectedBarrier = hit.point;
+            }
+        }
+        else
+             moveDir += (transform.position - _detectedBarrier) * 5;
+
+        Debug.DrawRay(transform.position, moveDir, Color.red);
+
+        if (moveDir != Vector3.zero)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(moveDir, Vector3.up);
             rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRot, rotationSpeed * 100f * Time.fixedDeltaTime));
         }
 
@@ -270,9 +281,9 @@ public class Fish : MonoBehaviour
     {
         if (other.CompareTag("Hook"))
         {
-            if (_baitedLevel < baitedThreshold)
+            if (_baitedLevel < baitedThreshold && playerInventorySO.CurrentHook.sizeCategory == fishTypeSO.sizeCategory)
             {
-                _baitedLevel = Mathf.Min(_baitedLevel + currentBaitPowerSO.Value * 2 * Time.deltaTime, currentBaitPowerSO.Value * 4);
+                _baitedLevel = Mathf.Min(_baitedLevel + playerInventorySO.CurrentBait.baitPower * 2 * Time.deltaTime, playerInventorySO.CurrentBait.baitPower * 4);
                 if (_baitedLevel >= baitedThreshold)
                 {
                     _isBaited = true;

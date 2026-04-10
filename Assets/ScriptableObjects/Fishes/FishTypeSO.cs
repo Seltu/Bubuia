@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FishSize { Small, Medium, Large }
+
 [CreateAssetMenu(fileName = "Fish Type", menuName = "ScriptableObjects/FishType")]
-public class FishTypeSO : ScriptableObject
+public class FishTypeSO : DescriptionDataSO
 {
-    public string fishName;
-    public Sprite fishSprite;
     public Sprite darkFishSprite;
-    public string descricao;
     public int valor;
     public int fishingGoalScore;
+    public FishSize sizeCategory;
     public List<FishingPatternWave> fishingPattern;
 
     private void OnEnable()

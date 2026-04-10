@@ -63,10 +63,10 @@ public class AlmanacController : SellingFishPanel
 
     public void AlmanacFishButtonClick(FishTypeSO fish)
     {
-        _fishIconImg.sprite = fish.fishSprite;
+        _fishIconImg.sprite = fish.icon;
 
-        _fishName.text = fish.fishName;
-        _fishDesc.text = fish.descricao;
+        _fishName.text = fish.entryName;
+        _fishDesc.text = fish.description;
 
         ShowItemDesc();
     }

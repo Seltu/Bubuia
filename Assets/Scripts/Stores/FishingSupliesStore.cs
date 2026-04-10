@@ -51,9 +51,9 @@ public class FishingSupliesStore : BaseStore
 
     public void SetCurrentBait(BaitTypeSO bait)
     {
-        _iconImg.sprite = bait.baitSprite;
-        _name.text = bait.baitName;
-        _desc.text = bait.descricao;
+        _iconImg.sprite = bait.icon;
+        _name.text = bait.entryName;
+        _desc.text = bait.description;
         _value.text = "R$ " + bait.valor;
         _currentBait = bait;
 
@@ -65,8 +65,7 @@ public class FishingSupliesStore : BaseStore
     {
         if(_playerInventory.playerMoney >= _currentBait.valor)
         {
-            EventManager.TriggerEvent("OnAddToPlayerMoney", _currentBait.valor * -1);
-            EventManager.TriggerEvent("OnAddToPlayerBaits", _currentBait, 1);
+            _playerInventory.AddMoney(_currentBait.valor * -1);
             _playerMoney.text = "R$ " + _playerInventory.playerMoney.ToString();
             HideBuyButton();
         }

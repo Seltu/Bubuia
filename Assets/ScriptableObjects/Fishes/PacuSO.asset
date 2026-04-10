@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686d5f277de443e45984171bfb5f6426, type: 3}
   m_Name: PacuSO
   m_EditorClassIdentifier: 
-  fishName: Pacu
-  fishSprite: {fileID: 21300000, guid: cc7ce34e6bd84554193228cea18706b1, type: 3}
+  entryName: Pacu
+  icon: {fileID: 21300000, guid: cc7ce34e6bd84554193228cea18706b1, type: 3}
+  description: "Al\xE9m de delicioso, este peixe arredondado tamb\xE9m \xE9 muito
+    usado no aquarismo. Cientistas j\xE1 os fizeram reproduzir com tambaquis, criando
+    o lend\xE1rio \"Tambacu\""
   darkFishSprite: {fileID: -146236986, guid: ff1efe84a8732fa4684df8d17d9ff411, type: 3}
-  descricao: "Al\xE9m de delicioso, este peixe arredondado tamb\xE9m \xE9 muito usado
-    no aquarismo. Cientistas j\xE1 os fizeram reproduzir com tambaquis, criando o
-    lend\xE1rio \"Tambacu\"."
   valor: 15
   fishingGoalScore: 6
+  sizeCategory: 0
   fishingPattern:
   - speed: 1
     secondsDelay: 0.1

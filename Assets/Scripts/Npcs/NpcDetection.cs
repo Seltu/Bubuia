@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class NpcDetection : MonoBehaviour
 {
-    [SerializeField] protected GameObject _balloon;
+    [SerializeField] protected GameObject _dialogueBalloon;
     protected bool _isInReach = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider other)
     {
-        _balloon.SetActive(true);
+        _dialogueBalloon.SetActive(true);
         _isInReach = true;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
-        _balloon.SetActive(false);
+        _dialogueBalloon.SetActive(false);
         _isInReach = false;
     }
 }

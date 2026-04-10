@@ -24,6 +24,19 @@ public class CameraManager : MonoBehaviour
         EventManager.AddListener<float>("ToggleCameraShake", ShakeCamera);
         EventManager.AddListener("ZoomOut", ZoomOut);
         EventManager.AddListener("ZoomIn", ZoomIn);
+        EventManager.AddListener<bool>("FocusOnHook", FocusOnHook);
+    }
+
+    private void FocusOnHook(bool focus)
+    {
+        if (focus)
+        {
+            targetGroup.m_Targets[1].weight = 4;
+        }
+        else
+        {
+            targetGroup.m_Targets[1].weight = 1;
+        }
     }
 
     private void ZoomOut()
@@ -40,6 +53,7 @@ public class CameraManager : MonoBehaviour
     {
         EventManager.RemoveListener<float, float>("CameraShake", ShakeCamera);
         EventManager.RemoveListener<float>("ToggleCameraShake", ShakeCamera);
+        EventManager.RemoveListener<bool>("FocusOnHook", FocusOnHook);
     }
 
     private void ShakeCamera(float intensity, float time)
