@@ -27,6 +27,7 @@ public class Coin : MonoBehaviour
                 _coinAnimator.Play("CoinCollect");
                 _playerInventory.playerMoney++;
                 StartCoroutine(DisappearAfterSeconds(1f));
+                EventManager.TriggerEvent("OnUpdateMoneyUI");
             }
         }
     }

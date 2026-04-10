@@ -26,6 +26,10 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] private AlmanacSO _almanacSO;
     [SerializeField] private List<BaitSlotUI> _baitSlots;
     [SerializeField] private GameObject _returnPanel;
+
+    [Header("Settings")]
+    [SerializeField] private bool _isTutorialScene = false;
+
     private Queue<FishingRing> _spawnedRings = new Queue<FishingRing>();
     private Queue<DurabilityUI> _durabilityIcons = new Queue<DurabilityUI>();
     private bool _playing;
@@ -42,8 +46,8 @@ public class FishingMinigame : MonoBehaviour
     private float _prevTimeScale = 1f;
     private float _cueInsideMargin = 0.4f;
     private int _cueCount = 3; // ammount of fishes to catch until cue is deactivated, player must catch the ramaingn fish alone
-
     private List<InventoryItem> PlayerBaits => _playerInventory.items.Where(x => x.itemData is BaitTypeSO).ToList();
+
     private void Awake()
     {
         EventManager.AddListener<bool>("SetFreezeOnCue", v => _freezeOnCue = v);
@@ -125,6 +129,12 @@ public class FishingMinigame : MonoBehaviour
         if (context.phase != InputActionPhase.Started || context.interaction is not TapInteraction) return;
 
 
+        // While cue training is active, only allow taps when the cue is showing (time is frozen).
+        if (_freezeOnCue && !_waitingCueTap)
+        {
+            return;
+        }
+
         // If we froze time for the cue, resume ONLY when player taps
         if (_waitingCueTap)
             UnfreezeFromCue();
@@ -195,8 +205,12 @@ public class FishingMinigame : MonoBehaviour
     {
         if(_playing) return;
 
-        _playerInventory.AddItem(_playerInventory.CurrentBait, -1);
-        UpdateBaitSlots();
+
+        if (!_isTutorialScene)
+        {
+            _playerInventory.AddItem(_playerInventory.CurrentBait, -1);
+            UpdateBaitSlots();
+        }
         EventManager.TriggerEvent("ToggleCameraShake", fish.GetSpeed());
         EventManager.TriggerEvent("FocusOnHook", true);
         EventManager.TriggerEvent("TurnOffMovement");
@@ -235,23 +249,26 @@ public class FishingMinigame : MonoBehaviour
             EventManager.TriggerEvent("FishCaught");
             _playerInventory.AddItem(_currentFish.GetFishTypeSO(), 1);
             AlmanacFishes almanacFish = null;
-            foreach (var fish in _almanacSO.almanacFishes)
+            if (!_isTutorialScene)
             {
-                if (fish.fishType == _currentFish.GetFishTypeSO())
-                    almanacFish = fish;
-            } 
-            if (almanacFish!=null)
-                almanacFish.hasCaught = true;
-            var completed = true;
-            foreach (var fish in _almanacSO.almanacFishes)
-            {
-                if (!fish.hasCaught)
-                    completed = false;
-            }
-            if (completed)
-            {
-                StartCoroutine(VictorySequence());
-                return;
+                foreach (var fish in _almanacSO.almanacFishes)
+                {
+                    if (fish.fishType == _currentFish.GetFishTypeSO())
+                        almanacFish = fish;
+                }
+                if (almanacFish != null)
+                    almanacFish.hasCaught = true;
+                var completed = true;
+                foreach (var fish in _almanacSO.almanacFishes)
+                {
+                    if (!fish.hasCaught)
+                        completed = false;
+                }
+                if (completed)
+                {
+                    StartCoroutine(VictorySequence());
+                    return;
+                }
             }
         }
         EventManager.TriggerEvent("ToggleCameraShake", 0f);
