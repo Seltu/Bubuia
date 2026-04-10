@@ -415,6 +415,7 @@ public class FishingRodController : MonoBehaviour
         if (_hookedTreasure.IsFullyPulled())
         {
             EventManager.TriggerEvent("TurnOnMovement");
+            EventManager.TriggerEvent("TreasureCaught");
             _hookingTreasure = false;
             hookObject.tag = "Hook";
             _hookedTreasure.OnCaught();
@@ -437,4 +438,5 @@ public class FishingRodController : MonoBehaviour
     internal bool GetCanCast() => _canCast;
     internal bool IsHookInWater() => _hookInWater;
     internal Vector3 GetCastTarget() => _castTarget;
+    internal Vector3 GetHookPosition() => hookObject.position;
 }

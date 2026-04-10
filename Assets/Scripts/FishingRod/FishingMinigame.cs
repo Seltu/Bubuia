@@ -42,6 +42,8 @@ public class FishingMinigame : MonoBehaviour
     private float _cueInsideMargin = 0.4f;
     private int _cueCount = 3; // ammount of fishes to catch until cue is deactivated, player must catch the ramaingn fish alone
 
+    [SerializeField] private bool _isTutorialScene = false;
+
     private void Awake()
     {
         EventManager.AddListener<bool>("SetFreezeOnCue", v => _freezeOnCue = v);
@@ -96,6 +98,12 @@ public class FishingMinigame : MonoBehaviour
         if (!_playing) return;
         if (context.phase != InputActionPhase.Started || context.interaction is not TapInteraction) return;
 
+
+        // While cue training is active, only allow taps when the cue is showing (time is frozen).
+        if (_freezeOnCue && !_waitingCueTap)
+        {
+            return;
+        }
 
         // If we froze time for the cue, resume ONLY when player taps
         if (_waitingCueTap)
@@ -170,8 +178,8 @@ public class FishingMinigame : MonoBehaviour
     {
         if(_playing) return;
 
-        _baitSlots[_currentBait].SetCount(_playerInventory.playerBaits[_currentBait].baitNum - 1);
-        EventManager.TriggerEvent("OnAddToPlayerBaits", _playerInventory.playerBaits[_currentBait].baitType, -1);
+        if (!_isTutorialScene) _baitSlots[_currentBait].SetCount(_playerInventory.playerBaits[_currentBait].baitNum - 1);
+        if(!_isTutorialScene) EventManager.TriggerEvent("OnAddToPlayerBaits", _playerInventory.playerBaits[_currentBait].baitType, -1);
         EventManager.TriggerEvent("ToggleCameraShake", fish.GetSpeed());
         EventManager.TriggerEvent("TurnOffMovement");
         _currentScore = 0;
@@ -198,23 +206,27 @@ public class FishingMinigame : MonoBehaviour
             UnfreezeFromCue();
             EventManager.TriggerEvent("FishCaught");
             AlmanacFishes almanacFish = null;
-            foreach (var fish in _almanacSO.almanacFishes)
-            {
-                if (fish.fishType == _currentFish.GetFishTypeSO())
-                    almanacFish = fish;
-            }
-            if (almanacFish!=null)
-                almanacFish.hasCaught = true;
-            var completed = true;
-            foreach (var fish in _almanacSO.almanacFishes)
-            {
-                if (!fish.hasCaught)
-                    completed = false;
-            }
-            if (completed)
-            {
-                StartCoroutine(VictorySequence());
-                return;
+
+            if (!_isTutorialScene)
+            { 
+                foreach (var fish in _almanacSO.almanacFishes)
+                {
+                    if (fish.fishType == _currentFish.GetFishTypeSO())
+                        almanacFish = fish;
+                }
+                if (almanacFish != null)
+                    almanacFish.hasCaught = true;
+                var completed = true;
+                foreach (var fish in _almanacSO.almanacFishes)
+                {
+                    if (!fish.hasCaught)
+                        completed = false;
+                }
+                if (completed)
+                {
+                    StartCoroutine(VictorySequence());
+                    return;
+                }
             }
         }
         EventManager.TriggerEvent("ToggleCameraShake", 0f);

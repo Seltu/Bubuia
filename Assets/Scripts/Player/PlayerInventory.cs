@@ -37,6 +37,8 @@ public class PlayerInventory : MonoBehaviour
         // saving to player prefs
         PlayerPrefs.SetInt(MONEY_KEY, _inventory.playerMoney);
         PlayerPrefs.Save();
+
+        EventManager.TriggerEvent("OnUpdateMoneyUI");
     }
 
     private void AddToPlayerBaits(BaitTypeSO bait, int num)
