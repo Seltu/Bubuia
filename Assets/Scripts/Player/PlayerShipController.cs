@@ -156,7 +156,8 @@ public class PlayerShipController : MonoBehaviour
             if (_splashTimer < 0)
             {
                 _splashTimer = splashInterval;
-                EventManager.TriggerEvent("Splash", transform.position, splashStrength);
+                var calculatedSplashStrength = boostActive ? splashStrength * 2 : splashStrength;
+                EventManager.TriggerEvent("Splash", transform.position, calculatedSplashStrength);
             }
         }
     }

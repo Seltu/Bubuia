@@ -20,6 +20,13 @@ public class PlayerInventorySO : ScriptableObject
     private string ItemKey(InventoryItem item) => ITEM_KEY_PREFIX + item.itemData.entryName;
     private string EquipmentKey(EquipSlot slot) => EQUIPMENT_KEY_PREFIX + slot.ToString();
 
+    public BaitTypeSO CurrentBait => (BaitTypeSO)GetEquippedItem(EquipSlot.Bait).itemData;
+    public FishingRodSO CurrentFishingRod => (FishingRodSO)GetEquippedItem(EquipSlot.FishingRod).itemData;
+    public MoulinetSO CurrentMoulinet => (MoulinetSO)GetEquippedItem(EquipSlot.Moulinet).itemData;
+    public FishingLineSO CurrentFishingLine => (FishingLineSO)GetEquippedItem(EquipSlot.FishingLine).itemData;
+    public HookSO CurrentHook => (HookSO)GetEquippedItem(EquipSlot.Hook).itemData;
+
+
     private void OnEnable()
     {
         hideFlags = HideFlags.DontUnloadUnusedAsset;

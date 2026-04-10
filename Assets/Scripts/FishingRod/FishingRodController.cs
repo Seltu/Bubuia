@@ -46,7 +46,7 @@ public class FishingRodController : MonoBehaviour
         EventManager.AddListener<Fish>("FishBiteHook", HookFish);
         EventManager.AddListener<TreasureSpot>("HookedTreasure", HookTreasure);
         EventManager.AddListener<bool>("EndFishingMinigame", EndHooking);
-        EventManager.AddListener<int, int>("ScoreUpdate", HookingScoreUpdate);
+        EventManager.AddListener<int, int>("DistanceUpdate", HookingDistanceUpdate);
         EventManager.AddListener("TreasureFail", TreasureFail);
 
         EventManager.TriggerEvent("CallTutorial", "Tutorial_FishRodHold");
@@ -58,7 +58,7 @@ public class FishingRodController : MonoBehaviour
         EventManager.RemoveListener<Fish>("FishBiteHook", HookFish);
         EventManager.RemoveListener<TreasureSpot>("HookedTreasure", HookTreasure);
         EventManager.RemoveListener<bool>("EndFishingMinigame", EndHooking);
-        EventManager.RemoveListener<int, int>("ScoreUpdate", HookingScoreUpdate);
+        EventManager.RemoveListener<int, int>("DistanceUpdate", HookingDistanceUpdate);
         EventManager.RemoveListener("TreasureFail", TreasureFail);
     }
 
@@ -363,7 +363,7 @@ public class FishingRodController : MonoBehaviour
         EventManager.TriggerEvent("StartFishingMinigame", fish);
     }
 
-    private void HookingScoreUpdate(int currentScore, int maxScore)
+    private void HookingDistanceUpdate(int currentScore, int maxScore)
     {
         _hookingDistance = 10f - 10f * ((float)currentScore / maxScore);
     }
