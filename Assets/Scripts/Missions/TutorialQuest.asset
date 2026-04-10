@@ -17,20 +17,20 @@ MonoBehaviour:
   questDesc: Complete trhe tutorial to play the game!
   objectives:
   - objectiveId: 
-    description: Mova o barco usando o joystick
+    description: Mova o barco usando as teclas WASD
     type: 3
     requiredAmount: 1
     currentAmount: 1
   - objectiveId: 
-    description: Jogue a linha tocando em qualquer lugar na tela
+    description: "Use e esgote a acelera\xE7\xE3o do barco 3 vezes"
     type: 3
-    requiredAmount: 1
-    currentAmount: 1
+    requiredAmount: 3
+    currentAmount: 3
   - objectiveId: 
-    description: Recolha a linha tocando em qualquer lugar na tela
+    description: Jogue e Recolha a linha nos pontos marcados
     type: 3
-    requiredAmount: 1
-    currentAmount: 1
+    requiredAmount: 3
+    currentAmount: 3
   - objectiveId: 
     description: Procure por um peixe e jogue o anzol perto dele
     type: 3
@@ -39,10 +39,10 @@ MonoBehaviour:
   - objectiveId: 
     description: Pegue 5 sardinhas
     type: 0
-    requiredAmount: 5
-    currentAmount: 5
+    requiredAmount: 3
+    currentAmount: 1
   - objectiveId: 
-    description: Colete uma Gema
+    description: Colete 1 Gema
     type: 0
     requiredAmount: 1
     currentAmount: 1
@@ -50,9 +50,9 @@ MonoBehaviour:
     description: Procure um ponto de tesouro
     type: 1
     requiredAmount: 1
-    currentAmount: 0
+    currentAmount: 1
   - objectiveId: 
     description: Fisgue um Tesouro
-    type: 1
+    type: 0
     requiredAmount: 1
-    currentAmount: 0
+    currentAmount: 1

@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private Transform _boatTransform;
     [SerializeField] private Transform _boatModelTransform;
     [SerializeField] private FishingRodController _rodController;
+    [SerializeField] private PlayerShipController _shipController;
     [SerializeField] private LayerMask _treasureLayer;
     [SerializeField] private LayerMask _fishLayer;
     [SerializeField] private GameObject _fishSpawner;
@@ -21,10 +23,11 @@ public class TutorialController : MonoBehaviour
     [Header("Pop Up UI")]
     [SerializeField] private CanvasGroup _tutCanvasGroup;
     [SerializeField] private float _fadeTime = 0.5f;
-    [SerializeField] private TMP_Text _upperText;
-    [SerializeField] private TMP_Text _lowerText;
+    [SerializeField] private TMP_Text _popUpText;
 
     [Header("UI In-Game")]
+    [SerializeField] private CanvasGroup _fishingCanvas;
+    [SerializeField] private CanvasGroup _sideInstructionsCG;
     [SerializeField] private TMP_Text _instructionsTxt;
     [SerializeField] private Animator _anim;
 
@@ -32,18 +35,41 @@ public class TutorialController : MonoBehaviour
     private bool _startTutu = false;
     private bool _waitingForPopup = true;
 
-    #region detecting movement
+    [Header("Movement Detection")]
+    [SerializeField] private GameObject _movementCircle;
+    [SerializeField] private GameObject _wasdIcons;
+    [SerializeField] private GameObject _spaceIcon;
     [SerializeField] private float _moveAmmount = 3f;
     private Vector3 _initialPos;
-    #endregion
+    private bool _wasBoostLockedLastFrame = false;
+
+    [Header("Cast & Recall Detection")]
+    [SerializeField] private GameObject _spots;
+
+    [Header("Gem Detection")]
+    [SerializeField] private PointingArrow _poitingArrow;
 
     private bool _hasCast;
 
     [Header("Step Transition")]
     [SerializeField] private float _stepTransitionDelay = 0.35f;
+    [TextArea(3, 10)]
+    [SerializeField] private string[] _stepTexts;
     private bool _isAdvancingStep = false;
 
     private bool _firstGemCollected = false;
+
+    #region Step constants
+    private const int OBJ_MOVE = 0;
+    private const int OBJ_BOOST = 1;
+    private const int OBJ_CAST_RECALL = 2;
+    private const int OBJ_AIM = 3;
+    private const int OBJ_FISH = 4;
+    private const int OBJ_GEM = 5;
+    private const int OBJ_TREASURE_NEAR = 6;
+    private const int OBJ_TREASURE_CATCH = 7;
+    #endregion
+
 
     private void Start()
     {
@@ -87,15 +113,16 @@ public class TutorialController : MonoBehaviour
 
         switch (_index)
         {
-            case 0: DetectMovement(); break;
-            case 1: DetectCastAndRecall(); break;
-            case 2: DetectCastAndRecall(); break;
-            case 3: DetectAiming(); break;
-            case 4: DetectFishing(); break;
-            case 5: DetectGemCollection(); break;
-            case 6: DetectTresureNearby(); break;
-            case 7: DetectingTreasuing(); break;
-            case 8: TutorialCompleted(); break;
+            case 0: AdvanceIndex(); break;
+            case 1: DetectMovement(); break;
+            case 2: DetectBoost(); break;
+            case 3: DetectCastAndRecall(); break;
+            case 4: DetectAiming(); break;
+            case 5: DetectFishing(); break;
+            case 6: DetectGemCollection(); break;
+            case 7: DetectTresureNearby(); break;
+            case 8: DetectingTreasuing(); break;
+            case 9: TutorialCompleted(); break;
         }
     }
 
@@ -116,53 +143,23 @@ public class TutorialController : MonoBehaviour
 
     private void SetupPopupText(int index)
     {
+        _popUpText.text = _stepTexts[index];
+
         switch (index)
         {
-            case 0:
-                _upperText.text = "Bem vindo ao Bubuia! Nesta fase voçê aprenderá os controles e mecânicas básicas do jogo";
-                _lowerText.text = "Vamos começar com a movimentação\r\n\r\nUse o </color=#FFEC00>joystick</color> no canto indferior esquerdo para mover o barco.";
+            case OBJ_FISH:
+                if (!_fishSpawner.activeInHierarchy)
+                {
+                    _fishSpawner.SetActive(true);
+                }
                 break;
 
-            case 1:
-                _upperText.text = "Agora vamos aprender a lançar a linha";
-                _lowerText.text = "Clique em qualquer ponto da tela para lançar o anzol neste ponto";
-                break;
-
-            case 2:
-                _upperText.text = "Recolher";
-                _lowerText.text = "Agora tente puxar a linha de volta para o barco, clicando na tela novamente";
-                break;
-
-            case 3:
-                _upperText.text = "Hora da Pesca";
-                _lowerText.text = "Mova o barco e procure peixes! QUando achar um, jogue o anzol bem perto dele!";
-                if (!_fishSpawner.activeInHierarchy) _fishSpawner.SetActive(true);
-                break;
-
-            case 4:
-                _upperText.text = "Hora da Pesca";
-                _lowerText.text = "Espere o peixe morder a isca. Quando ele morder, toque ma tela APENAS quando o aro branco estiver </color=yellow>dentro</color> do círculo! Repita até puxar o peixe para o barco";
-                break;
-
-            case 5:
-                _upperText.text = "Coletando Gemas";
-                _lowerText.text = "Ótimo! agora sabemos pescar. Mas há mais coisas na água...\nProcure por gemas e colete uma\n";
-                if (!_treasureSpawner.activeInHierarchy) _treasureSpawner.SetActive(true);
-                break;
-
-            case 6:
-                _upperText.text = "Caça ao Tesouro";
-                _lowerText.text = "Procure por um marcador de tesouro\nDica: Caminhos de gemas podem indicar um tesouro!\nEles aparecem como pontosa escuros na água";
-                break;
-
-            case 7:
-                _upperText.text = "Fisgue o Tesouro";
-                _lowerText.text = "Jogue o anzol no círculo do tesouro e toque várias vezes na tela, rapidamente, antes que o círculo vermelho encolha totalmente!";
-                break;
-
-            case 8:
-                _upperText.text = "Tutorial Completado!";
-                _lowerText.text = "parabéns! Você completou o tutorial. Agora pode voltar ao menu e jogar normalmente\nDivirta-se! ^-^";
+            case OBJ_GEM:
+                if (!_treasureSpawner.activeInHierarchy)
+                {
+                    _fishSpawner.SetActive(false);
+                    _treasureSpawner.SetActive(true);
+                }
                 break;
         }
     }
@@ -170,10 +167,10 @@ public class TutorialController : MonoBehaviour
     private void UpdateInputLocks()
     {
         // movement locked only on cast / recall steps
-        InputLock.movementLocked = (_index == 1 || _index == 2);
+        InputLock.movementLocked = (_index == 0 || _index == 3);
 
         // click locked during movement, gem collection, and treasure-nearby search
-        InputLock.clickLocked = (_index == 0 || _index == 5 || _index == 6);
+        InputLock.clickLocked = (_index == 0 || _index == 2 || _index == 6 || _index == 7);
     }
 
     private void AdvanceIndex()
@@ -203,19 +200,36 @@ public class TutorialController : MonoBehaviour
     public void FadeInPopUp()
     {
         Time.timeScale = 0f;
+
+        _tutCanvasGroup.DOKill();
+        _fishingCanvas.DOKill();
+        _sideInstructionsCG.DOKill();
+
         _tutCanvasGroup.interactable = true;
         _tutCanvasGroup.blocksRaycasts = true;
-        _tutCanvasGroup.DOFade(1, _fadeTime).SetUpdate(true);
+
+        _tutCanvasGroup.alpha = 0f;
+        _tutCanvasGroup.DOFade(1f, _fadeTime).SetUpdate(true);
+
+        _fishingCanvas.DOFade(0f, _fadeTime).SetUpdate(true);
+        _sideInstructionsCG.DOFade(0f, _fadeTime).SetUpdate(true);
     }
 
     public void FadeOutPopUp()
     {
+        _tutCanvasGroup.DOKill();
+        _fishingCanvas.DOKill();
+        _sideInstructionsCG.DOKill();
+
         _tutCanvasGroup.interactable = false;
-        _tutCanvasGroup.DOFade(0, _fadeTime).SetUpdate(true).OnComplete(() =>
+        _tutCanvasGroup.DOFade(0f, _fadeTime).SetUpdate(true).OnComplete(() =>
         {
             _tutCanvasGroup.blocksRaycasts = false;
             Time.timeScale = 1f;
         });
+
+        _sideInstructionsCG.DOFade(1f, _fadeTime).SetUpdate(true);
+        _fishingCanvas.DOFade(1f, _fadeTime).SetUpdate(true);
 
         if (_index == 5 && _firstGemCollected)
         {
@@ -227,7 +241,9 @@ public class TutorialController : MonoBehaviour
     #region Detections
     private void DetectMovement()
     {
-        _instructionsTxt.SetText(_tutorialQuest.objectives[0].description);
+        if (!_movementCircle.activeInHierarchy) _movementCircle.SetActive(true);
+        if (!_wasdIcons.activeInHierarchy) _wasdIcons.SetActive(true);
+        _instructionsTxt.SetText(_tutorialQuest.objectives[OBJ_MOVE].description);
         float distanceMoved = Vector3.Distance(_boatTransform.position, _initialPos);
         _anim.SetBool("MoveTut", true);
 
@@ -235,33 +251,57 @@ public class TutorialController : MonoBehaviour
         {
             _anim.SetBool("MoveTut", false);
             _tutorialQuest.objectives[0].currentAmount = 1;
+            _wasdIcons.SetActive(false);
+            _movementCircle.SetActive(false);
             AdvanceIndex();
         }
     }
 
-    private void DetectCastAndRecall()
+    private void DetectBoost()
     {
-        int objIndex = _index;
-        _instructionsTxt.SetText(_tutorialQuest.objectives[objIndex].description);
-        _anim.SetBool("HeelTut", true);
+        QuestObjective boostObjective = _tutorialQuest.objectives[OBJ_BOOST];
+        _instructionsTxt.SetText(boostObjective.description + "\n" + boostObjective.currentAmount + "/" + boostObjective.requiredAmount);
+        if(!_spaceIcon.activeInHierarchy) _spaceIcon.SetActive(true);
 
-        if (_index == 1)
+        bool isBoostLocked = _shipController.IsBoostLocked();
+
+        // Count only once when boost changes from available -> depleted/locked
+        if (!_wasBoostLockedLastFrame && isBoostLocked)
         {
-            if (_rodController.IsHookInWater())
+            boostObjective.currentAmount++;
+
+            if (boostObjective.isCompleted)
             {
-                _anim.SetBool("HeelTut", false);
-                _tutorialQuest.objectives[1].currentAmount = 1;
+                _spaceIcon.SetActive(false);
                 AdvanceIndex();
             }
         }
-        else if (_index == 2)
-        {
-            if (!_hasCast && _rodController.IsHookInWater()) _hasCast = true;
 
-            if (_hasCast && !_rodController.IsHookInWater())
+        _wasBoostLockedLastFrame = isBoostLocked;
+    }
+
+    private void DetectCastAndRecall()
+    {
+        QuestObjective castRecallObjective = _tutorialQuest.objectives[OBJ_CAST_RECALL];
+        _instructionsTxt.SetText(castRecallObjective.description + "\n" + castRecallObjective.currentAmount + "/" + castRecallObjective.requiredAmount);
+        _anim.SetBool("HeelTut", true);
+        if (!_spots.activeInHierarchy) _spots.SetActive(true);
+
+        // First half: player has cast the hook
+        if (!_hasCast && _rodController.IsHookInWater())
+        {
+            _hasCast = true;
+        }
+
+        // Second half: player had cast before, and now fully recalled
+        if (_hasCast && !_rodController.IsHookInWater())
+        {
+            _hasCast = false;
+            //castRecallObjective.currentAmount++;
+
+            if (castRecallObjective.isCompleted)
             {
-                _tutorialQuest.objectives[2].currentAmount = 1;
-                _hasCast = false;
+                _spots.SetActive(false);
                 _anim.SetBool("HeelTut", false);
                 AdvanceIndex();
             }
@@ -283,15 +323,16 @@ public class TutorialController : MonoBehaviour
 
     private void DetectFishing()
     {
-        _instructionsTxt.SetText(_tutorialQuest.objectives[4].description);
+        QuestObjective fishingObj = _tutorialQuest.objectives[OBJ_FISH];
+        _instructionsTxt.SetText(fishingObj.description + "\n" + fishingObj.currentAmount + "/" + fishingObj.requiredAmount);
     }
 
     private void OnCaughtFish()
     {
-        if (_index == 4)
+        if (_index == 5)
         {
-            _tutorialQuest.objectives[4].currentAmount += 1;
-            if (_tutorialQuest.objectives[4].isCompleted)
+            _tutorialQuest.objectives[OBJ_FISH].currentAmount += 1;
+            if (_tutorialQuest.objectives[OBJ_FISH].isCompleted)
             {
                 AdvanceIndex();
             }
@@ -300,8 +341,10 @@ public class TutorialController : MonoBehaviour
 
     private void DetectGemCollection()
     {
-        _instructionsTxt.SetText(_tutorialQuest.objectives[5].description);
-        // progression happens through OnUpdateMoneyUI event -> PlayMoneyAnim()
+        QuestObjective gemObjective = _tutorialQuest.objectives[OBJ_GEM];
+        _instructionsTxt.SetText(gemObjective.description);
+
+        if (!_poitingArrow.gameObject.activeInHierarchy) _poitingArrow.gameObject.SetActive(true);
     }
 
     private void PlayMoneyAnim()
@@ -310,25 +353,27 @@ public class TutorialController : MonoBehaviour
         if (_firstGemCollected) return;
 
         _firstGemCollected = true;
-        _upperText.text = "Estas são suas gemas\r\n\r\nCom elas, você pode comprar itens e upgrades";
-        _lowerText.text = "Você pode obtê-las ao vender seus peixes, ou coleta-las navegando pelo mapa";
 
         InputLock.movementLocked = true;
         InputLock.clickLocked = true;
-        _anim.SetTrigger("MoneyTut");
+        
+        StartCoroutine(GemAnimDelay());
+    }
 
-        FadeInPopUp();
+    private IEnumerator GemAnimDelay()
+    {
+        yield return new WaitForSecondsRealtime(_stepTransitionDelay);
 
-        // Advance tutorial if we are on the gem-collection step
-        if (_index == 5)
-        {
-            _tutorialQuest.objectives[5].currentAmount = 1;
-        }
+        _poitingArrow.SetLookAtTreasure();
+
+        _tutorialQuest.objectives[OBJ_GEM].currentAmount = 1;
+
+        AdvanceIndex();
     }
 
     private void DetectTresureNearby()
     {
-        _instructionsTxt.SetText(_tutorialQuest.objectives[6].description);
+        _instructionsTxt.SetText(_tutorialQuest.objectives[OBJ_TREASURE_NEAR].description);
         Collider[] nearbyTreasure = Physics.OverlapSphere(_boatModelTransform.position, 20f, _treasureLayer, QueryTriggerInteraction.Collide);
 
         if (nearbyTreasure.Length > 0)
@@ -347,14 +392,14 @@ public class TutorialController : MonoBehaviour
     {
         Debug.Log("Caught Treasure");
 
-        if (_index == 7)
+        if (_index == 8)
         {
-            _tutorialQuest.objectives[7].currentAmount += 1;
+            _tutorialQuest.objectives[OBJ_TREASURE_CATCH].currentAmount += 1;
             StopFishingAnimClue();
 
-            if (_tutorialQuest.objectives[7].isCompleted)
+            if (_tutorialQuest.objectives[OBJ_TREASURE_CATCH].isCompleted)
             {
-                AdvanceIndex();
+                Invoke("AdvanceIndex", _stepTransitionDelay);
             }
         }
     }
@@ -366,6 +411,8 @@ public class TutorialController : MonoBehaviour
             obj.currentAmount = 0;
 
         _firstGemCollected = false;
+        _firstGemCollected = false;
+        _wasBoostLockedLastFrame = false;
     }
 
     private void TutorialCompleted()
@@ -377,7 +424,7 @@ public class TutorialController : MonoBehaviour
 
     public void ReturnToMenuButton()
     {
-        if (_index == 8)
+        if (_index == 9)
         {
             Time.timeScale = 1f;
             ReturnToMenu();
