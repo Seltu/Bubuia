@@ -1,0 +1,1646 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7176960772332480140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 936, y: -168}
+  ports:
+    keys:
+    - _origin
+    - _choices
+    - _next
+    - _actions
+    values:
+    - _fieldName: _origin
+      _node: {fileID: -7176960772332480140}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _choices 0
+        node: {fileID: -2052905656917191602}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices
+      _node: {fileID: -7176960772332480140}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: -7176960772332480140}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -7176960772332480140}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 6636276953096486617}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "\xD3timo, venha ver o que temos em estoque!"
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &-6252995332396203686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1976, y: -232}
+  ports:
+    keys:
+    - _choices
+    - choices 0
+    - choices 1
+    - _origin
+    - _next
+    - _actions
+    - _choices 0
+    values:
+    - _fieldName: _choices
+      _node: {fileID: -6252995332396203686}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -6252995332396203686}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -6252995332396203686}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _origin
+      _node: {fileID: -6252995332396203686}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _choices 0
+        node: {fileID: -873600295281403127}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: -6252995332396203686}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -6252995332396203686}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 6009487165649011591}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: -6252995332396203686}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "Muito obrigado, jovem! Aqui, 100 Bubuias pelo seu esfor\xE7o."
+  _hasChoices: 1
+  _choices:
+  - "Por nada! At\xE9 mais tarde!"
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &-5666748714136577091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f17bdf16db3f34baa9cc64741260fd, type: 3}
+  m_Name: Choice
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1208, y: 584}
+  ports:
+    keys:
+    - _origin
+    - _yes
+    - _no
+    values:
+    - _fieldName: _origin
+      _node: {fileID: -5666748714136577091}
+      _typeQualifiedName: ChoiceNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _choices 0
+        node: {fileID: 6120172832197966000}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _yes
+      _node: {fileID: -5666748714136577091}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 4850720850588200139}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _no
+      _node: {fileID: -5666748714136577091}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 3256325831538496733}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _yes: {fileID: 0}
+  _conditions:
+  - flagCondition: EndFishQuest1
+    flagValue: 1
+    itemCondition: {fileID: 0}
+    itemQuantity: 0
+  _no: {fileID: 0}
+--- !u!114 &-3213323006629042583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 936, y: 952}
+  ports:
+    keys:
+    - _choices
+    - choices 0
+    - choices 1
+    - _origin
+    - _choices 0
+    - _next
+    - _actions
+    values:
+    - _fieldName: _choices
+      _node: {fileID: -3213323006629042583}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -3213323006629042583}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -3213323006629042583}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _origin
+      _node: {fileID: -3213323006629042583}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _choices 2
+        node: {fileID: -2052905656917191602}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: -3213323006629042583}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _next
+      _node: {fileID: -3213323006629042583}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -3213323006629042583}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "At\xE9 mais tarde!"
+  _hasChoices: 0
+  _choices:
+  - <color=red>> Wow!</color>
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &-2325559870945890837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f17bdf16db3f34baa9cc64741260fd, type: 3}
+  m_Name: Choice
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1208, y: 152}
+  ports:
+    keys:
+    - _origin
+    - _yes
+    - _no
+    values:
+    - _fieldName: _origin
+      _node: {fileID: -2325559870945890837}
+      _typeQualifiedName: ChoiceNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _choices 0
+        node: {fileID: 5644666470543483520}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _yes
+      _node: {fileID: -2325559870945890837}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: -873600295281403127}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _no
+      _node: {fileID: -2325559870945890837}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 3522006354252155960}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _yes: {fileID: 0}
+  _conditions:
+  - flagCondition: 
+    flagValue: 0
+    itemCondition: {fileID: 11400000, guid: d3b9f685d2863c04fa660c80ee4617e9, type: 2}
+    itemQuantity: 3
+  _no: {fileID: 0}
+--- !u!114 &-2052905656917191602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 8, y: -8}
+  ports:
+    keys:
+    - _choices
+    - choices 0
+    - choices 1
+    - _origin
+    - _choices 0
+    - _choices 1
+    - _next
+    - _actions
+    - _choices 2
+    values:
+    - _fieldName: _choices
+      _node: {fileID: -2052905656917191602}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -2052905656917191602}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -2052905656917191602}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _origin
+      _node: {fileID: -2052905656917191602}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: -2052905656917191602}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: _origin
+        node: {fileID: -7176960772332480140}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _choices 1
+      _node: {fileID: -2052905656917191602}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: _origin
+        node: {fileID: 6385565345927462978}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _next
+      _node: {fileID: -2052905656917191602}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -2052905656917191602}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 2
+      _node: {fileID: -2052905656917191602}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: _origin
+        node: {fileID: -3213323006629042583}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "Bom dia! Belo dia hoje, n\xE3o \xE9 mesmo?"
+  _hasChoices: 1
+  _choices:
+  - "Ol\xE1, queria comprar umas coisas."
+  - Bom dia! Eu tenho algo a dizer...
+  - "Preciso ir, com licen\xE7a."
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &-873600295281403127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1672, y: -232}
+  ports:
+    keys:
+    - _choices
+    - choices 0
+    - choices 1
+    - _origin
+    - _next
+    - _actions
+    - _choices 0
+    values:
+    - _fieldName: _choices
+      _node: {fileID: -873600295281403127}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -873600295281403127}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -873600295281403127}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _origin
+      _node: {fileID: -873600295281403127}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _yes
+        node: {fileID: -2325559870945890837}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: -873600295281403127}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -873600295281403127}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: -873600295281403127}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: _origin
+        node: {fileID: -6252995332396203686}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "Que maravilha! J\xE1 voltaste com elas?"
+  _hasChoices: 1
+  _choices:
+  - "Sim senhor! Aqui est\xE3o."
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &-521627894645646899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1976, y: 152}
+  ports:
+    keys:
+    - _choices
+    - choices 0
+    - choices 1
+    - _origin
+    - _next
+    - _actions
+    - _choices 0
+    values:
+    - _fieldName: _choices
+      _node: {fileID: -521627894645646899}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: -521627894645646899}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: -521627894645646899}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _origin
+      _node: {fileID: -521627894645646899}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _choices 0
+        node: {fileID: 3522006354252155960}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: -521627894645646899}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -521627894645646899}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: -521627894645646899}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "Tudo bem, o jantar de sardinhas pode esperar. Me avise quando pesc\xE1-las"
+  _hasChoices: 0
+  _choices:
+  - 
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8647175500e5c8a409abaaeba2671001, type: 3}
+  m_Name: SampleDialogue
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -2052905656917191602}
+  - {fileID: -3213323006629042583}
+  - {fileID: 3256325831538496733}
+  - {fileID: 3586379657916698859}
+  - {fileID: 4913696199300622393}
+  - {fileID: 6636276953096486617}
+  - {fileID: -7176960772332480140}
+  - {fileID: 6009487165649011591}
+  - {fileID: 6385565345927462978}
+  - {fileID: 6120172832197966000}
+  - {fileID: 5644666470543483520}
+  - {fileID: -2325559870945890837}
+  - {fileID: -873600295281403127}
+  - {fileID: 3522006354252155960}
+  - {fileID: -6252995332396203686}
+  - {fileID: -521627894645646899}
+  - {fileID: 8173077412006901209}
+  - {fileID: -5666748714136577091}
+  - {fileID: 4850720850588200139}
+--- !u!114 &3256325831538496733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1672, y: 888}
+  ports:
+    keys:
+    - _choices
+    - _origin
+    - _choices 0
+    - _choices 1
+    - _next
+    - _actions
+    values:
+    - _fieldName: _choices
+      _node: {fileID: 3256325831538496733}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _origin
+      _node: {fileID: 3256325831538496733}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _no
+        node: {fileID: -5666748714136577091}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: 3256325831538496733}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: _origin
+        node: {fileID: 4913696199300622393}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _choices 1
+      _node: {fileID: 3256325831538496733}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: _origin
+        node: {fileID: 3586379657916698859}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _next
+      _node: {fileID: 3256325831538496733}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 3256325831538496733}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "J\xE1 que mencionou, eu estava querendo jantar sardinhas hoje..."
+  _hasChoices: 1
+  _choices:
+  - "Beleza! Vou pesc\xE1-las para voc\xEA."
+  - Estou meio ocupado...
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &3522006354252155960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1672, y: 152}
+  ports:
+    keys:
+    - _choices
+    - choices 0
+    - choices 1
+    - _origin
+    - _next
+    - _actions
+    - _choices 0
+    values:
+    - _fieldName: _choices
+      _node: {fileID: 3522006354252155960}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 3522006354252155960}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 3522006354252155960}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _origin
+      _node: {fileID: 3522006354252155960}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _no
+        node: {fileID: -2325559870945890837}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: 3522006354252155960}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 3522006354252155960}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: 3522006354252155960}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: _origin
+        node: {fileID: -521627894645646899}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "Que maravilha! J\xE1 voltaste com elas?"
+  _hasChoices: 1
+  _choices:
+  - "Ainda n\xE3o, estou trabalhando nisso..."
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &3586379657916698859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1976, y: 1336}
+  ports:
+    keys:
+    - _choices
+    - choices 0
+    - choices 1
+    - _origin
+    - _next
+    - _actions
+    values:
+    - _fieldName: _choices
+      _node: {fileID: 3586379657916698859}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 3586379657916698859}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 3586379657916698859}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _origin
+      _node: {fileID: 3586379657916698859}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _choices 1
+        node: {fileID: 3256325831538496733}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: 3586379657916698859}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 3586379657916698859}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "Hm, tudo bem, se estiver dispon\xEDvel outra hora \xE9 s\xF3 me avisar!"
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &4850720850588200139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1672, y: 584}
+  ports:
+    keys:
+    - _choices
+    - choices 0
+    - choices 1
+    - _origin
+    - _next
+    - _actions
+    - _choices 0
+    values:
+    - _fieldName: _choices
+      _node: {fileID: 4850720850588200139}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 4850720850588200139}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 4850720850588200139}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _origin
+      _node: {fileID: 4850720850588200139}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _yes
+        node: {fileID: -5666748714136577091}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: 4850720850588200139}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 4850720850588200139}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: 4850720850588200139}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: Nada no momento, jovem. Talvez outra hora.
+  _hasChoices: 0
+  _choices:
+  - 
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &4913696199300622393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1976, y: 888}
+  ports:
+    keys:
+    - _choices
+    - choices 0
+    - choices 1
+    - _origin
+    - _next
+    - _actions
+    - _choices 0
+    - _choices 1
+    values:
+    - _fieldName: _choices
+      _node: {fileID: 4913696199300622393}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: choices 0
+      _node: {fileID: 4913696199300622393}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: choices 1
+      _node: {fileID: 4913696199300622393}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _origin
+      _node: {fileID: 4913696199300622393}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _choices 0
+        node: {fileID: 3256325831538496733}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: 4913696199300622393}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 4913696199300622393}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 8173077412006901209}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: 4913696199300622393}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _choices 1
+      _node: {fileID: 4913696199300622393}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: "Eba! Muito obrigado! volte aqui com as sardinhas e ser\xE1 altamente
+    compensado!"
+  _hasChoices: 1
+  _choices:
+  - Ok!
+  - Beleza!
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &5644666470543483520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 936, y: 152}
+  ports:
+    keys:
+    - _choices
+    - _origin
+    - _choices 0
+    - _next
+    - _actions
+    values:
+    - _fieldName: _choices
+      _node: {fileID: 5644666470543483520}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _origin
+      _node: {fileID: 5644666470543483520}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _yes
+        node: {fileID: 6385565345927462978}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: 5644666470543483520}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: _origin
+        node: {fileID: -2325559870945890837}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _next
+      _node: {fileID: 5644666470543483520}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 5644666470543483520}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: Pois diga!
+  _hasChoices: 1
+  _choices:
+  - Sobre as sardinhas que o senhor pediu...
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &6009487165649011591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e5a51c06136834891c8120861bd83e, type: 3}
+  m_Name: Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2216, y: -40}
+  ports:
+    keys:
+    - _origin
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 6009487165649011591}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _actions
+        node: {fileID: -6252995332396203686}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _callEvent: 0
+  _eventName: AddItem
+  _boolValue: 0
+  _intValue: 0
+  _floatValue: 0
+  _stringValue: 
+  _changeGlobalFlag: 1
+  _flagName: EndFishQuest1
+  _flagValue: 1
+--- !u!114 &6120172832197966000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: "Jus\xE9"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 936, y: 584}
+  ports:
+    keys:
+    - _choices
+    - _origin
+    - _choices 0
+    - _next
+    - _actions
+    values:
+    - _fieldName: _choices
+      _node: {fileID: 6120172832197966000}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _origin
+      _node: {fileID: 6120172832197966000}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _no
+        node: {fileID: 6385565345927462978}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices 0
+      _node: {fileID: 6120172832197966000}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: _origin
+        node: {fileID: -5666748714136577091}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: _next
+      _node: {fileID: 6120172832197966000}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 6120172832197966000}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: "Jus\xE9"
+  _sentence: Pois diga!
+  _hasChoices: 1
+  _choices:
+  - O senhor precisa de alguma coisa?
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &6385565345927462978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f17bdf16db3f34baa9cc64741260fd, type: 3}
+  m_Name: Choice
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 504, y: 264}
+  ports:
+    keys:
+    - _origin
+    - _yes
+    - _no
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 6385565345927462978}
+      _typeQualifiedName: ChoiceNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _choices 1
+        node: {fileID: -2052905656917191602}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _yes
+      _node: {fileID: 6385565345927462978}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 5644666470543483520}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _no
+      _node: {fileID: 6385565345927462978}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 6120172832197966000}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _yes: {fileID: 0}
+  _conditions:
+  - flagCondition: StartFishQuest1
+    flagValue: 1
+    itemCondition: {fileID: 0}
+    itemQuantity: 0
+  - flagCondition: EndFishQuest1
+    flagValue: 0
+    itemCondition: {fileID: 0}
+    itemQuantity: 0
+  _no: {fileID: 0}
+--- !u!114 &6636276953096486617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e5a51c06136834891c8120861bd83e, type: 3}
+  m_Name: Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1208, y: -24}
+  ports:
+    keys:
+    - _origin
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 6636276953096486617}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _actions
+        node: {fileID: -7176960772332480140}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _callEvent: 1
+  _eventName: OpenFishingShop
+  _boolValue: 0
+  _intValue: 0
+  _floatValue: 0
+  _stringValue: 
+  _changeGlobalFlag: 0
+  _flagName: 
+  _flagValue: 1
+--- !u!114 &8173077412006901209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e5a51c06136834891c8120861bd83e, type: 3}
+  m_Name: Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2248, y: 1160}
+  ports:
+    keys:
+    - _origin
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 8173077412006901209}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _actions
+        node: {fileID: 4913696199300622393}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _callEvent: 0
+  _eventName: 
+  _boolValue: 0
+  _intValue: 0
+  _floatValue: 0
+  _stringValue: 
+  _changeGlobalFlag: 1
+  _flagName: StartFishQuest1
+  _flagValue: 1

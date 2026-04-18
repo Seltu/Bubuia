@@ -101,15 +101,9 @@ public class PlayerInventorySO : ScriptableObject
         }
     }
 
-    public int GetAmount(InventoryItem item)
+    public int GetAmount(DescriptionDataSO item)
     {
-        for (int i = 0; i < items.Count; i++)
-        {
-            if (items[i] == item)
-                return items[i].amount;
-        }
-
-        return 0;
+        return items.Find(o=>o.itemData==item).amount;
     }
 
     private void SaveItem(InventoryItem item)

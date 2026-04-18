@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SearchService;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float _textSpeed = 0.02f;
     [SerializeField] private float _bubbleResizeSpeed = 10f;
     [SerializeField] private InputActionReference _clickAction;
+    [SerializeField] private PlayerInventorySO _playerInventory;
     private Vector2 _textSize;
     private DialogueSegment _currentSegment;
     private bool _awaitingInput;
@@ -58,7 +60,24 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        StartCoroutine(DisplaySegment(_currentSegment.GetNextDialogue(option)));
+        var nextNode = _currentSegment.GetNextDialogue(option);
+
+        if(nextNode is DialogueSegment dialogueSegment)
+        {
+            foreach (ActionNode action in dialogueSegment.GetActions())
+            {
+                action.Act();
+            }
+            StartCoroutine(DisplaySegment(dialogueSegment));
+        }
+        else if (nextNode is ChoiceNode choiceNode)
+        {
+            StartCoroutine(DisplaySegment(choiceNode.Decide(_playerInventory)));
+        }
+        else
+        {
+            EndDialogue();
+        }
     }
 
     public void StartDialogue(DialogueSO dialogue)
@@ -100,11 +119,6 @@ public class DialogueManager : MonoBehaviour
 
     public IEnumerator DisplaySegment(DialogueSegment dialogueSegment)
     {
-        if(dialogueSegment == null)
-        {
-            EndDialogue();
-            yield break;
-        }
         _currentSegment = dialogueSegment;
         _dialogueText.text = "";
         _textSize.y = _dialogueText.GetPreferredValues(dialogueSegment.GetSentence()).y;
