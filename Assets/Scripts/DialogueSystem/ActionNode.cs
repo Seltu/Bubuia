@@ -30,12 +30,12 @@ public class ActionNode : Node
 
     [SerializeField] private bool _changeGlobalFlag;
     [SerializeField] private string _flagName;
-    [SerializeField] private bool _flagValue;
+    [SerializeField] private int _flagValue;
 
     public bool CallEvent { get => _callEvent; }
     public string EventName { get => _eventName; }
     public bool ChangeGlobalFlag { get => _changeGlobalFlag; }
-    public bool FlagValue { get => _flagValue; }
+    public int FlagValue { get => _flagValue; }
 
     public override object GetValue(NodePort port)
     {

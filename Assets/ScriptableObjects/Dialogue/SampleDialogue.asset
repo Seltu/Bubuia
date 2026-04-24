@@ -235,8 +235,9 @@ MonoBehaviour:
   _origin: {fileID: 0}
   _yes: {fileID: 0}
   _conditions:
-  - flagCondition: EndFishQuest1
-    flagValue: 1
+  - flagCondition: FishQuest1
+    flagOperator: 1
+    flagValue: 4
     itemCondition: {fileID: 0}
     itemQuantity: 0
   _no: {fileID: 0}
@@ -401,8 +402,9 @@ MonoBehaviour:
   _origin: {fileID: 0}
   _yes: {fileID: 0}
   _conditions:
-  - flagCondition: 
-    flagValue: 0
+  - flagCondition: FishQuest1
+    flagOperator: 1
+    flagValue: 3
     itemCondition: {fileID: 11400000, guid: d3b9f685d2863c04fa660c80ee4617e9, type: 2}
     itemQuantity: 3
   _no: {fileID: 0}
@@ -1411,8 +1413,8 @@ MonoBehaviour:
   _floatValue: 0
   _stringValue: 
   _changeGlobalFlag: 1
-  _flagName: EndFishQuest1
-  _flagValue: 1
+  _flagName: FishQuest1
+  _flagValue: 5
 --- !u!114 &6120172832197966000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1555,11 +1557,13 @@ MonoBehaviour:
   _origin: {fileID: 0}
   _yes: {fileID: 0}
   _conditions:
-  - flagCondition: StartFishQuest1
-    flagValue: 1
+  - flagCondition: FishQuest1
+    flagOperator: 1
+    flagValue: 0
     itemCondition: {fileID: 0}
     itemQuantity: 0
   - flagCondition: EndFishQuest1
+    flagOperator: 0
     flagValue: 0
     itemCondition: {fileID: 0}
     itemQuantity: 0
@@ -1642,5 +1646,5 @@ MonoBehaviour:
   _floatValue: 0
   _stringValue: 
   _changeGlobalFlag: 1
-  _flagName: StartFishQuest1
+  _flagName: FishQuest1
   _flagValue: 1

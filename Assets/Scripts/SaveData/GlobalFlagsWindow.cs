@@ -16,7 +16,7 @@ public class GlobalFlagsWindow : EditorWindow
 
         foreach (GlobalFlag flag in GlobalFlagsManager.GetAllFlags())
         {
-            bool newValue = EditorGUILayout.Toggle(flag.id, flag.value);
+            int newValue = EditorGUILayout.IntField(flag.id, flag.value);
 
             if (newValue != flag.value)
             {

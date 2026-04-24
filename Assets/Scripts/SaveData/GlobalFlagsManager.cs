@@ -4,15 +4,15 @@ using UnityEngine;
 
 public static class GlobalFlagsManager
 {
-    private static Dictionary<string, bool> globalFlags = new Dictionary<string, bool>();
+    private static Dictionary<string, int> globalFlags = new Dictionary<string, int>();
     private static string SavePath => Path.Combine(Application.persistentDataPath, "global_flags.json");
 
-    public static bool GetFlag(string id)
+    public static int GetFlag(string id)
     {
         if(globalFlags.ContainsKey(id))
             return globalFlags[id]; 
         else
-            return false;
+            return 0;
     }
 
     public static List<GlobalFlag> GetAllFlags()
@@ -29,7 +29,7 @@ public static class GlobalFlagsManager
         return list;
     }
 
-    public static void SetFlag(string id, bool value)
+    public static void SetFlag(string id, int value)
     {
         if (globalFlags.ContainsKey(id))
             globalFlags[id] = value;

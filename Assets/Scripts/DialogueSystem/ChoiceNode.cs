@@ -27,8 +27,23 @@ public class ChoiceNode : Node
         bool decision = true;
         foreach (ChoiceCondition condition in _conditions)
         {
-            if(condition.flagCondition != "" && GlobalFlagsManager.GetFlag(condition.flagCondition) != condition.flagValue)
-                decision = false;
+            switch (condition.flagOperator)
+            {
+                case FlagOperator.Equals:
+                    if (condition.flagCondition != "" && GlobalFlagsManager.GetFlag(condition.flagCondition) != condition.flagValue)
+                        decision = false;
+                    break;
+                case FlagOperator.Higher:
+                    if (condition.flagCondition != "" && GlobalFlagsManager.GetFlag(condition.flagCondition) <= condition.flagValue)
+                        decision = false;
+                    break;
+                case FlagOperator.Lower:
+                    if (condition.flagCondition != "" && GlobalFlagsManager.GetFlag(condition.flagCondition) >= condition.flagValue)
+                        decision = false;
+                    break;
+
+            }
+            
             if(condition.itemCondition != null && playerInventory.GetAmount(condition.itemCondition) < condition.itemQuantity)
                 decision = false;
         }
@@ -37,11 +52,14 @@ public class ChoiceNode : Node
     }
 }
 
+public enum FlagOperator { Equals, Higher, Lower}
+
 [Serializable]
 public struct ChoiceCondition
 {
     public string flagCondition;
-    public bool flagValue;
+    public FlagOperator flagOperator;
+    public int flagValue;
     public DescriptionDataSO itemCondition;
     public int itemQuantity;
 }
