@@ -24,7 +24,6 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] private DurabilityUI _durabilityIconPrefab;
     [SerializeField] private PlayerInventorySO _playerInventory;
     [SerializeField] private AlmanacSO _almanacSO;
-    [SerializeField] private List<BaitSlotUI> _baitSlots;
     [SerializeField] private GameObject _returnPanel;
 
     [Header("Settings")]
@@ -55,7 +54,6 @@ public class FishingMinigame : MonoBehaviour
 
     private void Start()
     {
-        EventManager.AddListener<InventoryItem>("UseItem", OnUseItem);
         EventManager.AddListener<Fish>("StartFishingMinigame", StartMinigame);
         EventManager.AddListener("RingMiss", OnRingMiss);
 
@@ -75,24 +73,6 @@ public class FishingMinigame : MonoBehaviour
                 }
             }
         }
-        else
-            UpdateBaitSlots();
-    }
-
-    private void OnUseItem(InventoryItem item)
-    {
-        UpdateBaitSlots();
-    }
-
-    private void UpdateBaitSlots()
-    {
-        for (int i = 0; i < _baitSlots.Count; i++)
-        {
-            BaitSlotUI slot = _baitSlots[i];
-            slot.SetCount(PlayerBaits[i].amount);
-            slot.SetSelected(false);
-        }
-        _baitSlots[PlayerBaits.FindIndex(x => x == _playerInventory.GetEquippedItem(EquipSlot.Bait))].SetSelected(true);
     }
 
     private void OnDestroy()
@@ -178,7 +158,6 @@ public class FishingMinigame : MonoBehaviour
         if (_playing) return;
         if (newBait.amount <= 0) return;
         _playerInventory.EquipItem(newBait);
-        UpdateBaitSlots();
     }
 
     private void OnRingMiss()
@@ -209,7 +188,6 @@ public class FishingMinigame : MonoBehaviour
         if (!_isTutorialScene)
         {
             _playerInventory.AddItem(_playerInventory.CurrentBait, -1);
-            UpdateBaitSlots();
         }
         EventManager.TriggerEvent("ToggleCameraShake", fish.GetSpeed());
         EventManager.TriggerEvent("FocusOnHook", true);

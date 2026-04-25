@@ -46,8 +46,9 @@ public class QuestSO : ScriptableObject
 
     public string GetProgressString(int progress)
     {
+        if(progress == 1) return "(0/" + objectives.Count + ")";
         progress--;
-        int current = 0;
+        int current = 1;
         foreach (QuestObjective obj in objectives)
         {
             progress -= obj.requiredAmount;

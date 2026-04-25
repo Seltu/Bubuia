@@ -131,6 +131,7 @@ public class PlayerInventorySO : ScriptableObject
 
             SaveItem(item);
         }
+        EventManager.TriggerEvent("OnEquipItem", item);
     }
 
     public InventoryItem GetEquippedItem(EquipSlot slot)

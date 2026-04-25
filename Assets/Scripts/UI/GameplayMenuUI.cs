@@ -10,6 +10,7 @@ public class GameplayMenuUI : MonoBehaviour
     [SerializeField] private BoolVariable _canPause;
     [SerializeField] private Animator _menuAnimator;
     [SerializeField] private UnityEvent _onPause;
+    [SerializeField] private UnityEvent _onBooklet;
     [SerializeField] private UnityEvent _onUnpause;
     [SerializeField] private InputActionReference _pauseAction;
 
@@ -18,6 +19,18 @@ public class GameplayMenuUI : MonoBehaviour
         _onMenu.value = false;
         _canPause.value = true;
         _pauseAction.action.performed += Pause;
+    }
+
+    public void OpenBooklet()
+    {
+        if (!_canPause.value) return;
+        if (!(Time.timeScale != 0))
+        {
+            Unpause();
+            return;
+        }
+        _onBooklet.Invoke();
+        Time.timeScale = 0f;
     }
 
     public void Pause(InputAction.CallbackContext ctx)
