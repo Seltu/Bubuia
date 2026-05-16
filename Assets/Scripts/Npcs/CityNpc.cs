@@ -4,9 +4,10 @@ using UnityEngine.InputSystem;
 
 public class CityNpc : NpcDetection
 {
-    internal event Action InteractEvent;
     [SerializeField] private InputActionReference _npcInteractionInput;
+    internal event Action InteractEvent;
     private bool _isInteracting;
+
     private void Awake()
     {
         _npcInteractionInput.action.performed += OnInteract;
@@ -20,13 +21,16 @@ public class CityNpc : NpcDetection
     private void OnInteract(InputAction.CallbackContext context)
     {
         if (!_isInReach || _isInteracting) return;
+        if(!_npcInteractionAllowed.value) return;
+
         InteractEvent.Invoke();
         _isInteracting = true;
+        EventManager.TriggerEvent("OnChangeNpcInteractionStatus", false);
     }
 
     public void OnDialogueEnd()
     {
         _isInteracting = false;
+        EventManager.TriggerEvent("OnChangeNpcInteractionStatus", true);
     }
-
 }

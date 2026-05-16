@@ -13,7 +13,7 @@ public class FishingSupliesStore : BaseStore
     [SerializeField] private TMP_Text _value;
     [SerializeField] private GameObject _comprarButton;
 
-    private BaitTypeSO _currentBait;
+    private EquipableItemSO _currentItem;
 
     protected override void Start()
     {
@@ -38,7 +38,7 @@ public class FishingSupliesStore : BaseStore
         _desc.gameObject.SetActive(false);
         _value.gameObject.SetActive(false);
         _comprarButton.gameObject.SetActive(false);
-        _currentBait = null;
+        _currentItem = null;
     }
 
     private void ShowItemDesc()
@@ -49,13 +49,13 @@ public class FishingSupliesStore : BaseStore
         _value.gameObject.SetActive(true);
     }
 
-    public void SetCurrentBait(BaitTypeSO bait)
+    public void SetCurrentItem(EquipableItemSO item)
     {
-        _iconImg.sprite = bait.icon;
-        _name.text = bait.entryName;
-        _desc.text = bait.description;
-        _value.text = "R$ " + bait.valor;
-        _currentBait = bait;
+        _iconImg.sprite = item.icon;
+        _name.text = item.entryName;
+        _desc.text = item.description;
+        _value.text = "R$ " + item.valor;
+        _currentItem = item;
 
         HideBuyButton();
         ShowItemDesc();
@@ -63,19 +63,33 @@ public class FishingSupliesStore : BaseStore
 
     public void BuyButton()
     {
-        if(_playerInventory.playerMoney >= _currentBait.valor)
+        if(_playerInventory.playerMoney >= _currentItem.valor)
         {
-            _playerInventory.AddMoney(_currentBait.valor * -1);
+            _playerInventory.AddMoney(_currentItem.valor * -1);
             _playerMoney.text = "R$ " + _playerInventory.playerMoney.ToString();
+            _playerInventory.AddItem(_currentItem, 1);
+            EventManager.TriggerEvent("ResetItemStore");
             HideBuyButton();
         }
     }
 
     private void HideBuyButton()
     {
-        if(_playerInventory.playerMoney >= _currentBait.valor)
-            _comprarButton.gameObject.SetActive(true);
-        else
-            _comprarButton.gameObject.SetActive(false);
+        if (_currentItem == null)
+        {
+            _comprarButton.SetActive(false);
+            return;
+        }
+
+        bool isBait = _currentItem is BaitTypeSO;
+        bool alreadyBought = _playerInventory.HasItem(_currentItem);
+
+        if (!isBait && alreadyBought)
+        {
+            _comprarButton.SetActive(false);
+            return;
+        }
+
+        _comprarButton.SetActive(_playerInventory.playerMoney >= _currentItem.valor);
     }
 }

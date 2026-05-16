@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTeleporter : ShopNpc
+public class SceneTeleporter : NpcDetection
 {
     [SerializeField] private string _sceneName;
     private bool _isTeleporting = false;
 
-    protected override void OnInteract()
+    protected virtual void OnInteract()
     {
         if (!_isTeleporting && _isInReach)
         {

@@ -103,9 +103,9 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Interaction"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""e4df621f-fa13-42bb-a09a-df6e193e770b"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false

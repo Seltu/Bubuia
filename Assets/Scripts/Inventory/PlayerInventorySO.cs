@@ -1,3 +1,4 @@
+using NUnit.Framework.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -141,6 +142,11 @@ public class PlayerInventorySO : ScriptableObject
     public InventoryItem GetEquippedItem(EquipSlot slot)
     {
         return _equippedItems[slot];
+    }
+
+    public bool HasItem(DescriptionDataSO itemData)
+    {
+        return items.Any(item => item.itemData == itemData && item.amount > 0);
     }
 }
 

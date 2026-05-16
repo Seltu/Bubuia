@@ -2,21 +2,18 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class ShopNpc : NpcDetection
+public class ShopNpc : MonoBehaviour
 {
     [SerializeField] protected string _npcId; // Mesmo ID do NPC
-    [SerializeField] private BoolVariable _onMenu;
+    [SerializeField] private BoolVariable _npcInteractionAllowed;
     protected bool _storeIsActive = false;
 
-    private void Start()
-    {
-        EventManager.AddListener("Interact", OnInteract);
+    private void Start()     {
         EventManager.AddListener("CloseMenu", OnCloseMenu);
     }
 
     private void OnDestroy()
     {
-        EventManager.RemoveListener("Interact", OnInteract);
         EventManager.RemoveListener("CloseMenu", OnCloseMenu);
     }
 
@@ -26,25 +23,16 @@ public class ShopNpc : NpcDetection
         {
             EventManager.TriggerEvent("OnCloseStore");
             _storeIsActive = false;
-            StartCoroutine(MenuFlagDelay());
+            EventManager.TriggerEvent("OnChangeNpcInteractionStatus", true);
         }
     }
 
-    protected virtual void OnInteract()
+    public virtual void OpenStore()
     {
-        if (_isInReach)
-        {
-            EventManager.TriggerEvent("OnOpenStore", _npcId);
-            _storeIsActive = true;
-            _onMenu.value = true;
-            gameObject.GetComponent<AudioCaller>().CallSFX("NpcBaloon");
-        }
+        EventManager.TriggerEvent("OnChangeNpcInteractionStatus", false);
+        EventManager.TriggerEvent("OnOpenStore", _npcId);
+        EventManager.TriggerEvent("OnBlockPlayerMovement");
+        _storeIsActive = true;
+        //gameObject.GetComponent<AudioCaller>().CallSFX("NpcBaloon");
     }
-
-    private IEnumerator MenuFlagDelay()
-    {
-        yield return new WaitForSecondsRealtime(0.1f);
-        _onMenu.value = false;
-    }
-    
 }
