@@ -88,6 +88,7 @@ public class PlayerInventorySO : ScriptableObject
 
     public void AddItem(DescriptionDataSO item, int amount)
     {
+        EventManager.TriggerEvent("OnAddItem", item, amount);
         for (int i = 0; i < items.Count; i++)
         {
             if (items[i].itemData == item)
@@ -102,15 +103,9 @@ public class PlayerInventorySO : ScriptableObject
         }
     }
 
-    public int GetAmount(InventoryItem item)
+    public int GetAmount(DescriptionDataSO item)
     {
-        for (int i = 0; i < items.Count; i++)
-        {
-            if (items[i] == item)
-                return items[i].amount;
-        }
-
-        return 0;
+        return items.Find(o=>o.itemData==item).amount;
     }
 
     private void SaveItem(InventoryItem item)
@@ -137,6 +132,7 @@ public class PlayerInventorySO : ScriptableObject
 
             SaveItem(item);
         }
+        EventManager.TriggerEvent("OnEquipItem", item);
     }
 
     public InventoryItem GetEquippedItem(EquipSlot slot)

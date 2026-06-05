@@ -4,18 +4,32 @@ using UnityEngine;
 
 public static class GlobalFlagsManager
 {
-    private static Dictionary<string, bool> globalFlags;
+    private static Dictionary<string, int> globalFlags = new Dictionary<string, int>();
     private static string SavePath => Path.Combine(Application.persistentDataPath, "global_flags.json");
 
-    public static bool GetFlag(string id)
+    public static int GetFlag(string id)
     {
         if(globalFlags.ContainsKey(id))
             return globalFlags[id]; 
         else
-            return false;
+            return 0;
     }
 
-    public static void SetFlag(string id, bool value)
+    public static List<GlobalFlag> GetAllFlags()
+    {
+        var list = new List<GlobalFlag>();
+        if (globalFlags.Count <= 0) return list;
+        foreach (var pair in globalFlags)
+        {
+            GlobalFlag flag = new GlobalFlag();
+            flag.id = pair.Key;
+            flag.value = pair.Value;
+            list.Add(flag);
+        }
+        return list;
+    }
+
+    public static void SetFlag(string id, int value)
     {
         if (globalFlags.ContainsKey(id))
             globalFlags[id] = value;
@@ -65,5 +79,6 @@ public static class GlobalFlagsManager
     {
         if (File.Exists(SavePath))
             File.Delete(SavePath);
+        globalFlags.Clear();
     }
 }

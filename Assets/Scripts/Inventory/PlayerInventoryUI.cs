@@ -97,7 +97,6 @@ public class PlayerInventoryUI : MonoBehaviour
         {
             inventorySO.EquipItem(_selectedItem);
         }
-        EventManager.TriggerEvent("UseItem", _selectedItem);
         UpdateInventory();
     }
 }

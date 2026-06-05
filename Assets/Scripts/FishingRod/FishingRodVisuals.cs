@@ -11,15 +11,15 @@ public class FishingRodVisuals : MonoBehaviour
     private void Awake()
     {
         UpdateVisuals();
-        EventManager.AddListener<InventoryItem>("UseItem", OnUseItem);
+        EventManager.AddListener<InventoryItem>("OnEquipItem", OnEquipItem);
     }
 
     private void OnDestroy()
     {
-        EventManager.RemoveListener<InventoryItem>("UseItem", OnUseItem);
+        EventManager.RemoveListener<InventoryItem>("OnEquipItem", OnEquipItem);
     }
 
-    private void OnUseItem(InventoryItem item)
+    private void OnEquipItem(InventoryItem item)
     {
         UpdateVisuals();
     }
