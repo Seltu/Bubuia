@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     [SerializeField] private float _playerSpeed;
+    [SerializeField] private float _fallSpeed;
 
     private Vector2 moveInput;
 
@@ -25,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         EventManager.RemoveListener("OnCloseStore", AllowPlayerMovement);
     }
 
-    private void Update()
+    private void FixedUpdate()
     { 
         MovePlayer();
     }
@@ -34,11 +35,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveInput.magnitude != 0 && !InputLock.movementLocked)
         {
-            Vector3 velocity = new Vector3(moveInput.x * _playerSpeed, _playerRb.linearVelocity.y, moveInput.y * _playerSpeed);
+            Vector3 velocity = new Vector3(moveInput.x * _playerSpeed, _playerRb.linearVelocity.y-_fallSpeed*Time.deltaTime, moveInput.y * _playerSpeed);
             _playerRb.linearVelocity = velocity;
 
             foreach (var sprite in _sprites)
-                sprite.flipX = moveInput.x < 0;
+                sprite.flipX = moveInput.x != 0 ? moveInput.x < 0 : sprite.flipX;
 
             _animator.SetBool("isWalking", true);
         }
