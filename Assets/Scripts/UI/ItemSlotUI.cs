@@ -10,6 +10,7 @@ public class ItemSlotUI : MonoBehaviour
     [SerializeField] private Button itemButton;
     [SerializeField] private Image itemIcon;
     [SerializeField] private Image itemBorder;
+    [SerializeField] private Image itemCountBorder;
     [SerializeField] private TextMeshProUGUI itemCountText;
     private DescriptionDataSO itemData;
 
@@ -21,7 +22,11 @@ public class ItemSlotUI : MonoBehaviour
             itemBorder.color = Color.yellow;
         else
             itemBorder.color = Color.white;
-        itemCountText.text = (item.amount > 1) ? "x" + item.amount.ToString() : itemCountText.text = "";
+        if (item.amount <= 1)
+            itemCountBorder.gameObject.SetActive(false);
+        else
+            itemCountBorder.gameObject.SetActive(true);
+        itemCountText.text = item.amount.ToString();
     }
 
     public Button GetButton()

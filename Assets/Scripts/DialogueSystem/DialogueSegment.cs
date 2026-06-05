@@ -4,6 +4,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.MemoryProfiler;
+
 //using UnityEditor.MemoryProfiler;
 using UnityEngine;
 using XNode;
@@ -16,6 +18,7 @@ using XNode;
 using XNodeEditor;
 #endif
 
+[NodeTint(0f, 0.5f, 0.5f)]
 public class DialogueSegment : Node
 {
     [Input(backingValue = ShowBackingValue.Never)]
@@ -35,7 +38,11 @@ public class DialogueSegment : Node
     [Output(connectionType = ConnectionType.Override)]
     [SerializeField] private DialogueSegment _next;
 
+    [Output(connectionType = ConnectionType.Multiple)]
+    [SerializeField] private ActionNode _actions;
+
     public bool HasChoices { get => _hasChoices;}
+
     public override object GetValue(NodePort port)
     {
         return this;
@@ -51,17 +58,17 @@ public class DialogueSegment : Node
         return GetInputPort("_origin").ConnectionCount > 0;
     }
 
-    public DialogueSegment GetNextDialogue(int option)
+    public Node GetNextDialogue(int option)
     {
         if(HasNextDialogue())
             if (HasChoices)
             {
                 var choiceString = "_choices " + option.ToString();
-                return (DialogueSegment)GetOutputPort(choiceString).Connection.node.GetValue(GetOutputPort(choiceString).Connection);
+                return (Node)GetOutputPort(choiceString).Connection.node.GetValue(GetOutputPort(choiceString).Connection);
             }
             else
             {
-                return (DialogueSegment)GetOutputPort("_next").Connection.node.GetValue(GetOutputPort("_next").Connection);
+                return (Node)GetOutputPort("_next").Connection.node.GetValue(GetOutputPort("_next").Connection);
             }
         else
             return null;
@@ -70,6 +77,17 @@ public class DialogueSegment : Node
     public List<string> GetChoices()
     {
         return _choices;
+    }
+
+    public List<ActionNode> GetActions()
+    {
+        List<NodePort> actionConnections = GetOutputPort("_actions").GetConnections();
+        List<ActionNode> actions = new List<ActionNode>();
+        foreach (var connection in actionConnections)
+        {
+            actions.Add((ActionNode)connection.node.GetValue(GetOutputPort("_actions").Connection));
+        }
+        return actions;
     }
 
     public bool HasNextDialogue()
@@ -96,7 +114,7 @@ public class DialogueSegment : Node
 #if UNITY_EDITOR
 
 [CustomNodeEditor(typeof(DialogueSegment))]
-public class SimpleNodeEditor : NodeEditor
+public class DialogueNodeEditor : NodeEditor
 {
     private DialogueSegment dialogueSegment;
 
@@ -122,6 +140,7 @@ public class SimpleNodeEditor : NodeEditor
             NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_next"));
         if (!dialogueSegment.HasNextDialogue())
             EditorGUILayout.LabelField("No connected segument.\nThis segment will end dialogue.", options: layoutOptions.ToArray());
+        NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_actions"));
         // Apply property modifications
         serializedObject.ApplyModifiedProperties();
     }

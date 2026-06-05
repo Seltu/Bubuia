@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GlobalFlag
 {
     public string id;
-    public bool value;
+    public int value;
 }
 
 [Serializable]
