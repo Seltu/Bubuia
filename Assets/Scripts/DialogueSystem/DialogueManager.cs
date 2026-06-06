@@ -18,12 +18,18 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float _textSpeed = 0.02f;
     [SerializeField] private float _bubbleResizeSpeed = 10f;
     [SerializeField] private InputActionReference _clickAction;
+    [SerializeField] private InputActionReference _rightClickAction;
     [SerializeField] private PlayerInventorySO _playerInventory;
     private Vector2 _textSize;
     private DialogueSegment _currentSegment;
     private bool _awaitingInput;
     private bool _showChoices;
     private float _sizeAdjustment;
+
+    [Header("Conversation Log")]
+    [SerializeField] private GameObject _conversationLogPanel;
+    [SerializeField] private List<ConversationEntry> _conversationLog;
+    
 
     private void Awake()
     {
@@ -39,7 +45,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (_clickAction.action.IsPressed() && _awaitingInput)
+        if (_clickAction.action.IsPressed() && _awaitingInput && !_conversationLogPanel.activeSelf)
         {
             _awaitingInput = false;
             if (_showChoices)
@@ -51,6 +57,16 @@ public class DialogueManager : MonoBehaviour
         {
             _dialoguePanel.rectTransform.sizeDelta = Vector2.LerpUnclamped(_dialoguePanel.rectTransform.sizeDelta, _textSize, _sizeAdjustment);
             _sizeAdjustment = Mathf.Clamp01(_sizeAdjustment + Time.deltaTime * _bubbleResizeSpeed);
+        }
+
+        if (_rightClickAction.action.IsPressed() && _awaitingInput)
+        {
+            _awaitingInput = false;
+
+            if (!_conversationLogPanel.activeSelf)
+                StartCoroutine(ShowConversationLog());
+            else
+                StartCoroutine(HideConversationLog());
         }
     }
 
@@ -112,7 +128,17 @@ public class DialogueManager : MonoBehaviour
             var _choiceText = Instantiate(_choicePrefab, _choicePanel);
             _choiceText.Choice = i;
             _choiceText.Text = choice;
-            _choiceText.Button.onClick.AddListener(() => { NextSegment(_choiceText.Choice); });
+            _choiceText.Button.onClick.AddListener(() =>
+            {
+                _conversationLog.Add(
+                    new ConversationEntry(
+                        "Player",
+                        _choiceText.Text
+                    )
+                );
+
+                NextSegment(_choiceText.Choice);
+            });
         }
         _showChoices = false;
     }
@@ -128,6 +154,14 @@ public class DialogueManager : MonoBehaviour
         if (dialogueSegment.HasChoices)
             _showChoices = true;
         _awaitingInput = true;
+
+        // Add current segment to conversation log
+        _conversationLog.Add(
+            new ConversationEntry(
+                dialogueSegment.GetActorName(),
+                dialogueSegment.GetSentence()
+            )
+        );
     }
 
     private IEnumerator TypeSentence(string sentence)
@@ -159,5 +193,40 @@ public class DialogueManager : MonoBehaviour
         _dialoguePanel.gameObject.SetActive(false);
         InputLock.movementLocked = false;
         EventManager.TriggerEvent("EndDialogue");
+
+        // Clear conversation log
+        _conversationLog.Clear();
+    }
+
+    IEnumerator ShowConversationLog()
+    {
+        _conversationLogPanel.SetActive(true);
+        _conversationLogPanel.GetComponentInChildren<ConversationLogUIHelper>().UpdateConversationLog(_currentSegment.GetActorName(), _conversationLog);
+
+        yield return new WaitForSeconds(0.5f);
+
+        _awaitingInput = true;
+    }
+
+    IEnumerator HideConversationLog()
+    {
+        _conversationLogPanel.SetActive(false);
+
+        yield return new WaitForSeconds(0.5f);
+
+        _awaitingInput = true;
+    }
+}
+
+[System.Serializable]
+public class ConversationEntry
+{
+    public string Speaker;
+    public string Text;
+
+    public ConversationEntry(string speaker, string text)
+    {
+        Speaker = speaker;
+        Text = text;
     }
 }
