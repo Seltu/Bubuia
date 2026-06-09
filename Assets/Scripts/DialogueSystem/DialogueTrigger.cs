@@ -19,12 +19,12 @@ public class DialogueTrigger : MonoBehaviour
     {
         _activeTrigger = this;
         EventManager.TriggerEvent("LoadDialogue", _dialogue);
+        EventManager.TriggerEvent("CameraFocusOnTarget", true, transform);
     }
 
     protected virtual void OnDestroy()
     {
         EventManager.RemoveListener("EndDialogue", OnEndDialogue);
-
         if (_activeTrigger == this)
             _activeTrigger = null;
     }
@@ -34,6 +34,7 @@ public class DialogueTrigger : MonoBehaviour
         if (_activeTrigger != this)
             return;
 
+        EventManager.TriggerEvent("CameraFocusOnTarget", false, transform);
         _onEndDialogue.Invoke();
         _activeTrigger = null;
     }

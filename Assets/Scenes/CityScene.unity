@@ -1973,7 +1973,7 @@ MonoBehaviour:
   m_Targets:
   - target: {fileID: 851806611}
     weight: 1
-    radius: 75.61
+    radius: 75
 --- !u!4 &122839271
 Transform:
   m_ObjectHideFlags: 0
@@ -1983,7 +1983,7 @@ Transform:
   m_GameObject: {fileID: 122839269}
   serializedVersion: 2
   m_LocalRotation: {x: -0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0.0000076293945, z: 115.60999}
+  m_LocalPosition: {x: 0, y: 0.000015258789, z: 114.999985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2387,6 +2387,75 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7053002454472047261, guid: f917bd25a0f7e1a409288b2ce2c9f482, type: 3}
+--- !u!1 &177803116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177803119}
+  - component: {fileID: 177803118}
+  - component: {fileID: 177803117}
+  m_Layer: 10
+  m_Name: CoastZoomOutZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &177803117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177803116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83874d808280baa4a9bf4a98ff3f0f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enterEvent: ZoomOut
+  exitEvent: ZoomIn
+  stayEvent: 
+--- !u!65 &177803118
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177803116}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 250, y: 100, z: 100}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &177803119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177803116}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &184943763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6973,6 +7042,7 @@ GameObject:
   - component: {fileID: 695074868}
   - component: {fileID: 695074867}
   - component: {fileID: 695074866}
+  - component: {fileID: 695074871}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7126,12 +7196,30 @@ Transform:
   m_GameObject: {fileID: 695074865}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -266, y: 59.74859, z: -101.74863}
+  m_LocalPosition: {x: -266, y: 59.31726, z: -101.31729}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2047002168}
   m_LocalEulerAnglesHint: {x: 21.1, y: 0, z: 0}
+--- !u!114 &695074871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695074865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f38b2d9affe0745a01cf54eb2cd823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 1664039427}
+  targetGroup: {fileID: 122839270}
+  zoomAction: {fileID: -3071574330686903723, guid: 9ba3dc970cd39eb44ba614ea4abca2be, type: 3}
+  maxZoom: 80
+  zoomedInRadius: 30
+  zoomedOutRadius: 100
 --- !u!1 &705068205
 GameObject:
   m_ObjectHideFlags: 0
@@ -8470,7 +8558,7 @@ GameObject:
   - component: {fileID: 851806615}
   m_Layer: 6
   m_Name: CityPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17321,7 +17409,7 @@ Transform:
   m_GameObject: {fileID: 1664039423}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -266, y: 59.748604, z: -101.74861}
+  m_LocalPosition: {x: -266, y: 59.317253, z: -101.31728}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18682,9 +18770,9 @@ MonoBehaviour:
   m_LookaheadTime: 1
   m_LookaheadSmoothing: 0.2
   m_LookaheadIgnoreY: 0
-  m_XDamping: 2.5
-  m_YDamping: 2.87
-  m_ZDamping: 2.65
+  m_XDamping: 5
+  m_YDamping: 5
+  m_ZDamping: 5
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.4999999
@@ -19601,7 +19689,7 @@ Transform:
   m_GameObject: {fileID: 1891791588}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -47}
+  m_LocalPosition: {x: 0, y: 0, z: -150}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19626,7 +19714,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 650, y: 500, z: 280}
+  m_Size: {x: 650, y: 500, z: 500}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1896547481
 GameObject:
@@ -23783,3 +23871,4 @@ SceneRoots:
   - {fileID: 1433090135}
   - {fileID: 2085374267}
   - {fileID: 851806611}
+  - {fileID: 177803119}

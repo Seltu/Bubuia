@@ -1,17 +1,21 @@
 using UnityEngine;
 using Cinemachine;
 using System;
+using UnityEngine.InputSystem;
 
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private CinemachineTargetGroup targetGroup;
+    [SerializeField] private InputActionReference zoomAction;
+    [SerializeField] private float maxZoom = 50f;
     [SerializeField] private float zoomedInRadius;
     [SerializeField] private float zoomedOutRadius;
 
     private CinemachineBasicMultiChannelPerlin _perlin;
     private float _cameraShakeTimer;
     private bool _cameraShakeToggled;
+    private float _currentZoom;
     private float _targetZoomRadius;
 
 
@@ -25,6 +29,7 @@ public class CameraManager : MonoBehaviour
         EventManager.AddListener("ZoomOut", ZoomOut);
         EventManager.AddListener("ZoomIn", ZoomIn);
         EventManager.AddListener<bool>("FocusOnHook", FocusOnHook);
+        EventManager.AddListener<bool, Transform>("CameraFocusOnTarget", FocusOnTarget);
     }
 
     private void FocusOnHook(bool focus)
@@ -36,6 +41,18 @@ public class CameraManager : MonoBehaviour
         else
         {
             targetGroup.m_Targets[1].weight = 1;
+        }
+    }
+
+    private void FocusOnTarget(bool focus, Transform target)
+    {
+        if (focus)
+        {
+            targetGroup.AddMember(target, 4, 10);
+        }
+        else
+        {
+            targetGroup.RemoveMember(target);
         }
     }
 
@@ -54,6 +71,7 @@ public class CameraManager : MonoBehaviour
         EventManager.RemoveListener<float, float>("CameraShake", ShakeCamera);
         EventManager.RemoveListener<float>("ToggleCameraShake", ShakeCamera);
         EventManager.RemoveListener<bool>("FocusOnHook", FocusOnHook);
+        EventManager.RemoveListener<bool, Transform>("CameraFocusOnTarget", FocusOnTarget);
     }
 
     private void ShakeCamera(float intensity, float time)
@@ -73,7 +91,9 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _targetZoomRadius, Time.deltaTime);
+        _currentZoom = Math.Clamp(_currentZoom + zoomAction.action.ReadValue<float>() * Time.deltaTime * 10000f, 0f, maxZoom);
+
+        targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _targetZoomRadius + _currentZoom, Time.deltaTime);
 
         if (_cameraShakeTimer > 0)
         {
