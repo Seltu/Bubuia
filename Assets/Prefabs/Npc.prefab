@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5008329895592965499}
   - component: {fileID: 2013560834762144833}
+  - component: {fileID: 3226067341598173086}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -88,6 +89,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3226067341598173086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3459454150010166362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37284e9cc5f83a64c99bc9530239bfd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreY: 1
 --- !u!1 &8203173726536223874
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +196,6 @@ MonoBehaviour:
   _dialogueBalloon: {fileID: 9053104782322173559}
   _npcInteractionAllowed: {fileID: 11400000, guid: 5e04c04714995084189f2c329e4fe672, type: 2}
   _npcInteractionInput: {fileID: -6052681101887580085, guid: 9ba3dc970cd39eb44ba614ea4abca2be, type: 3}
-  _interactionAllowed: {fileID: 11400000, guid: 5e04c04714995084189f2c329e4fe672, type: 2}
 --- !u!114 &7058529791014659242
 MonoBehaviour:
   m_ObjectHideFlags: 0

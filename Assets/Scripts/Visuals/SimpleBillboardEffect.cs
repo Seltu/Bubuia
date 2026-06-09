@@ -18,7 +18,11 @@ public class SimpleBillboardEffect : MonoBehaviour
 
     private void Update()
     {
-        float cameraRotation = targetCamera.transform.rotation.eulerAngles.y;
-        transform.rotation = Quaternion.Euler(0, cameraRotation, 0);
+        Vector3 transformPosition = transform.position;
+        if (ignoreY)
+        {
+            transformPosition.y = 0;
+        }
+        transform.forward = (transformPosition - targetCamera.transform.position).normalized;
     }
 }

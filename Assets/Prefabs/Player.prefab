@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4848535286977043735}
   - component: {fileID: 7298561887466317874}
   - component: {fileID: 1471778049343278198}
+  - component: {fileID: 9135133769511196387}
   m_Layer: 0
   m_Name: Hair
   m_TagString: Untagged
@@ -101,6 +102,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 7298561887466317874}
+--- !u!114 &9135133769511196387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468718585363032044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37284e9cc5f83a64c99bc9530239bfd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreY: 1
 --- !u!1 &8434366393245443953
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +126,7 @@ GameObject:
   - component: {fileID: 7648963706445949700}
   - component: {fileID: 2022813158308388229}
   - component: {fileID: 8301631119673593477}
+  - component: {fileID: 4889366627842667771}
   m_Layer: 0
   m_Name: Clothes
   m_TagString: Untagged
@@ -202,6 +217,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2022813158308388229}
+--- !u!114 &4889366627842667771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434366393245443953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37284e9cc5f83a64c99bc9530239bfd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreY: 1
 --- !u!1 &8728302581440454752
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +245,7 @@ GameObject:
   - component: {fileID: 8176800187040623820}
   - component: {fileID: 6559004955710755895}
   - component: {fileID: 2713550091197861402}
+  - component: {fileID: 3563670736256004775}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -485,6 +514,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c6210b23-7b20-4221-897f-45b77b8d9844
     m_ActionName: 'PlayerInput/Pause[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 975505b5-c9af-4ed5-ad90-dda2f6458976
+    m_ActionName: 'PlayerInput/Zoom[/Mouse/scroll/up,/Mouse/scroll/down]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInput
@@ -503,3 +536,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 6559004955710755895}
+--- !u!114 &3563670736256004775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728302581440454752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37284e9cc5f83a64c99bc9530239bfd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreY: 1
