@@ -48,6 +48,11 @@ public class DialogueSegment : Node
         return this;
     }
 
+    public string GetActorName()
+    {
+        return _name;
+    }
+
     public string GetSentence()
     {
         return _sentence;
