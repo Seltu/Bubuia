@@ -48,6 +48,7 @@ public class CameraManager : MonoBehaviour
     {
         if (focus)
         {
+            _currentZoom = maxZoom;
             targetGroup.AddMember(target, 4, 10);
         }
         else
@@ -91,7 +92,8 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        _currentZoom = Math.Clamp(_currentZoom + zoomAction.action.ReadValue<float>() * Time.deltaTime * 10000f, 0f, maxZoom);
+        if (targetGroup.m_Targets.Length <= 1)
+            _currentZoom = Math.Clamp(_currentZoom + zoomAction.action.ReadValue<float>() * Time.deltaTime * 10000f, 0f, maxZoom);
 
         targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _targetZoomRadius + _currentZoom, Time.deltaTime);
 

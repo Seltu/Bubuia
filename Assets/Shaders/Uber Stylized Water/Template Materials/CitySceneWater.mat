@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UWa-Template-Anime
+  m_Name: CitySceneWater
   m_Shader: {fileID: 4800000, guid: 8097978abb0800149a7a110f04640a53, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -358,7 +358,7 @@ Material:
     - _SurfFoam_AlphaBlend: 0
     - _SurfFoam_Edge: 0.43
     - _SurfFoam_EdgeSmooth: 0
-    - _SurfFoam_Scale: 3
+    - _SurfFoam_Scale: 1
     - _Surface: 1
     - _SurfaceDistortionScale: 1.48
     - _SurfaceDistortionStrength: 0.1
@@ -381,7 +381,7 @@ Material:
     - _Underwater_Fade: 15
     - _WORLDSPACEDEPTH: 1
     - _WaterDepth: 0.6
-    - _Water_Depth: 0.5
+    - _Water_Depth: 2
     - _WaveHeight: 0.01
     - _WaveHeight2nd: 0.01
     - _WaveLength: 10
@@ -419,8 +419,8 @@ Material:
     m_Colors:
     - _1st_Wave_Direction: {r: 1, g: 0, b: 0, a: 0}
     - _2nd_Wave_Direction: {r: -1, g: 0, b: 1, a: 0}
-    - _Color_Deep: {r: 0.01886791, g: 0.002261526, b: 0.001512993, a: 0.972549}
-    - _Color_Shallow: {r: 0.13207549, g: 0.023249142, b: 0.018066933, a: 0.78431374}
+    - _Color_Deep: {r: 0.019607844, g: 0.007198861, b: 0, a: 1}
+    - _Color_Shallow: {r: 0.13333334, g: 0.03754292, b: 0.019607838, a: 0.7882353}
     - _Deep_Color: {r: 0, g: 0.15303946, b: 1, a: 1}
     - _DistanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _FarColor: {r: 0.15966535, g: 0.6787135, b: 0.8679245, a: 0}
