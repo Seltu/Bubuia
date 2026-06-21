@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     private Vector2 _textSize;
     private DialogueSegment _currentSegment;
     private bool _awaitingInput;
+    private bool _skipTyping;
     private bool _showChoices;
     private float _sizeAdjustment;
 
@@ -45,18 +46,26 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (_clickAction.action.IsPressed() && _awaitingInput && !_conversationLogPanel.activeSelf)
+        if (_clickAction.action.WasPressedThisFrame() && _dialoguePanel.gameObject.activeSelf && !_conversationLogPanel.activeSelf)
         {
-            _awaitingInput = false;
-            if (_showChoices)
-                StartCoroutine(DisplayChoices());
+            if (_awaitingInput)
+            {
+                _awaitingInput = false;
+                if (_showChoices)
+                    StartCoroutine(DisplayChoices());
+                else
+                    NextSegment(0);
+            }
             else
-                NextSegment(0);
+            {
+                _skipTyping = true;
+            }
         }
-        if(_sizeAdjustment < 1)
+
+        if (_sizeAdjustment < 1)
         {
-            _dialoguePanel.rectTransform.sizeDelta = Vector2.LerpUnclamped(_dialoguePanel.rectTransform.sizeDelta, _textSize, _sizeAdjustment);
             _sizeAdjustment = Mathf.Clamp01(_sizeAdjustment + Time.deltaTime * _bubbleResizeSpeed);
+            _dialoguePanel.rectTransform.sizeDelta = Vector2.LerpUnclamped(_dialoguePanel.rectTransform.sizeDelta, _textSize, _sizeAdjustment);
         }
 
         if (_rightClickAction.action.IsPressed() && _awaitingInput)
@@ -121,7 +130,7 @@ public class DialogueManager : MonoBehaviour
         }
         _textSize.y = _dialogueText.GetPreferredValues(choiceText).y;
         _sizeAdjustment = 0;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < list.Count; i++)
         {
             string choice = list[i];
@@ -142,14 +151,14 @@ public class DialogueManager : MonoBehaviour
         }
         _showChoices = false;
     }
-
+        
     public IEnumerator DisplaySegment(DialogueSegment dialogueSegment)
     {
         _currentSegment = dialogueSegment;
         _dialogueText.text = "";
         _textSize.y = _dialogueText.GetPreferredValues(dialogueSegment.GetSentence()).y;
         _sizeAdjustment = 0;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
         yield return StartCoroutine(TypeSentence(dialogueSegment.GetSentence()));
         if (dialogueSegment.HasChoices)
             _showChoices = true;
@@ -168,6 +177,7 @@ public class DialogueManager : MonoBehaviour
     {
         string hold = "";
         bool holding = false;
+        _skipTyping = false;
         foreach (var letter in sentence.ToCharArray())
         {
             if (letter == '<')
@@ -183,7 +193,8 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 _dialogueText.text += letter;
-                yield return new WaitForSeconds(_textSpeed);
+                if(!_skipTyping)
+                    yield return new WaitForSeconds(_textSpeed);
             }
         }
     }

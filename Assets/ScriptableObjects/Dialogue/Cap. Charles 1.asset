@@ -411,6 +411,7 @@ MonoBehaviour:
   - {fileID: 3458258816720721931}
   - {fileID: 1680980429279820565}
   - {fileID: 9215045908073892480}
+  - {fileID: 8587402922253330516}
 --- !u!114 &1461081421335025346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,7 +480,10 @@ MonoBehaviour:
       _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
         Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
         Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-      connections: []
+      connections:
+      - fieldName: _origin
+        node: {fileID: 9215045908073892480}
+        reroutePoints: []
       _direction: 1
       _connectionType: 1
       _typeConstraint: 0
@@ -720,6 +724,46 @@ MonoBehaviour:
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
+--- !u!114 &8587402922253330516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e5a51c06136834891c8120861bd83e, type: 3}
+  m_Name: Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2447.4001, y: 60.204548}
+  ports:
+    keys:
+    - _origin
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 8587402922253330516}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _actions
+        node: {fileID: 9215045908073892480}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _callEvent: 1
+  _eventName: StartTutorial
+  _boolValue: 0
+  _intValue: 0
+  _floatValue: 0
+  _stringValue: 
+  _changeGlobalFlag: 0
+  _flagName: 
+  _flagValue: 0
 --- !u!114 &8857383228892200369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,7 +861,10 @@ MonoBehaviour:
       _node: {fileID: 9215045908073892480}
       _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: _choices 0
+        node: {fileID: 1461081421335025346}
+        reroutePoints: []
       _direction: 0
       _connectionType: 0
       _typeConstraint: 0
@@ -845,14 +892,17 @@ MonoBehaviour:
       _node: {fileID: 9215045908073892480}
       _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: _origin
+        node: {fileID: 8587402922253330516}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: '*Iniciar Super Boat Smiulator*'
+  _sentence: "Esse \xE9 o esp\xEDrito!"
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}

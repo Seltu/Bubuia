@@ -216,8 +216,19 @@ public class Fish : MonoBehaviour
         }
 
         // Random Jitter
-        Vector3 jitter = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * jitterStrength;
-        moveDir += jitter;
+        Vector3 baseDir = moveDir.normalized;
+
+        if (baseDir.sqrMagnitude > 0.001f)
+        {
+            float angle = Random.Range(-45f, 45f);
+
+            Vector3 jitterDir = Quaternion.AngleAxis(angle, Vector3.up) * baseDir;
+
+            Vector3 jitter = jitterDir * Random.Range(0f, jitterStrength);
+
+            moveDir += jitter;
+            moveDir = moveDir.normalized;
+        }
 
         //Barrier Avoidance
         if (Vector3.Distance(transform.position, _detectedBarrier) > 10f)

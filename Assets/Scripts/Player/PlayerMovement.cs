@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            _playerRb.linearVelocity = new Vector2(0f, _playerRb.linearVelocity.y);
+            _playerRb.linearVelocity = new Vector2(0f, _playerRb.linearVelocity.y - _fallSpeed * Time.deltaTime);
             _animator.SetBool("isWalking", false);
         }
 

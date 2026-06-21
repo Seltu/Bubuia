@@ -8,7 +8,8 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
     [SerializeField] private CinemachineTargetGroup targetGroup;
     [SerializeField] private InputActionReference zoomAction;
-    [SerializeField] private float maxZoom = 50f;
+    [SerializeField] private float maxZoom = 150f;
+    [SerializeField] private float startZoom = 50f;
     [SerializeField] private float zoomedInRadius;
     [SerializeField] private float zoomedOutRadius;
 
@@ -17,11 +18,12 @@ public class CameraManager : MonoBehaviour
     private bool _cameraShakeToggled;
     private float _currentZoom;
     private float _targetZoomRadius;
-
+    private bool _focusingOnTarget;
 
     private void Start()
     {
         _targetZoomRadius = zoomedInRadius;
+        _currentZoom = startZoom;
         _perlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         _perlin.m_AmplitudeGain = 0f;
         EventManager.AddListener<float, float>("CameraShake", ShakeCamera);
@@ -48,11 +50,12 @@ public class CameraManager : MonoBehaviour
     {
         if (focus)
         {
-            _currentZoom = maxZoom;
-            targetGroup.AddMember(target, 4, 10);
+            _focusingOnTarget = true;
+            targetGroup.AddMember(target, 4, 25);
         }
         else
         {
+            _focusingOnTarget = false;
             targetGroup.RemoveMember(target);
         }
     }
@@ -92,10 +95,12 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        if (targetGroup.m_Targets.Length <= 1)
-            _currentZoom = Math.Clamp(_currentZoom + zoomAction.action.ReadValue<float>() * Time.deltaTime * 10000f, 0f, maxZoom);
+        _currentZoom = Math.Clamp(_currentZoom + zoomAction.action.ReadValue<float>() * Time.deltaTime * 10000f, 0f, maxZoom);
 
-        targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _targetZoomRadius + _currentZoom, Time.deltaTime);
+        if(_focusingOnTarget)
+            targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _targetZoomRadius, Time.deltaTime);
+        else
+            targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _targetZoomRadius + _currentZoom, Time.deltaTime);
 
         if (_cameraShakeTimer > 0)
         {
