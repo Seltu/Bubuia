@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 520815808685662}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0.3, z: -1.8}
+  m_LocalPosition: {x: 0, y: 0.3, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -259,7 +259,7 @@ Transform:
   m_GameObject: {fileID: 1416577517564269179}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.095, y: 0.805, z: 0}
+  m_LocalPosition: {x: 1.058, y: 0.5286, z: -0.0404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -274,6 +274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6467013431752429903}
+  - component: {fileID: 1751031277495013372}
   m_Layer: 6
   m_Name: BoatModel
   m_TagString: Player
@@ -300,6 +301,27 @@ Transform:
   - {fileID: 2847218109942079673}
   m_Father: {fileID: 8390750955584603645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1751031277495013372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2898830080636274150}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.5, y: 1, z: 4.5}
+  m_Center: {x: 0, y: 0.5, z: 0.25}
 --- !u!1 &3517906507629427158
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +781,7 @@ Transform:
   m_GameObject: {fileID: 8138300942837002619}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6426, y: 0.3534, z: 0}
+  m_LocalPosition: {x: 0.606, y: 0.0766, z: -0.0404}
   m_LocalScale: {x: 1.07, y: 1.07, z: 1.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -837,7 +859,6 @@ GameObject:
   - component: {fileID: 3660206097213107749}
   - component: {fileID: 8451723304614036892}
   - component: {fileID: 8531723963174002}
-  - component: {fileID: 4499918877565641176}
   m_Layer: 6
   m_Name: Boat
   m_TagString: Player
@@ -855,7 +876,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 16, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 2.2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6467013431752429903}
@@ -877,17 +898,20 @@ MonoBehaviour:
   shipSprite: {fileID: 6467013431752429903}
   playerSprite: {fileID: 377132169795799263}
   shipRigidbody: {fileID: 8531723963174002}
-  moveSpeed: 5
-  acceleration: 6
-  turnSpeed: 50
-  drag: 2
-  boostMoveSpeed: 9
+  maxSpeed: 12
+  acceleration: 4
+  turnSpeed: 70
+  drag: 0.5
+  boostAcceleration: 20
   boostMax: 1
   boostDrainPerSecond: 0.35
   boostRegainPerSecond: 0.25
   boostRegainDelay: 0.75
   splashStrength: 1
   splashInterval: 1.16
+  obstacleHitSpeedThreshold: 4
+  knockbackSpeed: 7
+  knockbackDuration: 1
 --- !u!114 &5190331744196254782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1144,27 +1168,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!135 &4499918877565641176
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9122168391216930911}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4008056273944919403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1195,7 +1198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20daec540273af3408951bdac635c49e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.7
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20daec540273af3408951bdac635c49e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1321,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2736924433812487974, guid: 7d1433183b648b04d85651200acd8d8d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6510626615518438540, guid: 7d1433183b648b04d85651200acd8d8d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.33
@@ -1339,7 +1346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6559004955710755895, guid: 7d1433183b648b04d85651200acd8d8d, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 16
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6559004955710755895, guid: 7d1433183b648b04d85651200acd8d8d, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_ActionId
@@ -1541,11 +1548,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8380554169538998219, guid: 7d1433183b648b04d85651200acd8d8d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8728302581440454752, guid: 7d1433183b648b04d85651200acd8d8d, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3563670736256004775, guid: 7d1433183b648b04d85651200acd8d8d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7006085308266537024, guid: 7d1433183b648b04d85651200acd8d8d, type: 3}

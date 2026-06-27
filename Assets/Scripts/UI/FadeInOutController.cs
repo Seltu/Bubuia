@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FadeInOutController : MonoBehaviour
 {
@@ -10,19 +11,26 @@ public class FadeInOutController : MonoBehaviour
     void Start()
     {
         EventManager.AddListener("OnSceneStarts", PlayFadeOut);
-        EventManager.AddListener("OnChangeScene", PlayFadeIn);
+        EventManager.AddListener<string>("ChangeScene", PlayFadeIn);
     }
 
     private void OnDestroy()
     {
         EventManager.RemoveListener("OnSceneStarts", PlayFadeOut);
-        EventManager.RemoveListener("OnChangeScene", PlayFadeIn);
+        EventManager.RemoveListener<string>("ChangeScene", PlayFadeIn);
     }
 
-    private void PlayFadeIn()
+    private void PlayFadeIn(string newScene)
+    {
+        StartCoroutine(FadeIn(newScene));
+    }
+
+    private IEnumerator FadeIn(string newScene)
     {
         canPause.value = false;
         _anim.SetTrigger("FadeIn");
+        yield return new WaitForSeconds(0.7f);
+        SceneManager.LoadScene(newScene);
     }
 
     private void PlayFadeOut()

@@ -11,13 +11,13 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField] private Rigidbody shipRigidbody;
 
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float acceleration = 6f;
     [SerializeField] private float turnSpeed = 200f;
     [SerializeField] private float drag = 2f;
 
     [Header("Boost Settings")]
-    [SerializeField] private float boostMoveSpeed = 9f;     // velocidade máxima com boost
+    [SerializeField] private float boostAcceleration = 9f;     // velocidade máxima com boost
     [SerializeField] private float boostMax = 1f;           // capacidade (1 = 100%)
     [SerializeField] private float boostDrainPerSecond = 0.35f;
     [SerializeField] private float boostRegainPerSecond = 0.25f;
@@ -26,6 +26,11 @@ public class PlayerShipController : MonoBehaviour
     [Header("Effects")]
     [SerializeField] private float splashStrength = 0.2f;
     [SerializeField] private float splashInterval = 0.1f;
+
+    [Header("Obstacle Collision")]
+    [SerializeField] private float obstacleHitSpeedThreshold = 4f;
+    [SerializeField] private float knockbackSpeed = 7f;
+    [SerializeField] private float knockbackDuration = 0.35f;
 
     private float _splashTimer;
     private Vector3 moveInput;
@@ -37,6 +42,11 @@ public class PlayerShipController : MonoBehaviour
     private bool _boostHeld;
     private bool _boostLockedUntilFull;  // trava quando zera
     private float _timeSinceBoostUse;    // contador pra delay de regen
+
+    // Collision
+    private bool _isKnockbacking;
+    private float _knockbackTimer;
+    private Vector3 _knockbackVelocity;
 
     private void Awake()
     {
@@ -106,41 +116,69 @@ public class PlayerShipController : MonoBehaviour
     {
         if (Time.timeScale == 0) return;
 
-        // --- Convert input (X,Y) from InputSystem to (X,0,Z)
-        Vector3 desiredInput = new Vector3(moveInput.x, 0, moveInput.z).normalized;
-        bool isMoving = desiredInput.sqrMagnitude > 0.001f;
-
-        // --- Boost state update (drain / regen / lock)
-        bool boostActive = UpdateBoost(isMoving);
-
-        // --- Smooth rotation only if moving
-        if (isMoving)
+        if (_isKnockbacking)
         {
-            Quaternion targetRot = Quaternion.LookRotation(desiredInput, Vector3.up);
-            shipSprite.rotation = Quaternion.RotateTowards(
-                shipSprite.rotation,
-                targetRot,
-                turnSpeed * Time.deltaTime
-            );
+            UpdateKnockback();
+            return;
         }
 
-        // --- Choose max speed depending on boost
-        float maxSpeed = boostActive ? boostMoveSpeed : moveSpeed;
+        if (_stopped || InputLock.movementLocked)
+            moveInput = Vector3.zero;
 
-        // --- Apply acceleration toward target velocity
-        Vector3 targetVelocity = desiredInput * maxSpeed;
+        float steerInput = Mathf.Clamp(moveInput.x, -1f, 1f);     // esquerda / direita
+        float throttleInput = Mathf.Clamp(moveInput.z, -1f, 1f); // frente / ré
 
-        currentVelocity = Vector3.MoveTowards(
-            currentVelocity,
-            targetVelocity,
-            acceleration * Time.deltaTime
-        );
+        // Boost só funciona quando está indo para frente
+        bool boostActive = UpdateBoost();
 
-        // --- Apply velocity to Rigidbody
-        shipRigidbody.linearVelocity = currentVelocity;
+        if (throttleInput <= 1f && boostActive)
+            throttleInput = 1f;
 
-        // --- Auto-drag when not pressing movement
-        if (!isMoving)
+        bool wantsToMove = Mathf.Abs(throttleInput) > 0.001f;
+
+        // --- Rotação tipo carro/barco
+        if (Mathf.Abs(steerInput) > 0.001f)
+        {
+            float steeringDirection = 1f;
+
+            // Faz a direção inverter quando está dando ré, igual carro
+            if (throttleInput < -0.001f)
+                steeringDirection = -1f;
+
+            float turnAmount = steerInput * steeringDirection * turnSpeed * Time.deltaTime;
+
+            shipSprite.Rotate(0f, turnAmount, 0f, Space.World);
+        }
+
+        // --- Direção atual do barco
+        Vector3 forward = shipSprite.forward;
+        forward.y = 0f;
+        forward.Normalize();
+
+        // --- Velocidade máxima
+        float maxCurrentSpeed = throttleInput >= 0f
+            ? maxSpeed
+            : maxSpeed * 0.5f;
+
+        Vector3 targetVelocity = forward * throttleInput * maxCurrentSpeed;
+
+        // --- Aceleração ou desaceleração
+        if (wantsToMove)
+        {
+            if(!boostActive)
+                currentVelocity = Vector3.MoveTowards(
+                    currentVelocity,
+                    targetVelocity,
+                    acceleration * Time.deltaTime
+                );
+            else
+                currentVelocity = Vector3.MoveTowards(
+                    currentVelocity,
+                    targetVelocity,
+                    boostAcceleration * Time.deltaTime
+                );
+        }
+        else
         {
             currentVelocity = Vector3.MoveTowards(
                 currentVelocity,
@@ -149,6 +187,9 @@ public class PlayerShipController : MonoBehaviour
             );
         }
 
+        // --- Aplica velocidade
+        shipRigidbody.linearVelocity = currentVelocity;
+
         // --- Splash effect
         if (currentVelocity.sqrMagnitude > 0.25f)
         {
@@ -156,26 +197,57 @@ public class PlayerShipController : MonoBehaviour
             if (_splashTimer < 0)
             {
                 _splashTimer = splashInterval;
-                var calculatedSplashStrength = boostActive ? splashStrength * 2 : splashStrength;
+                var calculatedSplashStrength = boostActive ? splashStrength * 2f : splashStrength;
                 EventManager.TriggerEvent("Splash", transform.position, calculatedSplashStrength);
             }
         }
     }
 
-    private bool UpdateBoost(bool isMoving)
+    private void StartObstacleKnockback(Vector3 direction)
+    {
+        _isKnockbacking = true;
+        _knockbackTimer = knockbackDuration;
+
+        moveInput = Vector3.zero;
+        _boostHeld = false;
+
+        direction.y = 0f;
+        direction.Normalize();
+
+        _knockbackVelocity = direction * knockbackSpeed;
+        currentVelocity = _knockbackVelocity;
+
+        shipRigidbody.linearVelocity = _knockbackVelocity;
+    }
+
+    private void UpdateKnockback()
+    {
+        _knockbackTimer -= Time.deltaTime;
+
+        shipRigidbody.linearVelocity = _knockbackVelocity;
+
+        _knockbackVelocity = _knockbackVelocity.normalized * knockbackSpeed * (_knockbackTimer/knockbackDuration);
+
+        if (_knockbackTimer <= 0f)
+        {
+            _isKnockbacking = false;
+
+            currentVelocity = Vector3.zero;
+            shipRigidbody.linearVelocity = currentVelocity;
+        }
+    }
+
+    private bool UpdateBoost()
     {
         float dt = Time.deltaTime;
 
-        // Só considera boost se: segurando, movendo, não travado e tem carga
         bool canBoost =
             _boostHeld &&
-            isMoving &&
             !_boostLockedUntilFull &&
             _boost > 0.001f;
 
         if (canBoost)
         {
-            // Consumo
             _boost = Mathf.Max(0f, _boost - boostDrainPerSecond * dt);
             _timeSinceBoostUse = 0f;
 
@@ -186,17 +258,15 @@ public class PlayerShipController : MonoBehaviour
                 return false;
             }
 
-            return true; // boost ativo
+            return true;
         }
 
-
-        // Regenera depois de um tempo sem consumir
         _timeSinceBoostUse += dt;
+
         if (_timeSinceBoostUse >= boostRegainDelay)
         {
             _boost = Mathf.MoveTowards(_boost, boostMax, boostRegainPerSecond * dt);
 
-            // Se estava travado por ter zerado, só destrava quando encher 100%
             if (_boostLockedUntilFull && _boost >= boostMax - 0.0001f)
             {
                 _boost = boostMax;
@@ -205,6 +275,29 @@ public class PlayerShipController : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (_isKnockbacking) return;
+
+        if (!collision.gameObject.CompareTag("Obstacle")) return;
+
+        float speed = currentVelocity.magnitude;
+
+        if (speed <= obstacleHitSpeedThreshold) return;
+
+        Vector3 knockbackDirection = -currentVelocity.normalized;
+        knockbackDirection.y = 0f;
+
+        if (knockbackDirection.sqrMagnitude < 0.001f)
+        {
+            knockbackDirection = transform.position - collision.transform.position;
+            knockbackDirection.y = 0f;
+            knockbackDirection.Normalize();
+        }
+
+        StartObstacleKnockback(knockbackDirection);
     }
 
     // INPUT

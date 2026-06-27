@@ -20,7 +20,7 @@ public class SceneTeleporter : NpcDetection
     private IEnumerator FadeOutTimer()
     {
         gameObject.GetComponent<AudioCaller>().CallSFX("Footsteps");
-        EventManager.TriggerEvent("OnChangeScene");
+        EventManager.TriggerEvent("ChangeScene", _sceneName);
         yield return new WaitForSeconds(0.7f);
         SceneManager.LoadScene(_sceneName);
     }

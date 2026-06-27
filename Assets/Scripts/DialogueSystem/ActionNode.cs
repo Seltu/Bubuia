@@ -14,6 +14,8 @@ using XNode;
 using XNodeEditor;
 #endif
 
+public enum EventType { Void, Int, Float, String, Bool }
+
 [NodeTint(0.7f, 0.6f, 0f)]
 public class ActionNode : Node
 {
@@ -22,6 +24,7 @@ public class ActionNode : Node
 
     [SerializeField] private bool _callEvent;
     [SerializeField] private string _eventName;
+    [SerializeField] private EventType _eventType;
 
     [SerializeField] private bool _boolValue;
     [SerializeField] private int _intValue;
@@ -33,6 +36,8 @@ public class ActionNode : Node
     [SerializeField] private int _flagValue;
 
     public bool CallEvent { get => _callEvent; }
+
+    public EventType EventType { get => _eventType; }
     public string EventName { get => _eventName; }
     public bool ChangeGlobalFlag { get => _changeGlobalFlag; }
     public int FlagValue { get => _flagValue; }
@@ -46,7 +51,24 @@ public class ActionNode : Node
     {
         if (_callEvent)
         {
-            EventManager.TriggerEvent(_eventName);
+            switch (_eventType)
+            {
+                case EventType.Void:
+                    EventManager.TriggerEvent(_eventName);
+                    break;
+                case EventType.Int:
+                    EventManager.TriggerEvent(_eventName, _intValue);
+                    break;
+                case EventType.Float:
+                    EventManager.TriggerEvent(_eventName, _floatValue);
+                    break;
+                case EventType.String:
+                    EventManager.TriggerEvent(_eventName, _stringValue);
+                    break;
+                case EventType.Bool:
+                    EventManager.TriggerEvent(_eventName, _boolValue);
+                    break;
+            }
         }
         if (_changeGlobalFlag)
         {
@@ -74,6 +96,22 @@ public class ActionNodeEditor : NodeEditor
         if (actionNode.CallEvent)
         {
             NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_eventName"));
+            NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_eventType"));
+        }
+        switch (actionNode.EventType)
+        {
+            case EventType.Int:
+                NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_intValue"));
+                break;
+            case EventType.Float:
+                NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_floatValue"));
+                break;
+            case EventType.String:
+                NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_stringValue"));
+                break;
+            case EventType.Bool:
+                NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_boolValue"));
+                break;
         }
         NodeEditorGUILayout.PropertyField(serializedObject.FindProperty("_changeGlobalFlag"));
         if (actionNode.ChangeGlobalFlag)

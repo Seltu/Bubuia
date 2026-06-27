@@ -87,12 +87,13 @@ public class DialogueManager : MonoBehaviour
         }
         var nextNode = _currentSegment.GetNextDialogue(option);
 
-        if(nextNode is DialogueSegment dialogueSegment)
+        foreach (ActionNode action in _currentSegment.GetActions())
         {
-            foreach (ActionNode action in dialogueSegment.GetActions())
-            {
-                action.Act();
-            }
+            action.Act();
+        }
+
+        if (nextNode is DialogueSegment dialogueSegment)
+        {
             StartCoroutine(DisplaySegment(dialogueSegment));
         }
         else if (nextNode is ChoiceNode choiceNode)
