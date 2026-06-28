@@ -10,6 +10,9 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField] private Transform playerSprite;
     [SerializeField] private Rigidbody shipRigidbody;
 
+    [Header("ShipHealth")]
+    [SerializeField] private int maxHealth;
+
     [Header("Movement Settings")]
     [SerializeField] private float maxSpeed = 5f;
     [SerializeField] private float acceleration = 6f;
@@ -32,6 +35,7 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField] private float knockbackSpeed = 7f;
     [SerializeField] private float knockbackDuration = 0.35f;
 
+    private int _currentHealth;
     private float _splashTimer;
     private Vector3 moveInput;
     private Vector3 currentVelocity;
@@ -56,10 +60,10 @@ public class PlayerShipController : MonoBehaviour
 
     private void Start()
     {
+        _currentHealth = maxHealth;
         EventManager.AddListener("TurnOffControls", PauseMovement);
         EventManager.AddListener("TurnOffMovement", PauseMovement);
         EventManager.AddListener("TurnOnMovement", UnpauseMovement);
-
         ResolveSpawnOverlap();
     }
 
@@ -286,6 +290,14 @@ public class PlayerShipController : MonoBehaviour
         float speed = currentVelocity.magnitude;
 
         if (speed <= obstacleHitSpeedThreshold) return;
+
+        _currentHealth--;
+        EventManager.TriggerEvent("ShipHealthUpdate", _currentHealth, maxHealth);
+        if (_currentHealth <= 0)
+        {
+            EventManager.TriggerEvent("ShipBreak");
+            return;
+        }
 
         Vector3 knockbackDirection = -currentVelocity.normalized;
         knockbackDirection.y = 0f;

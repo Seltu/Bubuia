@@ -6,9 +6,10 @@ using UnityEngine.Events;
 public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] protected DialogueSO _dialogue;
-    [SerializeField] private UnityEvent _onEndDialogue;
+    [SerializeField] protected UnityEvent _onEndDialogue;
+    [SerializeField] protected UnityEvent _onStartDialogue;
 
-    private static DialogueTrigger _activeTrigger;
+    protected static DialogueTrigger _activeTrigger;
 
     protected virtual void Awake()
     {
@@ -17,7 +18,9 @@ public class DialogueTrigger : MonoBehaviour
 
     protected void TriggerDialogue()
     {
+        if (_activeTrigger != null) return;
         _activeTrigger = this;
+        _onStartDialogue.Invoke();
         EventManager.TriggerEvent("LoadDialogue", _dialogue);
         EventManager.TriggerEvent("CameraFocusOnTarget", true, transform);
     }

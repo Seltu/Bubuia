@@ -29,8 +29,9 @@ public class FadeInOutController : MonoBehaviour
     {
         canPause.value = false;
         _anim.SetTrigger("FadeIn");
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSecondsRealtime(0.7f);
         SceneManager.LoadScene(newScene);
+        Time.timeScale = 1.0f;
     }
 
     private void PlayFadeOut()

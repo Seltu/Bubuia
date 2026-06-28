@@ -137,12 +137,53 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Pressionando o bot\xE3o XXXX voc\xEA poder\xE1 acelerar, para aumentar
-    sua velocidade."
+  _sentence: "Pressionando a barra de espa\xE7o voc\xEA poder\xE1 acelerar, para
+    aumentar sua velocidade."
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
+--- !u!114 &-7753176935991512791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e5a51c06136834891c8120861bd83e, type: 3}
+  m_Name: Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1272, y: -24}
+  ports:
+    keys:
+    - _origin
+    values:
+    - _fieldName: _origin
+      _node: {fileID: -7753176935991512791}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _actions
+        node: {fileID: 4526759954568467359}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _callEvent: 1
+  _eventName: StartTutorialTimer
+  _eventType: 1
+  _boolValue: 0
+  _intValue: 30
+  _floatValue: 30
+  _stringValue: 
+  _changeGlobalFlag: 0
+  _flagName: 
+  _flagValue: 0
 --- !u!114 &-6554950342250950153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,6 +344,7 @@ MonoBehaviour:
   - {fileID: 8857383228892200369}
   - {fileID: -8104433980779823678}
   - {fileID: 4526759954568467359}
+  - {fileID: -7753176935991512791}
 --- !u!114 &4526759954568467359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +401,10 @@ MonoBehaviour:
       _node: {fileID: 4526759954568467359}
       _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: _origin
+        node: {fileID: -7753176935991512791}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -438,8 +483,8 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Utilize os controles XXXX para navegar na velocidade padr\xE3o e para
-    mudar o barco de dire\xE7\xE3o."
+  _sentence: "Utilize os bot\xF5es W e S para acelerar e freiar na velocidade padr\xE3o
+    e A e D para mudar o barco de dire\xE7\xE3o."
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
