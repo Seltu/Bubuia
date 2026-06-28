@@ -1,0 +1,446 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8325659812267641654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: Cap. Charles
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 216, y: -120}
+  ports:
+    keys:
+    - _origin
+    - _choices
+    - _next
+    - _actions
+    values:
+    - _fieldName: _origin
+      _node: {fileID: -8325659812267641654}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _next
+        node: {fileID: -6554950342250950153}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices
+      _node: {fileID: -8325659812267641654}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: -8325659812267641654}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 8857383228892200369}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -8325659812267641654}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: Cap. Charles
+  _sentence: "Al\xE9m disso, voc\xEA deve concluir o percurso dentro do tempo limite."
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &-8104433980779823678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: Cap. Charles
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 712, y: -120}
+  ports:
+    keys:
+    - _origin
+    - _choices
+    - _next
+    - _actions
+    values:
+    - _fieldName: _origin
+      _node: {fileID: -8104433980779823678}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _next
+        node: {fileID: 8857383228892200369}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices
+      _node: {fileID: -8104433980779823678}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: -8104433980779823678}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 4526759954568467359}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -8104433980779823678}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: Cap. Charles
+  _sentence: "Pressionando o bot\xE3o XXXX voc\xEA poder\xE1 acelerar, para aumentar
+    sua velocidade."
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &-6554950342250950153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: Cap. Charles
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -24, y: -120}
+  ports:
+    keys:
+    - _origin
+    - _choices
+    - _next
+    - _actions
+    values:
+    - _fieldName: _origin
+      _node: {fileID: -6554950342250950153}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _next
+        node: {fileID: -5027553653795666997}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices
+      _node: {fileID: -6554950342250950153}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: -6554950342250950153}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: -8325659812267641654}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -6554950342250950153}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: Cap. Charles
+  _sentence: "A miss\xE3o da Navega\xE7\xE3o N\xEDvel 1 \xE9 para testar suas habilidades
+    em conduzir o seu barco por um percurso cheio de curvas."
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &-5027553653795666997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: Cap. Charles
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -248, y: -152}
+  ports:
+    keys:
+    - _origin
+    - _choices
+    - _next
+    - _actions
+    values:
+    - _fieldName: _origin
+      _node: {fileID: -5027553653795666997}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices
+      _node: {fileID: -5027553653795666997}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: -5027553653795666997}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: -6554950342250950153}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -5027553653795666997}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: Cap. Charles
+  _sentence: "Muito bem! Prepare-se para se tornar uma das pessoas mais habilidosos
+    em navega\xE7\xE3o e pesca, esse \xE9 o resultado por aprender comigo hahaha..."
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8647175500e5c8a409abaaeba2671001, type: 3}
+  m_Name: Cap. Charles Tutorial End
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -5027553653795666997}
+  - {fileID: -6554950342250950153}
+  - {fileID: -8325659812267641654}
+  - {fileID: 8857383228892200369}
+  - {fileID: -8104433980779823678}
+  - {fileID: 4526759954568467359}
+--- !u!114 &4526759954568467359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: Cap. Charles
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 984, y: -120}
+  ports:
+    keys:
+    - _origin
+    - _choices
+    - _next
+    - _actions
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 4526759954568467359}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _next
+        node: {fileID: -8104433980779823678}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices
+      _node: {fileID: 4526759954568467359}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: 4526759954568467359}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 4526759954568467359}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: Cap. Charles
+  _sentence: "Evite colidir com os troncos para que seu barco n\xE3o afunde, boa
+    sorte!"
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &8857383228892200369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: Cap. Charles
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 456, y: -120}
+  ports:
+    keys:
+    - _origin
+    - _choices
+    - _next
+    - _actions
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 8857383228892200369}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _next
+        node: {fileID: -8325659812267641654}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices
+      _node: {fileID: 8857383228892200369}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: 8857383228892200369}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: -8104433980779823678}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 8857383228892200369}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: Cap. Charles
+  _sentence: "Utilize os controles XXXX para navegar na velocidade padr\xE3o e para
+    mudar o barco de dire\xE7\xE3o."
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
