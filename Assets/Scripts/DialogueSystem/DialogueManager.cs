@@ -16,7 +16,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private DialogueChoiceUI _choicePrefab;
     [SerializeField] private bool _playDialogueOnAwake;
     [SerializeField] private float _textSpeed = 0.02f;
-    [SerializeField] private float _bubbleResizeSpeed = 10f;
+    [SerializeField] private float _boxResizeSpeed = 10f;
+    [SerializeField] private float _minBoxHeight = 10f;
     [SerializeField] private InputActionReference _clickAction;
     [SerializeField] private InputActionReference _rightClickAction;
     [SerializeField] private PlayerInventorySO _playerInventory;
@@ -64,7 +65,7 @@ public class DialogueManager : MonoBehaviour
 
         if (_sizeAdjustment < 1)
         {
-            _sizeAdjustment = Mathf.Clamp01(_sizeAdjustment + Time.deltaTime * _bubbleResizeSpeed);
+            _sizeAdjustment = Mathf.Clamp01(_sizeAdjustment + Time.deltaTime * _boxResizeSpeed);
             _dialoguePanel.rectTransform.sizeDelta = Vector2.LerpUnclamped(_dialoguePanel.rectTransform.sizeDelta, _textSize, _sizeAdjustment);
         }
 
@@ -110,6 +111,7 @@ public class DialogueManager : MonoBehaviour
     {
         _dialoguePanel.gameObject.SetActive(true);
         InputLock.movementLocked = true;
+        InputLock.clickLocked = true;
         StartCoroutine(DisplaySegment(dialogue.getStartSegment()));
     }
 
@@ -157,7 +159,7 @@ public class DialogueManager : MonoBehaviour
     {
         _currentSegment = dialogueSegment;
         _dialogueText.text = "";
-        _textSize.y = _dialogueText.GetPreferredValues(dialogueSegment.GetSentence()).y;
+        _textSize.y = Mathf.Max(_dialogueText.GetPreferredValues(dialogueSegment.GetSentence()).y, _minBoxHeight);
         _sizeAdjustment = 0;
         yield return new WaitForSeconds(0.2f);
         yield return StartCoroutine(TypeSentence(dialogueSegment.GetSentence()));
@@ -204,6 +206,7 @@ public class DialogueManager : MonoBehaviour
     {
         _dialoguePanel.gameObject.SetActive(false);
         InputLock.movementLocked = false;
+        InputLock.clickLocked = false;
         EventManager.TriggerEvent("EndDialogue");
 
         // Clear conversation log

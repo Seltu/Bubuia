@@ -8,10 +8,12 @@ using UnityEngine.EventSystems;
 public class FishingRodController : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private InputActionReference fishingAction;
+    [SerializeField] private InputActionReference pointerPositionAction;
+    [SerializeField] private InputActionReference moveAction;
     [SerializeField] private Transform hookObject;
     [SerializeField] private Transform defaultHookPos;
     [SerializeField] private LayerMask waterLayer;
-    [SerializeField] private InputActionReference pointerPositionAction;
     [SerializeField] private InputActionReference moveAction;
 
     [Header("Settings")]
@@ -48,8 +50,8 @@ public class FishingRodController : MonoBehaviour
         EventManager.AddListener<bool>("EndFishingMinigame", EndHooking);
         EventManager.AddListener<int, int>("DistanceUpdate", HookingDistanceUpdate);
         EventManager.AddListener("TreasureFail", TreasureFail);
-
         EventManager.TriggerEvent("CallTutorial", "Tutorial_FishRodHold");
+        fishingAction.action.performed += OnFishingAction;
     }
 
     private void OnDestroy()
@@ -60,6 +62,7 @@ public class FishingRodController : MonoBehaviour
         EventManager.RemoveListener<bool>("EndFishingMinigame", EndHooking);
         EventManager.RemoveListener<int, int>("DistanceUpdate", HookingDistanceUpdate);
         EventManager.RemoveListener("TreasureFail", TreasureFail);
+        fishingAction.action.performed -= OnFishingAction;
     }
 
     private void Update()

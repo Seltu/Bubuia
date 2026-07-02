@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d540d96dd223348a3d0650d59b8bc8, type: 3}
+  m_Name: TutorialFishing1
+  m_EditorClassIdentifier: 
+  questId: cc5cd667-5023-4ddd-964e-dbcdf412d702
+  questFlag: TutorialFishing1
+  questName: "Pesca N\xEDvel 1!"
+  questDesc: "Fisgue 3 tesouros em redemoinhos com seu anzol magn\xE9tico!"
+  objectives:
+  - objectiveId: 
+    description: Fisgue Tesouros
+    type: 4
+    itemData: {fileID: 0}
+    requiredAmount: 3
+  - objectiveId: 
+    description: "Ou\xE7a o Capit\xE3o Charles"
+    type: 2
+    itemData: {fileID: 0}
+    requiredAmount: 1

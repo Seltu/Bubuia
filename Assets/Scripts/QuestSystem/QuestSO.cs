@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "QuestSO", menuName = "Scriptable Objects/QuestSO")]
@@ -11,6 +13,9 @@ public class QuestSO : ScriptableObject
     public string questName;
     public string questDesc;
     public List<QuestObjective> objectives;
+
+    public bool IsCompleted => GlobalFlagsManager.GetFlag(questFlag) >= GetTotalProgress();
+    public int CurrentProgress => GlobalFlagsManager.GetFlag(questFlag);
 
     private void OnValidate()
     {
@@ -83,6 +88,51 @@ public class QuestSO : ScriptableObject
         }
         return "(1/1)";
     }
+
+    public int GetObjectiveProgress(int objective)
+    {
+        int progress = GlobalFlagsManager.GetFlag(questFlag);
+        for (int i = 0; i < objectives.Count; i++)
+        {
+            QuestObjective obj = objectives[i];
+            progress -= obj.requiredAmount;
+            if (i == objective)
+            {
+                if (progress <= 0)
+                {
+                    int objectiveProgress = Math.Max(0, (progress + obj.requiredAmount));
+                    return objectiveProgress;
+                }
+                else
+                {
+                    return obj.requiredAmount;
+                }
+            }
+        }
+        return 0;
+    }
+
+    public bool PassedObjective(int objective)
+    {
+        int progress = GlobalFlagsManager.GetFlag(questFlag);
+        for (int i = 0; i < objectives.Count; i++)
+        {
+            QuestObjective obj = objectives[i];
+            progress -= obj.requiredAmount;
+            if (i == objective)
+            {
+                if (progress <= 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
 
 [System.Serializable]
@@ -93,39 +143,6 @@ public class QuestObjective
     public ObjectiveType type;
     public DescriptionDataSO itemData;
     public int requiredAmount;
-    public int currentAmount;
-
-    public bool isCompleted => currentAmount >= requiredAmount;
 }
 
-public enum ObjectiveType { CollectItem, ReachLocation, TalkNPC, Custom }
-
-[System.Serializable]
-public class QuestProgress
-{
-    public QuestSO quest;
-    public List<QuestObjective> objectives;
-
-    public QuestProgress(QuestSO quest)
-    {
-        this.quest = quest;
-        objectives = new List<QuestObjective>();
-
-        // deep copy to not modify original list
-        foreach (var obj in quest.objectives)
-        {
-            objectives.Add(new QuestObjective
-            {
-                objectiveId = obj.objectiveId,
-                description = obj.description,
-                type = obj.type,
-                requiredAmount = obj.requiredAmount,
-                currentAmount = 0
-            });
-        }
-    }
-
-    public bool IsCompleted => objectives.TrueForAll(o => o.isCompleted);
-    public string QuestID => quest.questId;
-
-}
+public enum ObjectiveType { CollectItem, ReachLocation, TalkNPC, Custom, CatchTreasure}

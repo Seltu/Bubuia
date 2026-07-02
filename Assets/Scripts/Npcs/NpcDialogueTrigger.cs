@@ -7,6 +7,7 @@ public class NpcDialogueTrigger : DialogueTrigger
     {
         base.Awake();
         npc.InteractEvent += TriggerDialogue;
+        _focusable = true;
     }
 
     protected override void OnDestroy()

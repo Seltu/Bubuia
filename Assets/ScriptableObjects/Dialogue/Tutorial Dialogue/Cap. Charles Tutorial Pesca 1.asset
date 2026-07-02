@@ -229,6 +229,48 @@ MonoBehaviour:
   - {fileID: -6554950342250950153}
   - {fileID: -8325659812267641654}
   - {fileID: 8857383228892200369}
+  - {fileID: 2345046786436941606}
+--- !u!114 &2345046786436941606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e5a51c06136834891c8120861bd83e, type: 3}
+  m_Name: Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 776, y: -40}
+  ports:
+    keys:
+    - _origin
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 2345046786436941606}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _actions
+        node: {fileID: 8857383228892200369}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _callEvent: 1
+  _eventName: StartTutorialTimer
+  _eventType: 1
+  _boolValue: 0
+  _intValue: 180
+  _floatValue: 30
+  _stringValue: 
+  _changeGlobalFlag: 0
+  _flagName: 
+  _flagValue: 0
 --- !u!114 &8857383228892200369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +327,10 @@ MonoBehaviour:
       _node: {fileID: 8857383228892200369}
       _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: _origin
+        node: {fileID: 2345046786436941606}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0

@@ -18,6 +18,7 @@ public class FishingMinigame : MonoBehaviour
     [SerializeField] private GameObject _coldIcon;
 
     [Header("References")]
+    [SerializeField] private InputActionReference _fishingAction;
     [SerializeField] private Transform _indicatorRing;
     [SerializeField] private FishingRing _ringPrefab;
     [SerializeField] private Transform _durabilityIconsParent;
@@ -50,6 +51,7 @@ public class FishingMinigame : MonoBehaviour
     private void Awake()
     {
         EventManager.AddListener<bool>("SetFreezeOnCue", v => _freezeOnCue = v);
+        _fishingAction.action.performed += FishingButtonInput;
     }
 
     private void Start()
@@ -81,6 +83,7 @@ public class FishingMinigame : MonoBehaviour
         EventManager.RemoveListener("RingMiss", OnRingMiss);
         EventManager.RemoveListener<bool>("SetFreezeOnCue", v => _freezeOnCue = v);
         EventManager.RemoveListener("FishCaught", OnCaughtFish);
+        _fishingAction.action.performed -= FishingButtonInput;
     }
 
     private void Update()

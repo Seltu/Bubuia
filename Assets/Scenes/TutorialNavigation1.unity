@@ -2306,6 +2306,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogue: {fileID: 11400000, guid: 05a452dae3029594abe6e36bfcdd2faf, type: 2}
+  _onEndDialogue:
+    m_PersistentCalls:
+      m_Calls: []
   _onStartDialogue:
     m_PersistentCalls:
       m_Calls:
@@ -2321,9 +2324,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _onEndDialogue:
-    m_PersistentCalls:
-      m_Calls: []
   _timeDelay: 0
 --- !u!1 &1071504604
 GameObject:
@@ -5226,10 +5226,6 @@ PrefabInstance:
       propertyPath: _loadedDialogue
       value: 
       objectReference: {fileID: 11400000, guid: ed6788ff748f9c0458e062de6eb1ffac, type: 2}
-    - target: {fileID: 3451931892701810821, guid: 4a8fa6fe1c3341745b20e2d32b0e172c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -195
-      objectReference: {fileID: 0}
     - target: {fileID: 4366445498298230798, guid: 4a8fa6fe1c3341745b20e2d32b0e172c, type: 3}
       propertyPath: m_Name
       value: TutorialDialogueManager
@@ -5525,34 +5521,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1936074278}
-    - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FishingButtonInput
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FishingMinigame, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: FishingMinigame, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 5190331744196254782, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
       propertyPath: m_Enabled
       value: 0

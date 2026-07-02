@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class QuestTracker : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class QuestTracker : MonoBehaviour
         }
 
         EventManager.AddListener<DescriptionDataSO, int>("OnAddItem", CheckQuestItem);
+        EventManager.AddListener("TreasureCaught", CheckCaughtTreasure);
         EventManager.AddListener("EndDialogue", UpdateQuests);
     }
 
@@ -47,9 +49,23 @@ public class QuestTracker : MonoBehaviour
         UpdateQuests();
     }
 
+    private void CheckCaughtTreasure()
+    {
+        foreach (QuestStruct quest in _trackedQuests)
+        {
+            QuestObjective currentObjective = quest.data.GetCurrentObjective();
+            if (currentObjective.type == ObjectiveType.CatchTreasure)
+            {
+                    GlobalFlagsManager.SetFlag(quest.data.questFlag, GlobalFlagsManager.GetFlag(quest.data.questFlag) + 1);
+            }
+        }
+        UpdateQuests();
+    }
+
     private void OnDestroy()
     {
         EventManager.RemoveListener<DescriptionDataSO, int>("OnAddItem", CheckQuestItem);
+        EventManager.RemoveListener("TreasureCaught", CheckCaughtTreasure);
         EventManager.RemoveListener("EndDialogue", UpdateQuests);
     }
 
@@ -78,6 +94,7 @@ public class QuestTracker : MonoBehaviour
                 Destroy(quest.ui.gameObject); //Later change this to play animation upon completion
             }
         }
+        EventManager.TriggerEvent("QuestsUpdated");
     }
 
     private struct QuestStruct

@@ -8,6 +8,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] protected DialogueSO _dialogue;
     [SerializeField] protected UnityEvent _onEndDialogue;
     [SerializeField] protected UnityEvent _onStartDialogue;
+    protected bool _focusable = false;
 
     protected static DialogueTrigger _activeTrigger;
 
@@ -22,7 +23,8 @@ public class DialogueTrigger : MonoBehaviour
         _activeTrigger = this;
         _onStartDialogue.Invoke();
         EventManager.TriggerEvent("LoadDialogue", _dialogue);
-        EventManager.TriggerEvent("CameraFocusOnTarget", true, transform);
+        if(_focusable)
+            EventManager.TriggerEvent("CameraFocusOnTarget", true, transform);
     }
 
     protected virtual void OnDestroy()

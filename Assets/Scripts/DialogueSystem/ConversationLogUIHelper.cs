@@ -51,9 +51,9 @@ public class ConversationLogUIHelper : MonoBehaviour
         // Force TMP and Layout Groups to update
         Canvas.ForceUpdateCanvases();
 
-        Debug.Log($"Viewport Height: {_viewport.rect.height}");
+        /*Debug.Log($"Viewport Height: {_viewport.rect.height}");
         Debug.Log($"Content Height: {_content.rect.height}");
-        Debug.Log($"Text Preferred Height: {_conversationLogText.preferredHeight}");
+        Debug.Log($"Text Preferred Height: {_conversationLogText.preferredHeight}");*/
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(_content);
 

@@ -1210,13 +1210,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bdcfa92bab6424da8809b467117189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fishingAction: {fileID: -6413824545914845958, guid: 9ba3dc970cd39eb44ba614ea4abca2be, type: 3}
+  pointerPositionAction: {fileID: 5309125518864444870, guid: 9ba3dc970cd39eb44ba614ea4abca2be, type: 3}
+  moveAction: {fileID: -1680190386980627800, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   hookObject: {fileID: 21893162192575531}
   defaultHookPos: {fileID: 8480733908928997700}
   waterLayer:
     serializedVersion: 2
     m_Bits: 24
-  pointerPositionAction: {fileID: 5309125518864444870, guid: 9ba3dc970cd39eb44ba614ea4abca2be, type: 3}
-  moveAction: {fileID: -1680190386980627800, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   arcHeight: 8
   castDuration: 0.75
   maxCastDistance: 25
@@ -1314,31 +1315,7 @@ MonoBehaviour:
     m_ActionId: b6397583-1c70-49e0-9582-4abe13cc2275
     m_ActionName: 'PlayerInput/CloseMenu[/Keyboard/escape]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5190331744196254782}
-        m_TargetAssemblyTypeName: FishingRodController, Assembly-CSharp
-        m_MethodName: OnFishingAction
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FishingMinigame, Assembly-CSharp
-        m_MethodName: FishingButtonInput
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 7d55cdd7-182b-4ee0-b1ae-240e01fefaf4
     m_ActionName: 'PlayerInput/CastHook[/Touchscreen/primaryTouch/tap,/Mouse/leftButton]'
   - m_PersistentCalls:
