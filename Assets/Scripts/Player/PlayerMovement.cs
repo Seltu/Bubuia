@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.U2D;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody _playerRb;
-    [SerializeField] private SpriteRenderer[] _sprites;
+    [SerializeField] private GameObject _playerSpritesHolder;
     [SerializeField] private Animator _animator;
 
     [SerializeField] private float _playerSpeed;
@@ -38,8 +39,10 @@ public class PlayerMovement : MonoBehaviour
             Vector3 velocity = new Vector3(moveInput.x * _playerSpeed, _playerRb.linearVelocity.y-_fallSpeed*Time.deltaTime, moveInput.y * _playerSpeed);
             _playerRb.linearVelocity = velocity;
 
-            foreach (var sprite in _sprites)
-                sprite.flipX = moveInput.x != 0 ? moveInput.x < 0 : sprite.flipX;
+            if (moveInput.x < 0)
+                _playerSpritesHolder.transform.localRotation = Quaternion.Euler(25, 0, 0);
+            else
+                _playerSpritesHolder.transform.localRotation = Quaternion.Euler(-25, 180, 0);
 
             _animator.SetBool("isWalking", true);
         }
