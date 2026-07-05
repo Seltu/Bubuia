@@ -5,6 +5,8 @@ using XNode;
 [CreateAssetMenu(fileName = "New Dialogue", menuName = "DialogueSystem/Dialogue")]
 public class DialogueSO : NodeGraph
 {
+    public bool isCutsceneDialogue;
+
     private void OnValidate()
     {
         int startNodes = 0;
