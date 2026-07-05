@@ -14,7 +14,6 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private Transform hookObject;
     [SerializeField] private Transform defaultHookPos;
     [SerializeField] private LayerMask waterLayer;
-    [SerializeField] private InputActionReference moveAction;
 
     [Header("Settings")]
     [SerializeField] private float arcHeight = 1.5f;

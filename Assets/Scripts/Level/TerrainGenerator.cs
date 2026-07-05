@@ -372,6 +372,9 @@ public class TerrainGenerator : MonoBehaviour
                     layerRoot
                 );
 
+                SubmergedObstacle SubmergedObstacle = deco.GetComponent<SubmergedObstacle>();
+                if (SubmergedObstacle != null) SubmergedObstacle.Initialize(waterHeight);
+
                 deco.transform.rotation = Quaternion.Euler(
                     0f,
                     Random.Range(0f, 360f),

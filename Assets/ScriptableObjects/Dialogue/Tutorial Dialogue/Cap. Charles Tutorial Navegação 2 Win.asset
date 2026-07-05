@@ -56,7 +56,10 @@ MonoBehaviour:
       _node: {fileID: -5402839016084722647}
       _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-      connections: []
+      connections:
+      - fieldName: _origin
+        node: {fileID: 4643139282627151172}
+        reroutePoints: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
@@ -153,6 +156,7 @@ MonoBehaviour:
   - {fileID: -5027553653795666997}
   - {fileID: 3477586189933397604}
   - {fileID: -5402839016084722647}
+  - {fileID: 4643139282627151172}
 --- !u!114 &3477586189933397604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,3 +229,44 @@ MonoBehaviour:
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
+--- !u!114 &4643139282627151172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e5a51c06136834891c8120861bd83e, type: 3}
+  m_Name: Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 504, y: 24}
+  ports:
+    keys:
+    - _origin
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 4643139282627151172}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _actions
+        node: {fileID: -5402839016084722647}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _callEvent: 1
+  _eventName: ChangeScene
+  _eventType: 3
+  _boolValue: 0
+  _intValue: 0
+  _floatValue: 0
+  _stringValue: TutorialFishing1
+  _changeGlobalFlag: 0
+  _flagName: 
+  _flagValue: 0
