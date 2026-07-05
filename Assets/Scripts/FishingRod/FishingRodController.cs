@@ -14,7 +14,6 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private Transform hookObject;
     [SerializeField] private Transform defaultHookPos;
     [SerializeField] private LayerMask waterLayer;
-    [SerializeField] private InputActionReference moveAction;
 
     [Header("Settings")]
     [SerializeField] private float arcHeight = 1.5f;
@@ -418,7 +417,7 @@ public class FishingRodController : MonoBehaviour
         if (_hookedTreasure.IsFullyPulled())
         {
             EventManager.TriggerEvent("TurnOnMovement");
-            EventManager.TriggerEvent("TreasureCaught");
+            EventManager.TriggerEvent("TreasureCaught", _hookedTreasure);
             _hookingTreasure = false;
             hookObject.tag = "Hook";
             _hookedTreasure.OnCaught();

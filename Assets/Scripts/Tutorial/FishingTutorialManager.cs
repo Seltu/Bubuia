@@ -28,6 +28,7 @@ public class FishingTutorialManager : DialogueTrigger
         EventManager.AddListener("QuestsUpdated", CheckTutorialProgress);
         EventManager.AddListener("ShipBreak", OnBoatBreak);
         EventManager.AddListener("Tut", FishingAnimClue);
+        EventManager.AddListener("Caught3Fish", StopFishingAnimClue);
         GlobalFlagsManager.SetFlag(_fishingTutorialQuest.questFlag, 1);
     }
 
@@ -51,12 +52,14 @@ public class FishingTutorialManager : DialogueTrigger
         EventManager.RemoveListener("StopTutorialTimer", StopTimer);
         EventManager.RemoveListener("QuestsUpdated", CheckTutorialProgress);
         EventManager.RemoveListener("ShipBreak", OnBoatBreak);
-        EventManager.AddListener("Tut", FishingAnimClue);
+        EventManager.RemoveListener("Tut", FishingAnimClue);
+        EventManager.RemoveListener("Caught3Fish", StopFishingAnimClue);
     }
 
     private void StartTimer(int time)
     {
         _timer = time;
+        EventManager.TriggerEvent("SetFreezeOnCue", true);
     }
 
     private void Update()

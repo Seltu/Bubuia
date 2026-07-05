@@ -237,7 +237,7 @@ public class TerrainGenerator : MonoBehaviour
 
             CapsuleCollider col = wall.AddComponent<CapsuleCollider>();
             col.height = 20f;
-            col.radius = 3f;
+            col.radius = 2f;
             col.center = new Vector3(0, 0, 0);
             wall.layer = LayerMask.NameToLayer("Barrier");
             wall.tag = "Obstacle";

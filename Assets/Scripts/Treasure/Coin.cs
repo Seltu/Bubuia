@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,11 +9,18 @@ public class Coin : MonoBehaviour
     [SerializeField] private float _speed = 2f;
     [SerializeField] private float _collectRadius = 2f;
     private bool _collected;
+    private TreasureSpot _treasureSpot;
 
     private void OnEnable()
     {
+        EventManager.AddListener<TreasureSpot>("TreasureCaught", CheckTreasureCatch);
         _coinAnimator.Play("CoinAppear");
         _collected = false;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.RemoveListener<TreasureSpot>("TreasureCaught", CheckTreasureCatch);
     }
 
     private void OnTriggerStay(Collider other)
@@ -23,19 +31,35 @@ public class Coin : MonoBehaviour
             transform.position = new Vector3(approachPos.x, transform.position.y, approachPos.z);
             if (!_collected && Vector3.Distance(transform.position, other.transform.position) < _collectRadius)
             {
-                _collected = true;
-                _coinAnimator.Play("CoinCollect");
-                _playerInventory.playerMoney++;
-                StartCoroutine(DisappearAfterSeconds(1f));
-                EventManager.TriggerEvent("OnUpdateMoneyUI");
+                Collect();
             }
         }
+    }
+
+    private void CheckTreasureCatch(TreasureSpot treasure)
+    {
+        if (treasure == _treasureSpot)
+            Collect();
+    }
+
+    private void Collect()
+    {
+        _collected = true;
+        _coinAnimator.Play("CoinCollect");
+        _playerInventory.playerMoney++;
+        StartCoroutine(DisappearAfterSeconds(1f));
+        EventManager.TriggerEvent("OnUpdateMoneyUI");
     }
 
     private IEnumerator DisappearAfterSeconds(float time)
     {
         yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
+    }
+
+    public void SetTreasure(TreasureSpot treasure)
+    {
+        _treasureSpot = treasure;
     }
 
     public void Vanish()

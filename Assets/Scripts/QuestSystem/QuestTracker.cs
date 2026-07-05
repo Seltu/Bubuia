@@ -28,8 +28,22 @@ public class QuestTracker : MonoBehaviour
         }
 
         EventManager.AddListener<DescriptionDataSO, int>("OnAddItem", CheckQuestItem);
-        EventManager.AddListener("TreasureCaught", CheckCaughtTreasure);
+        EventManager.AddListener<TreasureSpot>("TreasureCaught", CheckCaughtTreasure);
+        EventManager.AddListener("FishCaught", CheckCaughtFish);
         EventManager.AddListener("EndDialogue", UpdateQuests);
+    }
+
+    private void CheckCaughtFish()
+    {
+        foreach (QuestStruct quest in _trackedQuests)
+        {
+            QuestObjective currentObjective = quest.data.GetCurrentObjective();
+            if (currentObjective.type == ObjectiveType.CatchFish)
+            {
+                GlobalFlagsManager.SetFlag(quest.data.questFlag, GlobalFlagsManager.GetFlag(quest.data.questFlag) + 1);
+            }
+        }
+        UpdateQuests();
     }
 
     private void CheckQuestItem(DescriptionDataSO item, int amount)
@@ -49,7 +63,7 @@ public class QuestTracker : MonoBehaviour
         UpdateQuests();
     }
 
-    private void CheckCaughtTreasure()
+    private void CheckCaughtTreasure(TreasureSpot treasure)
     {
         foreach (QuestStruct quest in _trackedQuests)
         {
@@ -65,7 +79,8 @@ public class QuestTracker : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.RemoveListener<DescriptionDataSO, int>("OnAddItem", CheckQuestItem);
-        EventManager.RemoveListener("TreasureCaught", CheckCaughtTreasure);
+        EventManager.RemoveListener<TreasureSpot>("TreasureCaught", CheckCaughtTreasure);
+        EventManager.RemoveListener("FishCaught", CheckCaughtFish);
         EventManager.RemoveListener("EndDialogue", UpdateQuests);
     }
 

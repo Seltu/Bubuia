@@ -8,7 +8,7 @@ public class TreasureSpawner : MonoBehaviour
     [SerializeField] private Transform player;
 
     [Header("Prefabs")]
-    [SerializeField] private GameObject treasureSpotPrefab;
+    [SerializeField] private TreasureSpot treasureSpotPrefab;
     [SerializeField] private GameObject coinPrefab;
 
     [Header("Treasure Placement")]
@@ -27,7 +27,7 @@ public class TreasureSpawner : MonoBehaviour
     [Header("Cleanup")]
     [SerializeField] private bool destroyCoinsWhenTreasureIsGone = true;
 
-    private GameObject _currentTreasure;
+    private TreasureSpot _currentTreasure;
     private Camera _mainCamera;
     private readonly List<Coin> _spawnedCoins = new();
     private void Awake()
@@ -45,7 +45,7 @@ public class TreasureSpawner : MonoBehaviour
         if (_currentTreasure == null) return;
         if (Vector3.Distance(_currentTreasure.transform.position, player.position ) > maxDistanceFromPlayer)
         {
-            Destroy(_currentTreasure);
+            Destroy(_currentTreasure.gameObject);
         }
     }
 
@@ -148,6 +148,7 @@ public class TreasureSpawner : MonoBehaviour
             pos.y = start.y; // base
 
             Coin coin = (Coin) PoolManager.Instance.ReuseComponent(coinPrefab, pos, Quaternion.identity);
+            coin.SetTreasure(_currentTreasure);
             _spawnedCoins.Add(coin);
         }
     }
@@ -169,7 +170,6 @@ public class TreasureSpawner : MonoBehaviour
         _spawnedCoins.Clear();
     }
 
-    // Opcional: se você quiser matar tudo ao desabilitar cena/objeto
     private void OnDisable()
     {
         if (destroyCoinsWhenTreasureIsGone)
