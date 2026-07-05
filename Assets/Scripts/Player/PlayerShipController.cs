@@ -194,6 +194,8 @@ public class PlayerShipController : MonoBehaviour
         }
 
         // --- Aplica velocidade
+        if (_stopped || InputLock.movementLocked)
+            currentVelocity = Vector3.zero;
         shipRigidbody.linearVelocity = currentVelocity;
 
         // --- Splash effect

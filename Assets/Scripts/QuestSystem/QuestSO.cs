@@ -138,11 +138,10 @@ public class QuestSO : ScriptableObject
 [System.Serializable]
 public class QuestObjective
 {
-    public string objectiveId; // mathc with item id to be collected, npc to be interacted, etc
     public string description;
     public ObjectiveType type;
     public DescriptionDataSO itemData;
     public int requiredAmount;
 }
 
-public enum ObjectiveType { CollectItem, ReachLocation, TalkNPC, Custom, CatchTreasure}
+public enum ObjectiveType { CollectItem, ReachLocation, TalkNPC, Custom, CatchTreasure, CatchFish}

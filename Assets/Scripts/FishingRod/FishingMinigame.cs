@@ -45,7 +45,7 @@ public class FishingMinigame : MonoBehaviour
     private bool _waitingCueTap = false;
     private float _prevTimeScale = 1f;
     private float _cueInsideMargin = 0.4f;
-    private int _cueCount = 3; // ammount of fishes to catch until cue is deactivated, player must catch the ramaingn fish alone
+    private int _cueCount = 2; // ammount of fishes to catch until cue is deactivated, player must catch the ramaingn fish alone
     private List<InventoryItem> PlayerBaits => _playerInventory.items.Where(x => x.itemData is BaitTypeSO).ToList();
 
     private void Awake()
@@ -109,7 +109,7 @@ public class FishingMinigame : MonoBehaviour
     public void FishingButtonInput(InputAction.CallbackContext context)
     {
         if (!_playing) return;
-        if (context.phase != InputActionPhase.Started || context.interaction is not TapInteraction) return;
+        //if (context.phase != InputActionPhase.Started || context.interaction is not TapInteraction) return;
 
 
         // While cue training is active, only allow taps when the cue is showing (time is frozen).

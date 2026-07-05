@@ -100674,7 +100674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556758507256989180, guid: 216104685dcaa0b4ebd1aaf35fbdb39c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3866969191114421642, guid: 216104685dcaa0b4ebd1aaf35fbdb39c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -489789,7 +489789,7 @@ PrefabInstance:
     - target: {fileID: 529450028946790402, guid: 4a8fa6fe1c3341745b20e2d32b0e172c, type: 3}
       propertyPath: _loadedDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 11ab586f540912445b60e256d267cffd, type: 2}
+      objectReference: {fileID: 11400000, guid: ff75771cecedebc4cb9ce44006ec0183, type: 2}
     - target: {fileID: 3451931892701810821, guid: 4a8fa6fe1c3341745b20e2d32b0e172c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -195
@@ -489966,7 +489966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8777097882762435645, guid: 95f5ab70a506eee4b911fafa9712af8d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -489982,9 +489982,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 8863590295578791997}
     m_Modifications:
     - target: {fileID: 5875576307334618544, guid: 6db35883899de0443b9f157962e96387, type: 3}
+      propertyPath: _dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 528476f9a4a8a764186133acd367a632, type: 2}
+    - target: {fileID: 5875576307334618544, guid: 6db35883899de0443b9f157962e96387, type: 3}
       propertyPath: _poitingArrow
       value: 
       objectReference: {fileID: 1559461757}
+    - target: {fileID: 5875576307334618544, guid: 6db35883899de0443b9f157962e96387, type: 3}
+      propertyPath: _victoryDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: f0fbdc4dc1225af4299ec2c3bff22512, type: 2}
+    - target: {fileID: 5875576307334618544, guid: 6db35883899de0443b9f157962e96387, type: 3}
+      propertyPath: _fishingTutorialQuest
+      value: 
+      objectReference: {fileID: 11400000, guid: d9406624a09148e418b2caffcf79a030, type: 2}
     - target: {fileID: 7128050943128483299, guid: 6db35883899de0443b9f157962e96387, type: 3}
       propertyPath: m_Name
       value: FishingTutorialUI

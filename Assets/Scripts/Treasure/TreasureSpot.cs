@@ -38,6 +38,8 @@ public class TreasureSpot : MonoBehaviour
     }
     internal void OnCaught()
     {
+        if (_treasureSpotAnimator == null)
+            return;
         _treasureSpotAnimator.Play("TreasureCaught");
         for (var i = 0; i < 10; i++)
         {
