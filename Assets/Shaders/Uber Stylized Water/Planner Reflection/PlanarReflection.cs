@@ -37,7 +37,6 @@ public class PlanarReflectionVolume : MonoBehaviour
         // FIX: Removed the RenderPipelineManager subscription to avoid recursion
         // RenderPipelineManager.beginCameraRendering += DoPlanarReflections;
 
-        reflectionLayer = ~(1 << 4);
         UpdateBounds();
 
         // Get the material from the reflection target

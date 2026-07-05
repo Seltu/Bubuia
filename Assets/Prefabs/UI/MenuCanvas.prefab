@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 4587494907419738305}
   - component: {fileID: 8360801689005788137}
   - component: {fileID: 6420527655001339080}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 1132919115489365321}
   - component: {fileID: 703804907250469491}
   - component: {fileID: 5176892137100515919}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 7317538560328926070}
   - component: {fileID: 2985655143080266758}
   - component: {fileID: 4353324800172491679}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ReturnPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -841,7 +841,7 @@ GameObject:
   - component: {fileID: 684511923998831000}
   - component: {fileID: 2642694473090773610}
   - component: {fileID: 5837035879233638013}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 2234876553326539788}
   - component: {fileID: 8051259065269989111}
   - component: {fileID: 3868199759022908283}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InventoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2459,7 +2459,7 @@ GameObject:
   - component: {fileID: 1744900966817710566}
   - component: {fileID: 5739193813636505148}
   - component: {fileID: 1147071641147850622}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MoneySlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2801,6 +2801,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -315
       objectReference: {fileID: 0}
+    - target: {fileID: 113535605871942023, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 445227131111798695, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2878,6 +2882,10 @@ PrefabInstance:
       value: Inventory
       objectReference: {fileID: 0}
     - target: {fileID: 949205430052976717, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 949205430052976717, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2885,6 +2893,10 @@ PrefabInstance:
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 9197726909742445309}
+    - target: {fileID: 1863503939008804948, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5128236303308103769, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3005,6 +3017,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -315
       objectReference: {fileID: 0}
+    - target: {fileID: 7081936424088370605, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7429551257119865740, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -3116,6 +3132,10 @@ PrefabInstance:
     - target: {fileID: 7488702085256209098, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -135
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868655443827533358, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8842263942461084935, guid: 8e63dbcb1f32a004e84a0dd8958291d7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3290,6 +3310,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3941242434107551430}
     m_Modifications:
+    - target: {fileID: 1235368065999044348, guid: 14571f3431b9f9c4e842982dcf5d6f8a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1534603399542530329, guid: 14571f3431b9f9c4e842982dcf5d6f8a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3370,6 +3394,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2229354437511241710, guid: 14571f3431b9f9c4e842982dcf5d6f8a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2541862092848151314, guid: 14571f3431b9f9c4e842982dcf5d6f8a, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -3402,6 +3430,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 4353324800172491679}
+    - target: {fileID: 8016249079237841047, guid: 14571f3431b9f9c4e842982dcf5d6f8a, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3548,6 +3580,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2684008434433764339, guid: 199fe5219ae646c4a83760bd2844587c, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3357535844825048572, guid: 199fe5219ae646c4a83760bd2844587c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3571,6 +3607,10 @@ PrefabInstance:
     - target: {fileID: 3357535844825048572, guid: 199fe5219ae646c4a83760bd2844587c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -135
+      objectReference: {fileID: 0}
+    - target: {fileID: 3539970526033238255, guid: 199fe5219ae646c4a83760bd2844587c, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3690002093986297318, guid: 199fe5219ae646c4a83760bd2844587c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -3684,6 +3724,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 4932899422129974730}
+    - target: {fileID: 6205325529745248501, guid: 199fe5219ae646c4a83760bd2844587c, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295247448226393870, guid: 199fe5219ae646c4a83760bd2844587c, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7131742921271859624, guid: 199fe5219ae646c4a83760bd2844587c, type: 3}
       propertyPath: m_SizeDelta.y
       value: -225
