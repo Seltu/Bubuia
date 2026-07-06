@@ -21,12 +21,12 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private float recallSpeed = 6f;
     [SerializeField] private float instantRecallSpeed = 25f;
 
-    private bool _canCast = true;
-    private bool _isRecalling = false;
-    private bool _hookInWater = false;
-    private bool _hookingFish = false;
-    private bool _stopped = false;
-    private bool _recallHeld = false;
+    [SerializeField] private bool _canCast = true;
+    [SerializeField] private bool _isRecalling = false;
+    [SerializeField] private bool _hookInWater = false;
+    [SerializeField] private bool _hookingFish = false;
+    [SerializeField] private bool _stopped = false;
+    [SerializeField] private bool _recallHeld = false;
     private float _hookingDistance;
     private float _currentMaxDistance;
     private Vector3 _castTarget;
@@ -34,6 +34,7 @@ public class FishingRodController : MonoBehaviour
     private Fish hookedFish;
     private TreasureSpot _hookedTreasure;
     private bool _hookingTreasure;
+    private Animator _animator;
 
 
     #region Unity Methods
@@ -50,6 +51,10 @@ public class FishingRodController : MonoBehaviour
         EventManager.AddListener("TreasureFail", TreasureFail);
 
         EventManager.TriggerEvent("CallTutorial", "Tutorial_FishRodHold");
+
+        // Trigger player animation
+        _animator = GetComponentInChildren<Animator>();
+        _animator.SetBool("isFishing", true);
     }
 
     private void OnDestroy()
@@ -60,6 +65,9 @@ public class FishingRodController : MonoBehaviour
         EventManager.RemoveListener<bool>("EndFishingMinigame", EndHooking);
         EventManager.RemoveListener<int, int>("DistanceUpdate", HookingDistanceUpdate);
         EventManager.RemoveListener("TreasureFail", TreasureFail);
+
+        // Trigger player animation
+        _animator.SetBool("isFishing", false);
     }
 
     private void Update()
@@ -154,6 +162,14 @@ public class FishingRodController : MonoBehaviour
 
         if (!_hookInWater && _canCast)
             TryCastToPosition(pos);
+
+        if (_hookInWater && _hookingFish)
+        {
+            // Trigger player animation
+            _animator.Play("Rod Pull");
+
+            return;
+        }
     }
 
     // CAST — XZ only
@@ -205,6 +221,11 @@ public class FishingRodController : MonoBehaviour
 
     private IEnumerator ParabolicThrow()
     {
+        // Trigger player animation
+        _animator.SetBool("isPulling", true);
+
+        yield return new WaitForSeconds(1f);
+
         Vector3 start = defaultHookPos.position;
         Vector3 mid = (start + _castTarget) * 0.5f;
         mid.y += arcHeight;
@@ -342,6 +363,9 @@ public class FishingRodController : MonoBehaviour
         hookObject.gameObject.SetActive(false);
 
         EventManager.TriggerEvent("RecallLine");
+
+        // Trigger player animation
+        _animator.SetBool("isPulling", false);
     }
 
     private void HookFish(Fish fish)
