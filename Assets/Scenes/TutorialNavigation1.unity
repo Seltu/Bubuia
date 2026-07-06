@@ -1160,10 +1160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dbaf02bef6a434aa2f07815a6f02f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quest: {fileID: 11400000, guid: 4d71c07a78db0eb428033bb2cd16bcec, type: 2}
-  _bobberMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1001 &395498748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1302,11 +1298,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 216104685dcaa0b4ebd1aaf35fbdb39c, type: 3}
---- !u!1 &438581070 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3556758507256989180, guid: 216104685dcaa0b4ebd1aaf35fbdb39c, type: 3}
-  m_PrefabInstance: {fileID: 438581069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &459582541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1691346620107418431, guid: 0fb6a714ae76ba248ad69b22db7b7163, type: 3}
@@ -2229,11 +2220,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2494694018391783561, guid: bf067f6524888dd49b753c3c24308c35, type: 3}
   m_PrefabInstance: {fileID: 117298152}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &992912910 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8777097882762435645, guid: 95f5ab70a506eee4b911fafa9712af8d, type: 3}
-  m_PrefabInstance: {fileID: 4058810849832666493}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &997450461 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2494694018391783561, guid: bf067f6524888dd49b753c3c24308c35, type: 3}
@@ -2455,60 +2441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94a29dc0eaf20d4ba842c686b7d1651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tutorialQuest: {fileID: 11400000, guid: 4d71c07a78db0eb428033bb2cd16bcec, type: 2}
-  _tutorialStatus: {fileID: 11400000, guid: 00a12a63e521dc84bb4caa28ab6aab29, type: 2}
-  _boatTransform: {fileID: 295097186}
-  _boatModelTransform: {fileID: 268097717}
-  _rodController: {fileID: 2005381049}
-  _shipController: {fileID: 2005381050}
-  _treasureLayer:
-    serializedVersion: 2
-    m_Bits: 4096
-  _fishLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _fishSpawner: {fileID: 992912910}
-  _treasureSpawner: {fileID: 438581070}
-  _tutCanvasGroup: {fileID: 0}
-  _fadeTime: 0.5
-  _popUpText: {fileID: 0}
-  _fishingCanvas: {fileID: 815743509}
-  _sideInstructionsCG: {fileID: 0}
-  _instructionsTxt: {fileID: 0}
-  _anim: {fileID: 0}
-  _movementCircle: {fileID: 1602569097}
-  _wasdIcons: {fileID: 212521466}
-  _spaceIcon: {fileID: 633816513}
-  _moveAmmount: 33
-  _spots: {fileID: 1071504604}
-  _poitingArrow: {fileID: 1559461757}
-  _stepTransitionDelay: 1
-  _stepTexts:
-  - "Bem vindo ao Bubuia! \n\nNesta fase voc\xEA aprender\xE1 os controles e mec\xE2nicas
-    b\xE1sicas do jogo"
-  - "Movimenta\xE7\xE3o\n\nUse as teclas </color=#FFEC00>WASD</color> do teclado
-    para mover o barco\n\nSaia de dentro do circulo branco para prosseguir"
-  - "Acelerando\n\nAperte a tecla </color=#FFEC00>ESPA\xC7O</color> para fazer com
-    que o barco acelere"
-  - "Controlando a Linha\n\nClique em qualquer ponto da tela para lan\xE7ar o anzol
-    na dire\xE7\xE3o clicada\n\nQuando o anzol estiver na \xE1gua, clique novamente
-    na tela para pux\xE1-lo de volta"
-  - "MIrando no Peixe\n\nPara fisgar um peixe, o anzol deve ser jogado o mais perto
-    o poss\xEDvel para que o peixe morda\n\nProcure um peixe pelo mapa, e jogue o
-    anzol perto dele"
-  - "Fisgando o Peixe\n\nQuando o peixe morder a isca, o minigame de pesca se inicia\n\nClique
-    na tela cada vez que um circulo branco estiver dentro da \xE1rea verde\n\nClicar
-    errado muitas vezes far\xE1 com que o peixe escape, cuidado!"
-  - "Gemas\n\nAs Gemas s\xE3o o dinheiro do jogo\n\nVoc\xEA pode consegui-las vendendo
-    recursos, ou achando-as espalhadas pelo mapa\n\nProcure um caminho de gemas e
-    colete uma gema"
-  - "Ca\xE7a ao tesouro\n\nCaminhos de gemas podem levar a um </color=#FFEC00>Ponto
-    de Tesouro</color>\n\nSiga o caminho e ache a \xE1rea em destaque"
-  - "Fisgando o Tesouro\n\nPara pescar um </color=#FFEC00>Tesouro</color>, jogue
-    a linha dentro da \xE1rea demacarda e </color=#FFEC00>clique rapidamente na tela</color>,
-    at\xE9 que o c\xEDrculo vermelho alcance a borda da \xE1rea"
-  - "Tutorial Completo!\n\nParab\xE9ns! Voc\xEA completou o tutorial. Agora pode
-    voltar ao menu e jogar normalmente\n\nDivirta-se! ^-^"
 --- !u!4 &1135029157
 Transform:
   m_ObjectHideFlags: 0
@@ -3122,10 +3054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dbaf02bef6a434aa2f07815a6f02f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quest: {fileID: 11400000, guid: 4d71c07a78db0eb428033bb2cd16bcec, type: 2}
-  _bobberMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1001 &1526289956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3504,7 +3432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2151987337265611958, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 51.999996
+      value: 51.999985
       objectReference: {fileID: 0}
     - target: {fileID: 2151987337265611958, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3528,11 +3456,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2848980485939765316, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 36.76954
+      value: 36.76953
       objectReference: {fileID: 0}
     - target: {fileID: 2848980485939765316, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -43.76956
+      value: -43.769554
       objectReference: {fileID: 0}
     - target: {fileID: 2901713812240346914, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: maxZoom
@@ -3596,7 +3524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4785208291873496044, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 36.769543
+      value: 36.76954
       objectReference: {fileID: 0}
     - target: {fileID: 4785208291873496044, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3628,7 +3556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8561329236636001097, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: field of view
-      value: 41.11202
+      value: 41.11203
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -3644,6 +3572,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 376226241690188629, guid: 0d84b051c336f024982f1de1262a4124, type: 3}
+      propertyPath: m_Center.y
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1774537066038301544, guid: 0d84b051c336f024982f1de1262a4124, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4111,10 +4043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57dbaf02bef6a434aa2f07815a6f02f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quest: {fileID: 11400000, guid: 4d71c07a78db0eb428033bb2cd16bcec, type: 2}
-  _bobberMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1877860771
 GameObject:
   m_ObjectHideFlags: 0
@@ -4747,28 +4675,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf067f6524888dd49b753c3c24308c35, type: 3}
---- !u!114 &2005381049 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5190331744196254782, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-  m_PrefabInstance: {fileID: 7368786909824083970}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bdcfa92bab6424da8809b467117189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2005381050 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 565262777427961340, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-  m_PrefabInstance: {fileID: 7368786909824083970}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b115341acd2a6489a2cd536e44a966, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2049324832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5517,6 +5423,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2862162535004760212, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
       propertyPath: m_Camera
       value: 
@@ -5577,15 +5487,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8451723304614036892, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9122168391216930911, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
       propertyPath: m_Name
       value: Boat
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5190331744196254782, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+    - {fileID: 6646893460896607743, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8390750955584603645, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}

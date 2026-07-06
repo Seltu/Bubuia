@@ -7419,6 +7419,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2862162535004760212, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3660206097213107749, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
       propertyPath: m_Camera
       value: 
@@ -7487,7 +7491,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boat
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5190331744196254782, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+    - {fileID: 6646893460896607743, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8390750955584603645, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
