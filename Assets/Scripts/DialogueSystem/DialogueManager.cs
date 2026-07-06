@@ -27,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     private bool _skipTyping;
     private bool _showChoices;
     private float _sizeAdjustment;
+    private bool isCutsceneDialogue;
 
     [Header("Conversation Log")]
     [SerializeField] private GameObject _conversationLogPanel;
@@ -112,6 +113,11 @@ public class DialogueManager : MonoBehaviour
         _dialoguePanel.gameObject.SetActive(true);
         InputLock.movementLocked = true;
         InputLock.clickLocked = true;
+        isCutsceneDialogue = dialogue.isCutsceneDialogue;
+        if (isCutsceneDialogue)
+        {
+
+        }
         StartCoroutine(DisplaySegment(dialogue.getStartSegment()));
     }
 
@@ -207,6 +213,7 @@ public class DialogueManager : MonoBehaviour
         _dialoguePanel.gameObject.SetActive(false);
         InputLock.movementLocked = false;
         InputLock.clickLocked = false;
+        if(!isCutsceneDialogue) InputLock.movementLocked = false;
         EventManager.TriggerEvent("EndDialogue");
 
         // Clear conversation log

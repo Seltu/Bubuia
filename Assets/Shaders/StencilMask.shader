@@ -1,21 +1,29 @@
-// "Invisible" Unity Occlusion Shader. Useful for AR, Masking, etc
-// Mark Johns / Doomlaser - https://twitter.com/Doomlaser
-
-Shader "DepthMask"
+Shader "Masks/StencilMask"
 {
     Properties
     {
+        _StencilRef ("Stencil Ref", Float) = 1
     }
+
     SubShader
     {
         Tags
         {
-            "RenderType" = "Opaque"
-            "Queue" = "Geometry-1"
+            "RenderType" = "Transparent"
         }
+
         Pass
         {
             ColorMask 0
+            ZWrite Off
+            ZTest Always
+
+            Stencil
+            {
+                Ref [_StencilRef]
+                Comp Always
+                Pass Replace
+            }
 
             CGPROGRAM
             #pragma vertex vert
@@ -35,9 +43,9 @@ Shader "DepthMask"
                 return o;
             }
 
-            half4 frag(v2f i) : COLOR
+            half4 frag(v2f i) : SV_Target
             {
-                return float4(1,1,1,1);
+                return half4(0,0,0,0);
             }
             ENDCG
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,31 @@ public class GameplayMenuUI : MonoBehaviour
     [SerializeField] private UnityEvent _onPause;
     [SerializeField] private UnityEvent _onBooklet;
     [SerializeField] private UnityEvent _onUnpause;
+    [SerializeField] private UnityEvent _onCutsceneStart;
+    [SerializeField] private UnityEvent _onCutsceneEnd;
     [SerializeField] private InputActionReference _pauseAction;
+
+    private void Awake()
+    {
+        EventManager.AddListener("CutsceneStarted", OnCutsceneStart);
+        EventManager.AddListener("CutsceneEnded", OnCutsceneEnd);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.RemoveListener("CutsceneStarted", OnCutsceneStart);
+        EventManager.RemoveListener("CutsceneEnded", OnCutsceneEnd);
+    }
+
+    private void OnCutsceneStart()
+    {
+        _onCutsceneStart.Invoke();
+    }
+
+    private void OnCutsceneEnd()
+    {
+        _onCutsceneEnd.Invoke();
+    }
 
     private void Start()
     {
