@@ -221,6 +221,11 @@ public class FishingRodController : MonoBehaviour
 
     private IEnumerator ParabolicThrow()
     {
+        // Trigger player animation
+        _animator.SetBool("isPulling", true);
+
+        yield return new WaitForSeconds(1f);
+
         Vector3 start = defaultHookPos.position;
         Vector3 mid = (start + _castTarget) * 0.5f;
         mid.y += arcHeight;
@@ -239,9 +244,6 @@ public class FishingRodController : MonoBehaviour
 
             yield return null;
         }
-
-        // Trigger player animation
-        _animator.SetBool("isPulling", true);
 
         hookObject.position = _castTarget;
         _hookInWater = true;
@@ -298,9 +300,6 @@ public class FishingRodController : MonoBehaviour
     private IEnumerator InstantRecall()
     {
         _isRecalling = true;
-
-        // Trigger player animation
-        _animator.SetBool("isPulling", false);
 
         while (_hookInWater)
         {
@@ -364,6 +363,9 @@ public class FishingRodController : MonoBehaviour
         hookObject.gameObject.SetActive(false);
 
         EventManager.TriggerEvent("RecallLine");
+
+        // Trigger player animation
+        _animator.SetBool("isPulling", false);
     }
 
     private void HookFish(Fish fish)

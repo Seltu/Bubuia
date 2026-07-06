@@ -40,9 +40,9 @@ public class PlayerMovement : MonoBehaviour
             _playerRb.linearVelocity = velocity;
 
             if (moveInput.x < 0)
-                _playerSpritesHolder.transform.localRotation = Quaternion.Euler(25, 0, 0);
+                _playerSpritesHolder.transform.rotation = Quaternion.Euler(25, 0, 0);
             else
-                _playerSpritesHolder.transform.localRotation = Quaternion.Euler(-25, 180, 0);
+                _playerSpritesHolder.transform.rotation = Quaternion.Euler(-25, 180, 0);
 
             _animator.SetBool("isWalking", true);
         }
