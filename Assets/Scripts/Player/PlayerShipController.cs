@@ -209,6 +209,14 @@ public class PlayerShipController : MonoBehaviour
                 EventManager.TriggerEvent("Splash", transform.position, calculatedSplashStrength);
             }
         }
+
+        // --- Player object flip
+        float angle = shipSprite.eulerAngles.y;
+
+        if (angle <= 0f || angle > 180f)
+            playerSprite.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        else
+            playerSprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
     }
 
     private void StartObstacleKnockback(Vector3 direction)
