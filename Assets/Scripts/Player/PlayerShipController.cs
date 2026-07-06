@@ -9,6 +9,7 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField] private Transform shipSprite;
     [SerializeField] private Transform playerSprite;
     [SerializeField] private Rigidbody shipRigidbody;
+    [SerializeField] private Transform hookSprite;
 
     [Header("ShipHealth")]
     [SerializeField] private int maxHealth;
@@ -126,9 +127,6 @@ public class PlayerShipController : MonoBehaviour
             return;
         }
 
-        if (_stopped || InputLock.movementLocked)
-            moveInput = Vector3.zero;
-
         float steerInput = Mathf.Clamp(moveInput.x, -1f, 1f);     // esquerda / direita
         float throttleInput = Mathf.Clamp(moveInput.z, -1f, 1f); // frente / ré
 
@@ -186,10 +184,12 @@ public class PlayerShipController : MonoBehaviour
         }
         else
         {
+            // Freia se o jogador estiver pescando ou for parado, para ele não se bater enquanto não se move.
+            var conditionalDrag = (hookSprite.gameObject.activeSelf||_stopped|| InputLock.movementLocked) ? acceleration : drag;
             currentVelocity = Vector3.MoveTowards(
                 currentVelocity,
                 Vector3.zero,
-                drag * Time.deltaTime
+                conditionalDrag * Time.deltaTime
             );
         }
 
@@ -213,7 +213,13 @@ public class PlayerShipController : MonoBehaviour
         // --- Player object flip
         float angle = shipSprite.eulerAngles.y;
 
-        if (angle <= 0f || angle > 180f)
+        if (hookSprite.gameObject.activeSelf)
+            if (hookSprite.position.x < playerSprite.position.x)
+                angle = -90;
+            else
+                angle = 90;
+
+        if ((angle <= 0f || angle > 180f))
             playerSprite.transform.localRotation = Quaternion.Euler(0, 0, 0);
         else
             playerSprite.transform.localRotation = Quaternion.Euler(0, 180, 0);

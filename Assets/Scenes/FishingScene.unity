@@ -155,11 +155,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2138330788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &295097186 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8390750955584603645, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-  m_PrefabInstance: {fileID: 7368786909824083970}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &320885425
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 1129292337287576149, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_Targets.Array.data[0].target
       value: 
-      objectReference: {fileID: 295097186}
+      objectReference: {fileID: 1311355832662699519}
     - target: {fileID: 1129292337287576149, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_Targets.Array.data[1].radius
       value: 10
@@ -275,7 +270,7 @@ PrefabInstance:
     - target: {fileID: 1129292337287576149, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_Targets.Array.data[1].target
       value: 
-      objectReference: {fileID: 7368786909824083973}
+      objectReference: {fileID: 7354086890219467817}
     - target: {fileID: 1129292337287576149, guid: 95755c483968d244fa4b1d3cd0866d28, type: 3}
       propertyPath: m_Targets.Array.data[1].weight
       value: 1
@@ -1525,6 +1520,11 @@ Light:
   m_CorrespondingSourceObject: {fileID: 3234587880098188812, guid: 0aa5b6437e095c04c9e0500028afd009, type: 3}
   m_PrefabInstance: {fileID: 728197320042687629}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1311355832662699519 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8390750955584603645, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+  m_PrefabInstance: {fileID: 7368786909824083970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1808757586243824536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1601,7 +1601,7 @@ PrefabInstance:
     - target: {fileID: 1253509998232384070, guid: 216104685dcaa0b4ebd1aaf35fbdb39c, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 295097186}
+      objectReference: {fileID: 1311355832662699519}
     - target: {fileID: 1253509998232384070, guid: 216104685dcaa0b4ebd1aaf35fbdb39c, type: 3}
       propertyPath: treasureSpotPrefab
       value: 
@@ -1788,6 +1788,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95f5ab70a506eee4b911fafa9712af8d, type: 3}
+--- !u!4 &7354086890219467817 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 21893162192575531, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
+  m_PrefabInstance: {fileID: 7368786909824083970}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7368786909824083970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1849,11 +1854,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
---- !u!4 &7368786909824083973 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 21893162192575531, guid: b9a64ec485802d346960a5ce154f5ab2, type: 3}
-  m_PrefabInstance: {fileID: 7368786909824083970}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7400948370625931811
 PrefabInstance:
   m_ObjectHideFlags: 0

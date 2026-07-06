@@ -211,7 +211,6 @@ public class FishingRodController : MonoBehaviour
 
         hookObject.SetParent(null);
 
-        hookObject.gameObject.SetActive(true);
         hookObject.position = defaultHookPos.position;
 
         _currentMaxDistance = maxCastDistance;
@@ -224,8 +223,9 @@ public class FishingRodController : MonoBehaviour
         // Trigger player animation
         _animator.SetBool("isPulling", true);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
 
+        hookObject.gameObject.SetActive(true);
         Vector3 start = defaultHookPos.position;
         Vector3 mid = (start + _castTarget) * 0.5f;
         mid.y += arcHeight;

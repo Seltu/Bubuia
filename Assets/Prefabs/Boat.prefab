@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 404870039124207978}
   - component: {fileID: 2405690706871802560}
   m_Layer: 0
-  m_Name: DepthMask
+  m_Name: StencilMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1413,6 +1413,7 @@ MonoBehaviour:
   shipSprite: {fileID: 6467013431752429903}
   playerSprite: {fileID: 1349974256351399865}
   shipRigidbody: {fileID: 8531723963174002}
+  hookSprite: {fileID: 21893162192575531}
   maxHealth: 3
   maxSpeed: 12
   acceleration: 4
