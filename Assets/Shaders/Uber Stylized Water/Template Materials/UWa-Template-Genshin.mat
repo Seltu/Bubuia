@@ -27,7 +27,6 @@ Material:
   m_ValidKeywords:
   - _ENABLECAUSTICS
   - _ENABLENORMAL
-  - _ENABLEPLANERREFLECTION
   - _ENABLEREFRACTION
   - _ENABLESHORELINE
   - _ENABLEWAVE
@@ -39,7 +38,7 @@ Material:
   m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _Caustics_Fade
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -185,11 +184,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _1st_Wave_Height: 0.005
+    - _1st_Wave_Height: 0.01
     - _1st_Wave_Length: 0.67
     - _1st_Wave_Sharpness: 0.5
     - _1st_Wave_Speed: 0.03
-    - _2nd_Wave_Height: 0.005
+    - _2nd_Wave_Height: 0.01
     - _2nd_Wave_Length: 0.5
     - _2nd_Wave_Sharpness: 0.5
     - _2nd_Wave_Speed: 0.21
@@ -223,7 +222,7 @@ Material:
     - _Caustics_Pan: 2
     - _Caustics_Scale: 1.5
     - _Caustics_Start: 0
-    - _Caustics_Strength: 0.01
+    - _Caustics_Strength: 0.05
     - _ConformToGeometry: 0
     - _Cull: 2
     - _Depth_Distance: 1.26
@@ -238,7 +237,7 @@ Material:
     - _ENABLECAUSTICS: 1
     - _ENABLEINTERSECTION: 0
     - _ENABLENORMAL: 1
-    - _ENABLEPLANERREFLECTION: 1
+    - _ENABLEPLANERREFLECTION: 0
     - _ENABLEREFRACTION: 1
     - _ENABLESHORELINE: 1
     - _ENABLESURFACEFOAM: 0
@@ -246,7 +245,7 @@ Material:
     - _ENABLEWAVE: 1
     - _ENABLE_UNDERWATERLAYER: 1
     - _ENVIRONMENTREFLECTIONS_OFF: 1
-    - _Enable_Intersection: 1
+    - _Enable_Intersection: 0
     - _Enable_SurfaceFoam: 0
     - _FarColorDistance: 20
     - _FarColorMaskHardness: 10
@@ -294,8 +293,8 @@ Material:
     - _NormalStrength: 0.78
     - _NormalTile: 5
     - _Normal_DistanceStrength: 0.15
-    - _Normal_Pan: 1.3
-    - _Normal_Scale: 1.5
+    - _Normal_Pan: 1.5
+    - _Normal_Scale: 3
     - _Normal_Strength: 0.7
     - _Normal_Tile: 5
     - _ParalaxDepth: 30
@@ -305,7 +304,7 @@ Material:
     - _ReflectionDistortion: 0
     - _ReflectionFresnel: 4.91
     - _ReflectionFresnelStrength: 0.8
-    - _Reflection_Distortion: 0.1
+    - _Reflection_Distortion: 0.06
     - _Reflection_Fresnel: 1.21
     - _Reflection_Strength: 0.342
     - _RefractionFadeDistance: 0.5
@@ -316,25 +315,25 @@ Material:
     - _Refraction_Strength: 0.5
     - _RefrectionPan: 0.1
     - _RefrectionTile: 5.58
-    - _SL_Ammount: 2
-    - _SL_CenterMask: 0.05
+    - _SL_Ammount: 3
+    - _SL_CenterMask: 0.053
     - _SL_CenterMaskFade: 0.7
     - _SL_Depth: 0.47
-    - _SL_Dissolve: 1.17
+    - _SL_Dissolve: 0.4
     - _SL_EnableTrail: 0
     - _SL_ExplandNearShore: -0.635
-    - _SL_GradientDissolve: 0.44
+    - _SL_GradientDissolve: 1
     - _SL_MaskScale: 0.91
     - _SL_Speed: -0.5
-    - _SL_Thickness: 1
+    - _SL_Thickness: 0.4
     - _SL_TrailFade: 0
     - _SL_Trail_Fade: 0.978
-    - _SL_WaterDepth: 1
+    - _SL_WaterDepth: 2.95
     - _ShoreFade: 1
     - _ShoreFadeHardness: 0.529
     - _ShoreFadeSmoothness: 0.2
     - _ShoreFade_1: 0
-    - _ShoreFade_Smoothness: 0.8
+    - _ShoreFade_Smoothness: 1
     - _ShoreLineAmmount: 3.47
     - _ShoreLineCenterMask: 2.01
     - _ShoreLineCutoff: 0.66
@@ -352,7 +351,7 @@ Material:
     - _ShoreLineWidth: 0.91
     - _ShoreLine_Cutoff: 0.27
     - _Smoothness: 1
-    - _Specular_Hardness: 1
+    - _Specular_Hardness: 0.449
     - _Specular_Size: 0.479
     - _Specular_Spread: 0
     - _Specular_Strength: 20

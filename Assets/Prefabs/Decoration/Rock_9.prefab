@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3754325247850952791}
   - component: {fileID: 8712515414611154710}
   - component: {fileID: 3506705624841582957}
+  - component: {fileID: 1419109616192292795}
   m_Layer: 0
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,6 +87,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1419109616192292795
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2474001607740812444}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06635566, y: 0.054258853, z: 0.13607635}
+  m_Center: {x: 0.0007192027, y: 0, z: -0.009615168}
 --- !u!1001 &920521774527091908
 PrefabInstance:
   m_ObjectHideFlags: 0
