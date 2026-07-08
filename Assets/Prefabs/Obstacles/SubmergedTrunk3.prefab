@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4678983960292331894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6899439022449313275}
+  m_Layer: 0
+  m_Name: MovingRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6899439022449313275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4678983960292331894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5635081124454005273}
+  m_Father: {fileID: 4187689922682786417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7997608405647917035
 GameObject:
   m_ObjectHideFlags: 0
@@ -4900,7 +4932,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2494694018391783561, guid: bf067f6524888dd49b753c3c24308c35, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5635081124454005273}
+      addedObject: {fileID: 6899439022449313275}
     - targetCorrespondingSourceObject: {fileID: 2494694018391783561, guid: bf067f6524888dd49b753c3c24308c35, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7404440983423055883}
@@ -4938,14 +4970,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPrePositioned: 0
-  _movingRoot: {fileID: 5635081124454005273}
+  _movingRoot: {fileID: 6899439022449313275}
   _bubbleParticles: {fileID: 1589703242893642400}
   _warningDuration: 2.5
   _riseDuration: 2
   _riseBounceOvershoot: 0.0001
   _surfaceOffset: 0
   _randomYRotationRange: {x: 0, y: 360}
-  _randomZRotationRange: {x: -12, y: 12}
+  _randomZRotationRange: {x: 0, y: 360}
   _bubbleLifetimeSurfacePadding: 0.25
   _blockingColliders: []
   _pushAwayDistance: 5
@@ -5004,11 +5036,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4187689922682786417}
+    m_TransformParent: {fileID: 6899439022449313275}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d814319d92ac33542959c804c23325c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d814319d92ac33542959c804c23325c9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5028,11 +5060,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d814319d92ac33542959c804c23325c9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d814319d92ac33542959c804c23325c9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d814319d92ac33542959c804c23325c9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5084,7 +5116,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 1.9
   m_Height: 14.24

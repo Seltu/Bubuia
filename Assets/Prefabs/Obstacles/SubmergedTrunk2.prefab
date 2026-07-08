@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4237957003470494078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2804869857752633251}
+  m_Layer: 0
+  m_Name: MovingRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2804869857752633251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4237957003470494078}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 77871254042309860}
+  m_Father: {fileID: 1691346620107418431}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4548161553349752100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4848,11 +4880,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1691346620107418431}
+    m_TransformParent: {fileID: 2804869857752633251}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6a632b2988a35d441be16852c9fda77b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a632b2988a35d441be16852c9fda77b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4872,11 +4904,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a632b2988a35d441be16852c9fda77b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a632b2988a35d441be16852c9fda77b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6a632b2988a35d441be16852c9fda77b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4997,7 +5029,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2494694018391783561, guid: bf067f6524888dd49b753c3c24308c35, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 77871254042309860}
+      addedObject: {fileID: 2804869857752633251}
     - targetCorrespondingSourceObject: {fileID: 2494694018391783561, guid: bf067f6524888dd49b753c3c24308c35, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1289392305056040487}
@@ -5035,14 +5067,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPrePositioned: 0
-  _movingRoot: {fileID: 77871254042309860}
+  _movingRoot: {fileID: 2804869857752633251}
   _bubbleParticles: {fileID: 227906589462991745}
   _warningDuration: 2.5
   _riseDuration: 2
   _riseBounceOvershoot: 0.0001
   _surfaceOffset: 0
   _randomYRotationRange: {x: 0, y: 360}
-  _randomZRotationRange: {x: -12, y: 12}
+  _randomZRotationRange: {x: 0, y: 0}
   _bubbleLifetimeSurfacePadding: 0.25
   _blockingColliders: []
   _pushAwayDistance: 5
