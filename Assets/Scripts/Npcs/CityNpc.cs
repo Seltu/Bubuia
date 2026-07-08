@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class CityNpc : NpcDetection
 {
     [SerializeField] private InputActionReference _npcInteractionInput;
+    [SerializeField] private Animator _npcAnimator;
     internal event Action InteractEvent;
     private bool _isInteracting;
 
@@ -32,5 +33,10 @@ public class CityNpc : NpcDetection
     {
         _isInteracting = false;
         EventManager.TriggerEvent("OnChangeNpcInteractionStatus", true);
+    }
+
+    public void SetAnimationBool(bool value)
+    {
+        _npcAnimator.SetBool("isInteracting", value);
     }
 }
