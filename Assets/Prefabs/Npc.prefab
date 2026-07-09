@@ -220,6 +220,7 @@ MonoBehaviour:
   _dialogueBalloon: {fileID: 9053104782322173559}
   _npcInteractionAllowed: {fileID: 11400000, guid: 5e04c04714995084189f2c329e4fe672, type: 2}
   _npcInteractionInput: {fileID: -6052681101887580085, guid: 9ba3dc970cd39eb44ba614ea4abca2be, type: 3}
+  _npcAnimator: {fileID: 1364736344594809299}
 --- !u!114 &7058529791014659242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +249,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onStartDialogue:
+    m_PersistentCalls:
+      m_Calls: []
   npc: {fileID: 6080302684346104953}
 --- !u!1 &9053104782322173559
 GameObject:

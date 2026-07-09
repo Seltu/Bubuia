@@ -5132,8 +5132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b41d6adadc590d4aaefa83e2a7d4e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cutsceneCondition: {fileID: 0}
   dialogue: {fileID: 11400000, guid: ef597760d437c9b47abb4b843e327d51, type: 2}
   _cutsceneTimeline: {fileID: 4835406113500682155}
+  _npcAnimator: {fileID: 4811650625342047143}
 --- !u!1 &8814646463796918380
 GameObject:
   m_ObjectHideFlags: 0
