@@ -4,9 +4,11 @@ using UnityEngine.Playables;
 
 public class NPCCutsceneTrigger : MonoBehaviour
 {
+    [SerializeField] private CutsceneConditionSO _cutsceneCondition;
     [SerializeField] private DialogueSO dialogue;
     //[SerializeField] private NPCExit npc;
     [SerializeField] private PlayableDirector _cutsceneTimeline;
+    [SerializeField] private Animator _npcAnimator;
 
     private bool started;
     private bool dialogueFinished;
@@ -29,9 +31,14 @@ public class NPCCutsceneTrigger : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
+        if (_cutsceneCondition != null && _cutsceneCondition.CheckCutsceneCondition() == false)
+            return;
+
         started = true;
 
         InputLock.movementLocked = true;
+
+        _npcAnimator.SetBool("isInteracting", true);
 
         EventManager.TriggerEvent("CutsceneStarted");
         EventManager.TriggerEvent("LoadDialogue", dialogue);
@@ -43,6 +50,9 @@ public class NPCCutsceneTrigger : MonoBehaviour
             return;
 
         dialogueFinished = true;
+
+        _npcAnimator.SetBool("isInteracting", false);
+
         _cutsceneTimeline.Play();
         StartCoroutine(ExitSequence());
     }

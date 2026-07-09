@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CityNpc : NpcDetection
 {
@@ -12,11 +13,13 @@ public class CityNpc : NpcDetection
     private void Awake()
     {
         _npcInteractionInput.action.performed += OnInteract;
+        EventManager.AddListener("StartDialogue", SetAnimationBool);
     }
 
     private void OnDestroy()
     {
         _npcInteractionInput.action.performed -= OnInteract;
+        EventManager.AddListener("EndDialogue", SetAnimationBool);
     }
 
     private void OnInteract(InputAction.CallbackContext context)
@@ -27,16 +30,18 @@ public class CityNpc : NpcDetection
         InteractEvent.Invoke();
         _isInteracting = true;
         EventManager.TriggerEvent("OnChangeNpcInteractionStatus", false);
+        _npcAnimator.SetBool("isInteracting", _isInteracting);
     }
 
     public void OnDialogueEnd()
     {
         _isInteracting = false;
         EventManager.TriggerEvent("OnChangeNpcInteractionStatus", true);
+        _npcAnimator.SetBool("isInteracting", _isInteracting);
     }
 
-    public void SetAnimationBool(bool value)
+    public void SetAnimationBool()
     {
-        _npcAnimator.SetBool("isInteracting", value);
+        _npcAnimator.SetBool("isInteracting", _isInteracting);
     }
 }
