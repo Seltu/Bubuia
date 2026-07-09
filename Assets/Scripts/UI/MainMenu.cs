@@ -102,4 +102,9 @@ public class MainMenu : MonoBehaviour
 
         SceneManager.LoadScene(_gameSceneName);
     }
+
+    public void OpenURL(string url)
+    {
+        Application.OpenURL(url);
+    }
 }
