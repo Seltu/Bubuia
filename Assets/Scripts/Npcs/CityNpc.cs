@@ -19,7 +19,7 @@ public class CityNpc : NpcDetection
     private void OnDestroy()
     {
         _npcInteractionInput.action.performed -= OnInteract;
-        EventManager.AddListener("EndDialogue", SetAnimationBool);
+        EventManager.RemoveListener("EndDialogue", SetAnimationBool);
     }
 
     private void OnInteract(InputAction.CallbackContext context)

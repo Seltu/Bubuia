@@ -59,8 +59,6 @@ public class FishingMinigame : MonoBehaviour
         EventManager.AddListener<Fish>("StartFishingMinigame", StartMinigame);
         EventManager.AddListener("RingMiss", OnRingMiss);
 
-        if(_freezeOnCue) EventManager.AddListener("FishCaught", OnCaughtFish);
-
         if (PlayerBaits[0].amount <= 5)
             PlayerBaits[0].amount = 5;
 
@@ -82,7 +80,6 @@ public class FishingMinigame : MonoBehaviour
         EventManager.RemoveListener<Fish>("StartFishingMinigame", StartMinigame);
         EventManager.RemoveListener("RingMiss", OnRingMiss);
         EventManager.RemoveListener<bool>("SetFreezeOnCue", v => _freezeOnCue = v);
-        EventManager.RemoveListener("FishCaught", OnCaughtFish);
         _fishingAction.action.performed -= FishingButtonInput;
     }
 
@@ -226,7 +223,15 @@ public class FishingMinigame : MonoBehaviour
         EventManager.TriggerEvent("TurnOnMovement");
         if (won)
         {
-            UnfreezeFromCue();
+            if (_freezeOnCue)
+            {
+                UnfreezeFromCue();
+                _cueCount -= 1;
+                if (_cueCount <= 0)
+                {
+                    _freezeOnCue = false;
+                }
+            }
             EventManager.TriggerEvent("FishCaught");
             _playerInventory.AddItem(_currentFish.GetFishTypeSO(), 1);
             AlmanacFishes almanacFish = null;
@@ -379,16 +384,6 @@ public class FishingMinigame : MonoBehaviour
 
         // optional: hide UI prompt
         // EventManager.TriggerEvent("ShowTapCue", false);
-    }
-
-    private void OnCaughtFish()
-    {
-        _cueCount -= 1;
-
-        if (_cueCount <= 0)
-        {
-            _freezeOnCue = false;
-        }
     }
     #endregion
 }

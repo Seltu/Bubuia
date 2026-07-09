@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public abstract class CutsceneConditionSO : ScriptableObject
+[CreateAssetMenu(fileName = "New Cutscene Trigger Condition", menuName = "CutsceneSystem/Cutscene Condition")]
+public class CutsceneConditionSO : ScriptableObject
 {
+    public ChoiceCondition condition;
     public virtual bool CheckCutsceneCondition()
     {
-        return true;
+        return condition.Decide();
     }
 }

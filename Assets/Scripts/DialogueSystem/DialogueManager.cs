@@ -21,11 +21,13 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private InputActionReference _clickAction;
     [SerializeField] private InputActionReference _rightClickAction;
     [SerializeField] private PlayerInventorySO _playerInventory;
+    [SerializeField] private Animator _optionalAnimator;
     private Vector2 _textSize;
     private DialogueSegment _currentSegment;
     private bool _awaitingInput;
     private bool _skipTyping;
     private bool _showChoices;
+    private bool _hasAnimator;
     private float _sizeAdjustment;
     private bool isCutsceneDialogue;
 
@@ -39,6 +41,8 @@ public class DialogueManager : MonoBehaviour
         if (_playDialogueOnAwake)
             StartDialogue(_loadedDialogue);
         EventManager.AddListener<DialogueSO>("LoadDialogue", StartDialogue);
+        if(_optionalAnimator != null)
+            _hasAnimator = true;
     }
 
     private void OnDestroy()
@@ -187,6 +191,8 @@ public class DialogueManager : MonoBehaviour
         string hold = "";
         bool holding = false;
         _skipTyping = false;
+        if (_hasAnimator)
+            _optionalAnimator.SetBool("Typing", true);
         foreach (var letter in sentence.ToCharArray())
         {
             if (letter == '<')
@@ -206,6 +212,8 @@ public class DialogueManager : MonoBehaviour
                     yield return new WaitForSeconds(_textSpeed);
             }
         }
+        if (_hasAnimator)
+            _optionalAnimator.SetBool("Typing", false);
     }
 
     private void EndDialogue()

@@ -2,16 +2,25 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class NPCCutsceneTrigger : MonoBehaviour
+public class NPCCutsceneTrigger : DialogueTrigger
 {
     [SerializeField] private CutsceneConditionSO _cutsceneCondition;
-    [SerializeField] private DialogueSO dialogue;
     //[SerializeField] private NPCExit npc;
     [SerializeField] private PlayableDirector _cutsceneTimeline;
     [SerializeField] private Animator _npcAnimator;
+    [SerializeField] private bool _disappearOnConditionFail;
 
     private bool started;
     private bool dialogueFinished;
+
+    private void Start()
+    {
+        if (_cutsceneCondition != null && _cutsceneCondition.CheckCutsceneCondition() == false)
+        {
+            if (_disappearOnConditionFail)
+                Destroy(gameObject);
+        }
+    }
 
     private void OnEnable()
     {
@@ -31,17 +40,12 @@ public class NPCCutsceneTrigger : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        if (_cutsceneCondition != null && _cutsceneCondition.CheckCutsceneCondition() == false)
-            return;
-
         started = true;
-
-        InputLock.movementLocked = true;
 
         _npcAnimator.SetBool("isInteracting", true);
 
         EventManager.TriggerEvent("CutsceneStarted");
-        EventManager.TriggerEvent("LoadDialogue", dialogue);
+        TriggerDialogue();
     }
 
     private void OnDialogueFinished()
@@ -54,6 +58,8 @@ public class NPCCutsceneTrigger : MonoBehaviour
         _npcAnimator.SetBool("isInteracting", false);
 
         _cutsceneTimeline.Play();
+
+        InputLock.movementLocked = true;
         StartCoroutine(ExitSequence());
     }
 

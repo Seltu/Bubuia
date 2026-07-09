@@ -107,4 +107,11 @@ public class MainMenu : MonoBehaviour
     {
         Application.OpenURL(url);
     }
+
+    public void DeleteSave()
+    {
+        GlobalFlagsManager.DeleteSave();
+        InputLock.movementLocked = false;
+        InputLock.clickLocked = false;
+    }
 }

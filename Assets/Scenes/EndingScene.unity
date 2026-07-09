@@ -2179,6 +2179,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6602d0a05c5c7744ba3d4fe477e3026, type: 3}
+--- !u!1001 &1662071102
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1356.8788
+      objectReference: {fileID: 0}
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 636.9933
+      objectReference: {fileID: 0}
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.4141122
+      objectReference: {fileID: 0}
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 96547099242727445, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 321841605984186771, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
+      propertyPath: m_Name
+      value: AudioSystem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f2f012f19c48f54f86577ac26cbd291, type: 3}
 --- !u!1 &1672903055
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,10 +3282,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainMenuPanel: {fileID: 6773803294952175827}
-  _settingsPanel: {fileID: 0}
-  _creditsPanel: {fileID: 0}
+  _settingsPanel: {fileID: 892260135}
+  _creditsPanel: {fileID: 892260135}
   _exitPopUpPanel: {fileID: 892260135}
-  _customizationPanel: {fileID: 0}
+  _customizationPanel: {fileID: 892260135}
   _fadePanel: {fileID: 1774269985}
   _gameSceneName: MenuScene
 --- !u!224 &979529003605788387
@@ -4049,6 +4106,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 895690728660381091}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: LoadSettingsButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 895690728660381091}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: DeleteSave
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &7637918059377491832
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4252,3 +4333,4 @@ SceneRoots:
   - {fileID: 5545724353140183657}
   - {fileID: 191045962}
   - {fileID: 1594564927}
+  - {fileID: 1662071102}
