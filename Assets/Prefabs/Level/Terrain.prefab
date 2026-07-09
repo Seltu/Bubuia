@@ -139,6 +139,20 @@ MonoBehaviour:
     - {fileID: 1227034863093753993, guid: 7af9e06a2b8aed5428ceaccc0aaa7fcb, type: 3}
     - {fileID: 4140137720336492343, guid: 2fc8e21fbae9fef41bbc160ed8a3c382, type: 3}
     minDistance: 5
+  - type: 0
+    density: 5
+    prefabs:
+    - {fileID: 8694817722640175058, guid: 613458f4c1c13044a9a308bc8f781227, type: 3}
+    - {fileID: 5369411517502552190, guid: aac6f5ae7e8d84944a543f401de4bc0c, type: 3}
+    - {fileID: 8643275997788211163, guid: 13402b08cb2c203499c1b0af27140569, type: 3}
+    - {fileID: 8680071906347689040, guid: 17b3315236908764b9069cfa6ba85eae, type: 3}
+    minDistance: 1
+  - type: 0
+    density: 7
+    prefabs:
+    - {fileID: 3787568810238390205, guid: 46442a7fd440c6948a885cb63d767e1a, type: 3}
+    - {fileID: 9113343808641658372, guid: 672e57e1e88752745918150d5056b220, type: 3}
+    minDistance: 0.5
   - type: 1
     density: 0.2
     prefabs:
