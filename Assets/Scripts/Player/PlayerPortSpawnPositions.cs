@@ -1,29 +1,27 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerPortSpawnPositions : MonoBehaviour
 {
-    [SerializeField] private Transform _playerMarketSpawn;
-    [SerializeField] private Transform _playerBoatSpawn;
+    [SerializeField] private Transform defaultPosition;
+    [SerializeField] private List<Transform> spawnPositions = new List<Transform>();
+    [SerializeField] private List<string> sceneConditions = new List<string>();
     [SerializeField] private PlayerSceneHistorySO _playerHistory;
 
     private GameObject _player;
-    
 
-    void Start()
+    private void OnValidate()
+    {
+        if (spawnPositions.Count != sceneConditions.Count)
+            Debug.LogWarning("Make sure there's exactly 1 scene condition for every spawn position");
+    }
+
+    private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
-
-        if (_playerHistory.previousScene == "FishingScene")
-        {
-            _player.transform.position = _playerBoatSpawn.transform.position;
-            Debug.Log("boat");
-        }
-        else if( _playerHistory.previousScene == "MarketScene")
-        {
-            _player.transform.position = _playerMarketSpawn.transform.position;
-            Debug.Log("market");
-        }
+        if (sceneConditions.Contains(_playerHistory.previousScene))
+            _player.transform.position = spawnPositions[sceneConditions.IndexOf(_playerHistory.previousScene)].position;
+        else
+            _player.transform.position = defaultPosition.position;
     }
 }

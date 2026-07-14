@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 5173475840116326114}
-  _playerSpritesHolder: {fileID: 5043910222634354657}
+  _playerSpritesHolder: {fileID: 1094638776445201114}
   _animator: {fileID: 6069789589910230124}
   _playerSpeed: 35
   _gravity: -25
@@ -80,7 +80,7 @@ CharacterController:
   m_StepOffset: 3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 1, y: -9, z: -2.7}
+  m_Center: {x: 0, y: 3.5, z: 4}
 --- !u!1 &5043910222634354657
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 5043910222634354657}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.97629607, z: -0.21643952, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: 12, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -149,9 +149,13 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CallCloseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 8229096297769008486, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.3333344
+      objectReference: {fileID: 0}
     - target: {fileID: 8578534996944050517, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.51
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8578534996944050517, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_LocalPosition.y

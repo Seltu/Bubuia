@@ -2013,6 +2013,7 @@ GameObject:
   - component: {fileID: 5751983069133595483}
   - component: {fileID: 4210629008619234564}
   - component: {fileID: 895690728660381091}
+  - component: {fileID: 7637918059377491833}
   m_Layer: 5
   m_Name: MenuCanvas_PFB
   m_TagString: Untagged
@@ -2455,6 +2456,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &7637918059377491833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128471562204387599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d0ec8f699d44d4d9352562b84bf5e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _history: {fileID: 11400000, guid: 9ede3ef8704870c439da1eacfdc78fe6, type: 2}
 --- !u!224 &7995224973551056084
 RectTransform:
   m_ObjectHideFlags: 0
