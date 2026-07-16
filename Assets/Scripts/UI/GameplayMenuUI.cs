@@ -19,12 +19,20 @@ public class GameplayMenuUI : MonoBehaviour
 
     private void Awake()
     {
+        _onMenu.value = false;
+        _canPause.value = true;
+        _pauseAction.action.performed += Pause;
+
         EventManager.AddListener("CutsceneStarted", OnCutsceneStart);
         EventManager.AddListener("CutsceneEnded", OnCutsceneEnd);
     }
 
     private void OnDisable()
     {
+        //_onMenu.value = false;
+        //_canPause.value = true;
+        _pauseAction.action.performed -= Pause;
+
         EventManager.RemoveListener("CutsceneStarted", OnCutsceneStart);
         EventManager.RemoveListener("CutsceneEnded", OnCutsceneEnd);
     }
@@ -41,9 +49,7 @@ public class GameplayMenuUI : MonoBehaviour
 
     private void Start()
     {
-        _onMenu.value = false;
-        _canPause.value = true;
-        _pauseAction.action.performed += Pause;
+        
     }
 
     public void OpenBooklet()

@@ -14,4 +14,12 @@ public class SceneChanger : MonoBehaviour
     {
         EventManager.TriggerEvent("TurnOffControls");
     }
+
+    public void ResetGlobalVars()
+    {
+        GlobalFlagsManager.DeleteSave();
+        Debug.Log("Flags Cleared");
+        InputLock.movementLocked = false;
+        InputLock.clickLocked = false;
+    }
 }
