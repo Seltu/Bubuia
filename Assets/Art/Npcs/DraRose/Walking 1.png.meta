@@ -1,79 +1,85 @@
 fileFormatVersion: 2
-guid: be02efa29d4b08a45b35275e2a942639
+guid: bc260a2d2a7aa1f4b9d7ad575742a421
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8283628888632885847
-    second: CharlesIdle_0
+      213: -3501552949290725289
+    second: Walking 1_0
   - first:
-      213: -7289611798484028303
-    second: CharlesIdle_1
+      213: 4838722963695786253
+    second: Walking 1_1
   - first:
-      213: -1863031422151409645
-    second: CharlesIdle_2
+      213: 8477298846936070147
+    second: Walking 1_2
   - first:
-      213: -2539596355824891001
-    second: CharlesIdle_3
+      213: 668289724651275939
+    second: Walking 1_3
   - first:
-      213: 6279227329511941283
-    second: CharlesIdle_4
+      213: 2944319765259858052
+    second: Walking 1_4
   - first:
-      213: 2855816041792826617
-    second: CharlesIdle_5
+      213: 2127577190034543278
+    second: Walking 1_5
   - first:
-      213: -4663862195735431356
-    second: CharlesIdle_6
+      213: -1148067536197630543
+    second: Walking 1_6
   - first:
-      213: -4244001056535194133
-    second: CharlesIdle_7
+      213: 5406003587151594519
+    second: Walking 1_7
   - first:
-      213: 726638957776883767
-    second: CharlesIdle_8
+      213: 5579179288288152146
+    second: Walking 1_8
   - first:
-      213: 790707683567264292
-    second: CharlesIdle_9
+      213: -4457344146492085471
+    second: Walking 1_9
   - first:
-      213: 3099338455252333298
-    second: CharlesIdle_10
+      213: -6088442179473583215
+    second: Walking 1_10
   - first:
-      213: -5331039798873811473
-    second: CharlesIdle_11
+      213: -1042325380389274074
+    second: Walking 1_11
   - first:
-      213: 214207501691996313
-    second: CharlesIdle_12
+      213: 1414179992412604321
+    second: Walking 1_12
   - first:
-      213: -8498725338180525524
-    second: CharlesIdle_13
+      213: 343589220657374270
+    second: Walking 1_13
   - first:
-      213: 8957016436355947507
-    second: CharlesIdle_14
+      213: -1823914586929900248
+    second: Walking 1_14
   - first:
-      213: 2846663615895384248
-    second: CharlesIdle_15
+      213: 5961819748719710978
+    second: Walking 1_15
   - first:
-      213: -5832501950985261390
-    second: CharlesIdle_16
+      213: -865459431345522716
+    second: Walking 1_16
   - first:
-      213: 1628198406418822405
-    second: CharlesIdle_17
+      213: 6653211110518666825
+    second: Walking 1_17
   - first:
-      213: -6598042001636380361
-    second: CharlesIdle_18
+      213: -8029940892587933494
+    second: Walking 1_18
   - first:
-      213: 8434599592842911665
-    second: CharlesIdle_19
+      213: -8299094830539187608
+    second: Walking 1_19
   - first:
-      213: -3698697370551619289
-    second: CharlesIdle_20
+      213: 4910832544821139285
+    second: Walking 1_20
   - first:
-      213: -5313199255822512879
-    second: CharlesIdle_21
+      213: 3860978931248268771
+    second: Walking 1_21
   - first:
-      213: 4137935907892833709
-    second: CharlesIdle_22
+      213: 8939038372767824686
+    second: Walking 1_22
   - first:
-      213: -5502820639198814029
-    second: CharlesIdle_23
+      213: -941780070234964101
+    second: Walking 1_23
+  - first:
+      213: -3878426654726659290
+    second: Walking 1_24
+  - first:
+      213: 5284679032516632111
+    second: Walking 1_25
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,7 +147,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -169,7 +175,139 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CharlesIdle_0
+      name: Walking 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7501e47052cf76fc0800000000000000
+      internalID: -3501552949290725289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking 1_1
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d09dc9916e8962340800000000000000
+      internalID: 4838722963695786253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking 1_2
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 308f37af26a65a570800000000000000
+      internalID: 8477298846936070147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking 1_3
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a602ecb6fd364900800000000000000
+      internalID: 668289724651275939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking 1_4
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 480b9711a335cd820800000000000000
+      internalID: 2944319765259858052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking 1_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea29b349e2ca68d10800000000000000
+      internalID: 2127577190034543278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking 1_6
       rect:
         serializedVersion: 2
         x: 0
@@ -184,14 +322,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 752802ee59c55f270800000000000000
-      internalID: 8283628888632885847
+      spriteID: 1b548c698ae3110f0800000000000000
+      internalID: -1148067536197630543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_1
+      name: Walking 1_7
       rect:
         serializedVersion: 2
         x: 500
@@ -206,14 +344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 174fcd8f0b816da90800000000000000
-      internalID: -7289611798484028303
+      spriteID: 71488aace9bf50b40800000000000000
+      internalID: 5406003587151594519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_2
+      name: Walking 1_8
       rect:
         serializedVersion: 2
         x: 1000
@@ -228,14 +366,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3104645dace2526e0800000000000000
-      internalID: -1863031422151409645
+      spriteID: 25ac1a0c00a3d6d40800000000000000
+      internalID: 5579179288288152146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_3
+      name: Walking 1_9
       rect:
         serializedVersion: 2
         x: 1500
@@ -250,14 +388,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78b4e2ad19a81ccd0800000000000000
-      internalID: -2539596355824891001
+      spriteID: 12b2ca26d155422c0800000000000000
+      internalID: -4457344146492085471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_4
+      name: Walking 1_10
       rect:
         serializedVersion: 2
         x: 2000
@@ -272,14 +410,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a4eb77ccfb442750800000000000000
-      internalID: 6279227329511941283
+      spriteID: 193d8f08812818ba0800000000000000
+      internalID: -6088442179473583215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_5
+      name: Walking 1_11
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62ef589c69ae881f0800000000000000
+      internalID: -1042325380389274074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking 1_12
       rect:
         serializedVersion: 2
         x: 0
@@ -294,14 +454,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9fc6cea2f85e1a720800000000000000
-      internalID: 2855816041792826617
+      spriteID: 1a7c730e53d20a310800000000000000
+      internalID: 1414179992412604321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_6
+      name: Walking 1_13
       rect:
         serializedVersion: 2
         x: 500
@@ -316,14 +476,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 447f0dd0b02a64fb0800000000000000
-      internalID: -4663862195735431356
+      spriteID: e34afe5639ca4c400800000000000000
+      internalID: 343589220657374270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_7
+      name: Walking 1_14
       rect:
         serializedVersion: 2
         x: 1000
@@ -338,14 +498,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be556d656874a15c0800000000000000
-      internalID: -4244001056535194133
+      spriteID: 825d361c85720b6e0800000000000000
+      internalID: -1823914586929900248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_8
+      name: Walking 1_15
       rect:
         serializedVersion: 2
         x: 1500
@@ -360,14 +520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 730504e384a851a00800000000000000
-      internalID: 726638957776883767
+      spriteID: 203d8517973acb250800000000000000
+      internalID: 5961819748719710978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_9
+      name: Walking 1_16
       rect:
         serializedVersion: 2
         x: 2000
@@ -382,14 +542,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 422e238e27829fa00800000000000000
-      internalID: 790707683567264292
+      spriteID: 4e7732b8b354df3f0800000000000000
+      internalID: -865459431345522716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_10
+      name: Walking 1_17
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 1500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 946b52a3144f45c50800000000000000
+      internalID: 6653211110518666825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking 1_18
       rect:
         serializedVersion: 2
         x: 0
@@ -404,14 +586,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f2f50077ef030b20800000000000000
-      internalID: 3099338455252333298
+      spriteID: ac0c9e97d4bef8090800000000000000
+      internalID: -8029940892587933494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_11
+      name: Walking 1_19
       rect:
         serializedVersion: 2
         x: 500
@@ -426,14 +608,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe518a84c875406b0800000000000000
-      internalID: -5331039798873811473
+      spriteID: 86a5e6cd831b3dc80800000000000000
+      internalID: -8299094830539187608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_12
+      name: Walking 1_20
       rect:
         serializedVersion: 2
         x: 1000
@@ -448,14 +630,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 998439e769409f200800000000000000
-      internalID: 214207501691996313
+      spriteID: 557dd794e28c62440800000000000000
+      internalID: 4910832544821139285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_13
+      name: Walking 1_21
       rect:
         serializedVersion: 2
         x: 1500
@@ -470,14 +652,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c22632645567e0a80800000000000000
-      internalID: -8498725338180525524
+      spriteID: 3e50252b1e3f49530800000000000000
+      internalID: 3860978931248268771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_14
+      name: Walking 1_22
       rect:
         serializedVersion: 2
         x: 2000
@@ -492,14 +674,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fbd4581ef6bd4c70800000000000000
-      internalID: 8957016436355947507
+      spriteID: e2b796af908dd0c70800000000000000
+      internalID: 8939038372767824686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_15
+      name: Walking 1_23
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7f3a1114002ee2f0800000000000000
+      internalID: -941780070234964101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walking 1_24
       rect:
         serializedVersion: 2
         x: 0
@@ -514,14 +718,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b03974f971618720800000000000000
-      internalID: 2846663615895384248
+      spriteID: 6236c9d918f0d2ac0800000000000000
+      internalID: -3878426654726659290
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CharlesIdle_16
+      name: Walking 1_25
       rect:
         serializedVersion: 2
         x: 500
@@ -536,162 +740,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2be20c3a06ace0fa0800000000000000
-      internalID: -5832501950985261390
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharlesIdle_17
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 500
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5057376f2d5889610800000000000000
-      internalID: 1628198406418822405
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharlesIdle_18
-      rect:
-        serializedVersion: 2
-        x: 1500
-        y: 500
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7313b57e1cb0f64a0800000000000000
-      internalID: -6598042001636380361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharlesIdle_19
-      rect:
-        serializedVersion: 2
-        x: 2000
-        y: 500
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1bf5e0a24a7bd0570800000000000000
-      internalID: 8434599592842911665
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharlesIdle_20
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 721799886569bacc0800000000000000
-      internalID: -3698697370551619289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharlesIdle_21
-      rect:
-        serializedVersion: 2
-        x: 500
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 11d44d76d69b346b0800000000000000
-      internalID: -5313199255822512879
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharlesIdle_22
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dad2945d8c6ec6930800000000000000
-      internalID: 4137935907892833709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CharlesIdle_23
-      rect:
-        serializedVersion: 2
-        x: 1500
-        y: 0
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3b0edd9a8cd02a3b0800000000000000
-      internalID: -5502820639198814029
+      spriteID: f2edb15a493f65940800000000000000
+      internalID: 5284679032516632111
       vertices: []
       indices: 
       edges: []
@@ -700,7 +750,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d1346dae0bf11244aab28cdba1c9b45b
+    spriteID: d9b652f748beff947831233e33d99091
     internalID: 0
     vertices: []
     indices: 
@@ -710,30 +760,32 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CharlesIdle_0: 8283628888632885847
-      CharlesIdle_1: -7289611798484028303
-      CharlesIdle_10: 3099338455252333298
-      CharlesIdle_11: -5331039798873811473
-      CharlesIdle_12: 214207501691996313
-      CharlesIdle_13: -8498725338180525524
-      CharlesIdle_14: 8957016436355947507
-      CharlesIdle_15: 2846663615895384248
-      CharlesIdle_16: -5832501950985261390
-      CharlesIdle_17: 1628198406418822405
-      CharlesIdle_18: -6598042001636380361
-      CharlesIdle_19: 8434599592842911665
-      CharlesIdle_2: -1863031422151409645
-      CharlesIdle_20: -3698697370551619289
-      CharlesIdle_21: -5313199255822512879
-      CharlesIdle_22: 4137935907892833709
-      CharlesIdle_23: -5502820639198814029
-      CharlesIdle_3: -2539596355824891001
-      CharlesIdle_4: 6279227329511941283
-      CharlesIdle_5: 2855816041792826617
-      CharlesIdle_6: -4663862195735431356
-      CharlesIdle_7: -4244001056535194133
-      CharlesIdle_8: 726638957776883767
-      CharlesIdle_9: 790707683567264292
+      Walking 1_0: -3501552949290725289
+      Walking 1_1: 4838722963695786253
+      Walking 1_10: -6088442179473583215
+      Walking 1_11: -1042325380389274074
+      Walking 1_12: 1414179992412604321
+      Walking 1_13: 343589220657374270
+      Walking 1_14: -1823914586929900248
+      Walking 1_15: 5961819748719710978
+      Walking 1_16: -865459431345522716
+      Walking 1_17: 6653211110518666825
+      Walking 1_18: -8029940892587933494
+      Walking 1_19: -8299094830539187608
+      Walking 1_2: 8477298846936070147
+      Walking 1_20: 4910832544821139285
+      Walking 1_21: 3860978931248268771
+      Walking 1_22: 8939038372767824686
+      Walking 1_23: -941780070234964101
+      Walking 1_24: -3878426654726659290
+      Walking 1_25: 5284679032516632111
+      Walking 1_3: 668289724651275939
+      Walking 1_4: 2944319765259858052
+      Walking 1_5: 2127577190034543278
+      Walking 1_6: -1148067536197630543
+      Walking 1_7: 5406003587151594519
+      Walking 1_8: 5579179288288152146
+      Walking 1_9: -4457344146492085471
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

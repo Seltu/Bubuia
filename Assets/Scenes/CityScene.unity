@@ -15124,6 +15124,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1433090135}
     m_Modifications:
+    - target: {fileID: 925908658121805542, guid: bfe9e1d62d8454845908008287f15590, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880012853710172461, guid: bfe9e1d62d8454845908008287f15590, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1880012853710172461, guid: bfe9e1d62d8454845908008287f15590, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811650625342047143, guid: bfe9e1d62d8454845908008287f15590, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 659992922f33c804f8b2e8165894d82f, type: 2}
+    - target: {fileID: 4835406113500682155, guid: bfe9e1d62d8454845908008287f15590, type: 3}
+      propertyPath: m_SceneBindings.Array.data[1].value
+      value: 
+      objectReference: {fileID: 1978110180}
     - target: {fileID: 5337955777833552161, guid: bfe9e1d62d8454845908008287f15590, type: 3}
       propertyPath: _dialogue
       value: 
@@ -15158,11 +15178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475904519440640948, guid: bfe9e1d62d8454845908008287f15590, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5475904519440640948, guid: bfe9e1d62d8454845908008287f15590, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5475904519440640948, guid: bfe9e1d62d8454845908008287f15590, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -23213,6 +23233,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 18061ef68cd36a34baa69ccf3240c1d2, type: 2}
     - target: {fileID: 2013560834762144833, guid: 9cf7aac1846d757499c84834b7ca67d5, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2013560834762144833, guid: 9cf7aac1846d757499c84834b7ca67d5, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -265684481545882386, guid: f0e5310f010f00d49a53f37f92d70b8f, type: 3}
@@ -30145,6 +30169,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4493585093827132993, guid: d960c76bffb328b4397434de421f3855, type: 3}
+--- !u!95 &1978110180 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4811650625342047143, guid: bfe9e1d62d8454845908008287f15590, type: 3}
+  m_PrefabInstance: {fileID: 1023138552}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1981165333 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cd79b8b0f1617ae4fa1ef1e0aa657927, type: 3}
