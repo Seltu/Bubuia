@@ -44,4 +44,9 @@ public class CityNpc : NpcDetection
     {
         _npcAnimator.SetBool("isInteracting", _isInteracting);
     }
+
+    public void SetNpcTalkingManually(bool isTalking)
+    {
+        _npcAnimator.SetBool("isInteracting", isTalking);
+    }
 }
