@@ -490528,7 +490528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2105382554660408059, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3511275343934460341, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
       propertyPath: m_AnchorMax.y
@@ -490682,6 +490682,10 @@ PrefabInstance:
       propertyPath: questProgressionSO
       value: 
       objectReference: {fileID: 11400000, guid: b97f3ccebc4950b4880a7c715ca3b894, type: 2}
+    - target: {fileID: 7611891924642188959, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8061417648114424453, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
       propertyPath: m_text
       value: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -490720,10 +490724,10 @@ PrefabInstance:
     - {fileID: 2584803597085423826, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3941242434107551430, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
-      insertIndex: 5
+      insertIndex: 3
       addedObject: {fileID: 2885013921580970771}
     - targetCorrespondingSourceObject: {fileID: 3941242434107551430, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 1027405660910352521}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
