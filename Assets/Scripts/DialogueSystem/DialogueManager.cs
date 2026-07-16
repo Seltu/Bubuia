@@ -30,6 +30,7 @@ public class DialogueManager : MonoBehaviour
     private bool _hasAnimator;
     private float _sizeAdjustment;
     private bool isCutsceneDialogue;
+    private CityNpc _dialoguingNpc;
 
     [Header("Conversation Log")]
     [SerializeField] private GameObject _conversationLogPanel;
@@ -41,6 +42,7 @@ public class DialogueManager : MonoBehaviour
         if (_playDialogueOnAwake)
             StartDialogue(_loadedDialogue);
         EventManager.AddListener<DialogueSO>("LoadDialogue", StartDialogue);
+        EventManager.AddListener<CityNpc>("SetActiveDialogueNpc", SetActiveDialogueNpc);
         if(_optionalAnimator != null)
             _hasAnimator = true;
     }
@@ -48,6 +50,7 @@ public class DialogueManager : MonoBehaviour
     private void OnDestroy()
     {
         EventManager.RemoveListener<DialogueSO>("LoadDialogue", StartDialogue);
+        EventManager.RemoveListener<CityNpc>("SetActiveDialogueNpc", SetActiveDialogueNpc);
     }
 
     private void Update()
@@ -172,7 +175,9 @@ public class DialogueManager : MonoBehaviour
         _textSize.y = Mathf.Max(_dialogueText.GetPreferredValues(dialogueSegment.GetSentence()).y, _minBoxHeight);
         _sizeAdjustment = 0;
         yield return new WaitForSeconds(0.2f);
+        SetDialoguingNpcTalkingStatus(true);
         yield return StartCoroutine(TypeSentence(dialogueSegment.GetSentence()));
+        SetDialoguingNpcTalkingStatus(false);
         if (dialogueSegment.HasChoices)
             _showChoices = true;
         _awaitingInput = true;
@@ -222,10 +227,25 @@ public class DialogueManager : MonoBehaviour
         InputLock.movementLocked = false;
         InputLock.clickLocked = false;
         if(!isCutsceneDialogue) InputLock.movementLocked = false;
+        SetDialoguingNpcTalkingStatus(false);
         EventManager.TriggerEvent("EndDialogue");
+        _dialoguingNpc = null;
 
         // Clear conversation log
         _conversationLog.Clear();
+    }
+
+    private void SetActiveDialogueNpc(CityNpc cityNpc)
+    {
+        _dialoguingNpc = cityNpc;
+    }
+
+    private void SetDialoguingNpcTalkingStatus(bool isTalking)
+    {
+        if (_dialoguingNpc == null)
+            return;
+
+        _dialoguingNpc.SetNpcTalkingManually(isTalking);
     }
 
     IEnumerator ShowConversationLog()

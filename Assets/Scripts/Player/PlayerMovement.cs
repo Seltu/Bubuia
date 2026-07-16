@@ -128,9 +128,15 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         if (inputDirection.x < 0f)
-            _playerSpritesHolder.transform.rotation = Quaternion.Euler(25f, 0f, 0f);
+        {
+            //_playerSpritesHolder.transform.rotation = Quaternion.Euler(25f, 0f, 0f);
+            _playerSpritesHolder.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
         else
-            _playerSpritesHolder.transform.rotation = Quaternion.Euler(-25f, 180f, 0f);
+        {
+            //_playerSpritesHolder.transform.rotation = Quaternion.Euler(-25f, 180f, 0f);
+            _playerSpritesHolder.transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
 
     public void MovePlayerInput(InputAction.CallbackContext context)
