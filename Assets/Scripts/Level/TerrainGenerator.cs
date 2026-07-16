@@ -340,7 +340,7 @@ public class TerrainGenerator : MonoBehaviour
                         spawnPos + Vector3.up * 50f,
                         Vector3.down,
                         out RaycastHit hit,
-                        100f, 3))
+                        100f, 1 << 3))
                     spawnPos = hit.point;
                 }
 

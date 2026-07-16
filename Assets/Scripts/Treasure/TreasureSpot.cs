@@ -40,11 +40,13 @@ public class TreasureSpot : MonoBehaviour
     {
         if (_treasureSpotAnimator == null)
             return;
-        _treasureSpotAnimator.Play("TreasureCaught");
         for (var i = 0; i < 10; i++)
         {
-            PoolManager.Instance.ReuseComponent(_coinPrefab, transform.position + new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f)), Quaternion.identity);
+            Coin coin = (Coin) PoolManager.Instance.ReuseComponent(_coinPrefab, transform.position + new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f)), Quaternion.identity);
+            coin.SetTreasure(this);
         }
+        _treasureSpotAnimator.Play("TreasureCaught");
+        EventManager.TriggerEvent("TreasureCaught", this);
         Destroy(gameObject, 1f);
     }
     internal void OnFail()

@@ -49,7 +49,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: _origin
-        node: {fileID: 3019131222960373775}
+        node: {fileID: -7477625383550631330}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -67,10 +67,7 @@ MonoBehaviour:
   _origin: {fileID: 0}
   _name: Cap. Charles
   _sentence: "Muito bem. A Escola Arrais capacita esp\xEDritos aventureiros para
-    desbravarem as \xE1guas dos rios e mares desse mund\xE3o. Nosso treinamento de
-    Navega\xE7\xE3o tem 2 Est\xE1gios: \r\n\nN\xEDvel 1: Percorrer o percurso no
-    menor tempo\r\n\nN\xEDvel 2: Percorrer o percurso no menor tempo desviando dos
-    obst\xE1culos"
+    desbravarem as \xE1guas dos rios e mares desse mund\xE3o."
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -144,6 +141,79 @@ MonoBehaviour:
   _sentence: "Desbravei todos os rios e mares deste mundo, tenho centenas de condecora\xE7\xF5es
     de honra por viver aventuras inimagin\xE1veis para muitos\u2026 hahaha\u2026
     bons tempos."
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
+--- !u!114 &-7477625383550631330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: Cap. Charles
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1496, y: -72}
+  ports:
+    keys:
+    - _origin
+    - _choices
+    - _next
+    - _actions
+    values:
+    - _fieldName: _origin
+      _node: {fileID: -7477625383550631330}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _next
+        node: {fileID: -8753638387915715431}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices
+      _node: {fileID: -7477625383550631330}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: -7477625383550631330}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 3019131222960373775}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: -7477625383550631330}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: Cap. Charles
+  _sentence: "Nosso treinamento de Navega\xE7\xE3o tem 2 Est\xE1gios:\n-N\xEDvel
+    1: Percorrer o percurso no menor tempo\n-N\xEDvel 2: Percorrer o percurso no
+    menor tempo desviando dos obst\xE1culos"
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -412,6 +482,9 @@ MonoBehaviour:
   - {fileID: 1680980429279820565}
   - {fileID: 9215045908073892480}
   - {fileID: 8587402922253330516}
+  - {fileID: 7817053425909637694}
+  - {fileID: 8362875730388230122}
+  - {fileID: -7477625383550631330}
   isCutsceneDialogue: 0
 --- !u!114 &1461081421335025346
 MonoBehaviour:
@@ -426,7 +499,7 @@ MonoBehaviour:
   m_Name: Cap. Charles
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1832, y: -72}
+  position: {x: 2248, y: -376}
   ports:
     keys:
     - _origin
@@ -442,7 +515,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: _next
-        node: {fileID: 3019131222960373775}
+        node: {fileID: 8362875730388230122}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -525,7 +598,7 @@ MonoBehaviour:
   m_Name: Cap. Charles
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2152, y: 216}
+  position: {x: 2568, y: -88}
   ports:
     keys:
     - _origin
@@ -595,7 +668,7 @@ MonoBehaviour:
   m_Name: Cap. Charles
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 1528, y: -72}
+  position: {x: 1752, y: -72}
   ports:
     keys:
     - _origin
@@ -609,7 +682,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: _next
-        node: {fileID: -8753638387915715431}
+        node: {fileID: -7477625383550631330}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -631,7 +704,7 @@ MonoBehaviour:
         PublicKeyToken=null
       connections:
       - fieldName: _origin
-        node: {fileID: 1461081421335025346}
+        node: {fileID: 8362875730388230122}
         reroutePoints: []
       _direction: 1
       _connectionType: 1
@@ -649,8 +722,7 @@ MonoBehaviour:
   _origin: {fileID: 0}
   _name: Cap. Charles
   _sentence: "A pesca \xE9 muito importante marujo, por isso ensinamos nossos alunos
-    a arte de pescar, esse \xE9 o nosso segundo Est\xE1gio.\r\n\nN\xEDvel 1: Pescar
-    um ba\xFA \r\n\nN\xEDvel 2: Pescar 3 Sardinhas"
+    a arte de pescar!"
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -725,6 +797,119 @@ MonoBehaviour:
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
+--- !u!114 &7817053425909637694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3e5a51c06136834891c8120861bd83e, type: 3}
+  m_Name: Action
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2872, y: -40}
+  ports:
+    keys:
+    - _origin
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 7817053425909637694}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _actions
+        node: {fileID: 9215045908073892480}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _callEvent: 0
+  _eventName: 
+  _eventType: 0
+  _boolValue: 0
+  _intValue: 0
+  _floatValue: 0
+  _stringValue: 
+  _changeGlobalFlag: 1
+  _flagName: TutorialFishing2
+  _flagValue: 0
+--- !u!114 &8362875730388230122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
+  m_Name: Cap. Charles
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 2008, y: -72}
+  ports:
+    keys:
+    - _origin
+    - _choices
+    - _next
+    - _actions
+    values:
+    - _fieldName: _origin
+      _node: {fileID: 8362875730388230122}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _next
+        node: {fileID: 3019131222960373775}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _choices
+      _node: {fileID: 8362875730388230122}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _next
+      _node: {fileID: 8362875730388230122}
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: _origin
+        node: {fileID: 1461081421335025346}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 1
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: _actions
+      _node: {fileID: 8362875730388230122}
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  _origin: {fileID: 0}
+  _name: Cap. Charles
+  _sentence: "Esse \xE9 o nosso segundo Est\xE1gio:\n-N\xEDvel 1: Pescar um ba\xFA
+    \n-N\xEDvel 2: Pescar 3 Sardinhas"
+  _hasChoices: 0
+  _choices: []
+  _next: {fileID: 0}
+  _actions: {fileID: 0}
 --- !u!114 &8587402922253330516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,7 +923,7 @@ MonoBehaviour:
   m_Name: Action
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2447.4001, y: 60.204548}
+  position: {x: 2856, y: -248}
   ports:
     keys:
     - _origin
@@ -763,8 +948,8 @@ MonoBehaviour:
   _intValue: 0
   _floatValue: 0
   _stringValue: TutorialNavigation1
-  _changeGlobalFlag: 0
-  _flagName: 
+  _changeGlobalFlag: 1
+  _flagName: TutorialFishing1
   _flagValue: 0
 --- !u!114 &8857383228892200369
 MonoBehaviour:
@@ -851,7 +1036,7 @@ MonoBehaviour:
   m_Name: Cap. Charles
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 2152, y: -136}
+  position: {x: 2568, y: -440}
   ports:
     keys:
     - _origin
@@ -897,6 +1082,9 @@ MonoBehaviour:
       connections:
       - fieldName: _origin
         node: {fileID: 8587402922253330516}
+        reroutePoints: []
+      - fieldName: _origin
+        node: {fileID: 7817053425909637694}
         reroutePoints: []
       _direction: 1
       _connectionType: 0

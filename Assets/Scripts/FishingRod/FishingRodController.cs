@@ -1,9 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.InputSystem.Interactions;
+using UnityEngine.UI;
 
 public class FishingRodController : MonoBehaviour
 {
@@ -52,6 +54,7 @@ public class FishingRodController : MonoBehaviour
         EventManager.AddListener("TreasureFail", TreasureFail);
         EventManager.TriggerEvent("CallTutorial", "Tutorial_FishRodHold");
         fishingAction.action.performed += OnFishingAction;
+        fishingAction.action.canceled += OnFishingAction;
         // Trigger player animation
         _animator = GetComponentInChildren<Animator>();
         _animator.SetBool("isFishing", true);
@@ -134,9 +137,8 @@ public class FishingRodController : MonoBehaviour
 
     private void OnTap()
     {
-        if (EventSystem.current.IsPointerOverGameObject()) return;
-
         Vector2 pos = pointerPositionAction.action.ReadValue<Vector2>();
+        if (IsPointerOverButton(pos)) return;
 
         if (_isRecalling)
             return;
@@ -170,6 +172,42 @@ public class FishingRodController : MonoBehaviour
 
             return;
         }
+    }
+
+    private bool IsPointerOverButton(Vector2 screenPosition)
+    {
+        if (EventSystem.current == null)
+            return false;
+
+        PointerEventData PointerData = new PointerEventData(EventSystem.current);
+        PointerData.position = screenPosition;
+
+        List<RaycastResult> RaycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(PointerData, RaycastResults);
+
+        foreach (RaycastResult Result in RaycastResults)
+        {
+            var ButtonComponent = Result.gameObject.GetComponentInParent<Button>();
+
+            if (ButtonComponent != null)
+                return true;
+        }
+
+        return false;
+    }
+
+    private Vector2 GetPointerScreenPosition()
+    {
+        if (Touchscreen.current != null &&
+            Touchscreen.current.primaryTouch.press.isPressed)
+        {
+            return Touchscreen.current.primaryTouch.position.ReadValue();
+        }
+
+        if (Mouse.current != null)
+            return Mouse.current.position.ReadValue();
+
+        return Vector2.zero;
     }
 
     // CAST — XZ only
@@ -226,6 +264,7 @@ public class FishingRodController : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
 
         hookObject.gameObject.SetActive(true);
+        hookObject.tag = "Hook";
         Vector3 start = defaultHookPos.position;
         Vector3 mid = (start + _castTarget) * 0.5f;
         mid.y += arcHeight;
@@ -350,6 +389,7 @@ public class FishingRodController : MonoBehaviour
         _hookInWater = false;
         _canCast = true;
         _recallHeld = false;
+        hookObject.tag = "Untagged";
 
         if (hookedFish != null)
         {
@@ -395,7 +435,6 @@ public class FishingRodController : MonoBehaviour
     private void EndHooking(bool caught)
     {
         _hookingFish = false;
-        hookObject.tag = "Hook";
 
         if (!caught && hookedFish != null)
         {
@@ -435,13 +474,12 @@ public class FishingRodController : MonoBehaviour
 
     private void CatchTreasure()
     {
+        if (!_hookingTreasure) return;
         _hookedTreasure.OnPull();
         if (_hookedTreasure.IsFullyPulled())
         {
             EventManager.TriggerEvent("TurnOnMovement");
-            EventManager.TriggerEvent("TreasureCaught", _hookedTreasure);
             _hookingTreasure = false;
-            hookObject.tag = "Hook";
             _hookedTreasure.OnCaught();
             _hookedTreasure = null;
             StartCoroutine(InstantRecall());
@@ -450,9 +488,9 @@ public class FishingRodController : MonoBehaviour
 
     private void TreasureFail()
     {
+        EventManager.TriggerEvent("TurnOnMovement");
         _hookingTreasure = false;
         _hookedTreasure = null;
-        hookObject.tag = "Hook";
         StartCoroutine(InstantRecall());
     }
 

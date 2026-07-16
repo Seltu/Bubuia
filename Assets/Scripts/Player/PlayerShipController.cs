@@ -163,8 +163,6 @@ public class PlayerShipController : MonoBehaviour
             : maxSpeed * 0.5f;
 
         Vector3 targetVelocity = forward * throttleInput * maxCurrentSpeed;
-        if (throttleInput < 0f)
-            targetVelocity = Vector3.zero;
 
         // --- Aceleração ou desaceleração
         if (wantsToMove)
