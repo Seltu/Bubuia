@@ -218,9 +218,15 @@ public class PlayerShipController : MonoBehaviour
                 angle = 90;
 
         if ((angle <= 0f || angle > 180f))
-            playerSprite.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        {
+            //playerSprite.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            playerSprite.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
         else
-            playerSprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
+        {
+            //playerSprite.transform.localRotation = Quaternion.Euler(0, 180, 0);
+            playerSprite.transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
 
     private void StartObstacleKnockback(Vector3 direction)
