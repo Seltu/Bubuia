@@ -63,6 +63,7 @@ public class TreasureSpot : MonoBehaviour
             StartCoroutine(WaitToStartPulling());
             EventManager.TriggerEvent("HookedTreasure", this);
             EventManager.TriggerEvent("HookChest");
+            _baseVisual.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
