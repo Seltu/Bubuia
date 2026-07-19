@@ -120,6 +120,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(DialogueSO dialogue)
     {
         _dialoguePanel.gameObject.SetActive(true);
+        _skipIcons.SetActive(true);
         InputLock.movementLocked = true;
         InputLock.clickLocked = true;
         isCutsceneDialogue = dialogue.isCutsceneDialogue;
