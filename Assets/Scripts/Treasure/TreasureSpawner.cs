@@ -104,7 +104,7 @@ public class TreasureSpawner : MonoBehaviour
             if (candidate.x > maxPosition.x || candidate.x < minPosition.x || candidate.z > maxPosition.y || candidate.z < minPosition.y)
                 continue;
 
-            var hit = Physics.Raycast(player.position, (candidate-player.position).normalized, dist, 10);
+            var hit = Physics.Raycast(player.position, (candidate-player.position).normalized, dist, LayerMask.GetMask("Barrier"));
             Debug.DrawLine(player.position, candidate, Color.red, 20, true);
             if (hit)
             {

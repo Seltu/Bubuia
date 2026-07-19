@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     [Header("Movement")]
+    [SerializeField] private bool _startFlipped = true;
     [SerializeField] private float _playerSpeed = 5f;
 
     [Header("Gravity")]
@@ -37,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     {
         EventManager.AddListener<string>("OnOpenStore", BlockPlayerMovement);
         EventManager.AddListener("OnCloseStore", AllowPlayerMovement);
+        if (_startFlipped)
+            RotateSprites(Vector2.right);
     }
 
     private void OnDestroy()
@@ -137,6 +140,7 @@ public class PlayerMovement : MonoBehaviour
             //_playerSpritesHolder.transform.rotation = Quaternion.Euler(-25f, 180f, 0f);
             _playerSpritesHolder.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+        _playerSpritesHolder.transform.localPosition = Vector3.zero;
     }
 
     public void MovePlayerInput(InputAction.CallbackContext context)

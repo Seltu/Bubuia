@@ -370,7 +370,7 @@ public class FishingRodController : MonoBehaviour
 
         float currentDist = dirXZ.magnitude;
 
-        float bias = (_hookingDistance - currentDist) * 30f;
+        float bias = (_hookingDistance - currentDist) * 20f;
         float jitter = (Random.value - 0.5f) * 20f;
 
         float forward = (bias + jitter) * Time.deltaTime;
@@ -417,7 +417,7 @@ public class FishingRodController : MonoBehaviour
         }
 
         _hookingFish = true;
-        _hookingDistance = 10f;
+        HookingDistanceUpdate(0, 1);
         hookedFish = fish;
 
         fish.transform.SetParent(hookObject);
@@ -429,7 +429,7 @@ public class FishingRodController : MonoBehaviour
 
     private void HookingDistanceUpdate(int currentScore, int maxScore)
     {
-        _hookingDistance = 10f - 10f * ((float)currentScore / maxScore);
+        _hookingDistance = 30f - 40f * ((float)currentScore / maxScore);
     }
 
     private void EndHooking(bool caught)

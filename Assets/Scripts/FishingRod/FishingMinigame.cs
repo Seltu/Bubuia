@@ -139,7 +139,7 @@ public class FishingMinigame : MonoBehaviour
                 if (ring.hasExploded())
                 {
                     _spawnedRings.Dequeue();
-                    EventManager.TriggerEvent("DistanceUpdate", _currentDurability + _currentScore, _currentFish.GetFishTypeSO().fishingGoalScore + _playerInventory.CurrentFishingLine.durability);
+                    EventManager.TriggerEvent("DistanceUpdate", _currentScore, _currentFish.GetFishTypeSO().fishingGoalScore);
                     if (_currentScore >= _currentFish.GetFishTypeSO().fishingGoalScore)
                     {
                         EndMinigame(true);
