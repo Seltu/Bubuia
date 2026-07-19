@@ -14,7 +14,7 @@ public class Coin : MonoBehaviour
     private void OnEnable()
     {
         EventManager.AddListener<TreasureSpot>("TreasureCaught", CheckTreasureCatch);
-        _coinAnimator.Play("CoinAppear");
+        _coinAnimator.Play("Appear");
         _collected = false;
     }
 
@@ -45,7 +45,7 @@ public class Coin : MonoBehaviour
     private void Collect()
     {
         _collected = true;
-        _coinAnimator.Play("CoinCollect");
+        _coinAnimator.Play("Collect");
         _playerInventory.playerMoney++;
         StartCoroutine(DisappearAfterSeconds(1f));
         EventManager.TriggerEvent("OnUpdateMoneyUI");
@@ -64,7 +64,7 @@ public class Coin : MonoBehaviour
 
     public void Vanish()
     {
-        _coinAnimator.Play("CoinVanish");
+        _coinAnimator.Play("Vanish");
         StartCoroutine(DisappearAfterSeconds(1f));
     }
 }
