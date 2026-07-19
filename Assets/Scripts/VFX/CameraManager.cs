@@ -12,6 +12,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float startZoom = 50f;
     [SerializeField] private float zoomedInRadius;
     [SerializeField] private float zoomedOutRadius;
+    [SerializeField] private float _dialogueFocusRadius = 80f;
 
     private CinemachineBasicMultiChannelPerlin _perlin;
     private float _cameraShakeTimer;
@@ -19,6 +20,7 @@ public class CameraManager : MonoBehaviour
     private float _currentZoom;
     private float _targetZoomRadius;
     private bool _focusingOnTarget;
+    private bool _zoomInputLockedByCutscene;
 
     private void Start()
     {
@@ -32,6 +34,8 @@ public class CameraManager : MonoBehaviour
         EventManager.AddListener("ZoomIn", ZoomIn);
         EventManager.AddListener<bool>("FocusOnHook", FocusOnHook);
         EventManager.AddListener<bool, Transform>("CameraFocusOnTarget", FocusOnTarget);
+        EventManager.AddListener("CutsceneStarted", OnCutsceneStarted);
+        EventManager.AddListener("CutsceneEnded", OnCutsceneEnded);
     }
 
     private void FocusOnHook(bool focus)
@@ -76,6 +80,18 @@ public class CameraManager : MonoBehaviour
         EventManager.RemoveListener<float>("ToggleCameraShake", ShakeCamera);
         EventManager.RemoveListener<bool>("FocusOnHook", FocusOnHook);
         EventManager.RemoveListener<bool, Transform>("CameraFocusOnTarget", FocusOnTarget);
+        EventManager.RemoveListener("CutsceneStarted", OnCutsceneStarted);
+        EventManager.RemoveListener("CutsceneEnded", OnCutsceneEnded);
+    }
+
+    private void OnCutsceneStarted()
+    {
+        _zoomInputLockedByCutscene = true;
+    }
+
+    private void OnCutsceneEnded()
+    {
+        _zoomInputLockedByCutscene = false;
     }
 
     private void ShakeCamera(float intensity, float time)
@@ -95,10 +111,13 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
-        _currentZoom = Math.Clamp(_currentZoom + zoomAction.action.ReadValue<float>() * Time.deltaTime * 10000f, 0f, maxZoom);
+        if (!_zoomInputLockedByCutscene)
+        {
+            _currentZoom = Math.Clamp(_currentZoom + zoomAction.action.ReadValue<float>() * Time.deltaTime * 10000f, 0f, maxZoom);
+        }
 
         if(_focusingOnTarget)
-            targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _targetZoomRadius, Time.deltaTime);
+            targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _dialogueFocusRadius, Time.deltaTime);
         else
             targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _targetZoomRadius + _currentZoom, Time.deltaTime);
 

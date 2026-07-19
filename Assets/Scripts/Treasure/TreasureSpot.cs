@@ -4,6 +4,7 @@ using UnityEngine;
 public class TreasureSpot : MonoBehaviour
 {
     [SerializeField] private GameObject _coinPrefab;
+    [SerializeField] private GameObject treasureBoxPrefab;
     [SerializeField] private Animator _treasureSpotAnimator;
     [SerializeField] private Transform _baseVisual;
     [SerializeField] private Transform _fillVisual;
@@ -36,25 +37,30 @@ public class TreasureSpot : MonoBehaviour
         }
         _pullProgress++;
     }
+
     internal void OnCaught()
     {
         if (_treasureSpotAnimator == null)
             return;
-        for (var i = 0; i < 10; i++)
-        {
-            Coin coin = (Coin) PoolManager.Instance.ReuseComponent(_coinPrefab, transform.position + new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f)), Quaternion.identity);
-            coin.SetTreasure(this);
-        }
         _treasureSpotAnimator.Play("TreasureCaught");
-        EventManager.TriggerEvent("TreasureCaught", this);
+
+        Instantiate(treasureBoxPrefab, transform.position, Quaternion.identity);
+        
+        /*for (var i = 0; i < 10; i++)
+        {
+            PoolManager.Instance.ReuseComponent(_coinPrefab, transform.position + new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f)), Quaternion.identity);
+        }*/
+        
         Destroy(gameObject, 1f);
     }
+
     internal void OnFail()
     {
         _treasureSpotAnimator.Play("TreasureCaught");
         EventManager.TriggerEvent("TreasureFail");
         Destroy(gameObject, 1f);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (IsFullyPulled()) return;

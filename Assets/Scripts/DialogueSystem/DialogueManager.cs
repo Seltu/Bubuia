@@ -35,7 +35,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Conversation Log")]
     [SerializeField] private GameObject _conversationLogPanel;
     [SerializeField] private List<ConversationEntry> _conversationLog;
-    
+
+    [Header("Skip Icons")]
+    [SerializeField] private GameObject _skipIcons;
 
     private void Awake()
     {
@@ -118,6 +120,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(DialogueSO dialogue)
     {
         _dialoguePanel.gameObject.SetActive(true);
+        _skipIcons.SetActive(true);
         InputLock.movementLocked = true;
         InputLock.clickLocked = true;
         isCutsceneDialogue = dialogue.isCutsceneDialogue;
@@ -135,6 +138,7 @@ public class DialogueManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         _dialogueText.text = "";
+        _skipIcons.SetActive(false);
         var choiceText = "";
         List<string> list = _currentSegment.GetChoices();
         for (int i = 0; i < list.Count; i++)
@@ -167,7 +171,7 @@ public class DialogueManager : MonoBehaviour
         }
         _showChoices = false;
     }
-        
+
     public IEnumerator DisplaySegment(DialogueSegment dialogueSegment)
     {
         _currentSegment = dialogueSegment;
@@ -219,6 +223,8 @@ public class DialogueManager : MonoBehaviour
         }
         if (_hasAnimator)
             _optionalAnimator.SetBool("Typing", false);
+
+        _skipIcons.SetActive(true);
     }
 
     private void EndDialogue()
