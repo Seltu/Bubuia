@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _exitPopUpPanel;
     [SerializeField] private GameObject _customizationPanel;
     [SerializeField] private GameObject _fadePanel;
+    [SerializeField] private PlayerInventorySO m_Inventory;
 
     private GameObject _currentScreen;
 
@@ -22,6 +23,8 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         _currentScreen = _mainMenuPanel;
+        
+        m_Inventory.playerMoney = 0;
     }
 
     private void Update()
