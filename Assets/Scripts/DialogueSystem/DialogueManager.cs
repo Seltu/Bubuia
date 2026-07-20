@@ -230,6 +230,7 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         _dialoguePanel.gameObject.SetActive(false);
+        if (!isCutsceneDialogue) InputLock.movementLocked = false;
         StartCoroutine(InputUnlockDelay());
         SetDialoguingNpcTalkingStatus(false);
         EventManager.TriggerEvent("EndDialogue");
@@ -253,8 +254,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator InputUnlockDelay()
     {
-        yield return new WaitForSecondsRealtime(1f);
-        if (!isCutsceneDialogue) InputLock.movementLocked = false;
+        yield return new WaitForSecondsRealtime(0.5f);
         InputLock.clickLocked = false;
     }
 
