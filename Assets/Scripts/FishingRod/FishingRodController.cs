@@ -466,6 +466,7 @@ public class FishingRodController : MonoBehaviour
             return;
         }
         EventManager.TriggerEvent("TurnOffMovement");
+        EventManager.TriggerEvent("Tut");
         _hookingTreasure = true;
         _hookedTreasure = treasureSpot;
         _castTarget = treasureSpot.transform.position + Vector3.down/5f;
@@ -479,6 +480,7 @@ public class FishingRodController : MonoBehaviour
         if (_hookedTreasure.IsFullyPulled())
         {
             EventManager.TriggerEvent("TurnOnMovement");
+            EventManager.TriggerEvent("Caught3Fish");
             _hookingTreasure = false;
             _hookedTreasure.OnCaught();
             _hookedTreasure = null;
@@ -489,6 +491,7 @@ public class FishingRodController : MonoBehaviour
     private void TreasureFail()
     {
         EventManager.TriggerEvent("TurnOnMovement");
+        EventManager.TriggerEvent("Caught3Fish");
         _hookingTreasure = false;
         _hookedTreasure = null;
         StartCoroutine(InstantRecall());
