@@ -4,7 +4,7 @@ using UnityEngine;
 public class TreasureSpot : MonoBehaviour
 {
     [SerializeField] private GameObject _coinPrefab;
-    [SerializeField] private GameObject treasureBoxPrefab;
+    [SerializeField] private TreasureChest treasureBoxPrefab;
     [SerializeField] private Animator _treasureSpotAnimator;
     [SerializeField] private Transform _baseVisual;
     [SerializeField] private Transform _fillVisual;
@@ -44,8 +44,10 @@ public class TreasureSpot : MonoBehaviour
             return;
         _treasureSpotAnimator.Play("TreasureCaught");
 
-        Instantiate(treasureBoxPrefab, transform.position, Quaternion.identity);
-        
+        var chest = Instantiate(treasureBoxPrefab, transform.position, Quaternion.identity);
+        chest.SetSpot(this);
+
+
         /*for (var i = 0; i < 10; i++)
         {
             PoolManager.Instance.ReuseComponent(_coinPrefab, transform.position + new Vector3(Random.Range(-2f, 2f), 0, Random.Range(-2f, 2f)), Quaternion.identity);
@@ -68,7 +70,6 @@ public class TreasureSpot : MonoBehaviour
         {
             StartCoroutine(WaitToStartPulling());
             EventManager.TriggerEvent("HookedTreasure", this);
-            EventManager.TriggerEvent("HookChest");
             _baseVisual.GetComponent<SpriteRenderer>().enabled = true;
         }
     }

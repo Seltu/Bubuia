@@ -45,7 +45,7 @@ public class FishingMinigame : MonoBehaviour
     private bool _waitingCueTap = false;
     private float _prevTimeScale = 1f;
     private float _cueInsideMargin = 0.4f;
-    private int _cueCount = 2; // ammount of fishes to catch until cue is deactivated, player must catch the ramaingn fish alone
+    private int _cueCount = 1; // ammount of fishes to catch until cue is deactivated, player must catch the ramaingn fish alone
     private List<InventoryItem> PlayerBaits => _playerInventory.items.Where(x => x.itemData is BaitTypeSO).ToList();
 
     private void Awake()

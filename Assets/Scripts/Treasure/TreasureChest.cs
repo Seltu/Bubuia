@@ -4,25 +4,21 @@ public class TreasureChest : MonoBehaviour
 {
     [SerializeField] private GameObject _coinPrefab;
     [SerializeField] private GameObject _treasureBoxInstance;
+    private TreasureSpot _treasureSpot;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void SetSpot(TreasureSpot spot)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _treasureSpot = spot;
     }
 
     public void OpenChest()
     {
         for (var i = 0; i < 10; i++)
         {
-            PoolManager.Instance.ReuseComponent(_coinPrefab, _treasureBoxInstance.transform.position + new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f)), Quaternion.identity);
+            Coin coin = (Coin)PoolManager.Instance.ReuseComponent(_coinPrefab, _treasureBoxInstance.transform.position + new Vector3(Random.Range(-2f, 2f), 2.5f, Random.Range(-2f, 2f)), Quaternion.identity);
+            coin.SetTreasure(_treasureSpot);
         }
+        EventManager.TriggerEvent("TreasureCaught", _treasureSpot);
 
         Destroy(gameObject, 2f);
     }
