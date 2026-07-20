@@ -4,6 +4,10 @@ using UnityEngine;
 public class CutsceneConditionSO : ScriptableObject
 {
     public ChoiceCondition condition;
+    private void OnEnable()
+    {
+        hideFlags = HideFlags.DontUnloadUnusedAsset;
+    }
     public virtual bool CheckCutsceneCondition()
     {
         return condition.Decide();

@@ -1,5 +1,4 @@
-﻿#if UNITY_EDITOR
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Terrain))]
@@ -10,6 +9,7 @@ public class TerrainPainter : MonoBehaviour
     [SerializeField] private TerrainLayer[] terrainLayers;
     [SerializeField] private TerrainHeightLayer[] terrainHeights;
 
+    #if UNITY_EDITOR
 
     private Terrain _terrain;
 
@@ -107,7 +107,5 @@ public class TerrainPainter : MonoBehaviour
 
         data.SetAlphamaps(0, 0, splatmap);
     }
-
+    #endif
 }
-
-#endif

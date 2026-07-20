@@ -230,13 +230,10 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         _dialoguePanel.gameObject.SetActive(false);
-        InputLock.movementLocked = false;
-        InputLock.clickLocked = false;
-        if(!isCutsceneDialogue) InputLock.movementLocked = false;
+        StartCoroutine(InputUnlockDelay());
         SetDialoguingNpcTalkingStatus(false);
         EventManager.TriggerEvent("EndDialogue");
         _dialoguingNpc = null;
-
         // Clear conversation log
         _conversationLog.Clear();
     }
@@ -252,6 +249,13 @@ public class DialogueManager : MonoBehaviour
             return;
 
         _dialoguingNpc.SetNpcTalkingManually(isTalking);
+    }
+
+    IEnumerator InputUnlockDelay()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        if (!isCutsceneDialogue) InputLock.movementLocked = false;
+        InputLock.clickLocked = false;
     }
 
     IEnumerator ShowConversationLog()

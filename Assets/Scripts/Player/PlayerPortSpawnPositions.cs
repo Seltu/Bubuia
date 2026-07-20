@@ -1,27 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerPortSpawnPositions : MonoBehaviour
 {
     [SerializeField] private Transform defaultPosition;
     [SerializeField] private List<Transform> spawnPositions = new List<Transform>();
-    [SerializeField] private List<string> sceneConditions = new List<string>();
-    [SerializeField] private PlayerSceneHistorySO _playerHistory;
-
-    private GameObject _player;
+    [SerializeField] private List<ChoiceCondition> spawnConditions = new List<ChoiceCondition>();
+    [SerializeField] private PlayerMovement _player;
 
     private void OnValidate()
     {
-        if (spawnPositions.Count != sceneConditions.Count)
+        if (spawnPositions.Count != spawnConditions.Count)
             Debug.LogWarning("Make sure there's exactly 1 scene condition for every spawn position");
     }
 
     private void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
-        if (sceneConditions.Contains(_playerHistory.previousScene))
-            _player.transform.position = spawnPositions[sceneConditions.IndexOf(_playerHistory.previousScene)].position;
-        else
-            _player.transform.position = defaultPosition.position;
+        for (int i = 0; i < spawnConditions.Count; i++)
+        {
+            ChoiceCondition condition = spawnConditions[i];
+            if (condition.Decide())
+            {
+                _player.Teleport(spawnPositions[i].transform.position);
+                return;
+            }
+        }
+        _player.transform.position = defaultPosition.position;
     }
 }

@@ -49,6 +49,7 @@ MonoBehaviour:
   _characterController: {fileID: 5173475840116326114}
   _playerSpritesHolder: {fileID: 1094638776445201114}
   _animator: {fileID: 6069789589910230124}
+  _startFlipped: 1
   _playerSpeed: 35
   _gravity: -25
   _groundStickForce: -50
@@ -208,29 +209,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1537193597212055779, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 4888525824199667935}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
 --- !u!1 &1094638776445201114 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1537193597212055779, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
   m_PrefabInstance: {fileID: 1902143314752582201}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4888525824199667935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094638776445201114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18d0ec8f699d44d4d9352562b84bf5e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _history: {fileID: 11400000, guid: 9ede3ef8704870c439da1eacfdc78fe6, type: 2}
 --- !u!114 &3408462468660201616 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3830469581781613225, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}

@@ -9,7 +9,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player Inventory SO", menuName = "ScriptableObjects/PlayerInventorySO")]
 public class PlayerInventorySO : ScriptableObject
 {
-    public int playerMoney;
+    public int playerMoney { get; private set; }
     public List<InventoryItem> items;
     [SerializeField] private FloatVariable _currentBaitPowerSO;
     private Dictionary<EquipSlot, InventoryItem> _equippedItems = new();
@@ -82,6 +82,13 @@ public class PlayerInventorySO : ScriptableObject
     public void AddMoney(int amount)
     {
         playerMoney += amount;
+        PlayerPrefs.SetInt(MONEY_KEY, playerMoney);
+        PlayerPrefs.Save();
+    }
+
+    internal void ResetMoney()
+    {
+        playerMoney = 0;
         PlayerPrefs.SetInt(MONEY_KEY, playerMoney);
         PlayerPrefs.Save();
     }

@@ -24,9 +24,6 @@ public class TreasureSpawner : MonoBehaviour
     [SerializeField] private float coinStartPaddingFromPlayer = 5f; // evita coin colada no player
     [SerializeField] private float coinEndPaddingFromTreasure = 2.5f; // evita coin colada no spot
 
-    [Header("Cleanup")]
-    [SerializeField] private bool destroyCoinsWhenTreasureIsGone = true;
-
     private TreasureSpot _currentTreasure;
     private Camera _mainCamera;
     private readonly List<Coin> _spawnedCoins = new();
@@ -46,6 +43,7 @@ public class TreasureSpawner : MonoBehaviour
         if (Vector3.Distance(_currentTreasure.transform.position, player.position ) > maxDistanceFromPlayer)
         {
             Destroy(_currentTreasure.gameObject);
+            CleanupCoins();
         }
     }
 
@@ -57,10 +55,6 @@ public class TreasureSpawner : MonoBehaviour
             yield return new WaitUntil(() => _currentTreasure == null);
 
             yield return new WaitForSeconds(spawnDelay);
-
-            // (opcional) limpeza quando o treasure some
-            if (destroyCoinsWhenTreasureIsGone)
-                CleanupCoins();
 
             // Se ainda não existe, spawna
             if (_currentTreasure == null)
@@ -91,7 +85,7 @@ public class TreasureSpawner : MonoBehaviour
 
     private bool TryGetOffscreenTreasurePosition(out Vector3 result)
     {
-        Vector3 origin = _mainCamera.transform.position;
+        Vector3 origin = player.transform.position;
         origin.y = 0f;
 
         for (int i = 0; i < maxPlacementAttempts; i++)
@@ -164,7 +158,7 @@ public class TreasureSpawner : MonoBehaviour
                 continue;
             }
 
-            if (destroyCoinsWhenTreasureIsGone && _spawnedCoins[i].isActiveAndEnabled)
+            if (_spawnedCoins[i].isActiveAndEnabled)
                 _spawnedCoins[i].Vanish();
         }
         _spawnedCoins.Clear();
@@ -172,7 +166,6 @@ public class TreasureSpawner : MonoBehaviour
 
     private void OnDisable()
     {
-        if (destroyCoinsWhenTreasureIsGone)
-            CleanupCoins();
+        CleanupCoins();
     }
 }

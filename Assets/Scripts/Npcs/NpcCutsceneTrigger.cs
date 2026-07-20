@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 
+
 public class NPCCutsceneTrigger : DialogueTrigger
 {
     [SerializeField] private CutsceneConditionSO _cutsceneCondition;
@@ -15,6 +16,7 @@ public class NPCCutsceneTrigger : DialogueTrigger
 
     private void Start()
     {
+        _focusable = true;
         if (_cutsceneCondition != null && _cutsceneCondition.CheckCutsceneCondition() == false)
         {
             if (_disappearOnConditionFail)

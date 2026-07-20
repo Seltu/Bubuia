@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _moveInput;
     private Vector3 _groundNormal = Vector3.up;
     private float _verticalVelocity;
+    private bool _skipMovementFrame;
 
     private void Awake()
     {
@@ -48,8 +49,14 @@ public class PlayerMovement : MonoBehaviour
         EventManager.RemoveListener("OnCloseStore", AllowPlayerMovement);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (_skipMovementFrame)
+        {
+            _skipMovementFrame = false;
+            return;
+        }
+
         MovePlayer();
     }
 
@@ -141,6 +148,22 @@ public class PlayerMovement : MonoBehaviour
             _playerSpritesHolder.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         _playerSpritesHolder.transform.localPosition = Vector3.zero;
+    }
+
+    public void Teleport(Vector3 targetPosition)
+    {
+        _moveInput = Vector2.zero;
+        _verticalVelocity = 0f;
+
+        _characterController.enabled = false;
+
+        transform.position = targetPosition;
+
+        Physics.SyncTransforms();
+
+        _characterController.enabled = true;
+
+        _skipMovementFrame = true;
     }
 
     public void MovePlayerInput(InputAction.CallbackContext context)

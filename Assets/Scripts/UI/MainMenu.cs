@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
     {
         _currentScreen = _mainMenuPanel;
         
-        m_Inventory.playerMoney = 0;
+        m_Inventory.ResetMoney();
     }
 
     private void Update()
