@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1968625360837129655}
   m_Layer: 12
   m_Name: TreasureSpot
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -396,7 +396,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwirlVFX
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4153630360683850499, guid: f0f8f7810d9315b4880f58fbaa0952ad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
