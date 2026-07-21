@@ -56,7 +56,8 @@ public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if (buttonImage != null)
             buttonImage.sprite = hoverSprite;
-        buttonText.DOColor(hoverTextColor, duration).SetUpdate(true); ;
+        if (buttonText != null)
+            buttonText.DOColor(hoverTextColor, duration).SetUpdate(true); ;
         transform.DOScale(originalScale * scaleUpSize, duration).SetEase(Ease.OutBack).SetUpdate(true);
         if (positionChange.magnitude > 0)
             transform.DOMove(originalPosition + (Vector3)positionChange, duration).SetEase(Ease.OutBack).SetUpdate(true);
@@ -67,7 +68,8 @@ public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         if(buttonImage != null)
             buttonImage.sprite = normalSprite;
-        buttonText.DOColor(normalTextColor, duration).SetUpdate(true); ;
+        if (buttonText != null)
+            buttonText.DOColor(normalTextColor, duration).SetUpdate(true); ;
         transform.DOScale(originalScale, duration).SetEase(Ease.OutBack).SetUpdate(true);
         if (positionChange.magnitude > 0)
             transform.DOMove(originalPosition, duration).SetEase(Ease.OutBack).SetUpdate(true);
