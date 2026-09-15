@@ -10,7 +10,7 @@ public class PoolManager : MonoBehaviour
 
     private Transform _objectPoolTransform;
 
-    private Dictionary<int, List<Component>> _poolDictionary = new Dictionary<int, List<Component>>();
+    private Dictionary<EntityId, List<Component>> _poolDictionary = new Dictionary<EntityId, List<Component>>();
 
     public static PoolManager Instance;
 
@@ -45,7 +45,7 @@ public class PoolManager : MonoBehaviour
 
     private void CreatePool(GameObject prefab, string componentType)
     {
-        int poolKey = prefab.GetInstanceID();
+        EntityId poolKey = prefab.GetEntityId();
         string prefabName = prefab.name;
         GameObject parentGameObject = new GameObject(prefabName + "Anchor");
         parentGameObject.transform.SetParent(_objectPoolTransform);
@@ -56,7 +56,7 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    private void AddNewObjectToPool(GameObject prefab, int poolKey, Transform parent, string componentType)
+    private void AddNewObjectToPool(GameObject prefab, EntityId poolKey, Transform parent, string componentType)
     {
         GameObject newObject = Instantiate(prefab, parent);
         newObject.SetActive(false);
@@ -65,7 +65,7 @@ public class PoolManager : MonoBehaviour
 
     public Component ReuseComponent(GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        int poolKey = prefab.GetInstanceID();
+        EntityId poolKey = prefab.GetEntityId();
         if (_poolDictionary.ContainsKey(poolKey))
         {
             Component componentToReuse = GetComponentFromPool(prefab, poolKey);
@@ -79,7 +79,7 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    private Component GetComponentFromPool(GameObject prefab, int poolKey)
+    private Component GetComponentFromPool(GameObject prefab, EntityId poolKey)
     {
         Component componentToReuse = _poolDictionary[poolKey].Find(component => !component.gameObject.activeSelf);
 

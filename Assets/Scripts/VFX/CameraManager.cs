@@ -1,12 +1,12 @@
 using UnityEngine;
-using Cinemachine;
+
 using System;
 using UnityEngine.InputSystem;
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
-    [SerializeField] private CinemachineTargetGroup targetGroup;
+    [SerializeField] private Unity.Cinemachine.CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private Unity.Cinemachine.CinemachineTargetGroup targetGroup;
     [SerializeField] private InputActionReference zoomAction;
     [SerializeField] private float maxZoom = 150f;
     [SerializeField] private float startZoom = 50f;
@@ -14,7 +14,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float zoomedOutRadius;
     [SerializeField] private float _dialogueFocusRadius = 80f;
 
-    private CinemachineBasicMultiChannelPerlin _perlin;
+    private Unity.Cinemachine.CinemachineBasicMultiChannelPerlin _perlin;
     private float _cameraShakeTimer;
     private bool _cameraShakeToggled;
     private float _currentZoom;
@@ -26,7 +26,7 @@ public class CameraManager : MonoBehaviour
     {
         _targetZoomRadius = zoomedInRadius;
         _currentZoom = startZoom;
-        _perlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _perlin = virtualCamera.GetCinemachineComponent<Unity.Cinemachine.CinemachineBasicMultiChannelPerlin>();
         _perlin.m_AmplitudeGain = 0f;
         EventManager.AddListener<float, float>("CameraShake", ShakeCamera);
         EventManager.AddListener<float>("ToggleCameraShake", ShakeCamera);
