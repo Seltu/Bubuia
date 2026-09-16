@@ -2,11 +2,12 @@ using UnityEngine;
 
 using System;
 using UnityEngine.InputSystem;
+using Unity.Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
-    [SerializeField] private Unity.Cinemachine.CinemachineVirtualCamera virtualCamera;
-    [SerializeField] private Unity.Cinemachine.CinemachineTargetGroup targetGroup;
+    [SerializeField] private CinemachineCamera virtualCamera;
+    [SerializeField] private CinemachineTargetGroup targetGroup;
     [SerializeField] private InputActionReference zoomAction;
     [SerializeField] private float maxZoom = 150f;
     [SerializeField] private float startZoom = 50f;
@@ -14,20 +15,22 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float zoomedOutRadius;
     [SerializeField] private float _dialogueFocusRadius = 80f;
 
-    private Unity.Cinemachine.CinemachineBasicMultiChannelPerlin _perlin;
+    private CinemachineBasicMultiChannelPerlin _perlin;
     private float _cameraShakeTimer;
     private bool _cameraShakeToggled;
     private float _currentZoom;
     private float _targetZoomRadius;
     private bool _focusingOnTarget;
     private bool _zoomInputLockedByCutscene;
+    private float _zoomDirectionBuffer;
+    private int _dialogueTargetIndex;
 
     private void Start()
     {
         _targetZoomRadius = zoomedInRadius;
         _currentZoom = startZoom;
-        _perlin = virtualCamera.GetCinemachineComponent<Unity.Cinemachine.CinemachineBasicMultiChannelPerlin>();
-        _perlin.m_AmplitudeGain = 0f;
+        _perlin = virtualCamera.GetComponent<CinemachineBasicMultiChannelPerlin>();
+        _perlin.AmplitudeGain = 0f;
         EventManager.AddListener<float, float>("CameraShake", ShakeCamera);
         EventManager.AddListener<float>("ToggleCameraShake", ShakeCamera);
         EventManager.AddListener("ZoomOut", ZoomOut);
@@ -42,11 +45,11 @@ public class CameraManager : MonoBehaviour
     {
         if (focus)
         {
-            targetGroup.m_Targets[1].weight = 4;
+            targetGroup.Targets[1].Weight = 2;
         }
         else
         {
-            targetGroup.m_Targets[1].weight = 1;
+            targetGroup.Targets[1].Weight = 1;
         }
     }
 
@@ -55,7 +58,8 @@ public class CameraManager : MonoBehaviour
         if (focus)
         {
             _focusingOnTarget = true;
-            targetGroup.AddMember(target, 4, 25);
+            targetGroup.AddMember(target, 1, _targetZoomRadius);
+            _dialogueTargetIndex = targetGroup.Targets.Count - 1;
         }
         else
         {
@@ -98,7 +102,7 @@ public class CameraManager : MonoBehaviour
     {
         if (_perlin == null) return;
 
-        _perlin.m_AmplitudeGain = intensity;
+        _perlin.AmplitudeGain = intensity;
         _cameraShakeTimer = time;
     }
 
@@ -106,27 +110,37 @@ public class CameraManager : MonoBehaviour
     {
         if (_perlin == null) return;
 
-        _perlin.m_AmplitudeGain = intensity;
+        _perlin.AmplitudeGain = intensity;
     }
 
     private void Update()
     {
+        if (zoomAction.action.ReadValue<float>() > 0)
+            _zoomDirectionBuffer = 0.1f;
+        else if(zoomAction.action.ReadValue<float>() < 0)
+            _zoomDirectionBuffer = -0.1f;
+        _zoomDirectionBuffer = Mathf.MoveTowards(_zoomDirectionBuffer, 0, Time.deltaTime);
+
         if (!_zoomInputLockedByCutscene)
         {
-            _currentZoom = Math.Clamp(_currentZoom + zoomAction.action.ReadValue<float>() * Time.deltaTime * 10000f, 0f, maxZoom);
+            _currentZoom = Math.Clamp(_currentZoom + Math.Sign(_zoomDirectionBuffer) * Time.deltaTime * 50f, 0f, maxZoom);
         }
 
-        if(_focusingOnTarget)
-            targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _dialogueFocusRadius, Time.deltaTime);
+        if (_focusingOnTarget)
+        {
+            targetGroup.Targets[0].Radius = _dialogueFocusRadius;
+            if(targetGroup.Targets[1].Weight < 4)
+                targetGroup.Targets[1].Weight = Mathf.MoveTowards(targetGroup.Targets[_dialogueTargetIndex].Weight, 4, Time.deltaTime);
+        }
         else
-            targetGroup.m_Targets[0].radius = Mathf.Lerp(targetGroup.m_Targets[0].radius, _targetZoomRadius + _currentZoom, Time.deltaTime);
+            targetGroup.Targets[0].Radius = _targetZoomRadius + _currentZoom;
 
         if (_cameraShakeTimer > 0)
         {
             _cameraShakeTimer -= Time.deltaTime;
             if (_cameraShakeTimer <= 0f)
             {
-                _perlin.m_AmplitudeGain = 0f;
+                _perlin.AmplitudeGain = 0f;
             }
         }
     }

@@ -23,8 +23,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: -8753638387915715431}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _choices 0
         node: {fileID: -2340869991025126443}
@@ -35,9 +34,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: -8753638387915715431}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -45,8 +42,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: -8753638387915715431}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _origin
         node: {fileID: -7477625383550631330}
@@ -57,8 +53,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: -8753638387915715431}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -66,8 +61,7 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Muito bem. A Escola Arrais capacita esp\xEDritos aventureiros para
-    desbravarem as \xE1guas dos rios e mares desse mund\xE3o."
+  _sentence: "Muito bem. A Escola Arrais capacita esp\xEDritos aventureiros para desbravarem as \xE1guas dos rios e mares desse mund\xE3o."
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -95,8 +89,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: -8325659812267641654}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _next
         node: {fileID: -6554950342250950153}
@@ -107,9 +100,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: -8325659812267641654}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -117,8 +108,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: -8325659812267641654}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _origin
         node: {fileID: 8857383228892200369}
@@ -129,8 +119,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: -8325659812267641654}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -138,9 +127,7 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Desbravei todos os rios e mares deste mundo, tenho centenas de condecora\xE7\xF5es
-    de honra por viver aventuras inimagin\xE1veis para muitos\u2026 hahaha\u2026
-    bons tempos."
+  _sentence: "Desbravei todos os rios e mares deste mundo, tenho centenas de condecora\xE7\xF5es de honra por viver aventuras inimagin\xE1veis para muitos\u2026 hahaha\u2026 bons tempos."
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -168,8 +155,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: -7477625383550631330}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _next
         node: {fileID: -8753638387915715431}
@@ -180,9 +166,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: -7477625383550631330}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -190,8 +174,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: -7477625383550631330}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _origin
         node: {fileID: 3019131222960373775}
@@ -202,8 +185,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: -7477625383550631330}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -211,9 +193,7 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Nosso treinamento de Navega\xE7\xE3o tem 2 Est\xE1gios:\n-N\xEDvel
-    1: Percorrer o percurso no menor tempo\n-N\xEDvel 2: Percorrer o percurso no
-    menor tempo desviando dos obst\xE1culos"
+  _sentence: "Nosso treinamento de Navega\xE7\xE3o tem 2 Est\xE1gios:\n-N\xEDvel 1: Percorrer o percurso no menor tempo\n-N\xEDvel 2: Percorrer o percurso no menor tempo desviando dos obst\xE1culos"
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -241,8 +221,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: -6554950342250950153}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _next
         node: {fileID: -5027553653795666997}
@@ -253,9 +232,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: -6554950342250950153}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -263,8 +240,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: -6554950342250950153}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _origin
         node: {fileID: -8325659812267641654}
@@ -275,8 +251,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: -6554950342250950153}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -284,8 +259,7 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Deixe eu me apresentar, eu sou o Capit\xE3o Charles, e sou a pessoa
-    mais experiente em navega\xE7\xE3o que voc\xEA ir\xE1 conhecer em vida."
+  _sentence: "Deixe eu me apresentar, eu sou o Capit\xE3o Charles, e sou a pessoa mais experiente em navega\xE7\xE3o que voc\xEA ir\xE1 conhecer em vida."
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -313,8 +287,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: -5027553653795666997}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 0
       _connectionType: 0
@@ -322,9 +295,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: -5027553653795666997}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -332,8 +303,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: -5027553653795666997}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _origin
         node: {fileID: -6554950342250950153}
@@ -344,8 +314,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: -5027553653795666997}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -383,8 +352,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: -2340869991025126443}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _next
         node: {fileID: 8857383228892200369}
@@ -395,9 +363,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: -2340869991025126443}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -405,8 +371,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: -2340869991025126443}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
@@ -414,8 +379,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: -2340869991025126443}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -423,9 +387,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices 0
       _node: {fileID: -2340869991025126443}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: _origin
         node: {fileID: -8753638387915715431}
@@ -436,9 +398,7 @@ MonoBehaviour:
       _dynamic: 1
     - _fieldName: _choices 1
       _node: {fileID: -2340869991025126443}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: _origin
         node: {fileID: 3458258816720721931}
@@ -449,8 +409,7 @@ MonoBehaviour:
       _dynamic: 1
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Me diga jovem, voc\xEA tem interesse em conhecer o curso de navega\xE7\xE3o
-    da Escola Arrais e adquirir a Carteira Arrais?"
+  _sentence: "Me diga jovem, voc\xEA tem interesse em conhecer o curso de navega\xE7\xE3o da Escola Arrais e adquirir a Carteira Arrais?"
   _hasChoices: 1
   _choices:
   - Sim!
@@ -511,8 +470,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: 1461081421335025346}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _next
         node: {fileID: 8362875730388230122}
@@ -523,9 +481,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: 1461081421335025346}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -533,8 +489,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: 1461081421335025346}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
@@ -542,8 +497,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: 1461081421335025346}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -551,9 +505,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices 0
       _node: {fileID: 1461081421335025346}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: _origin
         node: {fileID: 9215045908073892480}
@@ -564,9 +516,7 @@ MonoBehaviour:
       _dynamic: 1
     - _fieldName: _choices 1
       _node: {fileID: 1461081421335025346}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: _origin
         node: {fileID: 1680980429279820565}
@@ -577,8 +527,7 @@ MonoBehaviour:
       _dynamic: 1
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Voc\xEA quer se tornar um expert das \xE1guas e fazer o curso de navega\xE7\xE3o
-    da Escola Arrais?"
+  _sentence: "Voc\xEA quer se tornar um expert das \xE1guas e fazer o curso de navega\xE7\xE3o da Escola Arrais?"
   _hasChoices: 1
   _choices:
   - Sim
@@ -608,8 +557,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: 1680980429279820565}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _choices 1
         node: {fileID: 1461081421335025346}
@@ -620,9 +568,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: 1680980429279820565}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -630,8 +576,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: 1680980429279820565}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
@@ -639,8 +584,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: 1680980429279820565}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -648,9 +592,7 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "N\xE3o tem problema. Talvez voc\xEA precise de mais tempo para criar
-    a coragem necess\xE1ria para desbravar as \xE1guas.\r\nEstarei sempre aqui, caso
-    queira adquirir a Carteira dos Arrais.  "
+  _sentence: "N\xE3o tem problema. Talvez voc\xEA precise de mais tempo para criar a coragem necess\xE1ria para desbravar as \xE1guas.\r\nEstarei sempre aqui, caso queira adquirir a Carteira dos Arrais.  "
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -678,8 +620,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: 3019131222960373775}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _next
         node: {fileID: -7477625383550631330}
@@ -690,9 +631,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: 3019131222960373775}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -700,8 +639,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: 3019131222960373775}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _origin
         node: {fileID: 8362875730388230122}
@@ -712,8 +650,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: 3019131222960373775}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -721,8 +658,7 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "A pesca \xE9 muito importante marujo, por isso ensinamos nossos alunos
-    a arte de pescar!"
+  _sentence: "A pesca \xE9 muito importante marujo, por isso ensinamos nossos alunos a arte de pescar!"
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -750,8 +686,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: 3458258816720721931}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _choices 1
         node: {fileID: -2340869991025126443}
@@ -762,9 +697,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: 3458258816720721931}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -772,8 +705,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: 3458258816720721931}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
@@ -781,8 +713,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: 3458258816720721931}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -790,9 +721,7 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "N\xE3o tem problema. Talvez voc\xEA precise de mais tempo para criar
-    a coragem necess\xE1ria para desbravar as \xE1guas.\r\nEstarei sempre aqui, caso
-    queira adquirir a Carteira dos Arrais.  "
+  _sentence: "N\xE3o tem problema. Talvez voc\xEA precise de mais tempo para criar a coragem necess\xE1ria para desbravar as \xE1guas.\r\nEstarei sempre aqui, caso queira adquirir a Carteira dos Arrais.  "
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -817,8 +746,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: 7817053425909637694}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _actions
         node: {fileID: 9215045908073892480}
@@ -861,8 +789,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: 8362875730388230122}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _next
         node: {fileID: 3019131222960373775}
@@ -873,9 +800,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: 8362875730388230122}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -883,8 +808,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: 8362875730388230122}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _origin
         node: {fileID: 1461081421335025346}
@@ -895,8 +819,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: 8362875730388230122}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -904,8 +827,7 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Esse \xE9 o nosso segundo Est\xE1gio:\n-N\xEDvel 1: Pescar um ba\xFA
-    \n-N\xEDvel 2: Pescar 3 Sardinhas"
+  _sentence: "Esse \xE9 o nosso segundo Est\xE1gio:\n-N\xEDvel 1: Pescar um ba\xFA \n-N\xEDvel 2: Pescar 3 Sardinhas"
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -930,8 +852,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: 8587402922253330516}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _actions
         node: {fileID: 9215045908073892480}
@@ -974,8 +895,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: 8857383228892200369}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _next
         node: {fileID: -8325659812267641654}
@@ -986,9 +906,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: 8857383228892200369}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -996,8 +914,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: 8857383228892200369}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _origin
         node: {fileID: -2340869991025126443}
@@ -1008,8 +925,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: 8857383228892200369}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 0
@@ -1017,8 +933,7 @@ MonoBehaviour:
       _dynamic: 0
   _origin: {fileID: 0}
   _name: Cap. Charles
-  _sentence: "Hoje sou o diretor da Escola Arrais, afinal experi\xEAncia e conhecimento
-    devem ser compartilhados!"
+  _sentence: "Hoje sou o diretor da Escola Arrais, afinal experi\xEAncia e conhecimento devem ser compartilhados!"
   _hasChoices: 0
   _choices: []
   _next: {fileID: 0}
@@ -1046,8 +961,7 @@ MonoBehaviour:
     values:
     - _fieldName: _origin
       _node: {fileID: 9215045908073892480}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _choices 0
         node: {fileID: 1461081421335025346}
@@ -1058,9 +972,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _choices
       _node: {fileID: 9215045908073892480}
-      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
-        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
       connections: []
       _direction: 1
       _connectionType: 1
@@ -1068,8 +980,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _next
       _node: {fileID: 9215045908073892480}
-      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: DialogueSegment, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections: []
       _direction: 1
       _connectionType: 1
@@ -1077,8 +988,7 @@ MonoBehaviour:
       _dynamic: 0
     - _fieldName: _actions
       _node: {fileID: 9215045908073892480}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
+      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       connections:
       - fieldName: _origin
         node: {fileID: 8587402922253330516}
