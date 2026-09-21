@@ -16,15 +16,22 @@ public class GameplayMenuUI : MonoBehaviour
     [SerializeField] private UnityEvent _onCutsceneStart;
     [SerializeField] private UnityEvent _onCutsceneEnd;
     [SerializeField] private InputActionReference _pauseAction;
+    [SerializeField] private InputActionReference _altMenuAction;
 
     private void Awake()
     {
         _onMenu.value = false;
         _canPause.value = true;
         _pauseAction.action.performed += Pause;
+        _altMenuAction.action.performed += OpenBooklet;
 
         EventManager.AddListener("CutsceneStarted", OnCutsceneStart);
         EventManager.AddListener("CutsceneEnded", OnCutsceneEnd);
+    }
+
+    private void OpenMenu(InputAction.CallbackContext context)
+    {
+        throw new NotImplementedException();
     }
 
     private void OnDisable()
@@ -32,6 +39,7 @@ public class GameplayMenuUI : MonoBehaviour
         //_onMenu.value = false;
         //_canPause.value = true;
         _pauseAction.action.performed -= Pause;
+        _altMenuAction.action.performed -= OpenBooklet;
 
         EventManager.RemoveListener("CutsceneStarted", OnCutsceneStart);
         EventManager.RemoveListener("CutsceneEnded", OnCutsceneEnd);
@@ -52,7 +60,7 @@ public class GameplayMenuUI : MonoBehaviour
         
     }
 
-    public void OpenBooklet()
+    public void OpenBooklet(InputAction.CallbackContext ctx)
     {
         if (!_canPause.value) return;
         if (!(Time.timeScale != 0))
