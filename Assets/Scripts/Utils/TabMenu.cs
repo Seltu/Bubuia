@@ -56,6 +56,12 @@ public class TabMenu : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        pageIndex = Mathf.Clamp(pageIndex, 0, tabs.Count - 1);
+        tabs[pageIndex].isOn = true;
+    }
+
     private void CheckForTab(bool value)
     {
         for (int i = 0; i < tabs.Count; i++)
