@@ -799,6 +799,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -810,7 +811,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -938,6 +939,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -949,7 +951,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1136,7 +1138,14 @@ MonoBehaviour:
   normalTextColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
   scaleUpSize: 1.1
+  positionChange: {x: 0, y: 0}
   duration: 0.2
+  _onHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _onUnhover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1887590568480723169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1311,14 @@ MonoBehaviour:
   normalTextColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
   scaleUpSize: 1.1
+  positionChange: {x: 0, y: 0}
   duration: 0.2
+  _onHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _onUnhover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2040247855433309122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,6 +1501,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1496,7 +1513,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1990,7 +2007,14 @@ MonoBehaviour:
   normalTextColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
   scaleUpSize: 1.1
+  positionChange: {x: 0, y: 0}
   duration: 0.2
+  _onHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _onUnhover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3843884969694368125
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,6 +2142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onMenu: {fileID: 11400000, guid: 0747f15a1d04ebc4cb9c1ef22e691ce6, type: 2}
   _canPause: {fileID: 11400000, guid: 6864fded29d4a794dabb1c6e793cc212, type: 2}
+  _boolDelay: 0.3
   _playerInventory: {fileID: 11400000, guid: 0f75947f08319ff46a4b122d9e3da0d3, type: 2}
   _storePanel: {fileID: 8472119228700363020}
   _playerMoney: {fileID: 0}
@@ -2784,6 +2809,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2795,7 +2821,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2982,7 +3008,14 @@ MonoBehaviour:
   normalTextColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
   scaleUpSize: 1.1
+  positionChange: {x: 0, y: 0}
   duration: 0.2
+  _onHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _onUnhover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5380517332986697470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3238,6 +3271,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3249,7 +3283,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -3833,6 +3867,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3844,7 +3879,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -3969,6 +4004,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3980,7 +4016,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -4020,7 +4056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5385186306226736664
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4283,7 +4319,14 @@ MonoBehaviour:
   normalTextColor: {r: 1, g: 1, b: 1, a: 1}
   hoverTextColor: {r: 0, g: 0, b: 0, a: 1}
   scaleUpSize: 1.1
+  positionChange: {x: 0, y: 0}
   duration: 0.2
+  _onHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _onUnhover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8688079240480904309
 GameObject:
   m_ObjectHideFlags: 0
