@@ -21,6 +21,7 @@ public class CameraManager : MonoBehaviour
     private float _currentZoom;
     private float _targetZoomRadius;
     private bool _focusingOnTarget;
+    private bool _focusingOnHook;
     private bool _zoomInputLockedByCutscene;
     private float _zoomDirectionBuffer;
     private int _dialogueTargetIndex;
@@ -45,11 +46,11 @@ public class CameraManager : MonoBehaviour
     {
         if (focus)
         {
-            targetGroup.Targets[1].Weight = 2;
+            targetGroup.Targets[1].Weight = 2; _focusingOnHook = true;
         }
         else
         {
-            targetGroup.Targets[1].Weight = 1;
+            targetGroup.Targets[1].Weight = 1; _focusingOnHook = false;
         }
     }
 
@@ -128,12 +129,16 @@ public class CameraManager : MonoBehaviour
 
         if (_focusingOnTarget)
         {
-            targetGroup.Targets[0].Radius = _dialogueFocusRadius;
-            if(targetGroup.Targets[1].Weight < 4)
-                targetGroup.Targets[1].Weight = Mathf.MoveTowards(targetGroup.Targets[_dialogueTargetIndex].Weight, 4, Time.deltaTime);
+            targetGroup.Targets[0].Radius = Math.Clamp(_currentZoom + Math.Sign(_dialogueFocusRadius) * Time.deltaTime * 10f, 0f, _dialogueFocusRadius);
+            if (targetGroup.Targets[_dialogueTargetIndex].Weight < 4)
+                targetGroup.Targets[_dialogueTargetIndex].Weight = Mathf.MoveTowards(targetGroup.Targets[_dialogueTargetIndex].Weight, 4, Time.deltaTime);
         }
-        else
-            targetGroup.Targets[0].Radius = _targetZoomRadius + _currentZoom;
+        else if (_focusingOnHook)
+        {
+            if (targetGroup.Targets[1].Weight < 4)
+                targetGroup.Targets[1].Weight = Mathf.MoveTowards(targetGroup.Targets[1].Weight, 4, Time.deltaTime);
+        }
+        targetGroup.Targets[0].Radius = _targetZoomRadius + _currentZoom;
 
         if (_cameraShakeTimer > 0)
         {
