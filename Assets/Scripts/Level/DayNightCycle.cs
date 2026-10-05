@@ -6,10 +6,6 @@ public class DayNightCycle : MonoBehaviour
     [Tooltip("Real minutes for a full 24h cycle.")]
     [SerializeField] private float dayLengthMinutes = 24f;
 
-    [Tooltip("Start time in hours (0-24). 0 = midnight, 12 = noon.")]
-    [Range(0f, 24f)]
-    [SerializeField] private float startTimeHours = 8f;
-
     [Header("Sun")]
     [Tooltip("Directional Light used as the sun.")]
     [SerializeField] private Light sunLight;
@@ -31,7 +27,12 @@ public class DayNightCycle : MonoBehaviour
 
     private void Awake()
     {
-        TimeOfDayHours = Mathf.Repeat(startTimeHours, 24f);
+        TimeOfDayHours = Mathf.Repeat(GlobalFlagsManager.GetFlag("DayCycleTime"), 24f);
+    }
+
+    private void OnDestroy()
+    {
+        GlobalFlagsManager.SetFlag("DayCycleTime", (int)TimeOfDayHours);
     }
 
     private void Update()
