@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Cap. Charles
+  m_Name: Carmen Lucy Tutorial Incomplete 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 216, y: -120}
+  position: {x: 360, y: -120}
   ports:
     keys:
     - _origin
@@ -60,8 +60,8 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Cap. Charles
-  _sentence: "Na miss\xE3o Pesca N\xEDvel 1 voc\xEA deve encontrar 3 Redemoinhos de \xC1gua dentro do limite de tempo."
+  _name: Carmen Lucy Tutorial Incomplete 3
+  _sentence: "Procure pelo <style=\"NameEmphasis\">Capit\xE3o Charles</style>, ele vai saber como lhe orientar."
   _hasChoices: 0
   _choicesLoop: 0
   _choices: []
@@ -77,10 +77,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Cap. Charles
+  m_Name: Carmen Lucy Tutorial Incomplete 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -24, y: -120}
+  position: {x: 104, y: -120}
   ports:
     keys:
     - _origin
@@ -127,8 +127,8 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Cap. Charles
-  _sentence: "Aprender a pescar, al\xE9m de ser uma habilidade para a sobreviv\xEAncia, pode ser fundamental para encontrar tesouros valiosos."
+  _name: Carmen Lucy Tutorial Incomplete 2
+  _sentence: "Voc\xEA parece ser inexperiente. Sendo assim, que tal entrar na <style=\"LoreEmphasis\">Escola Arrais</style> e aprender a navegar para despertar os talentos do povo <style=\"LoreEmphasis\">Hidro</style> em voc\xEA?"
   _hasChoices: 0
   _choicesLoop: 0
   _choices: []
@@ -144,10 +144,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Cap. Charles
+  m_Name: Carmen Lucy Tutorial Incomplete 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: -248, y: -168}
+  position: {x: -136, y: -168}
   ports:
     keys:
     - _origin
@@ -191,8 +191,8 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Cap. Charles
-  _sentence: "As \xE1guas escondem mist\xE9rios e riquezas inimagin\xE1veis!"
+  _name: Carmen Lucy Tutorial Incomplete 1
+  _sentence: "Ol\xE1, sou <style=\"NameEmphasis\">Carmen Lucy</style>, a estilista mais famosa da <style=\"LoreEmphasis\">Vila Ma\xF4</style>. Cruzes, que roupas s\xE3o essas?"
   _hasChoices: 0
   _choicesLoop: 0
   _choices: []
@@ -208,55 +208,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8647175500e5c8a409abaaeba2671001, type: 3}
-  m_Name: Cap. Charles Tutorial Pesca 1
+  m_Name: Carmen Lucy Tutorial Incomplete
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -5027553653795666997}
   - {fileID: -6554950342250950153}
   - {fileID: -8325659812267641654}
   - {fileID: 8857383228892200369}
-  - {fileID: 2345046786436941606}
   isCutsceneDialogue: 0
---- !u!114 &2345046786436941606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e5a51c06136834891c8120861bd83e, type: 3}
-  m_Name: Action
-  m_EditorClassIdentifier: 
-  graph: {fileID: 11400000}
-  position: {x: 776, y: -40}
-  ports:
-    keys:
-    - _origin
-    values:
-    - _fieldName: _origin
-      _node: {fileID: 2345046786436941606}
-      _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: _actions
-        node: {fileID: 8857383228892200369}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  _origin: {fileID: 0}
-  _callEvent: 1
-  _eventName: StartTutorialTimer
-  _eventType: 1
-  _boolValue: 0
-  _intValue: 180
-  _floatValue: 30
-  _stringValue: 
-  _changeGlobalFlag: 0
-  _flagName: 
-  _flagValue: 0
 --- !u!114 &8857383228892200369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,10 +226,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Cap. Charles
+  m_Name: Carmen Lucy Tutorial Incomplete 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
-  position: {x: 456, y: -120}
+  position: {x: 632, y: -120}
   ports:
     keys:
     - _origin
@@ -308,17 +267,14 @@ MonoBehaviour:
     - _fieldName: _actions
       _node: {fileID: 8857383228892200369}
       _typeQualifiedName: ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      connections:
-      - fieldName: _origin
-        node: {fileID: 2345046786436941606}
-        reroutePoints: []
+      connections: []
       _direction: 1
       _connectionType: 0
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Cap. Charles
-  _sentence: "Clique no redemoinho para lan\xE7ar o anzol magn\xE9tico e continue clicando continuamente para pescar o tesouro misterioso."
+  _name: Carmen Lucy Tutorial Incomplete 4
+  _sentence: Quando obtiver a <style="LoreEmphasis">Carteira dos Arrais</style> me procure para conversarmos.
   _hasChoices: 0
   _choicesLoop: 0
   _choices: []

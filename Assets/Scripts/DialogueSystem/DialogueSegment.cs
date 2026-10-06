@@ -30,6 +30,8 @@ public class DialogueSegment : Node
 
     [SerializeField] private bool _hasChoices;
 
+    [SerializeField] private bool _choicesLoop;
+
     [Output(dynamicPortList = true, connectionType = ConnectionType.Override)]
     [TextArea]
     [SerializeField] private List<string> _choices;
@@ -41,6 +43,8 @@ public class DialogueSegment : Node
     [SerializeField] private ActionNode _actions;
 
     public bool HasChoices { get => _hasChoices;}
+    
+    public bool ChoicesLoop { get => _choicesLoop; }
 
     public override object GetValue(NodePort port)
     {

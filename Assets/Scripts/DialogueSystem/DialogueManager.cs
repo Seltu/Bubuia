@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _dialogueText;
     [SerializeField] private DialogueSO _loadedDialogue;
     [SerializeField] private DialogueChoiceUI _choicePrefab;
+    [SerializeField] private Sprite _chosenDialogOptionSprite;
     [SerializeField] private bool _playDialogueOnAwake;
     [SerializeField] private float _textSpeed = 0.02f;
     [SerializeField] private float _boxResizeSpeed = 10f;
@@ -137,7 +138,7 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        _dialogueText.text = "";
+        //_dialogueText.text = "";
         _skipIcons.SetActive(false);
         var choiceText = "";
         List<string> list = _currentSegment.GetChoices();
@@ -148,15 +149,29 @@ public class DialogueManager : MonoBehaviour
             if(i < list.Count - 1)
             choiceText += "\n\n";
         }
-        _textSize.y = _dialogueText.GetPreferredValues(choiceText).y;
+        //_textSize.y = _dialogueText.GetPreferredValues(choiceText).y;
         _sizeAdjustment = 0;
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < list.Count; i++)
         {
             string choice = list[i];
             var _choiceText = Instantiate(_choicePrefab, _choicePanel);
+            var _choiceFlag = "";
             _choiceText.Choice = i;
             _choiceText.Text = choice;
+
+            // Check for flags only if the choices loop
+            if (_currentSegment.ChoicesLoop)
+            {
+                _choiceFlag = $"Dialog {_currentSegment.name} / Choice {_choiceText.Choice + 1}";
+
+                if((GlobalFlagsManager.GetFlag(_choiceFlag) != 0) || (_choiceText.Choice == list.Count - 1))
+                {
+                    _choiceText.GetComponent<ButtonHoverEffect>().normalSprite = _chosenDialogOptionSprite;
+                    _choiceText.GetComponent<Image>().sprite = _chosenDialogOptionSprite;
+                }
+            }
+
             _choiceText.Button.onClick.AddListener(() =>
             {
                 _conversationLog.Add(
@@ -165,6 +180,10 @@ public class DialogueManager : MonoBehaviour
                         _choiceText.Text
                     )
                 );
+
+                // Save flag only if the choices loop and is not a loop ending option
+                if (_currentSegment.ChoicesLoop && _choiceText.Choice != list.Count - 1)
+                    GlobalFlagsManager.SetFlag(_choiceFlag, 1);
 
                 NextSegment(_choiceText.Choice);
             });

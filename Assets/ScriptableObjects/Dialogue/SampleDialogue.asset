@@ -63,6 +63,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "\xD3timo, venha ver o que temos em estoque!"
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -156,6 +157,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "Muito obrigado, jovem! Aqui, 100 Bubuias pelo seu esfor\xE7o."
   _hasChoices: 1
+  _choicesLoop: 0
   _choices:
   - "Por nada! At\xE9 mais tarde!"
   _next: {fileID: 0}
@@ -309,6 +311,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "At\xE9 mais tarde!"
   _hasChoices: 0
+  _choicesLoop: 0
   _choices:
   - <color=red>> Wow!</color>
   _next: {fileID: 0}
@@ -486,6 +489,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "Bom dia! Belo dia hoje, n\xE3o \xE9 mesmo?"
   _hasChoices: 1
+  _choicesLoop: 0
   _choices:
   - "Ol\xE1, queria comprar umas coisas."
   - Bom dia! Eu tenho algo a dizer...
@@ -582,6 +586,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "Que maravilha! J\xE1 voltaste com elas?"
   _hasChoices: 1
+  _choicesLoop: 0
   _choices:
   - "Sim senhor! Aqui est\xE3o."
   _next: {fileID: 0}
@@ -673,6 +678,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "Tudo bem, o jantar de sardinhas pode esperar. Me avise quando pesc\xE1-las"
   _hasChoices: 0
+  _choicesLoop: 0
   _choices:
   - 
   _next: {fileID: 0}
@@ -794,6 +800,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "J\xE1 que mencionou, eu estava querendo jantar sardinhas hoje..."
   _hasChoices: 1
+  _choicesLoop: 0
   _choices:
   - "Beleza! Vou pesc\xE1-las para voc\xEA."
   - Estou meio ocupado...
@@ -889,6 +896,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "Que maravilha! J\xE1 voltaste com elas?"
   _hasChoices: 1
+  _choicesLoop: 0
   _choices:
   - "Ainda n\xE3o, estou trabalhando nisso..."
   _next: {fileID: 0}
@@ -971,6 +979,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "Hm, tudo bem, se estiver dispon\xEDvel outra hora \xE9 s\xF3 me avisar!"
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -1061,6 +1070,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: Nada no momento, jovem. Talvez outra hora.
   _hasChoices: 0
+  _choicesLoop: 0
   _choices:
   - 
   _next: {fileID: 0}
@@ -1164,6 +1174,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: "Eba! Muito obrigado! volte aqui com as sardinhas e ser\xE1 altamente compensado!"
   _hasChoices: 1
+  _choicesLoop: 0
   _choices:
   - Ok!
   - Beleza!
@@ -1241,6 +1252,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: Pois diga!
   _hasChoices: 1
+  _choicesLoop: 0
   _choices:
   - Sobre as sardinhas que o senhor pediu...
   _next: {fileID: 0}
@@ -1357,6 +1369,7 @@ MonoBehaviour:
   _name: "Jus\xE9"
   _sentence: Pois diga!
   _hasChoices: 1
+  _choicesLoop: 0
   _choices:
   - O senhor precisa de alguma coisa?
   _next: {fileID: 0}
