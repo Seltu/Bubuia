@@ -60,6 +60,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: Quando obtiver a Carteira dos Arrais me procure para conversarmos.
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -123,6 +124,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: "Ol\xE1, hummm\u2026 parece que voc\xEA \xE9 novo por aqui\u2026"
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -246,6 +248,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: Posso lhe ajudar em algo?
   _hasChoices: 1
+  _choicesLoop: 1
   _choices:
   - Onde estou?
   - Quem vive aqui?
@@ -315,6 +318,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: "A cidade \xE9 povoada pelos <style=\"Emphasis\">Hidros</style>, iguais a voc\xEA, descendentes dos antigos ribeirinhos. Povo alegre e trabalhador, vivendo feliz como comunidade."
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -381,6 +385,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: "Voc\xEA est\xE1 na <style=\"Emphasis\">Black River Village</style>, uma cidade banhada pelo <style=\"Emphasis\">Rio Negro</style>. "
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -471,6 +476,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: "Procure pelo Capit\xE3o Charles, ele vai saber como lhe orientar."
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -537,6 +543,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: "Fique \xE0 vontade para explorar a cidade, conhecer outras pessoas e encontrar seu caminho!"
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -603,6 +610,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: "Sou a Dra. Rose, pesquisadora e arquivista de animais aqu\xE1ticos, antigos e novos."
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -669,6 +677,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: Que tal entrar na Escola de Arrais e aprender a navegar para se tornar um Hidro de verdade?
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -735,6 +744,7 @@ MonoBehaviour:
   _name: Rose
   _sentence: "Na cidade existem v\xE1rios lugares para explorar. No Rio Negro vive uma diversidade de peixes ex\xF3ticos, s\xE3o os peixes que movimentam toda a vida na cidade."
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}

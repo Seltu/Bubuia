@@ -5040,6 +5040,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1682954996}
     m_Modifications:
+    - target: {fileID: 261253076269059433, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3941242434107551430, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5120,9 +5124,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4181587859792921210, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4656564255912700590, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: _chosenDialogOptionSprite
+      value: 
+      objectReference: {fileID: -6587984081041076291, guid: 4f137e4bb26cbaf459f734077c89fe36, type: 3}
     - target: {fileID: 5995737190580483477, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
       propertyPath: m_Name
       value: MenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521899771930368155, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092658485389012291, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092658485389012291, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092658485389012291, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092658485389012291, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092658485389012291, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092658485389012291, guid: 37982cd6ea2941a4a940b9478a2bd860, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
