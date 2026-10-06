@@ -32,11 +32,6 @@ public class ButtonToggleEffect : MonoBehaviour
     private Vector3 originalScale;
     private Vector3 originalPosition;
 
-    private void Reset()
-    {
-        //_buttonToggle = GetComponent<Toggle>();
-    }
-
     private void Awake()
     {
         _buttonToggle = GetComponent<Toggle>();
