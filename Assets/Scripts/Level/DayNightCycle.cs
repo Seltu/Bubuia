@@ -30,11 +30,6 @@ public class DayNightCycle : MonoBehaviour
         TimeOfDayHours = Mathf.Repeat(GlobalFlagsManager.GetFlag("DayCycleTime"), 24f);
     }
 
-    private void OnDestroy()
-    {
-        GlobalFlagsManager.SetFlag("DayCycleTime", (int)TimeOfDayHours);
-    }
-
     private void Update()
     {
         AdvanceTime();
@@ -47,6 +42,8 @@ public class DayNightCycle : MonoBehaviour
         // 24 in-game hours over dayLengthMinutes real minutes
         float hoursPerSecond = 24f / DayLengthSeconds;
         TimeOfDayHours = Mathf.Repeat(TimeOfDayHours + hoursPerSecond * Time.deltaTime, 24f);
+        if(Mathf.RoundToInt(TimeOfDayHours) > GlobalFlagsManager.GetFlag("DayCycleTime"))
+            GlobalFlagsManager.SetFlag("DayCycleTime", (int)TimeOfDayHours);
     }
 
     private void ApplySun()
