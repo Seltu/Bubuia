@@ -4,7 +4,7 @@ using System;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
 
-public class CameraManager : MonoBehaviour
+public class CameraManager : Singleton<CameraManager>
 {
     [SerializeField] private CinemachineCamera virtualCamera;
     [SerializeField] private CinemachineTargetGroup targetGroup;
@@ -32,6 +32,7 @@ public class CameraManager : MonoBehaviour
         _currentZoom = startZoom;
         _perlin = virtualCamera.GetComponent<CinemachineBasicMultiChannelPerlin>();
         _perlin.AmplitudeGain = 0f;
+        EventManager.AddListener<Transform>("SwitchPlayerTransform", SwitchCameraTarget);
         EventManager.AddListener<float, float>("CameraShake", ShakeCamera);
         EventManager.AddListener<float>("ToggleCameraShake", ShakeCamera);
         EventManager.AddListener("ZoomOut", ZoomOut);
@@ -40,6 +41,11 @@ public class CameraManager : MonoBehaviour
         EventManager.AddListener<bool, Transform>("CameraFocusOnTarget", FocusOnTarget);
         EventManager.AddListener("CutsceneStarted", OnCutsceneStarted);
         EventManager.AddListener("CutsceneEnded", OnCutsceneEnded);
+    }
+
+    private void SwitchCameraTarget(Transform newTarget)
+    {
+        targetGroup.Targets[0].Object = newTarget;
     }
 
     private void FocusOnHook(bool focus)
