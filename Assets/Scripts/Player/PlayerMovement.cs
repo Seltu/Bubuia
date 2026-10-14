@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private bool _startFlipped = true;
-    [SerializeField] private float _playerSpeed = 5f;
+    [SerializeField] private float _playerWalkSpeed = 5f;
+    [SerializeField] private float _playerRunningSpeed = 10f;
 
     [Header("Gravity")]
     [SerializeField] private float _gravity = -25f;
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _groundNormal = Vector3.up;
     private float _verticalVelocity;
     private bool _skipMovementFrame;
+    private bool _isRunning;
 
     private void Awake()
     {
@@ -77,7 +79,17 @@ public class PlayerMovement : MonoBehaviour
         if (HasInput && !MovementBlocked)
         {
             HorizontalMovement = Vector3.ProjectOnPlane(InputDirection, _groundNormal).normalized;
-            HorizontalMovement *= _playerSpeed;
+
+            if (_isRunning)
+            {
+                HorizontalMovement *= _playerRunningSpeed;
+                _animator.speed = 1.5f;
+            }
+            else
+            {
+                HorizontalMovement *= _playerWalkSpeed;
+                _animator.speed = 1f;
+            }
 
             RotateSprites(InputDirection);
 
@@ -85,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            _animator.speed = 1f;
             _animator.SetBool("isWalking", false);
         }
 
@@ -169,6 +182,11 @@ public class PlayerMovement : MonoBehaviour
     public void MovePlayerInput(InputAction.CallbackContext context)
     {
         _moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void PlayerRunningInput(InputAction.CallbackContext context)
+    {
+        _isRunning = context.performed;
     }
 
     private void BlockPlayerMovement(string storeId)

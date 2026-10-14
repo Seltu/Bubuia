@@ -181,6 +181,16 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""01e98e81-2fa6-4996-a15b-5b441a3a681c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -414,6 +424,17 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""action"": ""Zoom"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f73fac9-6f9a-4aeb-8042-99a3bbfc3082"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -984,6 +1005,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         m_PlayerInput_Pause = m_PlayerInput.FindAction("Pause", throwIfNotFound: true);
         m_PlayerInput_AltMenu = m_PlayerInput.FindAction("AltMenu", throwIfNotFound: true);
         m_PlayerInput_Zoom = m_PlayerInput.FindAction("Zoom", throwIfNotFound: true);
+        m_PlayerInput_Run = m_PlayerInput.FindAction("Run", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1086,6 +1108,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_Pause;
     private readonly InputAction m_PlayerInput_AltMenu;
     private readonly InputAction m_PlayerInput_Zoom;
+    private readonly InputAction m_PlayerInput_Run;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerInput".
     /// </summary>
@@ -1133,6 +1156,10 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerInput/Zoom".
         /// </summary>
         public InputAction @Zoom => m_Wrapper.m_PlayerInput_Zoom;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerInput/Run".
+        /// </summary>
+        public InputAction @Run => m_Wrapper.m_PlayerInput_Run;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1186,6 +1213,9 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
+            @Run.started += instance.OnRun;
+            @Run.performed += instance.OnRun;
+            @Run.canceled += instance.OnRun;
         }
 
         /// <summary>
@@ -1224,6 +1254,9 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
+            @Run.started -= instance.OnRun;
+            @Run.performed -= instance.OnRun;
+            @Run.canceled -= instance.OnRun;
         }
 
         /// <summary>
@@ -1535,6 +1568,13 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnZoom(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Run" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRun(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

@@ -50,7 +50,8 @@ MonoBehaviour:
   _playerSpritesHolder: {fileID: 1094638776445201114}
   _animator: {fileID: 6069789589910230124}
   _startFlipped: 1
-  _playerSpeed: 17
+  _playerWalkSpeed: 7
+  _playerRunningSpeed: 11
   _gravity: -25
   _groundStickForce: -50
   _groundMask:
@@ -128,15 +129,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_ActionId
       value: e8a5ffef-f374-42b7-9386-7c809f6002a9
       objectReference: {fileID: 0}
     - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: 01e98e81-2fa6-4996-a15b-5b441a3a681c
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_ActionEvents.Array.data[18].m_ActionName
       value: 'PlayerInput/AltMenu[/Keyboard/j]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: 'PlayerInput/Run[/Keyboard/shift]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -151,8 +168,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3408462468660201616}
     - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2114148802547365912}
+    - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MovePlayerInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -161,6 +186,18 @@ PrefabInstance:
     - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CallCloseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayerRunningInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855823473704577399, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8229096297769008486, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
       propertyPath: m_LocalPosition.x
