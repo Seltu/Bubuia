@@ -163,6 +163,16 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""priority"": 0
                 },
                 {
+                    ""name"": ""AltMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8a5ffef-f374-42b7-9386-7c809f6002a9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true,
+                    ""priority"": 0
+                },
+                {
                     ""name"": ""Zoom"",
                     ""type"": ""Button"",
                     ""id"": ""975505b5-c9af-4ed5-ad90-dda2f6458976"",
@@ -347,6 +357,28 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""684df553-4dc0-4784-88ab-3cc90da5c9c9"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AltMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""371832bf-d807-45b0-8a1e-d9df5d12f8ef"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AltMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -950,6 +982,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         m_PlayerInput_PointerPosition = m_PlayerInput.FindAction("PointerPosition", throwIfNotFound: true);
         m_PlayerInput_Boost = m_PlayerInput.FindAction("Boost", throwIfNotFound: true);
         m_PlayerInput_Pause = m_PlayerInput.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerInput_AltMenu = m_PlayerInput.FindAction("AltMenu", throwIfNotFound: true);
         m_PlayerInput_Zoom = m_PlayerInput.FindAction("Zoom", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1051,6 +1084,7 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_PointerPosition;
     private readonly InputAction m_PlayerInput_Boost;
     private readonly InputAction m_PlayerInput_Pause;
+    private readonly InputAction m_PlayerInput_AltMenu;
     private readonly InputAction m_PlayerInput_Zoom;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerInput".
@@ -1091,6 +1125,10 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerInput/Pause".
         /// </summary>
         public InputAction @Pause => m_Wrapper.m_PlayerInput_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerInput/AltMenu".
+        /// </summary>
+        public InputAction @AltMenu => m_Wrapper.m_PlayerInput_AltMenu;
         /// <summary>
         /// Provides access to the underlying input action "PlayerInput/Zoom".
         /// </summary>
@@ -1142,6 +1180,9 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @AltMenu.started += instance.OnAltMenu;
+            @AltMenu.performed += instance.OnAltMenu;
+            @AltMenu.canceled += instance.OnAltMenu;
             @Zoom.started += instance.OnZoom;
             @Zoom.performed += instance.OnZoom;
             @Zoom.canceled += instance.OnZoom;
@@ -1177,6 +1218,9 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @AltMenu.started -= instance.OnAltMenu;
+            @AltMenu.performed -= instance.OnAltMenu;
+            @AltMenu.canceled -= instance.OnAltMenu;
             @Zoom.started -= instance.OnZoom;
             @Zoom.performed -= instance.OnZoom;
             @Zoom.canceled -= instance.OnZoom;
@@ -1477,6 +1521,13 @@ public partial class @PlayerInputClass: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AltMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAltMenu(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Zoom" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

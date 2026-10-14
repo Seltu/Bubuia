@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 10
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1800, y: 200}
@@ -57,9 +57,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Rose
-  _sentence: Quando obtiver a Carteira dos Arrais me procure para conversarmos.
+  _name: Rose Intro 10
+  _sentence: Quando obtiver a <style="LoreEmphasis>Carteira dos Arrais</style> me procure para conversarmos.
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -73,7 +74,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 1
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: -296, y: 216}
@@ -120,9 +121,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Rose
-  _sentence: "Ol\xE1, hummm\u2026 parece que voc\xEA \xE9 novo por aqui\u2026"
+  _name: Rose Intro 1
+  _sentence: "Ol\xE1, hummm\u2026 \xE9 primeira vez que estou vendo sua cara aqui\u2026"
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -136,7 +138,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 3
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 424, y: 168}
@@ -243,9 +245,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 1
   _origin: {fileID: 0}
-  _name: Rose
+  _name: Rose Intro 3
   _sentence: Posso lhe ajudar em algo?
   _hasChoices: 1
+  _choicesLoop: 1
   _choices:
   - Onde estou?
   - Quem vive aqui?
@@ -262,7 +265,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 6
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 440, y: 776}
@@ -312,9 +315,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Rose
-  _sentence: "A cidade \xE9 povoada pelos <style=\"Emphasis\">Hidros</style>, iguais a voc\xEA, descendentes dos antigos ribeirinhos. Povo alegre e trabalhador, vivendo feliz como comunidade."
+  _name: Rose Intro 6
+  _sentence: "A cidade \xE9 povoada pelos <style=\"LoreEmphasis\">Hidros</style>, iguais a voc\xEA, descendentes dos antigos ribeirinhos. Povo alegre e trabalhador, vivendo feliz como comunidade."
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -328,7 +332,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 4
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 312, y: -184}
@@ -378,9 +382,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Rose
-  _sentence: "Voc\xEA est\xE1 na <style=\"Emphasis\">Black River Village</style>, uma cidade banhada pelo <style=\"Emphasis\">Rio Negro</style>. "
+  _name: Rose Intro 4
+  _sentence: "Voc\xEA est\xE1 na <style=\"LoreEmphasis>Vila Ma\xF4</style>, uma cidade banhada pelo <style=\"LoreEmphasis\">Rio Negro</style>. "
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -394,7 +399,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8647175500e5c8a409abaaeba2671001, type: 3}
-  m_Name: Rose Dialogue 1
+  m_Name: Rose Intro
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -2052905656917191602}
@@ -418,7 +423,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 9
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1528, y: 216}
@@ -468,9 +473,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Rose
-  _sentence: "Procure pelo Capit\xE3o Charles, ele vai saber como lhe orientar."
+  _name: Rose Intro 9
+  _sentence: "Procure pelo <style=\"NameEmphasis>Capit\xE3o Charles</style>, ele vai saber como lhe orientar."
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -484,7 +490,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 7
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 968, y: 216}
@@ -534,9 +540,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Rose
+  _name: Rose Intro 7
   _sentence: "Fique \xE0 vontade para explorar a cidade, conhecer outras pessoas e encontrar seu caminho!"
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -550,7 +557,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 2
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 85.313034, y: 231.19057}
@@ -600,9 +607,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Rose
-  _sentence: "Sou a Dra. Rose, pesquisadora e arquivista de animais aqu\xE1ticos, antigos e novos."
+  _name: Rose Intro 2
+  _sentence: "Deixe eu me apresentar, sou a <style=\"NameEmphasis>Dra. Rose</style>, pesquisadora e arquivista de animais aqu\xE1ticos, antigos e novos."
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -616,7 +624,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 8
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 1224, y: 216}
@@ -666,9 +674,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Rose
-  _sentence: Que tal entrar na Escola de Arrais e aprender a navegar para se tornar um Hidro de verdade?
+  _name: Rose Intro 8
+  _sentence: Que tal entrar na <style="LoreEmphasis>Escola Arrais</style> e aprender a navegar para se tornar um <style="LoreEmphasis>Hidro</style> de verdade?
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}
@@ -682,7 +691,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1339c5eb6e6552479f24b682d32114b, type: 3}
-  m_Name: Rose
+  m_Name: Rose Intro 5
   m_EditorClassIdentifier: 
   graph: {fileID: 11400000}
   position: {x: 600, y: -184}
@@ -732,9 +741,10 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 0
   _origin: {fileID: 0}
-  _name: Rose
-  _sentence: "Na cidade existem v\xE1rios lugares para explorar. No Rio Negro vive uma diversidade de peixes ex\xF3ticos, s\xE3o os peixes que movimentam toda a vida na cidade."
+  _name: Rose Intro 5
+  _sentence: "Na cidade existem v\xE1rios lugares para explorar. No <style=\"LoreEmphasis>Rio Negro</style> vive uma diversidade de peixes ex\xF3ticos, s\xE3o os peixes que movimentam toda a vida na cidade."
   _hasChoices: 0
+  _choicesLoop: 0
   _choices: []
   _next: {fileID: 0}
   _actions: {fileID: 0}

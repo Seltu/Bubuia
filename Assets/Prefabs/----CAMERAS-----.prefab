@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2538086610171037531}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -3, y: 18.430393, z: -263.4304}
+  m_LocalPosition: {x: -77.25, y: 8.122791, z: -20.722794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -70,7 +70,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 75.00003
+  field of view: 75.00001
   orthographic: 0
   orthographic size: 15
   m_Depth: -1
@@ -188,10 +188,10 @@ MonoBehaviour:
   targetGroup: {fileID: 1129292337287576149}
   zoomAction: {fileID: -3071574330686903723, guid: 9ba3dc970cd39eb44ba614ea4abca2be, type: 3}
   maxZoom: 15
-  startZoom: 0
-  zoomedInRadius: 30
-  zoomedOutRadius: 30
-  _dialogueFocusRadius: 150
+  startZoom: 6
+  zoomedInRadius: 15
+  zoomedOutRadius: 15
+  _dialogueFocusRadius: 20
 --- !u!1 &6384170782355425805
 GameObject:
   m_ObjectHideFlags: 0

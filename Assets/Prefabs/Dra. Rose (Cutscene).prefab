@@ -4282,8 +4282,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.16, y: -5.99, z: -0.66}
-  m_LocalScale: {x: 5.8, y: 5.8, z: 5.8}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: -5.8, y: 5.8, z: 5.8}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5475904519440640948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5406,7 +5406,7 @@ Transform:
   m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
   m_LocalPosition: {x: -150.9, y: 19, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7456900533775809545}
   - {fileID: 6141341745699095111}
@@ -5433,7 +5433,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
+  m_Radius: 27.75
   m_Center: {x: 0, y: -10, z: 0}
 --- !u!95 &4811650625342047143
 Animator:
@@ -5490,17 +5490,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b41d6adadc590d4aaefa83e2a7d4e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dialogue: {fileID: 0}
+  _dialogue: {fileID: 11400000, guid: ef597760d437c9b47abb4b843e327d51, type: 2}
   _onEndDialogue:
     m_PersistentCalls:
       m_Calls: []
   _onStartDialogue:
     m_PersistentCalls:
       m_Calls: []
-  _cutsceneCondition: {fileID: 0}
+  _cutsceneCondition: {fileID: 11400000, guid: 1676e711bf1f8c944a81b7dce7c28ae7, type: 2}
   _cutsceneTimeline: {fileID: 4835406113500682155}
   _npcAnimator: {fileID: 4811650625342047143}
-  _disappearOnConditionFail: 0
+  _disappearOnConditionFail: 1
 --- !u!1 &8814646463796918380
 GameObject:
   m_ObjectHideFlags: 0
