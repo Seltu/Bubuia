@@ -85,7 +85,7 @@ public class CameraManager : Singleton<CameraManager>
         _targetZoomRadius = zoomedInRadius;
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         EventManager.RemoveListener<float, float>("CameraShake", ShakeCamera);
         EventManager.RemoveListener<float>("ToggleCameraShake", ShakeCamera);
@@ -93,6 +93,7 @@ public class CameraManager : Singleton<CameraManager>
         EventManager.RemoveListener<bool, Transform>("CameraFocusOnTarget", FocusOnTarget);
         EventManager.RemoveListener("CutsceneStarted", OnCutsceneStarted);
         EventManager.RemoveListener("CutsceneEnded", OnCutsceneEnded);
+        base.OnDestroy();
     }
 
     private void OnCutsceneStarted()
