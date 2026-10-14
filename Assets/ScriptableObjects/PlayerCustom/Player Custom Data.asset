@@ -11,8 +11,13 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39bc2581a31407543bc07c8b27e2b275, type: 3}
   m_Name: Player Custom Data
-  m_EditorClassIdentifier: 
-  hairColor: {r: 1, g: 1, b: 1, a: 1}
-  skinColor: {r: 1, g: 1, b: 1, a: 1}
-  dressCode: 0
-  hairCode: 0
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCustomSO
+  playerCustomizationLoaded: 0
+  playerName: 
+  skinColor: {r: 0, g: 0, b: 0, a: 0}
+  eyesColor: {r: 0, g: 0, b: 0, a: 0}
+  hairColor: {r: 0, g: 0, b: 0, a: 0}
+  hairCode: 
+  dressCode: 
+  upperDressCode: 
+  lowerDressCode: 
