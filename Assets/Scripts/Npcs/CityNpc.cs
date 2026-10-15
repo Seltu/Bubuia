@@ -14,12 +14,14 @@ public class CityNpc : NpcDetection
     {
         _npcInteractionInput.action.performed += OnInteract;
         EventManager.AddListener("StartDialogue", SetAnimationBool);
+        EventManager.AddListener<int, int>("TimePassed", ReactToTime);
     }
 
     private void OnDestroy()
     {
         _npcInteractionInput.action.performed -= OnInteract;
         EventManager.RemoveListener("EndDialogue", SetAnimationBool);
+        EventManager.RemoveListener<int, int>("TimePassed", ReactToTime);
     }
 
     private void OnInteract(InputAction.CallbackContext context)
@@ -48,5 +50,14 @@ public class CityNpc : NpcDetection
     public void SetNpcTalkingManually(bool isTalking)
     {
         _npcAnimator.SetBool("isInteracting", isTalking);
+    }
+
+    void ReactToTime(int Hours, int Minutes)
+    {
+        if(Hours == 19)
+            gameObject.SetActive(false);
+
+        if(Hours == 6)
+            gameObject.SetActive(true);
     }
 }
