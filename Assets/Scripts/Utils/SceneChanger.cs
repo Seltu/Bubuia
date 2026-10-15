@@ -12,7 +12,7 @@ public class SceneChanger : MonoBehaviour
 
     public void TurnOffControls()
     {
-        EventManager.TriggerEvent("TurnOffControls");
+        EventManager.TriggerEvent("ToggleControls", false);
     }
 
     public void ResetGlobalVars()

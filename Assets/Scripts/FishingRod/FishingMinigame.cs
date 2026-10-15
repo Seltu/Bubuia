@@ -191,7 +191,7 @@ public class FishingMinigame : MonoBehaviour
         }
         EventManager.TriggerEvent("ToggleCameraShake", fish.GetSpeed());
         EventManager.TriggerEvent("FocusOnHook", true);
-        EventManager.TriggerEvent("TurnOffMovement");
+        EventManager.TriggerEvent("ToggleMovement", false);
         _currentScore = 0;
         _currentDurability = _playerInventory.CurrentFishingLine.durability;
         for (var i = 0; i < _playerInventory.CurrentFishingLine.durability; i++)
@@ -220,7 +220,7 @@ public class FishingMinigame : MonoBehaviour
         _playing = false;
         EventManager.TriggerEvent("EndFishingMinigame", won);
         EventManager.TriggerEvent("FocusOnHook", false);
-        EventManager.TriggerEvent("TurnOnMovement");
+        EventManager.TriggerEvent("ToggleMovement", true);
         if (won)
         {
             if (_freezeOnCue)
@@ -274,14 +274,14 @@ public class FishingMinigame : MonoBehaviour
 
     private IEnumerator ReturnSequence()
     {
-        EventManager.TriggerEvent("TurnOffControls");
+        EventManager.TriggerEvent("ToggleControls", false);
         yield return new WaitForSeconds(3f);
         _returnPanel.SetActive(true);
     }
 
     private IEnumerator VictorySequence()
     {
-        EventManager.TriggerEvent("TurnOffControls");
+        EventManager.TriggerEvent("ToggleControls", false);
         AudioSystem.Instance.PlaySFX("FishingVictory");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("EndingScene");

@@ -16,6 +16,7 @@ public class FishingRodController : MonoBehaviour
     [SerializeField] private Transform hookObject;
     [SerializeField] private Transform defaultHookPos;
     [SerializeField] private LayerMask waterLayer;
+    [SerializeField]  private Animator _playerAnimator;
 
     [Header("Settings")]
     [SerializeField] private float arcHeight = 1.5f;
@@ -37,7 +38,6 @@ public class FishingRodController : MonoBehaviour
     private Fish hookedFish;
     private TreasureSpot _hookedTreasure;
     private bool _hookingTreasure;
-    private Animator _animator;
 
 
     #region Unity Methods
@@ -46,7 +46,7 @@ public class FishingRodController : MonoBehaviour
         mainCamera = Camera.main;
         hookObject.gameObject.SetActive(false);
 
-        EventManager.AddListener("TurnOffControls", PauseControl);
+        EventManager.AddListener<bool>("ToggleControls", SetControls);
         EventManager.AddListener<Fish>("FishBiteHook", HookFish);
         EventManager.AddListener<TreasureSpot>("HookedTreasure", HookTreasure);
         EventManager.AddListener<bool>("EndFishingMinigame", EndHooking);
@@ -56,21 +56,20 @@ public class FishingRodController : MonoBehaviour
         fishingAction.action.performed += OnFishingAction;
         fishingAction.action.canceled += OnFishingAction;
         // Trigger player animation
-        _animator = GetComponentInChildren<Animator>();
-        _animator.SetBool("isFishing", true);
+        _playerAnimator.SetBool("isFishing", true);
     }
 
     private void OnDestroy()
     {
-        EventManager.RemoveListener("TurnOffControls", PauseControl);
+        EventManager.RemoveListener<bool>("ToggleControls", SetControls);
         EventManager.RemoveListener<Fish>("FishBiteHook", HookFish);
         EventManager.RemoveListener<TreasureSpot>("HookedTreasure", HookTreasure);
         EventManager.RemoveListener<bool>("EndFishingMinigame", EndHooking);
         EventManager.RemoveListener<int, int>("DistanceUpdate", HookingDistanceUpdate);
         EventManager.RemoveListener("TreasureFail", TreasureFail);
         fishingAction.action.performed -= OnFishingAction;
-        // Trigger player animation
-        _animator.SetBool("isFishing", false);
+        fishingAction.action.canceled -= OnFishingAction;
+
     }
 
     private void Update()
@@ -168,7 +167,7 @@ public class FishingRodController : MonoBehaviour
         if (_hookInWater && _hookingFish)
         {
             // Trigger player animation
-            _animator.Play("Rod Pull");
+            _playerAnimator.Play("Rod Pull");
 
             return;
         }
@@ -236,13 +235,18 @@ public class FishingRodController : MonoBehaviour
         }
     }
 
-    private void PauseControl() => _stopped = true;
+    private void SetControls(bool value)
+    {
+        _stopped = !value;
+        FinishRecall();
+    }
 
     #endregion
 
     #region Behavior
     private void CastLine()
     {
+        if (!gameObject.activeInHierarchy) return;
         _canCast = false;
         _hookInWater = false;
         _isRecalling = false;
@@ -259,7 +263,7 @@ public class FishingRodController : MonoBehaviour
     private IEnumerator ParabolicThrow()
     {
         // Trigger player animation
-        _animator.SetBool("isPulling", true);
+        _playerAnimator.SetBool("isPulling", true);
 
         yield return new WaitForSeconds(0.6f);
 
@@ -405,7 +409,7 @@ public class FishingRodController : MonoBehaviour
         EventManager.TriggerEvent("RecallLine");
 
         // Trigger player animation
-        _animator.SetBool("isPulling", false);
+        _playerAnimator.SetBool("isPulling", false);
     }
 
     private void HookFish(Fish fish)
@@ -465,7 +469,7 @@ public class FishingRodController : MonoBehaviour
         {
             return;
         }
-        EventManager.TriggerEvent("TurnOffMovement");
+        EventManager.TriggerEvent("ToggleMovement", false);
         EventManager.TriggerEvent("Tut");
         _hookingTreasure = true;
         _hookedTreasure = treasureSpot;
@@ -479,7 +483,7 @@ public class FishingRodController : MonoBehaviour
         _hookedTreasure.OnPull();
         if (_hookedTreasure.IsFullyPulled())
         {
-            EventManager.TriggerEvent("TurnOnMovement");
+            EventManager.TriggerEvent("ToggleMovement", true);
             EventManager.TriggerEvent("Caught3Fish");
             _hookingTreasure = false;
             _hookedTreasure.OnCaught();
@@ -490,7 +494,7 @@ public class FishingRodController : MonoBehaviour
 
     private void TreasureFail()
     {
-        EventManager.TriggerEvent("TurnOnMovement");
+        EventManager.TriggerEvent("ToggleMovement", true);
         EventManager.TriggerEvent("Caught3Fish");
         _hookingTreasure = false;
         _hookedTreasure = null;

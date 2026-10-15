@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37284e9cc5f83a64c99bc9530239bfd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreY: 0
+  ignoreY: 1
 --- !u!1 &1141831116586503167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,6 +1480,7 @@ MonoBehaviour:
   acceleration: 4
   turnSpeed: 70
   drag: 4
+  parkingSpeed: 12
   boostAcceleration: 20
   boostMax: 1
   boostDrainPerSecond: 0.35
@@ -1510,6 +1511,7 @@ MonoBehaviour:
   waterLayer:
     serializedVersion: 2
     m_Bits: 24
+  _playerAnimator: {fileID: 2055850234793379093}
   arcHeight: 8
   castDuration: 0.75
   maxCastDistance: 40
@@ -1684,6 +1686,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 975505b5-c9af-4ed5-ad90-dda2f6458976
     m_ActionName: 'PlayerInput/Zoom[/Mouse/scroll/up,/Mouse/scroll/down]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e8a5ffef-f374-42b7-9386-7c809f6002a9
+    m_ActionName: 'PlayerInput/AltMenu[/Keyboard/j]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 01e98e81-2fa6-4996-a15b-5b441a3a681c
+    m_ActionName: 'PlayerInput/Run[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInput
@@ -1910,6 +1920,11 @@ PrefabInstance:
       addedObject: {fileID: 4366671212408885259}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+--- !u!95 &2055850234793379093 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5645820947953919573, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
+  m_PrefabInstance: {fileID: 5971250666742735680}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2725576044858358293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8578534996944050517, guid: 6688ee8a95dbb6c4ab53699baaeb03ad, type: 3}
