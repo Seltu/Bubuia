@@ -6,7 +6,7 @@ public class NormalsReplacementShader : MonoBehaviour
     Shader normalsShader;
 
     private RenderTexture renderTexture;
-    private new Camera camera;
+    private Camera camera;
 
     private void Start()
     {

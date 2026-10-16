@@ -20,6 +20,9 @@ public class PlayerShipController : MonoBehaviour
     [SerializeField] private float turnSpeed = 200f;
     [SerializeField] private float drag = 2f;
 
+    [Header("Parking")]
+    [SerializeField] private float parkingSpeed = 3f;
+
     [Header("Boost Settings")]
     [SerializeField] private float boostAcceleration = 9f;     // velocidade máxima com boost
     [SerializeField] private float boostMax = 1f;           // capacidade (1 = 100%)
@@ -41,6 +44,10 @@ public class PlayerShipController : MonoBehaviour
     private Vector3 moveInput;
     private Vector3 currentVelocity;
     private bool _stopped;
+    private bool _isParking;
+
+    private Quaternion _parkingRotation;
+    private Transform _parkingTarget;
 
     // Boost runtime
     private float _boost;
@@ -62,21 +69,20 @@ public class PlayerShipController : MonoBehaviour
     private void Start()
     {
         _currentHealth = maxHealth;
-        EventManager.AddListener("TurnOffControls", PauseMovement);
-        EventManager.AddListener("TurnOffMovement", PauseMovement);
-        EventManager.AddListener("TurnOnMovement", UnpauseMovement);
+        EventManager.AddListener<bool>("ToggleControls", SetStopped);
+        EventManager.AddListener<bool>("ToggleMovement", SetStopped);
+        EventManager.AddListener<Transform>("ParkShip", StartParking);
         ResolveSpawnOverlap();
     }
 
     private void OnDestroy()
     {
-        EventManager.RemoveListener("TurnOffControls", PauseMovement);
-        EventManager.RemoveListener("TurnOffMovement", PauseMovement);
-        EventManager.RemoveListener("TurnOnMovement", UnpauseMovement);
+        EventManager.RemoveListener<bool>("ToggleControls", SetStopped);
+        EventManager.RemoveListener<bool>("ToggleMovement", SetStopped);
+        EventManager.RemoveListener<Transform>("ParkShip", StartParking);
     }
 
-    private void PauseMovement() => _stopped = true;
-    private void UnpauseMovement() => _stopped = false;
+    private void SetStopped(bool value) => _stopped = !value;
 
     private void ResolveSpawnOverlap() // Detecta terreno ao redor do jogador e o reposiciona na água
     {
@@ -114,7 +120,84 @@ public class PlayerShipController : MonoBehaviour
 
     private void Update()
     {
-        MoveShip3D();
+        if (_isParking)
+            UpdateParking();
+        else
+            MoveShip3D();
+    }
+
+    public void StartParking(Transform target)
+    {
+        if (target == null) return;
+
+        _parkingTarget = target;
+        _isParking = true;
+        moveInput = Vector3.zero;
+        currentVelocity = Vector3.zero;
+        shipRigidbody.detectCollisions = false;
+        _boostHeld = false;
+        _isKnockbacking = false;
+
+        Quaternion targetRotation = target.rotation;
+        Quaternion flippedRotation = targetRotation * Quaternion.Euler(0f, 180f, 0f);
+
+        _parkingRotation = Quaternion.Angle(shipSprite.rotation, flippedRotation)
+            < Quaternion.Angle(shipSprite.rotation, targetRotation)
+            ? flippedRotation
+            : targetRotation;
+    }
+
+    private void UpdateParking()
+    {
+        if (Time.timeScale == 0f) return;
+
+        if (_parkingTarget == null)
+        {
+            _isParking = false;
+            currentVelocity = Vector3.zero;
+            shipRigidbody.linearVelocity = Vector3.zero;
+            return;
+        }
+
+        float dt = Time.deltaTime;
+        Vector3 targetPosition = _parkingTarget.position;
+        Vector3 currentPosition = shipRigidbody.position;
+        targetPosition.y = currentPosition.y;
+
+        Vector3 offset = targetPosition - currentPosition;
+        float distance = offset.magnitude;
+
+        // Usa a velocidade de rotação normal do barco.
+        shipSprite.rotation = Quaternion.RotateTowards(
+            shipSprite.rotation,
+            _parkingRotation,
+            turnSpeed * dt
+        );
+
+        // Desacelera com a aceleração normal para não ultrapassar o destino.
+        float speed = Mathf.Min(parkingSpeed, Mathf.Sqrt(2f * acceleration * distance));
+        Vector3 targetVelocity = distance > 0.001f
+            ? offset.normalized * speed
+            : Vector3.zero;
+
+        currentVelocity = Vector3.MoveTowards(
+            currentVelocity,
+            targetVelocity,
+            acceleration * dt
+        );
+        shipRigidbody.linearVelocity = currentVelocity;
+
+        if (distance <= 0.5f &&
+            Quaternion.Angle(shipSprite.rotation, _parkingRotation) <= 2f)
+        {
+            shipRigidbody.position = targetPosition;
+            shipSprite.rotation = _parkingRotation;
+            currentVelocity = Vector3.zero;
+            shipRigidbody.linearVelocity = Vector3.zero;
+            _parkingTarget = null;
+            shipRigidbody.detectCollisions = true;
+            EventManager.TriggerEvent("ShipParkingEnd");
+        }
     }
 
     private void MoveShip3D()
@@ -167,7 +250,7 @@ public class PlayerShipController : MonoBehaviour
         // --- Aceleração ou desaceleração
         if (wantsToMove)
         {
-            if(!boostActive)
+            if (!boostActive)
                 currentVelocity = Vector3.MoveTowards(
                     currentVelocity,
                     targetVelocity,
@@ -183,7 +266,7 @@ public class PlayerShipController : MonoBehaviour
         else
         {
             // Freia se o jogador estiver pescando ou for parado, para ele não se bater enquanto não se move.
-            var conditionalDrag = (hookSprite.gameObject.activeSelf||_stopped|| InputLock.movementLocked) ? acceleration : drag;
+            var conditionalDrag = (hookSprite.gameObject.activeSelf || _stopped || InputLock.movementLocked) ? acceleration : drag;
             currentVelocity = Vector3.MoveTowards(
                 currentVelocity,
                 Vector3.zero,
@@ -252,7 +335,7 @@ public class PlayerShipController : MonoBehaviour
 
         shipRigidbody.linearVelocity = _knockbackVelocity;
 
-        _knockbackVelocity = _knockbackVelocity.normalized * knockbackSpeed * (_knockbackTimer/knockbackDuration);
+        _knockbackVelocity = _knockbackVelocity.normalized * knockbackSpeed * (_knockbackTimer / knockbackDuration);
 
         if (_knockbackTimer <= 0f)
         {
@@ -337,6 +420,7 @@ public class PlayerShipController : MonoBehaviour
     // INPUT
     public void MoveShipInput(InputAction.CallbackContext context)
     {
+        if (_isParking) return;
         if (InputLock.movementLocked)
         {
             moveInput = Vector3.zero;
@@ -356,6 +440,7 @@ public class PlayerShipController : MonoBehaviour
 
     public void BoostInput(InputAction.CallbackContext context)
     {
+        if (_isParking) return;
         if (InputLock.movementLocked || _stopped)
         {
             _boostHeld = false;
@@ -370,5 +455,7 @@ public class PlayerShipController : MonoBehaviour
     }
 
     public float GetBoost01() => boostMax <= 0f ? 0f : Mathf.Clamp01(_boost / boostMax);
+
+    public Transform GetPlayerTransform() => playerSprite;
     public bool IsBoostLocked() => _boostLockedUntilFull;
 }

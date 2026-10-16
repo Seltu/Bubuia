@@ -123,7 +123,7 @@ public class TerrainGenerator : MonoBehaviour
                 // inclinação empurra tudo para baixo até 0
                 float tilt = t * tiltStrength;
 
-                float finalHeight = Mathf.Clamp01(baseHeight - tilt);
+                float finalHeight = Mathf.Clamp01(baseHeight - tilt) * maxHeight;
 
 
                 //Adição de ilhas
