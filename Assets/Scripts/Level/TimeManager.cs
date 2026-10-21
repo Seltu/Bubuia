@@ -8,12 +8,27 @@ public class TimeManager : MonoBehaviour
     [Header("Day Duration")]
     [SerializeField, Min(1f)] private float secondsPerDay = 1200f;
 
+    [Header("Transition Config")]
+    [SerializeField] private int fromNightToSunrise = 5;
+    [SerializeField] private int fromSunriseToDay = 6;
+    [SerializeField] private int fromDayToSunset = 18;
+    [SerializeField] private int fromSunsetToNight = 19;
+
+    [SerializeField, Range(0.01f, 0.25f)]
+    private float transitionDayFraction = 0.02f;
+
     [Header("Skyboxes")]
     [SerializeField] private Texture2D skyboxNight;
     [SerializeField] private Texture2D skyboxSunrise;
     [SerializeField] private Texture2D skyboxDay;
     [SerializeField] private Texture2D skyboxSunset;
 
+    [Header("Cubemaps")]
+    [SerializeField] private Cubemap cubemapNight;
+    [SerializeField] private Cubemap cubemapSunrise;
+    [SerializeField] private Cubemap cubemapDay;
+    [SerializeField] private Cubemap cubemapSunset;
+    
     [Header("Lighting Gradients")]
     [SerializeField] private Gradient graddientNightToSunrise;
     [SerializeField] private Gradient graddientSunriseToDay;
@@ -23,14 +38,8 @@ public class TimeManager : MonoBehaviour
     [Header("Lighting Gradients")]
     [SerializeField] private Light globalLight;
 
-    [Header("Transition Config")]
-    [SerializeField] private int fromNightToSunrise = 5;
-    [SerializeField] private int fromSunriseToDay = 6;
-    [SerializeField] private int fromDayToSunset = 18;
-    [SerializeField] private int fromSunsetToNight = 19;
-
-    [SerializeField, Range(0.01f, 0.25f)]
-    private float transitionDayFraction = 0.02f;
+    [Header("Water")]
+    [SerializeField] private Material waterMaterial;
 
     private float TransitionDuration =>
         secondsPerDay * transitionDayFraction;
@@ -104,36 +113,44 @@ public class TimeManager : MonoBehaviour
     {
         if (value == fromNightToSunrise)
         {
-            StartCoroutine(LerpSkybox(skyboxNight, skyboxSunrise, TransitionDuration));
+            StartCoroutine(LerpSkybox(skyboxNight, skyboxSunrise, cubemapNight, cubemapSunrise, TransitionDuration));
             StartCoroutine(LerpLight(graddientNightToSunrise, TransitionDuration));
         }
         else if (value == fromSunriseToDay)
         {
-            StartCoroutine(LerpSkybox(skyboxSunrise, skyboxDay, TransitionDuration));
+            StartCoroutine(LerpSkybox(skyboxSunrise, skyboxDay, cubemapSunrise, cubemapDay, TransitionDuration));
             StartCoroutine(LerpLight(graddientSunriseToDay, TransitionDuration));
         }
         else if (value == fromDayToSunset)
         {
-            StartCoroutine(LerpSkybox(skyboxDay, skyboxSunset, TransitionDuration));
+            StartCoroutine(LerpSkybox(skyboxDay, skyboxSunset, cubemapDay, cubemapSunset, TransitionDuration));
             StartCoroutine(LerpLight(graddientDayToSunset, TransitionDuration));
         }
         else if (value == fromSunsetToNight)
         {
-            StartCoroutine(LerpSkybox(skyboxSunset, skyboxNight, TransitionDuration));
+            StartCoroutine(LerpSkybox(skyboxSunset, skyboxNight, cubemapSunset, cubemapNight, TransitionDuration));
             StartCoroutine(LerpLight(graddientSunsetToNight, TransitionDuration));
         }
     }
 
-    private IEnumerator LerpSkybox(Texture2D a, Texture2D b, float time)
+    private IEnumerator LerpSkybox(Texture2D a, Texture2D b, Cubemap cubeA, Cubemap cubeB, float time)
     {
         RenderSettings.skybox.SetTexture("_Texture1", a);
         RenderSettings.skybox.SetTexture("_Texture2", b);
-        RenderSettings.skybox.SetFloat("_Blend", 0);
+        RenderSettings.skybox.SetFloat("_Blend", 0f);
+
+        waterMaterial.SetTexture("_ReflectionA", cubeA);
+        waterMaterial.SetTexture("_ReflectionB", cubeB);
+        waterMaterial.SetFloat("_ReflectionBlend", 0f);
+
         for (float i = 0; i < time; i += Time.deltaTime)
         {
-            RenderSettings.skybox.SetFloat("_Blend", i / time);
+            float blend = i / time;
+            RenderSettings.skybox.SetFloat("_Blend", blend);
+            waterMaterial.SetFloat("_ReflectionBlend", blend);
             yield return null;
         }
+        
         RenderSettings.skybox.SetTexture("_Texture1", b);
     }
 
