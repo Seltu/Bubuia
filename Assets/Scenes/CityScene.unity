@@ -35,7 +35,7 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_UseRadianceAmbientProbe: 0
@@ -6048,10 +6048,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1998594464}
     m_Modifications:
-    - target: {fileID: 3152066037967040777, guid: 0aa5b6437e095c04c9e0500028afd009, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4508042484559935193, guid: 0aa5b6437e095c04c9e0500028afd009, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 44
@@ -6067,10 +6063,6 @@ PrefabInstance:
     - target: {fileID: 8120575334293344531, guid: 0aa5b6437e095c04c9e0500028afd009, type: 3}
       propertyPath: m_Name
       value: DayNightCycle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8120575334293344531, guid: 0aa5b6437e095c04c9e0500028afd009, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28179,6 +28171,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1794547556}
     m_Modifications:
+    - target: {fileID: -8391222552659086748, guid: 22376ba95a071e043ba1f4ce7ce2d629, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac96a77ec4209e64abd750eca8fcb136, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -28240,10 +28236,6 @@ PrefabInstance:
       value: 27.06_Bubuia_casa1-0-1 (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ac96a77ec4209e64abd750eca8fcb136, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 22376ba95a071e043ba1f4ce7ce2d629, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -103495,6 +103487,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1794547556}
     m_Modifications:
+    - target: {fileID: -8391222552659086748, guid: 22376ba95a071e043ba1f4ce7ce2d629, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac96a77ec4209e64abd750eca8fcb136, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -103556,10 +103552,6 @@ PrefabInstance:
       value: 27.06_Bubuia_casa1-0-1 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ac96a77ec4209e64abd750eca8fcb136, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
-    - target: {fileID: -8391222552659086748, guid: 22376ba95a071e043ba1f4ce7ce2d629, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
