@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         EventManager.AddListener<string>("OnOpenStore", BlockPlayerMovement);
         EventManager.AddListener("OnCloseStore", AllowPlayerMovement);
+
         if (_startFlipped)
             RotateSprites(Vector2.right);
     }
@@ -78,7 +79,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (HasInput && !MovementBlocked)
         {
-            HorizontalMovement = Vector3.ProjectOnPlane(InputDirection, _groundNormal).normalized;
+            HorizontalMovement = Vector3.ProjectOnPlane(
+                InputDirection,
+                _groundNormal
+            ).normalized;
 
             if (_isRunning)
             {
@@ -106,7 +110,15 @@ public class PlayerMovement : MonoBehaviour
         Vector3 FinalMovement = HorizontalMovement;
         FinalMovement.y = _verticalVelocity;
 
-        CollisionFlags CollisionFlags = _characterController.Move(FinalMovement * Time.deltaTime);
+        Vector3 Displacement = FinalMovement * Time.deltaTime;
+
+        // Restringe o movimento a todas as WalkableAreas ativas.
+        Displacement = WalkableArea.GetSafeMovementFromAll(
+            transform.position,
+            Displacement
+        );
+
+        CollisionFlags CollisionFlags = _characterController.Move(Displacement);
 
         if ((CollisionFlags & CollisionFlags.Below) != 0 && _verticalVelocity < 0f)
             _verticalVelocity = _groundStickForce;
@@ -127,9 +139,14 @@ public class PlayerMovement : MonoBehaviour
     {
         _groundNormal = Vector3.up;
 
-        Vector3 SphereOrigin = transform.TransformPoint(_characterController.center);
+        Vector3 SphereOrigin = transform.TransformPoint(
+            _characterController.center
+        );
+
         float SphereRadius = _characterController.radius * 0.95f;
-        float CheckDistance = (_characterController.height * 0.5f) + _groundCheckDistance;
+
+        float CheckDistance = (_characterController.height * 0.5f)
+            + _groundCheckDistance;
 
         bool HitGround = Physics.SphereCast(
             SphereOrigin,
@@ -160,6 +177,7 @@ public class PlayerMovement : MonoBehaviour
             //_playerSpritesHolder.transform.rotation = Quaternion.Euler(-25f, 180f, 0f);
             _playerSpritesHolder.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+
         _playerSpritesHolder.transform.localPosition = Vector3.zero;
     }
 
