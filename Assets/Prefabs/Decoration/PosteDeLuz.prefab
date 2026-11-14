@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4492739860969074380
+--- !u!1 &4622952310010587677
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8919553703955753811}
-  - component: {fileID: 736855311536567109}
-  - component: {fileID: 5331757806376573158}
+  - component: {fileID: 3274082074778105443}
+  - component: {fileID: 6377799519475382160}
+  - component: {fileID: 7260748743166398998}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8919553703955753811
+--- !u!4 &3274082074778105443
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4492739860969074380}
+  m_GameObject: {fileID: 4622952310010587677}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0, y: 0.195, z: -0.00764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3, y: 6.2, z: 0.101}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2266686672284187589}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!108 &736855311536567109
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &6377799519475382160
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4492739860969074380}
+  m_GameObject: {fileID: 4622952310010587677}
   m_Enabled: 1
   serializedVersion: 13
-  m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 100
-  m_Range: 35
-  m_SpotAngle: 85
-  m_InnerSpotAngle: 1.1790562
+  m_Type: 2
+  m_Color: {r: 1, g: 0.97902, b: 0.49019608, a: 1}
+  m_Intensity: 35
+  m_Range: 15
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -86,7 +86,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -98,13 +98,13 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!114 &5331757806376573158
+--- !u!114 &7260748743166398998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4492739860969074380}
+  m_GameObject: {fileID: 4622952310010587677}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
@@ -157,10 +157,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -7.1280003, y: 5.1, z: -32.6304}
-  m_LocalScale: {x: -12.758992, y: -12.758991, z: -540.037}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 8919553703955753811}
+  - {fileID: 3274082074778105443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &93113445227669823
@@ -170,7 +170,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8481781811722958316}
-  m_Mesh: {fileID: 7053002454472047261, guid: f917bd25a0f7e1a409288b2ce2c9f482, type: 3}
+  m_Mesh: {fileID: -5928785198427282456, guid: c6ba95672d9d3214ca71d4fcfb4f80d8, type: 3}
 --- !u!23 &6542338463272015076
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -196,7 +196,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: f917bd25a0f7e1a409288b2ce2c9f482, type: 3}
+  - {fileID: -354735261257320667, guid: c6ba95672d9d3214ca71d4fcfb4f80d8, type: 3}
+  - {fileID: 2100000, guid: 282d00c1fcae42c43bfc39040023fdd7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,6 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb86e620d758a23489fde0f258b974d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneryLightsController
-  lamp: {fileID: 736855311536567109}
-  turnOnTime: 18
-  turnOffTime: 6
+  _lamp: {fileID: 6377799519475382160}
+  _renderer: {fileID: 6542338463272015076}
+  _litMaterial: {fileID: 2100000, guid: 282d00c1fcae42c43bfc39040023fdd7, type: 2}
+  _unlitMaterial: {fileID: 2100000, guid: b7442f49b5c1d714f926018c6e2663bd, type: 2}
+  _turnOnTime: 18
+  _turnOffTime: 6
