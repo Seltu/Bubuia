@@ -1,11 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     // References
+    [SerializeField] private Animator _mainMenuAnimator;
     [SerializeField] private GameObject _mainMenuPanel;
     [SerializeField] private GameObject _settingsPanel;
     [SerializeField] private GameObject _creditsPanel;
@@ -19,6 +24,7 @@ public class MainMenu : MonoBehaviour
     // Variables
     [SerializeField] private string _gameSceneName;
 
+    private IDisposable _inputEventListener;
 
     private void Start()
     {
@@ -27,14 +33,26 @@ public class MainMenu : MonoBehaviour
         m_Inventory.ResetMoney();
     }
 
+    private void OnEnable()
+    {
+        _inputEventListener = InputSystem.onAnyButtonPress.Call(ShowMainMenu);
+    }
+    private void OnDestroy()
+    {
+        _inputEventListener.Dispose();
+    }
+
     private void Update()
     {
-        /*
-        if (Input.GetKeyUp(KeyCode.Escape))
+        /*if (Input.GetMouseButtonDown(0))
         {
-            BackButton();
-        }
-        */
+            ShowMainMenu();
+        }*/
+    }
+
+    public void ShowMainMenu(InputControl button)
+    {
+        _mainMenuAnimator.SetBool("buttonPressed", true);
     }
 
     public void PlayButtonSound()
