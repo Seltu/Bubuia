@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa292a21d430e2147a983e3820eda336, type: 3}
+  m_Name: CustomizationCatalogueSO
+  m_EditorClassIdentifier: Assembly-CSharp::CustomizationCatalogueSO
+  defaultPlayer: {fileID: 11400000, guid: c7d2a2bddbaec2a49b737723dedfaf07, type: 2}
+  hairs:
+  - {fileID: 11400000, guid: 7dd87dc0306595347a99c9487c5c0d5a, type: 2}
+  - {fileID: 11400000, guid: 4471e11b44c05594c973cbff7a0a4897, type: 2}
+  clothing:
+  - {fileID: 11400000, guid: 151e5d74c4f40ce46ab2d400fa8f3bbd, type: 2}
+  - {fileID: 11400000, guid: c0d652eaf250e02418736a8dfea0aa83, type: 2}
+  upperClothes: []
+  lowerClothes: []

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GetCurrentClothes : Customization
+public class OLD_GetCurrentClothes : OLD_Customization
 {
     protected override void Start()
     {
@@ -22,11 +22,11 @@ public class GetCurrentClothes : Customization
         _charBody.color = _playerCustomSO.skinColor;
         _charHair.color = _playerCustomSO.hairColor;
 
-        _hairIndex = _playerCustomSO.hairCode;
+        //_hairIndex = _playerCustomSO.hairCode;
         _charHair.sprite = _hairList.sprites[_hairIndex];
         _typeHair.text = "Tipo " + (_hairIndex + 1);
 
-        _clothesIndex = _playerCustomSO.dressCode;
+        //_clothesIndex = _playerCustomSO.dressCode;
         _charClothes.sprite = _clothesList.sprites[_clothesIndex];
         _typeClothes.text = "Tipo " + (_clothesIndex + 1);
 
@@ -63,13 +63,13 @@ public class GetCurrentClothes : Customization
         Debug.Log("confirm");
         _playerCustomSO.skinColor = _charBody.color;
         _playerCustomSO.hairColor = _charHair.color;
-        _playerCustomSO.dressCode = _clothesIndex;
-        _playerCustomSO.hairCode = _hairIndex;
+        //_playerCustomSO.dressCode = _clothesIndex;
+        //_playerCustomSO.hairCode = _hairIndex;
 
         PlayerCustomPrefs.Save(_playerCustomSO);
 
-        _playerPrefab.GetComponent<PlayerVisuals>().SetConfig();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerVisuals>().SetConfig();
+        _playerPrefab.GetComponent<OLD_PlayerVisuals>().SetConfig();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<OLD_PlayerVisuals>().SetConfig();
 
         EventManager.TriggerEvent("OnCloseStore");
     }
