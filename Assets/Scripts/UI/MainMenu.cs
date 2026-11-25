@@ -55,6 +55,12 @@ public class MainMenu : MonoBehaviour
         _mainMenuAnimator.SetBool("buttonPressed", true);
     }
 
+    public void ChangeAnimatorMode()
+    {
+        // This is only here to enable button hovering animations, maybe there is a better way, review later
+        _mainMenuAnimator.cullingMode = AnimatorCullingMode.CullCompletely;
+    }
+
     public void PlayButtonSound()
     {
 

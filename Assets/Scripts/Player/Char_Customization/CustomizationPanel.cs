@@ -578,7 +578,11 @@ public class CustomizationPanel : MonoBehaviour
 
         if (_isPlayerFirstCustomization && _gameSceneName != string.Empty)
         {
-            SceneManager.LoadScene(_gameSceneName);
+            var menu = GetComponentInParent<MainMenu>();
+            if (menu != null)
+                menu.EnterGame();
+            else
+                Debug.LogWarning("Main menu script not found");
         }
         else
         {
@@ -587,6 +591,4 @@ public class CustomizationPanel : MonoBehaviour
 
         gameObject.SetActive(false);
     }
-
-
 }
