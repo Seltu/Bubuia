@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerVisuals : MonoBehaviour
+public class OLD_PlayerVisuals : MonoBehaviour
 {
     [SerializeField] private PlayerCustomSO playerCustomSO;
     [SerializeField] private SpriteRenderer skinSpriteRenderer;
@@ -24,15 +24,15 @@ public class PlayerVisuals : MonoBehaviour
         hairSpriteRenderer.color = playerCustomSO.hairColor;
         foreach (var hairSheet in defaultHairSheets)
         {
-            hairSheetSwapper.BuildSpriteMapping(hairSheet, hairSheet.Remove(hairSheet.Length - 5) + playerCustomSO.hairCode.ToString() + ".png", playerCustomSO.hairCode);
+            //hairSheetSwapper.BuildSpriteMapping(hairSheet, hairSheet.Remove(hairSheet.Length - 5) + playerCustomSO.hairCode.ToString() + ".png", playerCustomSO.hairCode);
         }
 
         foreach (var clothesSheet in defaultClothesSheets)
         {
-            clothesSheetSwapper.BuildSpriteMapping(clothesSheet, clothesSheet.Remove(clothesSheet.Length - 5) + playerCustomSO.dressCode.ToString() + ".png", playerCustomSO.dressCode);
+            //clothesSheetSwapper.BuildSpriteMapping(clothesSheet, clothesSheet.Remove(clothesSheet.Length - 5) + playerCustomSO.dressCode.ToString() + ".png", playerCustomSO.dressCode);
         }
 
-        hairSheetSwapper.SetCurrentAlt(playerCustomSO.hairCode);
-        clothesSheetSwapper.SetCurrentAlt(playerCustomSO.dressCode);
+        //hairSheetSwapper.SetCurrentAlt(playerCustomSO.hairCode);
+        //clothesSheetSwapper.SetCurrentAlt(playerCustomSO.dressCode);
     }
 }
