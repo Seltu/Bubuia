@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Customization : MonoBehaviour
+public class OLD_Customization : MonoBehaviour
 {
     [Header("Scriptables")]
     [SerializeField] protected SpriteList _clothesList;
@@ -112,8 +112,8 @@ public class Customization : MonoBehaviour
     {
         _playerCustomSO.skinColor = _charBody.color;
         _playerCustomSO.hairColor = _charHair.color;
-        _playerCustomSO.dressCode = _clothesIndex;
-        _playerCustomSO.hairCode = _hairIndex;
+        //_playerCustomSO.dressCode = _clothesIndex;
+        //_playerCustomSO.hairCode = _hairIndex;
 
         PlayerCustomPrefs.Save(_playerCustomSO);
 
