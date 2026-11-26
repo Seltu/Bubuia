@@ -323,6 +323,7 @@ GameObject:
   - component: {fileID: 4855823473704577399}
   - component: {fileID: 3830469581781613225}
   - component: {fileID: 7961235926633910734}
+  - component: {fileID: 824284178139964575}
   m_Layer: 0
   m_Name: Ravi
   m_TagString: Untagged
@@ -574,6 +575,20 @@ MonoBehaviour:
   _shortE: {fileID: 6548628667409655483}
   _peE: {fileID: 3926048570339177768}
   _pernaE: {fileID: 6542324911280130868}
+--- !u!114 &824284178139964575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537193597212055779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307593723d921084d81509535e9d3540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
+  _interactAction: {fileID: -6052681101887580085, guid: 9ba3dc970cd39eb44ba614ea4abca2be, type: 3}
+  _interactionRadius: 1
 --- !u!1 &1667022451476968834
 GameObject:
   m_ObjectHideFlags: 0

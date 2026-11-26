@@ -8,15 +8,21 @@ public class NpcDetection : MonoBehaviour
     [SerializeField] protected BoolVariable _npcInteractionAllowed;
     protected bool _isInReach = false;
 
+    private void Start()
+    {
+        SetBallonsStatus(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Player")) return;
         if (_npcInteractionAllowed.value) SetBallonsStatus(true);
-
         _isInReach = true;
     }
 
     private void OnTriggerStay(Collider other)
     {
+        if(!other.CompareTag("Player")) return;
         if (!_npcInteractionAllowed.value) SetBallonsStatus(false);
         else _dialogueBalloon.SetActive(true);
 

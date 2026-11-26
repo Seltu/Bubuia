@@ -63,10 +63,13 @@ public class TimeManager : MonoBehaviour
 
     public void Start()
     {
-        hours = 0;
+        hours = 7;
 
-        RenderSettings.skybox.SetTexture("_Texture1", skyboxNight);
-        RenderSettings.skybox.SetTexture("_Texture2", skyboxSunrise);
+        StartCoroutine(LerpSkybox(skyboxSunrise, skyboxDay, cubemapSunrise, cubemapDay, TransitionDuration));
+        StartCoroutine(LerpLight(graddientSunriseToDay, TransitionDuration));
+
+        RenderSettings.skybox.SetTexture("_Texture1", skyboxDay);
+        RenderSettings.skybox.SetTexture("_Texture2", skyboxSunset);
         RenderSettings.skybox.SetFloat("_Blend", 0);
     }
 

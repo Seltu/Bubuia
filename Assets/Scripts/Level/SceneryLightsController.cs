@@ -1,15 +1,20 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
 public class SceneryLightsController : MonoBehaviour
 {
-    [SerializeField] public Light lamp;
+    [SerializeField] private Light _lamp;
+    [SerializeField] private MeshRenderer _renderer;
+    [SerializeField] private Material _litMaterial;
+    [SerializeField] private Material _unlitMaterial;
+
     // This assumes the lights are only turned on during the night
-    [SerializeField] int turnOnTime = 18;
-    [SerializeField] int turnOffTime = 6;
+    [SerializeField] private int _turnOnTime = 18;
+    [SerializeField] private int _turnOffTime = 6;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         EventManager.AddListener<int, int>("TimePassed", ReactToTime);
     }
@@ -19,11 +24,19 @@ public class SceneryLightsController : MonoBehaviour
         EventManager.RemoveListener<int, int>("TimePassed", ReactToTime);
     }
 
-    void ReactToTime(int Hours, int Minutes)
+    private void ReactToTime(int Hours, int Minutes)
     {
-        if ((Hours >= turnOnTime && Hours <= 24) || (Hours >= 0 && Hours <= turnOffTime))
-            lamp.enabled = true;
+        var materialList = _renderer.materials.ToList();
+        if ((Hours >= _turnOnTime && Hours <= 24) || (Hours >= 0 && Hours <= _turnOffTime))
+        {
+            materialList[1] = _litMaterial;
+            _lamp.enabled = true;
+        }
         else
-            lamp.enabled = false;
+        {
+            materialList[1] = _unlitMaterial;
+            _lamp.enabled = false;
+        }
+        _renderer.SetMaterials(materialList);
     }
 }
